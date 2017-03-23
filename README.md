@@ -6,7 +6,7 @@
     * api/
       - answers.js
       - questions.js
-         * repair.js
+        * repair.js
 * node_modules/
 * public/
   - app/
@@ -42,7 +42,7 @@ This is the auto-generated folder containing all of the necessary dependencies t
 ### public/
 The public directory holds all of the front-end files for the application
 
-## File Definitions - Backend
+## Router Definitions - Backend
 
 ### /app/routes/api/answers.js
 *The answers router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/answers**, with their corresponding database queries.*
