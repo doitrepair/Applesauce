@@ -32,8 +32,12 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
-var apiRouter	= require('./app/routes/apiRouter')(app, express);
-app.use('/api', apiRouter);
+var questionsRouter	= require('./app/routes/api/questions')(app, express);
+app.use('/api/questions', questionsRouter);
+var answerRouter		= require('./app/routes/api/answers')(app, express);
+app.use('/answers', answerRouter);
+var repairRouter		= require('./app/routes/api/repair')(app, express);
+app.use('/repair', repairRouter);
 
 // Main route ------------------------------------------------------------------
 app.get('*', function(req, res) {

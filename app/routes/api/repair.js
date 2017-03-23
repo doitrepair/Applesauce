@@ -5,7 +5,7 @@ var config 		= require('../../../config');
 
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express) {
-
+	var repairRouter = express.Router();
 
 	//REGISTERING ROUTES ---------------------
 	return repairRouter;
