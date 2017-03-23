@@ -48,17 +48,13 @@ The public directory holds all of the front-end files for the application
 
 ### /app/routes/api/questions.js
 **The questions router defines the following routes off of /api/questions as database queries.**
-|--------------|------------------------------------------------------------------------------|
-| GET /        | SELECT * from questions                                                      |
-|--------------|------------------------------------------------------------------------------|
-| POST /       | INSERT into questions (question_id, question_text = req.body.text)           |
-|--------------|------------------------------------------------------------------------------|
-| GET /:id     | SELECT * from questions WHERE question_id = :id                              |
-|--------------|------------------------------------------------------------------------------|
-| PUT /:id     | UPDATE questions SET text = req.body.text WHERE question_id = req.body.id    |
-|--------------|------------------------------------------------------------------------------|
-| DELETE /:id  | DELETE FROM questions WHERE questions_id = req.body.id                       |
-|--------------|------------------------------------------------------------------------------|
+| HTTP call | Corresponding Database Query
+| --- | --- |
+| GET / | SELECT * from questions |
+| POST / | INSERT into questions (question_id, question_text = req.body.text) |
+| GET /:id | SELECT * from questions WHERE question_id = :id |
+| PUT /:id | UPDATE questions SET text = req.body.text WHERE question_id = req.body.id |
+| DELETE /:id | DELETE FROM questions WHERE questions_id = req.body.id |
 
 
 ### /app/routes/api/repair.js
