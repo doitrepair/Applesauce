@@ -48,7 +48,7 @@ The public directory holds all of the front-end files for the application
 
 ### /app/routes/api/questions.js
 **The questions router defines the following routes off of /api/questions as database queries.**
-| HTTP call | Corresponding Database Query
+| HTTP call | Corresponding Database Query |
 | --- | --- |
 | GET / | SELECT * from questions |
 | POST / | INSERT into questions (question_id, question_text = req.body.text) |
