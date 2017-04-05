@@ -5,20 +5,13 @@ angular.module('app.routes', ['ngRoute'])
 			.when('/', {
 				templateUrl : 'app/views/pages/home.html'
 			})
-			.when('/troubleshoot', {
-				templateUrl : 'app/views/pages/question.html',
-				controller : 'mainController',
-				controllerAs: 'question'
+			.when('/template', {
+				templateUrl : 'app/views/pages/uwMadTemplate.html'
 			})
-			.when('/refer', {
-				templateUrl : 'app/views/pages/question.html',
-				controller : 'mainController',
-				controllerAs: 'refer'
-			})
-			.when('/checkin', {
-				templateUrl: 'app/views/pages/form.html',
-				controller: 'mainController',
-				controllerAs: 'form'
+			.when('/users', {
+				templateUrl: 'app/views/pages/users/all.html',
+				controller: 'userController',
+				controllerAs: 'user'
 			});
 
 		// Get rid of has in the URL

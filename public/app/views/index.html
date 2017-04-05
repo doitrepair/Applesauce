@@ -2,31 +2,47 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Applesauce</title>
+	<title>Justin Essert</title>
 
 	<!-- For Angular Routing -->
 	<base href="/">
 
 	<!-- CSS Stylesheets -->
 
+	<!-- Bootstrap Core CSS -->
+    <link href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+
+	<!-- Custom Fonts -->
+    <link href="assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Roboto" rel="stylesheet" type='text/css'>
+
+	<!-- Custom Stylesheets -->
+	<link href="assets/css/style.css" rel="stylesheet">
+
 	<!-- JS -->
+	<!--Angular Imports-->
+	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+
+	<!-- Extra Features -->
+	<script type='text/javascript' src="assets/libs/angular-scroll/angular-scroll.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- Controllers -->
 	<script src="app/controllers/mainCtrl.js"></script>
-	
-	<!-- Services -->
 
-	<!-- main Angular app files -->
+	<!-- Services -->
+	<script src="app/services/answerService.js"></script>
+	<!-- Main Angular app files -->
 	<script src="app/app.routes.js"></script>
+
 	<script src="app/app.js"></script>
 
 </head>
 <body ng-app="mainApp" ng-controller="mainController as main">
-	<!-- NAVBAR -->
-	<header>
-		Test
-	</header>
-	<main>
-	</main>
+	<div ng-view class="mainView">
+	</div>
 </body>
 </html>
