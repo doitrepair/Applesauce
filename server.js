@@ -25,10 +25,10 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 
 //Connect to a database
-var db_connection = mySQL.createConnection({									//create connection with database
-        host: '35.184.129.247', 	//host name may need to be adjusted
+var db_connection = mySQL.createConnection({//create connection with database
+        host: '35.184.129.247',
         user: 'root',
-        password: 'justin',
+        password: 'justin',					//sample password
         database : 'applesauce_db'
     }
 );

@@ -5,39 +5,23 @@
 <!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!-->
 <html lang="en-US" class="no-js">
 <!--<![endif]-->
-	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-		<base href="/">
-		<title>
-			UW Style Sample Home Page
-		</title>
-
-
-		<link rel="stylesheet" href="assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css">
-		<link rel="stylesheet" href="assets/libs/uwmadison_templates/css/uw-style.css?version=1.0.3">
-		<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'')})(document.documentElement)</script>
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="css/uw-style-ie.css?version=1.0.3">
-		<![endif]-->
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-		<!-- JS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
-
-		<!-- Controllers -->
-		<script src="app/controllers/mainCtrl.js"></script>
-
-		<!-- main Angular app files -->
-		<script src="app/app.routes.js"></script>
-		<script src="app/app.js"></script>
-	</head>
+  <head>
+    <title>
+      UW Style Sample Page
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="fonts/uw160/fonts.0.0.1.css">
+    <link rel="stylesheet" href="css/uw-style.css?version=1.0.3">
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'')})(document.documentElement)</script>
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="css/uw-style-ie.css?version=1.0.3">
+    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
   <body>
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
@@ -50,7 +34,7 @@
       <div class="uw-header-container">
         <div class="uw-header-crest-title">
           <div class="uw-header-crest">
-            <a href="http://www.wisc.edu"><img class="uw-crest-svg" src="assets/libs/uwmadison_templates/images/uw-crest.svg" alt="Link to University of Wisconsin-Madison home page"></a>
+            <a href="http://www.wisc.edu"><img class="uw-crest-svg" src="images/uw-crest.svg" alt="Link to University of Wisconsin-Madison home page"></a>
           </div>
           <div class="uw-title-tagline">
             <h1 id="site-title" class="uw-site-title">
@@ -90,14 +74,14 @@
                 Templates<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
               </a>
               <ul aria-hidden="true" aria-label="Templates submenu" class="uw-child-menu">
-                <li class="current-menu-item">
-                  <a href="home-page.html" aria-current="page">Home page</a>
+                <li>
+                  <a href="home-page.html">Home page</a>
                 </li>
                 <li>
                   <a href="content-sidebar.html">Content with right sidebar</a>
                 </li>
-                <li>
-                  <a href="sidebar-content.html">Content with left sidebar</a>
+                <li class="current-menu-item">
+                  <a href="sidebar-content.html" aria-current="page">Content with left sidebar</a>
                 </li>
               </ul>
             </li>
@@ -162,10 +146,78 @@
       </div>
     </div>
 
-	<main ng-app="userApp">
-		<div ng-view></div>
-		<div ng-include="public/app/views/pages/svg.html"></div>
-	</main>
+    <!-- main content -->
+    <main id="main">
+
+      <!-- Page title -->
+      <div class="uw-row-full uw-row-page-title">
+        <div class="uw-row">
+          <div class="uw-col">
+            <h1 class="uw-mini-bar">
+              Content with Left Sidebar
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page content -->
+      <div class="uw-full-row">
+        <div class="uw-row uw-flex-reverse">
+
+          <!-- Body content -->
+          <div class="uw-col uw-body">
+            <img src="https://placeholdit.imgix.net/~text?txtsize=84&amp;bg=666666&amp;txt=Photo&amp;w=900&amp;h=400" alt="Placeholder image for deomnstration">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate aperiam vero atque sunt ipsum odio molestiae, repellat commodi quasi eligendi laudantium molestias excepturi voluptates a totam, laborum quaerat numquam explicabo.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur rerum, voluptatem, totam at alias id eligendi harum, quo placeat quae, consectetur excepturi. Vel praesentium, illo. Sed corrupti quia laborum laboriosam!
+            </p>
+            <h2>Subhead here</h2>
+            <ul>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi explicabo, harum error nemo ipsam illo natus consequuntur vero officia odio ipsum ea voluptatem expedita! Nisi officia, saepe cum maiores aut.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi et est quisquam ipsum, consequuntur facilis tempora sapiente odio libero aperiam porro, id maiores amet accusantium quae sint, nesciunt nihil omnis.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga blanditiis maxime reprehenderit ut quam, incidunt ex quos obcaecati officiis odit asperiores mollitia eius laudantium eveniet, similique saepe at fugit non.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero at omnis adipisci quis molestias quae, repellendus id officia delectus nam perspiciatis necessitatibus. Ipsam minus aperiam voluptatibus corrupti fugiat delectus sequi.</li>
+            </ul>
+
+          </div>
+
+          <!-- Sidebar content -->
+          <aside class="uw-col uw-sidebar">
+            <button class="uw-button-unstyle uw-side-nav-button"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg> Select a section…</button>
+
+            <!-- Sidebar nav -->
+            <div class="uw-side-nav">
+              <ul>
+                <li class="uw-current-menu-item"><a href="admissions/">Overview</a></li>
+                <li><a href="#">Admission</a></li>
+                <li><a href="#">Majors and Certificates</a></li>
+                <li><a href="#">Schools and Colleges</a></li>
+                <li><a href="#">Advising</a></li>
+                <li><a href="#">Academic Resources</a></li>
+                <li><a href="#">Requirements for Undergraduate Study</a></li>
+                <li><a href="#">Enrollment and Records</a></li>
+                <li><a href="#">Rules, Rights, and Responsibilities</a></li>
+                <li><a href="#">Division of Student Life</a></li>
+                <li><a href="#">Academic Calendar</a></li>
+              </ul>
+            </div>
+
+            <!-- Sidbar callout box -->
+            <div class="uw-sidebar-box">
+              <h3>Prospective students contact:</h3>
+
+              <p>Department of Biomolecular Chemistry</p>
+
+              <p><a href="mailto:email@wisc.edu">email@wisc.edu</a></p>
+
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </main>
 
     <footer id="colophon" class="uw-footer">
       <div class="uw-footer-content">
@@ -196,7 +248,7 @@
             <li><a href="http://www.oed.wisc.edu/title-ix.htm">Title IX</a></li>
           </ul>
         </div>
-
+            
         <div class="uw-footer-contact">
           <h3 class="uw-footer-header">Contact Us</h3>
           <ul class="uw-contact-list">
@@ -223,11 +275,7 @@
         <p>© 2017 Board of Regents of the <a href="http://www.wisconsin.edu">University of Wisconsin System</a></p>
       </div>
     </footer>
-
-    <!-- Overlay container if using sidebar nav -->
     <div class="uw-overlay"></div>
-
-    <!-- SVG icons -->
     <svg aria-hidden="true" style="display: inline; height: 0; position: absolute;" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>Site icons</title>
       <defs>
@@ -301,10 +349,9 @@
         </symbol>
       </defs>
     </svg>
-
     <!--[if lte IE 9]>
-      <script src="assets/libs/uwmadison_templates/js/polyfills/classList.js"></script>
+      <script src="js/polyfills/classList.js"></script>
     <![endif]-->
-    <script src="assets/libs/uwmadison_templates/js/_uw-style.min.js?version=1.0.3"></script>
+    <script src="js/_uw-style.min.js?version=1.0.3"></script>
   </body>
 </html>
