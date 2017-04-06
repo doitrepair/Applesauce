@@ -25,15 +25,16 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 
 //Connect to a database
-var db_connection = mySQL.createConnection({									//create connection with database
+var db_connection = mySQL.createPool({									//create connection with database
+        connectionLimit : 10,
         host: '35.184.129.247', 	//host name may need to be adjusted
         user: 'root',
-        password: 'justin',
+        password: config.password,
         database : 'applesauce_db'
     }
 );
 
-db_connection.connect(function(err) {  //attempt database connection
+db_connection.getConnection(function(err) {  //attempt database connection
     if (err) {
         console.error('error connection: ' + err.stack); //leave if error attempting to connect
         return;
@@ -48,9 +49,9 @@ app.use(express.static(__dirname + '/public'));
 var questionsRouter	= require('./app/routes/api/questions')(app, express);
 app.use('/api/questions', questionsRouter);
 var answerRouter		= require('./app/routes/api/answers')(app, express);
-app.use('/answers', answerRouter);
+app.use('/api/answers', answerRouter);
 var repairRouter		= require('./app/routes/api/repair')(app, express);
-app.use('/repair', repairRouter);
+app.use('/api/repair', repairRouter);
 
 // Main route ------------------------------------------------------------------
 app.get('*', function(req, res) {
