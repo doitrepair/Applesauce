@@ -1,6 +1,11 @@
 angular.module('mainCtrl', [])
-	.controller('mainController', function($rootScope, $location, Auth) {
+	.controller('mainController', function($scope, $location) {
 		var vm = this;
+		$scope.startRepair = function() {
+			console.log('the')
+			$location.path('/diagnose');
+		}
+		/*
 		// Get info for user logged in
 		vm.loggedIn = Auth.isLoggedIn();
 		// For each request, check if user is logged in
@@ -35,4 +40,5 @@ angular.module('mainCtrl', [])
 			vm.user = {};
 			$location.path('/login');
 		};
+		*/
 	});

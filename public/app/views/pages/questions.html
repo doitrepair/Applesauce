@@ -1,0 +1,62 @@
+<!-- main content -->
+<main id="main" ng-controller="questionController">
+
+  <!-- Page title -->
+  <div class="uw-row-full uw-row-page-title">
+	<div class="uw-row">
+	  <div class="uw-col">
+		<h1 class="uw-mini-bar">
+		  START A REPAIR
+		</h1>
+	  </div>
+	</div>
+  </div>
+
+  <!-- Page content -->
+  <div class="uw-full-row">
+	<div class="uw-row uw-flex-reverse">
+
+	  <!-- Body content -->
+	  <div class="uw-col uw-body">
+		<img src="https://placeholdit.imgix.net/~text?txtsize=84&amp;bg=666666&amp;txt=Photo&amp;w=900&amp;h=400" alt="Placeholder image for deomnstration">
+		<p>
+		  This module will walk you through a series of questions to better diagnose the issue...
+		</p>
+		<div >
+			<div >
+				{{ question_text }}
+				<select ng-model="qa" style="margin-bottom: 25px" ng-options="x.a_text for x in answers">
+
+				</select>
+				<button class="uw-button" style="margin-bottom: 25px" ng-click="handleAnswer()">Save Answer</button>
+			</div>
+		</div>
+		<p> Extra Content?</p>
+	  </div>
+
+	  <!-- Sidebar content -->
+	  <aside class="uw-col uw-sidebar">
+		<button class="uw-button-unstyle uw-side-nav-button"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg> Select a section…</button>
+
+		<!-- Sidebar nav -->
+		<div class="uw-side-nav">
+		  <ul>
+			  <li><h3 style="padding: 16px; border-left: 4px; margin: 0px">Question History:</h3></li>
+			  <li ng-repeat="y in questions"><a href="#">{{ y.sum }}</a></li>
+		  </ul>
+		</div>
+
+		<!-- Sidbar callout box -->
+		<div class="uw-sidebar-box">
+		  <h3>HAVE ANY QUESTIONS?:</h3>
+
+		  <p>Call the DoIT Help Desk</p>
+
+		  <p>(608) 264-HELP (4357)</p>
+
+		</div>
+
+	  </aside>
+	</div>
+  </div>
+</main>

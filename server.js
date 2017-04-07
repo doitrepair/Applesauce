@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 //Log all requests to the console
 app.use(morgan('dev'));
 
-//Connect to a database
+/*//Connect to a database
 var db_connection = mySQL.createConnection({//create connection with database
         host: '35.184.129.247',
         user: 'root',
@@ -40,6 +40,7 @@ db_connection.connect(function(err) {  //attempt database connection
     }
     console.log('connected as id ' + db_connection.threadId); //connection successful
 });
+*/
 // ROUTE DEFINITIONS ===========================================================
 //For frontend references
 app.use(express.static(__dirname + '/public'));

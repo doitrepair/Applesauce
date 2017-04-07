@@ -1,5 +1,7 @@
 angular.module('userApp', [
 	'ngAnimate',
 	'app.routes',
-	'mainCtrl'
+	'mainCtrl',
+	'questionCtrl',
+	'dbService'
 ]);

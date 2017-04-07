@@ -9,7 +9,7 @@
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 		<base href="/">
 		<title>
-			UW Style Sample Home Page
+			DoIT Repair
 		</title>
 
 
@@ -33,6 +33,8 @@
 
 		<!-- Controllers -->
 		<script src="app/controllers/mainCtrl.js"></script>
+		<script src="app/controllers/questionCtrl.js"></script>
+		<script src="app/services/dbService.js"></script>
 
 		<!-- main Angular app files -->
 		<script src="app/app.routes.js"></script>
@@ -54,11 +56,12 @@
           </div>
           <div class="uw-title-tagline">
             <h1 id="site-title" class="uw-site-title">
-              <a href="" rel="home">Sample Site</a>
+              <a href="" rel="home">DoIT Repair</a>
             </h1>
-            <div id="site-description" class="uw-site-tagline">Sample site has a tagline</div>
+            <div id="site-description" class="uw-site-tagline">Help Diagnose Your Computer</div>
           </div>
         </div>
+		<!--
         <div class="uw-header-search">
           <form role="search" method="get" action="" class="uw-search-form form-inline collapse">
             <label for="s" class="uw-show-for-sr-only">Search this site</label>
@@ -71,6 +74,7 @@
             </button>
           </form>
         </div>
+		-->
       </div>
     </header>
 
@@ -85,46 +89,24 @@
             <li>
               <a href="">Home</a>
             </li>
-            <li id="menu-templates" class="uw-dropdown current-menu-parent">
-              <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
-                Templates<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
-              </a>
-              <ul aria-hidden="true" aria-label="Templates submenu" class="uw-child-menu">
-                <li class="current-menu-item">
-                  <a href="home-page.html" aria-current="page">Home page</a>
-                </li>
-                <li>
-                  <a href="content-sidebar.html">Content with right sidebar</a>
-                </li>
-                <li>
-                  <a href="sidebar-content.html">Content with left sidebar</a>
-                </li>
-              </ul>
-            </li>
+			<li>
+			  <a href="">Start A Repair</a>
+			</li>
             <li id="menu-about" class="uw-dropdown">
               <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
-                About<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
+                Resources<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
               </a>
               <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
                 <li>
-                  <a href="4">About</a>
+                  <a href="4">KnowledgeBase</a>
                 </li>
                 <li>
-                  <a href="3">Our Location</a>
+                  <a href="3">Apple Service</a>
                 </li>
                 <li>
-                  <a href="2">News</a>
-                </li>
-                <li>
-                  <a href="1">Contact Us</a>
+                  <a href="2">Dell Service</a>
                 </li>
               </ul>
-            </li>
-            <li>
-              <a href="2">Location</a>
-            </li>
-            <li>
-              <a href="3">Jobs</a>
             </li>
             <li>
               <a href="3">Contact Us</a>
@@ -135,27 +117,11 @@
       <div class="uw-secondary-nav">
         <nav class="uw-nav-menu uw-nav-menu-secondary" aria-label="Secondary Menu">
           <ul>
-            <li id="menu-news" class="uw-dropdown">
-              <a href="http://news.wisc.edu" aria-haspopup="true" aria-expanded="false">
-                News<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
-              </a>
-              <ul aria-hidden="true" aria-label="News submenu" class="uw-child-menu">
-                <li>
-                  <a href="http://localhost:8001/about/">About</a>
-                </li>
-                <li>
-                  <a href="http://localhost:8001/contact-us/our-location/">Our Location</a>
-                </li>
-                <li>
-                  <a href="http://localhost:8001/news/">News</a>
-                </li>
-              </ul>
+            <li>
+              <a>KnowledgeBase</a>
             </li>
             <li>
-              <a href="http://today.wisc.edu">Calendar</a>
-            </li>
-            <li>
-              <a href="http://map.wisc.edu">Map</a>
+              <a>Contact Us</a>
             </li>
           </ul>
         </nav>
@@ -165,7 +131,6 @@
 	<!--Angular Section-->
 	<main ng-app="userApp">
 		<div ng-view></div>
-		<div ng-include="public/app/views/pages/svg.html"></div>
 	</main>
 	<!--End Angular Section-->
 
@@ -177,7 +142,7 @@
           </a>
         </div>
         <div class="uw-footer-menu" role="complementary">
-          <h3 class="uw-footer-header">Partners</h3>
+          <h3 class="uw-footer-header">Partners?</h3>
           <ul>
             <li><a href="https://students.wisc.edu/">Division of Student Life</a></li>
             <li><a href="http://provost.wisc.edu/climate.htm">Division of Diversity, Equity &amp; Educational Achievement</a></li>
@@ -190,33 +155,18 @@
         <div class="uw-footer-menu" role="complementary">
           <h3 class="uw-footer-header">Quick Links</h3>
           <ul>
-            <li><a href="http://www.wisc.edu/accessibility/">Accessibility</a></li>
-            <li><a href="https://diversity.wisc.edu/">Diversity</a></li>
-            <li><a href="http://www.wisc.edu/governance/">Governance</a></li>
-            <li><a href="http://www.wisc.edu/policies/">Policies</a></li>
-            <li><a href="http://uwpd.wisc.edu/">Safety</a></li>
-            <li><a href="http://www.oed.wisc.edu/title-ix.htm">Title IX</a></li>
+            <li><a href="http://www.wisc.edu/accessibility/">Wisc Home</a></li>
+            <li><a href="https://diversity.wisc.edu/">My UW</a></li>
+            <li><a href="http://www.wisc.edu/governance/">KnowledgeBase</a></li>
+            <li><a href="http://www.wisc.edu/policies/">Other?</a></li>
           </ul>
         </div>
 
         <div class="uw-footer-contact">
           <h3 class="uw-footer-header">Contact Us</h3>
           <ul class="uw-contact-list">
-            <li class="uw-contact-item">Email: <a href="mailto:email@wisc.edu">email@wisc.edu</a></li>
-            <li class="uw-contact-item">Phone: <a href="tel:608-555-5555">608-555-5555</a></li>
-            <li>
-              <ul class="uw-social-icons">
-                <li id="uw-icon-twitter" class="uw-social-icon">
-                  <a aria-label="twitter" href="https://twitter.com"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-twitter"></use></svg></a>
-                </li>
-                <li id="uw-icon-instagram" class="uw-social-icon">
-                  <a aria-label="instagram" href="https://www.instagram.com"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-instagram"></use></svg></a>
-                </li>
-                <li id="uw-icon-facebook" class="uw-social-icon">
-                  <a aria-label="facebook" href="https://facebook.com/"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-facebook"></use></svg></a>
-                </li>
-              </ul>
-            </li>
+            <li class="uw-contact-item">Email: <a href="mailto:help@doit.wisc.edu">help@doit.wisc.edu</a></li>
+            <li class="uw-contact-item">Phone: <a href="tel:608-555-5555">(608) 264-HELP (4357)</a></li>
           </ul>
         </div>
       </div>
@@ -309,4 +259,3 @@
     <![endif]-->
     <script src="assets/libs/uwmadison_templates/js/_uw-style.min.js?version=1.0.3"></script>
   </body>
-</html>

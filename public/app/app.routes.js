@@ -1,4 +1,4 @@
-angular.module('app.routes', ['ngRoute'])
+angular.module('app.routes', ['ngRoute','questionCtrl'])
 	.config(function($routeProvider, $locationProvider) {
 		$routeProvider
 		// Route to the homepage
@@ -8,10 +8,11 @@ angular.module('app.routes', ['ngRoute'])
 			.when('/template', {
 				templateUrl : 'app/views/pages/uwMadTemplate.html'
 			})
-			.when('/users', {
-				templateUrl: 'app/views/pages/users/all.html',
-				controller: 'userController',
-				controllerAs: 'user'
+			.when('/diagnose', {
+				templateUrl : 'app/views/pages/questions.html'
+			})
+			.when('/repair', {
+				templateUrl: 'app/views/pages/repair-form.html'
 			});
 
 		// Get rid of has in the URL
