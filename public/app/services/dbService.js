@@ -9,6 +9,8 @@ angular.module('dbService', [])
 	.value('firstQuestion', 1)
 	.factory('qaFactory', function($http) {
 		var qaFactory = {};
+		var repairData = {};
+		repairData.valid = false;
 		// Get a question from the database
 		qaFactory.getQuestion = function(id) {
 			var q_object = {};
@@ -28,8 +30,7 @@ angular.module('dbService', [])
 							q_id: 1,
 							a_text: "monkey",
 							cont: true,
-							next_id: 2,
-							chosen: false
+							next_id: 2
 
 						},
 						{
@@ -37,8 +38,7 @@ angular.module('dbService', [])
 							q_id: 1,
 							a_text: "dog",
 							cont: false,
-							next_id: 1,
-							chosen: false
+							next_id: 1
 
 						},
 						{
@@ -46,8 +46,7 @@ angular.module('dbService', [])
 							q_id: 1,
 							a_text: "cat",
 							cont: false,
-							next_id: 1,
-							chosen: false
+							next_id: 1
 
 						},
 						{
@@ -55,8 +54,7 @@ angular.module('dbService', [])
 							q_id: 1,
 							a_text: "llama",
 							cont: false,
-							next_id: 1,
-							chosen: false
+							next_id: 1
 
 						},
 						{
@@ -64,8 +62,7 @@ angular.module('dbService', [])
 							q_id: 1,
 							a_text: "armadillo",
 							cont: false,
-							next_id: 1,
-							chosen: false
+							next_id: 1
 
 						}
 					];
@@ -81,8 +78,7 @@ angular.module('dbService', [])
 							q_id: 2,
 							a_text: "yes",
 							cont: true,
-							next_id: 3,
-							chosen: false
+							next_id: 3
 
 						},
 						{
@@ -90,8 +86,7 @@ angular.module('dbService', [])
 							q_id: 2,
 							a_text: "no",
 							cont: false,
-							next_id: 2,
-							chosen: false
+							next_id: 2
 
 						}
 					];
@@ -107,8 +102,7 @@ angular.module('dbService', [])
 							q_id: 2,
 							a_text: "it doesn't turn on",
 							cont: false,
-							next_id: 3,
-							chosen: false
+							next_id: 3
 
 						},
 						{
@@ -116,8 +110,7 @@ angular.module('dbService', [])
 							q_id: 2,
 							a_text: "its broken",
 							cont: false,
-							next_id: 3,
-							chosen: false
+							next_id: 3
 
 						}
 					];
@@ -148,7 +141,38 @@ angular.module('dbService', [])
 				break;
 			}
 			return r_object;
+		};
 
+		qaFactory.sendRepair = function(id, question_data) {
+			var r_object = {};
+			//r_object.repair = $http.get('/api/repair/' + id);
+			switch(id){
+				case 1:
+					r_object.id			= 1;
+					r_object.text 		= "Sorry, the correct answer was monkey";
+					r_object.repair		= false;
+				break;
+				case 2:
+					r_object.id			= 2;
+					r_object.text 		= "I'm glad we could be of service";
+					r_object.repair		= false;
+				break;
+				case 3:
+					r_object.id			= 3;
+					r_object.text 		= "Well we should get that checked out!";
+					r_object.repair		= true;
+				break;
+			}
+
+			repairData.repair = r_object;
+			repairData.question_data = question_data;
+			repairData.valid = true;
+			return true;
+		};
+
+		qaFactory.receiveRepair = function() {
+			if(repairData.valid) return repairData;
+			return false;
 		};
 		return qaFactory;
 	});

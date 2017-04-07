@@ -2,7 +2,6 @@ angular.module('mainCtrl', [])
 	.controller('mainController', function($scope, $location) {
 		var vm = this;
 		$scope.startRepair = function() {
-			console.log('the')
 			$location.path('/diagnose');
 		}
 		/*

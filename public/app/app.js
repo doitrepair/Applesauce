@@ -3,5 +3,6 @@ angular.module('userApp', [
 	'app.routes',
 	'mainCtrl',
 	'questionCtrl',
+	'repairCtrl',
 	'dbService'
 ]);

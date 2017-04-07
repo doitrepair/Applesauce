@@ -11,7 +11,7 @@ angular.module('questionCtrl', ['dbService'])
 		$scope.question_text = vm.questions[vm.qIndex].text;
 		// Handle logging out
 		$scope.handleAnswer = function() {
-			$scope.qa.chosen = true;
+			vm.questions[vm.qIndex].chosen = $scope.qa;
 			if($scope.qa.cont){
 				var nextQ = qaFactory.getQuestion($scope.qa.next_id);
 				console.log(nextQ);
@@ -21,8 +21,10 @@ angular.module('questionCtrl', ['dbService'])
 				$scope.question_text = vm.questions[vm.qIndex].text;
 				$scope.questions = vm.questions;
 			}else {
-				qaFactory.getRepair($scope.qa.next_id);
-				$location.path('/repair');
+				if(qaFactory.sendRepair($scope.qa.next_id, vm.questions))
+					$location.path('/repair');
+				else
+					return false;
 			}
 		};
 	});
