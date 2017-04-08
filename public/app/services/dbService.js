@@ -206,7 +206,7 @@ angular.module('dbService', [])
 		//											a repair has been saved
 		//**********************************************************************
 		qaFactory.receiveRepair = function() {
-			if(repairData.valid) return repairData.repair_data;
+			if(repairData.valid) return repairData;
 			return false;
 		};
 		return qaFactory;
