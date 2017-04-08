@@ -1,69 +1,78 @@
-<h2 class="uw-mini-bar">Please fill in the following information about your computer to speed up the check-in process:</h2>
+<div id="repair-form" style="padding: 0px 50px" ng-controller="repairController">
 
-<form action="./" ng-controller="repairController">
-  <fieldset>
-	<label for="first-name">Issue Description:</label>
-  	<textarea rows="10" id="questions" ng-model="description">
+	<h2 class="uw-mini-bar">We have diagnosed your issue to be:</h2>
+	<p>{{ repair_text }}</p>
 
-	</textarea>
-  </fieldset>
-  <fieldset>
-	<legend>Personal Information</legend>
-	<div class="uw-input-row">
-	  <label for="first-name">First name:</label>
-	  <input type="text" id="first-name" required>
-	</div>
-	<div class="uw-input-row">
-	  <label for="last-name">Last name:</label>
-	  <input type="text" id="last-name" required>
-	</div>
-	<div class="uw-input-row">
-	  <label for="net-id">NetID:</label>
-	  <input type="text" id="net-id" required>
-	</div>
-	<div class="uw-input-row">
-	  <label for="email">Email:</label>
-	  <input type="text" id="email">
-	</div>
-	<div class="uw-input-row">
-	  <label for="phone">Phone:</label>
-	  <input type="text" id="phone">
-	</div>
-	<label for="select">Preferred Contact Method</label>
-	<select name="contactPref" id="contactPref" required>
-	  <option value="1">Email</option>
-	  <option value="2">Phone Call</option>
-	</select>
-  </fieldset>
+	<h2 class="uw-mini-bar">{{ form_header }}</h2>
 
-  <fieldset>
-	<legend>Computer Information</legend>
-	<label for="select">Operating System:</label>
-	<select name="os" id="os" required>
-	  <option value="1">Windows 7</option>
-	  <option value="2">Windows 8</option>
-	  <option value="3">Windows 10</option>
-	  <option value="4">Mac 0S X 10.11</option>
-	  <option value="5">Mac OS X 10.10</option>
-	  <option value="5">Mac OS X 10.9 or earlier</option>
-	  <option value="5">Other</option>
-	  <option value="5">I don't know</option>
-	</select>
-	<label for="select">Make/Model:</label>
-	<select name="make" id="make">
-	  <option value="1">Mac Book Pro</option>
-	  <option value="2">Dell XPS</option>
-	  <option value="3">Other</option>
-	</select>
-  </fieldset>
+	<form action="./">
+	<fieldset>
+		<legend>Repair Information</legend>
+		<label for="first-name">Issue Description: <br> Feel free to add any clarifications that you think would help our repair team</label>
+		<textarea rows="10" id="questions" ng-model="description"></textarea>
+	</fieldset>
+	<fieldset>
+		<legend>Personal Information</legend>
+		<div class="uw-input-row">
+		<label for="first-name">First name:</label>
+		<input type="text" id="first-name" required>
+		</div>
+		<div class="uw-input-row">
+		<label for="last-name">Last name:</label>
+		<input type="text" id="last-name" required>
+		</div>
+		<div class="uw-input-row">
+		<label for="net-id">NetID:</label>
+		<input type="text" id="net-id" required>
+		</div>
+		<div class="uw-input-row">
+		<label for="email">Email:</label>
+		<input type="text" id="email" required>
+		</div>
+		<div class="uw-input-row">
+		<label for="phone">Phone:</label>
+		<input type="text" id="phone" required>
+		</div>
+		<label for="select">Preferred Contact Method</label>
+		<select name="contactPref" id="contactPref" required>
+		<option value="1">Email</option>
+		<option value="2">Phone Call</option>
+		</select>
+	</fieldset>
 
-  <p>
-	  Your Expected Contact Date will be {{repair.contact_date}} buisness days
-	  after dropping of your computer at a DoIT Tech Store location.
-  </p>
-  <p>
-	  Please check the following box if you have your data backed up, or otherwise
-	  consent to DoIT Repair erasing data off of your machine.
-  </p>
-  <label><input name="format" type="checkbox" value="1" checked>It is OK to <strong>ERASE</strong> my data.</label>
+	<fieldset>
+		<legend>Computer Information</legend>
+		<label for="select">Operating System:</label>
+		<select name="os" id="os" required>
+			<option value="1">Windows 7</option>
+			<option value="2">Windows 8</option>
+			<option value="3">Windows 10</option>
+			<option value="4">Mac 0S X 10.11</option>
+			<option value="5">Mac OS X 10.10</option>
+			<option value="5">Mac OS X 10.9 or earlier</option>
+			<option value="5">Other</option>
+			<option value="5">I don't know</option>
+		</select>
+		<label for="select">Make/Model:</label>
+		<select name="make" id="make">
+			<option value="1">Mac Book Pro</option>
+			<option value="2">Dell XPS</option>
+			<option value="3">Other</option>
+		</select>
+	</fieldset>
+
+	<p>
+		Your Expected Contact Date will be {{ contact_date }} buisness days
+		after dropping of your computer at a DoIT Tech Store location.
+	</p>
+	<p>
+		Please check the following box if you have your data backed up, or
+		otherwise consent to DoIT Repair erasing data off of your machine.
+		<label><input name="format" type="checkbox" value="0">It is OK to
+			<strong>ERASE</strong> my data if necessary.</label>
+	</p>
+
+	<button class="uw-button" ng-click="submit_repair()">Submit Repair</button>
+	<div style="padding: 20px 0px"></div>
 </form>
+</div>
