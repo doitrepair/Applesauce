@@ -47,7 +47,7 @@ module.exports = function(app, express) {
 		})
 		//Update a question
 		.put(function(req, res) { //expected syntax ["Question text", "Question Summary", ID_Number]
-			db_connection.query('UPDATE questions SET question_text = ?, q_sum = ? WHERE id = ?', [req.body.text, req.body.text, req.params.id], function(error, result) {
+			db_connection.query('UPDATE questions SET question_text = ?, q_sum = ? WHERE question_id = ?', [req.body.text, req.body.sum, req.params.id], function(error, result) {
 				if (error) throw error;
 				res.send('Question updated with ID: ' + result.insertId);
 			});

@@ -51,11 +51,11 @@ The public directory holds all of the front-end files for the application
 | --- | --- |
 | GET / | SELECT * from answers |
 | POST / | INSERT into answers (answer_id, question_id = req.body.q_id, answer_text = req.body.text, continue = req.body.cont, next_id = req.body.next_id) |
-| GET /:id | SELECT * from answers WHERE question_id = req.params.id |
-| DELETE /:id | DELETE FROM answers WHERE question_id = req.params.id |
-| GET /ans/:id | SELECT * from answers WHERE answer_id = req.params.id |
-| PUT /ans/:id | UPDATE answers SET question_id = req.body.q_id, answer_text = req.body.text, continue = req.body.cont, next_id = req.body.next_id WHERE answer_id = req.params.id |
-| DELETE /ans/:id | DELETE FROM answers WHERE answer_id = req.params.id |
+| GET /questionid/:id | SELECT * from answers WHERE question_id = req.params.id |
+| DELETE /questionid/:id | DELETE FROM answers WHERE question_id = req.params.id |
+| GET /answerid/:id | SELECT * from answers WHERE answer_id = req.params.id |
+| PUT /answerid/:id | UPDATE answers SET question_id = req.body.q_id, answer_text = req.body.text, continue = req.body.cont, next_id = req.body.next_id WHERE answer_id = req.params.id |
+| DELETE /answerid/:id | DELETE FROM answers WHERE answer_id = req.params.id |
 
 This router is accessing the answers database which is of the form:
 
