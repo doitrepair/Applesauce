@@ -41,6 +41,7 @@ db_connection.getConnection(function(err) {  //attempt database connection
     }
     console.log('connected as id ' + db_connection.threadId); //connection successful
 });
+*/
 // ROUTE DEFINITIONS ===========================================================
 //For frontend references
 app.use(express.static(__dirname + '/public'));

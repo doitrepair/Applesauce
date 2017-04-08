@@ -27,9 +27,9 @@
     * img/
     * js/
     * libs/
---- config.js
---- package.json
---- server.js
+* config.js
+* package.json
+* server.js
 
 ## Definitions for the Main Directories
 
@@ -59,7 +59,7 @@ The public directory holds all of the front-end files for the application
 
 This router is accessing the answers database which is of the form:
 
-| answer_id | question_id | answer_text | continue | next_id |
+| Answer ID (Primary Key) | question_id | answer_text | continue | next_id |
 | -- | --- | --- | --- | --- |
 | Id of this answer | Id of the Question being asked | Text of this answer | boolean representing whether the result points to another question (true), or a leaf-node (false) | the id of the next question or leaf node case |
 
@@ -76,9 +76,9 @@ This router is accessing the answers database which is of the form:
 
 This router is accessing the questions database which is of the form:
 
-| question_id | question_text |
-| -- | --- |
-| Id of this question | Text of this question |
+| Question ID (Primary Key) | q_sum | question_text |
+| -- | -- | -- |
+| Id of this question | Short description of question | Text of this question |
 
 ### /app/routes/api/repair.js
 *The repair router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/repair**, with their corresponding database queries.*
@@ -95,4 +95,4 @@ This router is accessing the repair database which is of the form:
 
 | repair_id | definition |
 | -- | --- |
-| Id of this repair | Displayed text to the user |
+| Repair Id (Primary Key) | Displayed text to the user |

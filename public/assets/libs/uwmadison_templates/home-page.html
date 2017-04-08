@@ -5,45 +5,23 @@
 <!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!-->
 <html lang="en-US" class="no-js">
 <!--<![endif]-->
-	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-		<base href="/">
-		<title>
-			DoIT Repair
-		</title>
-
-
-		<link rel="stylesheet" href="assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css">
-		<link rel="stylesheet" href="assets/libs/uwmadison_templates/css/uw-style.css?version=1.0.3">
-		<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'')})(document.documentElement)</script>
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="css/uw-style-ie.css?version=1.0.3">
-		<![endif]-->
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-		<!-- JS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
-
-		<!-- Controllers -->
-		<script src="app/controllers/mainCtrl.js"></script>
-		<script src="app/controllers/questionCtrl.js"></script>
-		<script src="app/controllers/repairCtrl.js"></script>
-
-		<!--Services-->
-		<script src="app/services/dbService.js"></script>
-		<script src="app/services/submitRepair.js"></script>
-
-		<!-- main Angular app files -->
-		<script src="app/app.routes.js"></script>
-		<script src="app/app.js"></script>
-	</head>
+  <head>
+    <title>
+      UW Style Sample Home Page
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="fonts/uw160/fonts.0.0.1.css">
+    <link rel="stylesheet" href="css/uw-style.css?version=1.0.3">
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'')})(document.documentElement)</script>
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="css/uw-style-ie.css?version=1.0.3">
+    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
   <body>
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
@@ -56,16 +34,15 @@
       <div class="uw-header-container">
         <div class="uw-header-crest-title">
           <div class="uw-header-crest">
-            <a href="http://www.wisc.edu"><img class="uw-crest-svg" src="assets/libs/uwmadison_templates/images/uw-crest.svg" alt="Link to University of Wisconsin-Madison home page"></a>
+            <a href="http://www.wisc.edu"><img class="uw-crest-svg" src="images/uw-crest.svg" alt="Link to University of Wisconsin-Madison home page"></a>
           </div>
           <div class="uw-title-tagline">
             <h1 id="site-title" class="uw-site-title">
-              <a href="" rel="home">DoIT Repair</a>
+              <a href="" rel="home">Sample Site</a>
             </h1>
-            <div id="site-description" class="uw-site-tagline">Help Diagnose Your Computer</div>
+            <div id="site-description" class="uw-site-tagline">Sample site has a tagline</div>
           </div>
         </div>
-		<!--
         <div class="uw-header-search">
           <form role="search" method="get" action="" class="uw-search-form form-inline collapse">
             <label for="s" class="uw-show-for-sr-only">Search this site</label>
@@ -78,7 +55,6 @@
             </button>
           </form>
         </div>
-		-->
       </div>
     </header>
 
@@ -93,24 +69,46 @@
             <li>
               <a href="">Home</a>
             </li>
-			<li>
-			  <a href="">Start A Repair</a>
-			</li>
+            <li id="menu-templates" class="uw-dropdown current-menu-parent">
+              <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
+                Templates<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
+              </a>
+              <ul aria-hidden="true" aria-label="Templates submenu" class="uw-child-menu">
+                <li class="current-menu-item">
+                  <a href="home-page.html" aria-current="page">Home page</a>
+                </li>
+                <li>
+                  <a href="content-sidebar.html">Content with right sidebar</a>
+                </li>
+                <li>
+                  <a href="sidebar-content.html">Content with left sidebar</a>
+                </li>
+              </ul>
+            </li>
             <li id="menu-about" class="uw-dropdown">
               <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
-                Resources<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
+                About<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
               </a>
               <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
                 <li>
-                  <a href="4">KnowledgeBase</a>
+                  <a href="4">About</a>
                 </li>
                 <li>
-                  <a href="3">Apple Service</a>
+                  <a href="3">Our Location</a>
                 </li>
                 <li>
-                  <a href="2">Dell Service</a>
+                  <a href="2">News</a>
+                </li>
+                <li>
+                  <a href="1">Contact Us</a>
                 </li>
               </ul>
+            </li>
+            <li>
+              <a href="2">Location</a>
+            </li>
+            <li>
+              <a href="3">Jobs</a>
             </li>
             <li>
               <a href="3">Contact Us</a>
@@ -121,22 +119,113 @@
       <div class="uw-secondary-nav">
         <nav class="uw-nav-menu uw-nav-menu-secondary" aria-label="Secondary Menu">
           <ul>
-            <li>
-              <a>KnowledgeBase</a>
+            <li id="menu-news" class="uw-dropdown">
+              <a href="http://news.wisc.edu" aria-haspopup="true" aria-expanded="false">
+                News<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
+              </a>
+              <ul aria-hidden="true" aria-label="News submenu" class="uw-child-menu">
+                <li>
+                  <a href="http://localhost:8001/about/">About</a>
+                </li>
+                <li>
+                  <a href="http://localhost:8001/contact-us/our-location/">Our Location</a>
+                </li>
+                <li>
+                  <a href="http://localhost:8001/news/">News</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a>Contact Us</a>
+              <a href="http://today.wisc.edu">Calendar</a>
+            </li>
+            <li>
+              <a href="http://map.wisc.edu">Map</a>
             </li>
           </ul>
         </nav>
       </div>
     </div>
 
-	<!--Angular Section-->
-	<main ng-app="userApp">
-		<div ng-view autoscroll="true"></div>
-	</main>
-	<!--End Angular Section-->
+    <!-- main content -->
+    <main id="main">
+
+      <!-- hero image -->
+      <div class="uw-row-full">
+        <div class="uw-hero">
+          <img src="https://placeholdit.imgix.net/~text?txtsize=84&amp;bg=666666&amp;txt=Hero Photo&amp;w=1550&amp;h=370" alt="Placeholder image for deomnstration">
+        </div>
+      </div>
+
+      <!-- featured content cards -->
+      <div class="uw-full-row uw-pad-tb-xl uw-light-grer-bg">
+        <div class="uw-row">
+          <div class="uw-card">
+            <div class="uw-card-content">
+              <a href="1"><img src="https://placeholdit.imgix.net/~text?txtsize=84&amp;bg=dbdbdb&amp;txt=Feature Item&amp;w=620&amp;h=310" alt="Placeholder image for deomnstration"></a>
+              <div class="uw-card-copy">
+                <h2 class="uw-mini-bar"><a href="1">Feature Title</a></h2>
+                <p>Short feature description could go here that highlights something you want to draw attention to.</p>
+              </div>
+            </div>
+          </div>
+          <div class="uw-card">
+            <div class="uw-card-content">
+              <a href="1"><img src="https://placeholdit.imgix.net/~text?txtsize=84&amp;bg=dbdbdb&amp;txt=Feature Item&amp;w=620&amp;h=310" alt="Placeholder image for deomnstration"></a>
+              <div class="uw-card-copy">
+                <h2 class="uw-mini-bar"><a href="1">Feature Title</a></h2>
+                <p>Short feature description could go here that magnifies the best things that you do.</p>
+                </div>
+            </div>
+          </div>
+          <div class="uw-card">
+            <div class="uw-card-content">
+              <a href="1"><img src="https://placeholdit.imgix.net/~text?txtsize=84&amp;bg=dbdbdb&amp;txt=Feature Item&amp;w=620&amp;h=310" alt="Placeholder image for deomnstration"></a>
+              <div class="uw-card-copy">
+                <h2 class="uw-mini-bar"><a href="1">Feature Title</a></h2>
+                <p>Short feature description could go here that makes people smile.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- stylized pull quote -->
+      <div class="uw-full-row uw-pad-t-xl uw-pad-b-xl uw-red-bg">
+        <div class="uw-row">
+          <div class="uw-col">
+            <blockquote class="uw-stylized-quote uw-mini-bar uw-mini-bar-white uw-mini-bar-center">
+              Whatever may be the limitations which trammel inquiry elsewhere we believe the great state University of Wisconsin should ever encourage that continual and fearless sifting and winnowing by which alone the truth can be found.
+              <cite>1894 Ely trial committee final report</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+
+      <!-- body copy -->
+      <div class="uw-row-full uw-pad-tb-l">
+        <div class="uw-row">
+          <div class="uw-col uw-body">
+            <h2 class="uw-text-center uw-mini-bar uw-mini-bar-center">
+              Our Program
+            </h2>
+            <figure class="uw-float-right uw-float-25">
+              <img src="http://fillmurray.com/g/400/400" alt="Bill Murray">
+              <figcaption>Bill Murray was presented with the 2016 Mark Twain Prize. <span class="uw-credit">Photo: fillmurray.com</span></figcaption>
+            </figure>
+            
+            <p class="uw-double-size-text">
+              Bigger display copy: Lorem ipsum dolor sit amet, consectetur adipisicing elit. In architecto dolores id accusantium ipsam, ad error, harum. Beatae aperiam ab iusto quasi sapiente itaque aliquid non. Aspernatur voluptatum, repellat dignissimos.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis modi, id reprehenderit non. Consectetur praesentium reiciendis sunt, perferendis dolor laboriosam dolores commodi nostrum blanditiis quibusdam minus, accusamus unde nihil eaque.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, aut dolor blanditiis voluptate temporibus earum amet necessitatibus fugit cum repudiandae consectetur in fuga ad quasi quo, deleniti ratione tenetur eaque!
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer id="colophon" class="uw-footer">
       <div class="uw-footer-content">
@@ -146,7 +235,7 @@
           </a>
         </div>
         <div class="uw-footer-menu" role="complementary">
-          <h3 class="uw-footer-header">Partners?</h3>
+          <h3 class="uw-footer-header">Partners</h3>
           <ul>
             <li><a href="https://students.wisc.edu/">Division of Student Life</a></li>
             <li><a href="http://provost.wisc.edu/climate.htm">Division of Diversity, Equity &amp; Educational Achievement</a></li>
@@ -159,18 +248,33 @@
         <div class="uw-footer-menu" role="complementary">
           <h3 class="uw-footer-header">Quick Links</h3>
           <ul>
-            <li><a href="http://www.wisc.edu/accessibility/">Wisc Home</a></li>
-            <li><a href="https://diversity.wisc.edu/">My UW</a></li>
-            <li><a href="http://www.wisc.edu/governance/">KnowledgeBase</a></li>
-            <li><a href="http://www.wisc.edu/policies/">Other?</a></li>
+            <li><a href="http://www.wisc.edu/accessibility/">Accessibility</a></li>
+            <li><a href="https://diversity.wisc.edu/">Diversity</a></li>
+            <li><a href="http://www.wisc.edu/governance/">Governance</a></li>
+            <li><a href="http://www.wisc.edu/policies/">Policies</a></li>
+            <li><a href="http://uwpd.wisc.edu/">Safety</a></li>
+            <li><a href="http://www.oed.wisc.edu/title-ix.htm">Title IX</a></li>
           </ul>
         </div>
-
+            
         <div class="uw-footer-contact">
           <h3 class="uw-footer-header">Contact Us</h3>
           <ul class="uw-contact-list">
-            <li class="uw-contact-item">Email: <a href="mailto:help@doit.wisc.edu">help@doit.wisc.edu</a></li>
-            <li class="uw-contact-item">Phone: <a href="tel:608-555-5555">(608) 264-HELP (4357)</a></li>
+            <li class="uw-contact-item">Email: <a href="mailto:email@wisc.edu">email@wisc.edu</a></li>
+            <li class="uw-contact-item">Phone: <a href="tel:608-555-5555">608-555-5555</a></li>
+            <li>
+              <ul class="uw-social-icons">
+                <li id="uw-icon-twitter" class="uw-social-icon">
+                  <a aria-label="twitter" href="https://twitter.com"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-twitter"></use></svg></a>
+                </li>
+                <li id="uw-icon-instagram" class="uw-social-icon">
+                  <a aria-label="instagram" href="https://www.instagram.com"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-instagram"></use></svg></a>
+                </li>
+                <li id="uw-icon-facebook" class="uw-social-icon">
+                  <a aria-label="facebook" href="https://facebook.com/"><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-facebook"></use></svg></a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -259,7 +363,8 @@
     </svg>
 
     <!--[if lte IE 9]>
-      <script src="assets/libs/uwmadison_templates/js/polyfills/classList.js"></script>
+      <script src="js/polyfills/classList.js"></script>
     <![endif]-->
-    <script src="assets/libs/uwmadison_templates/js/_uw-style.min.js?version=1.0.3"></script>
+    <script src="js/_uw-style.min.js?version=1.0.3"></script>
   </body>
+</html>
