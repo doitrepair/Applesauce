@@ -25,12 +25,12 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 
 //Connect to a database
-var db_connection = mySQL.createPool({									//create connection with database
+var db_connection = mySQL.createPool({	//create Pooled connection with database
         connectionLimit : 10,
-        host: '35.184.129.247', 	//host name may need to be adjusted
-        user: 'root',
+        host: 'localhost:3306', 	//host name may need to be adjusted
+        user: 'test_user',
         password: config.password,
-        database : 'applesauce_db'
+        database : 'applesauce_doit_wisc_edu_'
     }
 );
 
