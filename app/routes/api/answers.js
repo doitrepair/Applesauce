@@ -6,13 +6,9 @@ var config 		= require('../../../config');
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express) {
 	var answersRouter = express.Router();
-    // BASE ROUTE (VERIFICATION) -----------------------------------------------
-    answersRouter.get('/', function(req, res) {
-        res.json({ message: 'API Connection Successful' });
-    });
 
     // ROUTES FOR /api/answers -----------------------------------------------
-    answersRouter.route('/answers')
+    answersRouter.route('/')
     //Create an Answer
         .post(function(req, res) { 		//expected request syntax [Question_ID, "Answer_text", Continue_Boolean, Next_ID]
             db_connection.query('INSERT INTO answers (question_id, answer_text, finish, next_id) VALUES (?, ?, ?, ?)', [req.body.q_id, req.body.text, req.body.cont, req.body.next_id], function (error, result, field) {
@@ -31,7 +27,7 @@ module.exports = function(app, express) {
             });
         });
 	// ROUTES FOR /api/answers/questionid/:id
-    answersRouter.route('answer/questionid/:id')
+    answersRouter.route('/questionid/:id')
     //Get an Answer by Question_id
         .get(function(req, res) { //expects single integer id
             db_connection.query('SELECT * FROM answers WHERE question_id = ?', req.params.id, function(error, result) {

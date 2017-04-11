@@ -47,14 +47,20 @@ db_connection.getConnection(function(err) {  //attempt database connection
 app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
+// For routes beginning with /app/questions go to the qyestions router
 var questionsRouter	= require('./app/routes/api/questions')(app, express);
 app.use('/api/questions', questionsRouter);
+
+// For routes beginning with /app/answers go to the qyestions router
 var answerRouter		= require('./app/routes/api/answers')(app, express);
 app.use('/api/answers', answerRouter);
-var repairRouter		= require('./app/routes/api/repair')(app, express);
+
+// For routes beginning with /app/repairs go to the qyestions router
+var repairRouter		= require('./app/routes/api/repairs')(app, express);
 app.use('/api/repair', repairRouter);
 
 // Main route ------------------------------------------------------------------
+// Catch all route: if any other path, send index.html
 app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });

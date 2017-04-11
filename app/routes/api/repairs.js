@@ -6,13 +6,9 @@ var config 		= require('../../../config');
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express) {
 	var repairRouter = express.Router();
-    // BASE ROUTE (VERIFICATION) -----------------------------------------------
-    repairRouter.get('/', function(req, res) {
-        res.json({ message: 'API Connection Successful' });
-    });
 
-    // ROUTES FOR /api/repair -----------------------------------------------
-    repairRouter.route('/repair')
+    // ROUTES FOR /api/repairs -----------------------------------------------
+    repairRouter.route('/')
     //Create a repair definition
         .post(function(req, res) { 		//expected request syntax '"Question_text", "Question_summary"'
             db_connection.query('INSERT INTO repair (definition) VALUES ?', req.body.def, function (error, result, field) {
@@ -31,8 +27,8 @@ module.exports = function(app, express) {
             });
         });
 
-    // ROUTES FOR /api/repair/:id -------------------------------------------
-    repairRouter.route('/repair/:id')
+    // ROUTES FOR /api/repairs/:id -------------------------------------------
+    repairRouter.route('/:id')
     //Get a repair by id
         .get(function(req, res) { //expects single integer id
             db_connection.query('SELECT * FROM  WHERE repair_id = ?', req.params.id, function(error, result) {
