@@ -1,7 +1,8 @@
 {
   "name": "Applesauce",
   "version": "1.0.0",
-  "description": "",
+  "description": "DoIT Tech Store's Website",
+  "repository": "https://github.com/JustinEssert/Applesauce"
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +10,7 @@
 	"monitor": "nodemon server.js",
 	"deploy": "gcloud app deploy app.yaml"
   },
-  "author": "",
+  "author": "DoIT Tech Store",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
