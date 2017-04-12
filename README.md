@@ -21,8 +21,60 @@ The goal of this project is to provide an easy-to-use website that will take cus
     * libs/
 	  - uwmadison_templates/
 
-### Public Directory
-Coming Soon
+**Note:** All of the front end files are stored in the public directory
+
+### public/app/controllers/
+The files in the controllers directory define the functionality of each webpage, defining how to set up each page initially and how to change the page with user input
+
+#### mainCtrl.js
+The main controller defines the functionality of the main.html template
+
+#### questionCtrl.js
+The questions controller defines the functionality of the questions.html template
+
+#### repairCtrl.js
+The repair controller defines the functionality of the repair-form.html template
+
+### public/app/services/
+The services directory defines any of the extra functions needed by the controllers
+
+#### dbServices.js
+The db service defines all of the HTTP calls necessary to retrieve data from the app's database
+
+#### submitRepair.js
+The submit repair service submits the repair to DoIT's ticketing software.
+
+### public/app/views/
+The views directory defines all of the html needed for the website.
+
+**Note: the html for this site is based off of the UW Madison template located in public/assets/libs/uwmadison_templates/**
+
+#### index.html
+index.html is the main page that is loaded every time, it defines areas like the header and footer and takes in templates for specific pages
+
+#### pages/home.html
+home.html is the template used for the home page
+
+#### pages/questions.html
+questions.html is the template used for the question / answer page
+
+#### pages/repair-form.html
+repair-form.html is the template used for the form page that collects a user's information.
+
+### public/app/app.js
+This file defines the angular app that runs the webpage
+
+### public/app/app.routes.js
+This file defines which templates to use on certain routes
+
+### public/assets/css
+This directory defines any css code that is written for the website
+
+### public/assets/libs
+This directory stores any code that is used from another author
+
+#### uwmadison_templates
+This directory contains all of the un-altered template files used for the website as well as any other code needed for the templates to run.
 
 ## Back-End: Server-Side Code
 
@@ -36,20 +88,12 @@ Coming Soon
 * package.json
 * server.js
 
-### App Directory
-
-This directory stores all of the files necessary for the backend with the
-exceptions of the node_modules directory, config.js, package.json and
-server.js (discussed below).
-
-#### Router Files
-
+### app/routes/api/
 This website requires specific routers to make calls to the app's database in
 order to retrieve the necessary data to run the app. Their are three main routers, described below:
 
-__**app/routes/api/answers.js**__
-
-*The answers router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/answers**, with their corresponding database queries.*
+#### answers.js
+The answers router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/answers**, with their corresponding database queries.
 
 | HTTP call | Corresponding Database Query |
 | --- | --- |
@@ -61,9 +105,8 @@ __**app/routes/api/answers.js**__
 | PUT /answerid/:id | UPDATE answers SET question_id = req.body.q_id, answer_text = req.body.text, continue = req.body.cont, next_id = req.body.next_id WHERE answer_id = req.params.id |
 | DELETE /answerid/:id | DELETE FROM answers WHERE answer_id = req.params.id |
 
-__**app/routes/api/questions.js**__
-
-*The questions router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/questions**, with their corresponding database queries.*
+#### questions.js
+The questions router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/questions**, with their corresponding database queries.
 
 | HTTP call | Corresponding Database Query |
 | --- | --- |
@@ -74,9 +117,8 @@ __**app/routes/api/questions.js**__
 | DELETE /:id | DELETE FROM questions WHERE questions_id = req.params.id |
 
 
-__**app/routes/api/repairs.js**__
-
-*The repair router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/repairs**, with their corresponding database queries.*
+#### repairs.js
+The repair router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/repairs**, with their corresponding database queries.
 
 | HTTP call | Corresponding Database Query |
 | --- | --- |
