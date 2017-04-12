@@ -7,7 +7,7 @@ The goal of this project is to provide an easy-to-use website that will take cus
 
 ## Front-End: Client-Side Code
 
-## File Structure
+### File Structure
 * public/
   - app/
     * controllers/
@@ -47,8 +47,9 @@ server.js (discussed below).
 This website requires specific routers to make calls to the app's database in
 order to retrieve the necessary data to run the app. Their are three main routers, described below:
 
-**app/routes/api/answers.js**
-*The answers router relates the following html calls, appended to __**applesauce.doit.wisc.edu/api/answers**,__ with their corresponding database queries.*
+__**app/routes/api/answers.js**__
+
+*The answers router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/answers**, with their corresponding database queries.*
 
 | HTTP call | Corresponding Database Query |
 | --- | --- |
@@ -60,8 +61,9 @@ order to retrieve the necessary data to run the app. Their are three main router
 | PUT /answerid/:id | UPDATE answers SET question_id = req.body.q_id, answer_text = req.body.text, continue = req.body.cont, next_id = req.body.next_id WHERE answer_id = req.params.id |
 | DELETE /answerid/:id | DELETE FROM answers WHERE answer_id = req.params.id |
 
-**app/routes/api/questions.js**
-*The questions router relates the following html calls, appended to __**applesauce.doit.wisc.edu/api/questions**,__ with their corresponding database queries.*
+__**app/routes/api/questions.js**__
+
+*The questions router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/questions**, with their corresponding database queries.*
 
 | HTTP call | Corresponding Database Query |
 | --- | --- |
@@ -72,8 +74,9 @@ order to retrieve the necessary data to run the app. Their are three main router
 | DELETE /:id | DELETE FROM questions WHERE questions_id = req.params.id |
 
 
-**app/routes/api/repairs.js**
-*The repair router relates the following html calls, appended to __**applesauce.doit.wisc.edu/api/repairs**,__ with their corresponding database queries.*
+__**app/routes/api/repairs.js**__
+
+*The repair router relates the following html calls, appended to **applesauce.doit.wisc.edu/api/repairs**, with their corresponding database queries.*
 
 | HTTP call | Corresponding Database Query |
 | --- | --- |
@@ -83,7 +86,6 @@ order to retrieve the necessary data to run the app. Their are three main router
 | PUT /:id | UPDATE repair SET definition = req.body.def WHERE repair_id = req.params.id |
 | DELETE /:id | DELETE FROM repair WHERE repair_id = req.params.id |
 
-__Note that all of the database tables are located in the Database section below__
 
 ### node_modules
 
@@ -109,16 +111,16 @@ This file is required by the server and contains the meta-data for the server
 ### Answers Table
 The Answers table follows the following format:
 
-| Answer ID (Primary Key) | question_id | answer_text | continue | next_id |
+| answer_id | question_id | answer_text | continue | next_id |
 | -- | --- | --- | --- | --- |
-| Id of this answer | Id of the Question being asked | Text of this answer | boolean representing whether the result points to another question (true), or a leaf-node (false) | the id of the next question or leaf node case |
+| Answer ID (Primary Key) | Id of the Question being asked | Text of this answer | boolean representing whether the result points to another question (true), or a leaf-node (false) | the id of the next question or leaf node case |
 
 ### Questions Table
 The Questions table follows the following format:
 
-| Question ID (Primary Key) | q_sum | question_text |
+| question_id | q_sum | question_text |
 | -- | -- | -- |
-| Id of this question | Short description of question | Text of this question |
+| Question ID (Primary Key) | Short description of question | Text of this question |
 
 ### Repairs Table
 The Repairs table follows the following format:
