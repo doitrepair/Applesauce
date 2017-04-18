@@ -24,16 +24,17 @@ app.use(function(req, res, next) {
 //Log all requests to the console
 app.use(morgan('dev'));
 
+
 //Connect to a database
 var db_connection = mySQL.createPool({	//create Pooled connection with database
-        connectionLimit : 10,
+        connectionLimit : 100,
         host: 'localhost:3306', 	//host name may need to be adjusted
-        user: 'test_user',
+        user: 'user',
         password: config.password,
         database : 'applesauce_doit_wisc_edu_'
     }
 );
-
+/*
 db_connection.getConnection(function(err) {  //attempt database connection
     if (err) {
         console.error('error connection: ' + err.stack); //leave if error attempting to connect
@@ -41,7 +42,7 @@ db_connection.getConnection(function(err) {  //attempt database connection
     }
     console.log('connected as id ' + db_connection.threadId); //connection successful
 });
-
+*/
 // ROUTE DEFINITIONS ===========================================================
 //For frontend references
 app.use(express.static(__dirname + '/public'));
