@@ -10,7 +10,6 @@
 	"monitor": "nodemon server.js"
   },
   "author": "DoIT Tech Store",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
