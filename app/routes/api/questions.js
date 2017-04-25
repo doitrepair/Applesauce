@@ -9,15 +9,9 @@ var config 		= require('../../../config');
 module.exports = function(app, express, db_connection) {
 	//Define instance of API Router
 	var questionsRouter = express.Router();
-	//Authentication ??
-
-	// BASE ROUTE (VERIFICATION) -----------------------------------------------
-	questionsRouter.get('/', function(req, res) {
-		res.json({ message: 'API Connection Successful' });
-	});
 
 	// ROUTES FOR /api/questions -----------------------------------------------
-	questionsRouter.route('/questions')
+	questionsRouter.route('/')
 		//Create a question
 		.post(function(req, res) { 		//expected request syntax '"Question_text", "Question_summary"'
 			db_connection.getConnection(function(error, tempConnection) {
@@ -58,8 +52,8 @@ module.exports = function(app, express, db_connection) {
             });
         });
 
-    // ROUTES FOR /api/questions/:id -------------------------------------------
-	questionsRouter.route('/questions/:id')
+	// ROUTES FOR /api/questions/:id -------------------------------------------
+	questionsRouter.route('/:id')
 		//Get a question by id
 		.get(function(req, res) { //expects single integer id
             db_connection.getConnection(function(error, tempConnection) {

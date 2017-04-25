@@ -6,13 +6,9 @@ var config 		= require('../../../config');
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express, db_connection) {
 	var answersRouter = express.Router();
-    // BASE ROUTE (VERIFICATION) -----------------------------------------------
-    answersRouter.get('/', function(req, res) {
-        res.json({ message: 'API Connection Successful' });
-    });
 
     // ROUTES FOR /api/answers -----------------------------------------------
-    answersRouter.route('/answers')
+    answersRouter.route('/')
     //Create an Answer
         .post(function(req, res) { 		//expected request syntax [Question_ID, "Answer_text", Continue_Boolean, Next_ID]
             db_connection.getConnection(function(error, tempConnection) {
@@ -53,7 +49,7 @@ module.exports = function(app, express, db_connection) {
             });
         });
 	// ROUTES FOR /api/answers/questionid/:id
-    answersRouter.route('answer/questionid/:id')
+    answersRouter.route('/questionid/:id')
     //Get an Answer by Question_id
         .get(function(req, res) { //expects single integer id
             db_connection.getConnection(function(error, tempConnection) {

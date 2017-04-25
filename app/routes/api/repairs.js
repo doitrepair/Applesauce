@@ -6,13 +6,9 @@ var config 		= require('../../../config');
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express, db_connection) {
 	var repairRouter = express.Router();
-    // BASE ROUTE (VERIFICATION) -----------------------------------------------
-    repairRouter.get('/', function(req, res) {
-        res.json({ message: 'API Connection Successful' });
-    });
 
-    // ROUTES FOR /api/repair -----------------------------------------------
-    repairRouter.route('/repair')
+    // ROUTES FOR /api/repairs -----------------------------------------------
+    repairRouter.route('/')
     //Create a repair definition
         .post(function(req, res) { 		//expected request syntax '"Question_text", "Question_summary"'
             db_connection.getConnection(function(error, tempConnection) {
@@ -53,8 +49,8 @@ module.exports = function(app, express, db_connection) {
             });
         });
 
-    // ROUTES FOR /api/repair/:id -------------------------------------------
-    repairRouter.route('/repair/:id')
+    // ROUTES FOR /api/repairs/:id -------------------------------------------
+    repairRouter.route('/:id')
     //Get a repair by id
         .get(function(req, res) { //expects single integer id
             db_connection.getConnection(function(error, tempConnection) {
