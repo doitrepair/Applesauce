@@ -1,1 +1,5 @@
 config.*
+config.js
+app.yaml
+.idea/
+.DS_Store
