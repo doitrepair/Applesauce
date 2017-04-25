@@ -1,3 +1,5 @@
 config.*
-.DS_Store
+config.js
+app.yaml
 .idea/
+.DS_Store
