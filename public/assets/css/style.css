@@ -24,3 +24,11 @@ animation:spin 1s infinite;
 	from { -moz-transform:rotate(0deg); }
 	to { -moz-transform:rotate(360deg); }
 }
+
+.highlight {
+	background-color: #c5050c;
+}
+
+.highlight a {
+	color: white;
+}

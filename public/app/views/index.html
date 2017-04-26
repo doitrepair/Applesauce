@@ -12,7 +12,7 @@
 			DoIT Repair
 		</title>
 
-
+		<link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css">
 		<link rel="stylesheet" href="assets/libs/uwmadison_templates/css/uw-style.css?version=1.0.3">
 		<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'')})(document.documentElement)</script>
@@ -44,7 +44,7 @@
 		<script src="app/app.routes.js"></script>
 		<script src="app/app.js"></script>
 	</head>
-  <body>
+  <body  ng-app="userApp">
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
     <div class="uw-global-bar">
@@ -94,7 +94,7 @@
               <a href="">Home</a>
             </li>
 			<li>
-			  <a href="">Start A Repair</a>
+			  <a style="color: #c5050c;" href="diagnose"><h3 style="margin: 0px;">Start A Repair</h3></a>
 			</li>
             <li id="menu-about" class="uw-dropdown">
               <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
@@ -133,7 +133,7 @@
     </div>
 
 	<!--Angular Section-->
-	<main ng-app="userApp">
+	<main>
 		<div ng-view autoscroll="true"></div>
 	</main>
 	<!--End Angular Section-->
