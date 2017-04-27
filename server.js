@@ -7,6 +7,8 @@ var morgan		= require('morgan');
 var config		= require('./config');
 var path		= require('path');
 var mySQL       = require('mysql');
+var passport 	= require('passport');
+var saml	= require('passport-saml');
 //APP CONFIGURATION ============================================================
 //Use body parser for POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,15 +36,16 @@ var db_connection = mySQL.createPool({	//create Pooled connection with database
         database : 'applesauce_doit_wisc_edu_'
     }
 );
-/*
-db_connection.getConnection(function(err) {  //attempt database connection
-    if (err) {
-        console.error('error connection: ' + err.stack); //leave if error attempting to connect
-        return;
-    }
-    console.log('connected as id ' + db_connection.threadId); //connection successful
+//save user session
+passport.serializeUser(function(user, done) {
+	done(null, user);
 });
-*/
+//retrieve user session
+passport.deserializeUser(function(user, done) {
+	done(null, user);	
+});
+
+
 // ROUTE DEFINITIONS ===========================================================
 //For frontend references
 app.use(express.static(__dirname + '/public'));
