@@ -30,10 +30,10 @@ app.use(morgan('dev'));
 //Connect to a database
 var db_connection = mySQL.createPool({	//create Pooled connection with database
         connectionLimit : 100,
-        host: 'localhost:3306', 	//host name may need to be adjusted
+        host: config.hostname, 	//host name may need to be adjusted
         user: 'user',
         password: config.password,
-        database : 'applesauce_doit_wisc_edu_'
+        database : config.db
     }
 );
 //save user session
