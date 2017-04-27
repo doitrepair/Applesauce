@@ -14,15 +14,15 @@ module.exports = function(app, express, db_connection) {
 	questionsRouter.route('/')
 		//Create a question
 		.post(function(req, res) { 		//expected request syntax '"Question_text", "Question_summary"'
-			db_connection.getConnection(function(error, tempConnection) {
+			db_connection.getConnection(function(err, tempConnection) {
                 if (err) {
                     tempConnection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
 					console.log('Connection established!');
-                	tempConnection.query('INSERT INTO questions (question_text, q_sum) VALUES (?, ?)', [req.body.text, req.body.sum], function (error, rows, fields) {
+                	tempConnection.query('INSERT INTO questions (question_text, q_sum) VALUES (?, ?)', [req.body.text, req.body.sum], function (err, rows, fields) {
                 		tempCont.release();
-                    	if (error) {
+                    	if (err) {
                         	console.log("Error with query");
                     	} else {
                         	res.send('Question added to database with ID: ' + rows.insertId);
@@ -34,15 +34,15 @@ module.exports = function(app, express, db_connection) {
 
 		//Get all questions
 		.get(function(req, res) {
-            db_connection.getConnection(function (error, tempConnection) {
+            db_connection.getConnection(function (err, tempConnection) {
                 if (err) {
                     tempConnection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('SELECT * FROM questions', function (error, rows, fields) {
+                    tempConnection.query('SELECT * FROM questions', function (err, rows, fields) {
                         tempCont.release();
-                        if (error) {
+                        if (err) {
                             console.log("Error with query");
                         } else {
                             res.send(rows);	//all results query results sent to response
@@ -56,15 +56,15 @@ module.exports = function(app, express, db_connection) {
 	questionsRouter.route('/:id')
 		//Get a question by id
 		.get(function(req, res) { //expects single integer id
-            db_connection.getConnection(function(error, tempConnection) {
+            db_connection.getConnection(function(err, tempConnection) {
                 if (err) {
                     tempConnection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('SELECT * FROM questions WHERE question_id = ?', req.params.id, function(error, result){
+                    tempConnection.query('SELECT * FROM questions WHERE question_id = ?', req.params.id, function(err, result){
                         tempCont.release();
-                        if (error) {
+                        if (err) {
                             console.log("Error with query");
                         } else {
                             res.send(result[0].question_text); //single question query sent to response
@@ -75,15 +75,15 @@ module.exports = function(app, express, db_connection) {
 		})
 		//Update a question
 		.put(function(req, res) { //expected syntax ["Question text", "Question Summary", ID_Number]
-            db_connection.getConnection(function(error, tempConnection) {
+            db_connection.getConnection(function(err, tempConnection) {
                 if (err) {
                     tempConnection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('UPDATE questions SET question_text = ?, q_sum = ? WHERE question_id = ?', [req.body.text, req.body.sum, req.params.id], function(error, result){
+                    tempConnection.query('UPDATE questions SET question_text = ?, q_sum = ? WHERE question_id = ?', [req.body.text, req.body.sum, req.params.id], function(err, result){
                         tempCont.release();
-                        if (error) {
+                        if (err) {
                             console.log("Error with query");
                         } else {
                             res.send('Question updated with ID: ' + result.insertId);
@@ -96,15 +96,15 @@ module.exports = function(app, express, db_connection) {
 		.delete(function(req, res) {
 			//Require (extra) validation??
 			//expects question ID number for query
-            db_connection.getConnection(function(error, tempConnection) {
+            db_connection.getConnection(function(err, tempConnection) {
                 if (err) {
                     tempConnection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('DELETE FROM questions WHERE question_id = ?', req.params.id, function(error, result){
+                    tempConnection.query('DELETE FROM questions WHERE question_id = ?', req.params.id, function(err, result){
                         tempCont.release();
-                        if (error) {
+                        if (err) {
                             console.log("Error with query");
                         } else {
                             res.send('Question removed with ID: ' + result.insertId);
