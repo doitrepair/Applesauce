@@ -7,8 +7,6 @@ var morgan		= require('morgan');
 var config		= require('./config');
 var path		= require('path');
 var mySQL       = require('mysql');
-var passport 	= require('passport');
-var saml	= require('passport-saml');
 //APP CONFIGURATION ============================================================
 //Use body parser for POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,20 +28,12 @@ app.use(morgan('dev'));
 //Connect to a database
 var db_connection = mySQL.createPool({	//create Pooled connection with database
         connectionLimit : 100,
-        host: config.hostname, 	//host name may need to be adjusted
+        host: config.hostname,
         user: 'user',
         password: config.password,
         database : config.db
     }
 );
-//save user session
-passport.serializeUser(function(user, done) {
-	done(null, user);
-});
-//retrieve user session
-passport.deserializeUser(function(user, done) {
-	done(null, user);	
-});
 
 
 // ROUTE DEFINITIONS ===========================================================
@@ -52,15 +42,15 @@ app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
 // For routes beginning with /app/questions go to the qyestions router
-var questionsRouter	= require('./app/routes/api/questions')(app, express);
+var questionsRouter	= require('./app/routes/api/questions')(app, express, db_connection);
 app.use('/api/questions', questionsRouter);
 
 // For routes beginning with /app/answers go to the qyestions router
-var answerRouter		= require('./app/routes/api/answers')(app, express);
+var answerRouter		= require('./app/routes/api/answers')(app, express, db_connection);
 app.use('/api/answers', answerRouter);
 
 // For routes beginning with /app/repairs go to the qyestions router
-var repairRouter		= require('./app/routes/api/repairs')(app, express);
+var repairRouter		= require('./app/routes/api/repairs')(app, express, db_connection);
 app.use('/api/repair', repairRouter);
 
 // Main route ------------------------------------------------------------------

@@ -11,14 +11,14 @@ module.exports = function(app, express, db_connection) {
     repairRouter.route('/')
     //Create a repair definition
         .post(function(req, res) { 		//expected request syntax '"Question_text", "Question_summary"'
-            db_connection.getConnection(function(err, tempConnection) {
+            db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    tempConnection.release(); //release connection if error occured
+                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('INSERT INTO repair (definition) VALUES ?', req.body.def, function (err, result, field)  {
-                        tempCont.release();
+                    db_connection.query('INSERT INTO repair (definition) VALUES ?', req.body.def, function (err, result, field)  {
+                        db_connection.release();
                         if (err) {
                             console.log("Error with query");
                         } else {
@@ -31,14 +31,14 @@ module.exports = function(app, express, db_connection) {
 
         //Get all Repair definitions
         .get(function(req, res) {
-            db_connection.getConnection(function(err, tempConnection) {
+            db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    tempConnection.release(); //release connection if error occured
+                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('SELECT * FROM repair', function(err, result)  {
-                        tempCont.release();
+                    db_connection.query('SELECT * FROM repair', function(err, result)  {
+                        db_connection.release();
                         if (err) {
                             console.log("Error with query");
                         } else {
@@ -53,14 +53,14 @@ module.exports = function(app, express, db_connection) {
     repairRouter.route('/:id')
     //Get a repair by id
         .get(function(req, res) { //expects single integer id
-            db_connection.getConnection(function(err, tempConnection) {
+            db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    tempConnection.release(); //release connection if error occured
+                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('SELECT * FROM  WHERE repair_id = ?', req.params.id, function(err, result)  {
-                        tempCont.release();
+                    db_connection.query('SELECT * FROM  WHERE repair_id = ?', req.params.id, function(err, result)  {
+                        db_connection.release();
                         if (err) {
                             console.log("Error with query");
                         } else {
@@ -72,14 +72,14 @@ module.exports = function(app, express, db_connection) {
         })
         //Update a repair definition
         .put(function(req, res) { //expected syntax ["Question text", "Question Summary", ID_Number]
-            db_connection.getConnection(function(err, tempConnection) {
+            db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    tempConnection.release(); //release connection if error occured
+                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('UPDATE repair SET definition = ? WHERE repair_id = ?', [req.body.text, req.body.sum, req.params.id], function(err, result)  {
-                        tempCont.release();
+                    db_connection.query('UPDATE repair SET definition = ? WHERE repair_id = ?', [req.body.text, req.body.sum, req.params.id], function(err, result)  {
+                        db_connection.release();
                         if (err) {
                             console.log("Error with query");
                         } else {
@@ -93,14 +93,14 @@ module.exports = function(app, express, db_connection) {
         .delete(function(req, res) {
             //Require (extra) validation??
             //expects repair_ID number for query
-            db_connection.getConnection(function(err, tempConnection) {
+            db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    tempConnection.release(); //release connection if error occured
+                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    tempConnection.query('DELETE FROM repair WHERE repair_id = ?', req.params.id, function(err, result) {
-                        tempCont.release();
+                    db_connection.query('DELETE FROM repair WHERE repair_id = ?', req.params.id, function(err, result) {
+                        db_connection.release();
                         if (err) {
                             console.log("Error with query");
                         } else {
