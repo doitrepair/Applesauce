@@ -34,17 +34,6 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 				// Scope variable for the custom text for this repair
 				$scope.repair_text = vm.repair.definition;
 
-				// Header for if Q&A was done and a repair was deemed necessary
-				if(vm.repair)
-				{
-					$scope.form_header = "Please fill in the following information about your computer to speed up the check-in process:";
-				}
-				// Header for if Q&A was done and a repair was not deemed necessary
-				else
-				{
-					$scope.form_header = "We do not think that a repair would be necessary at this time, if you would still like the DoIT Help Desk or Repair to look at your computer, please fill in the following information:";
-				}
-
 				// Set repair description from data received from q&a controller
 				var index = 0;
 				vm.repairData.question_data.forEach(function(element) {
@@ -56,12 +45,10 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 			});
 
 		}
-		
+
 		// If Q&A was done
 		else
 		{
 			$scope.diagnostic = false;
-			$scope.form_header = "Please fill in the following information about your computer to speed up the check-in process:";
-			console.log('no repair');
 		}
 	});
