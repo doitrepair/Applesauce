@@ -40,7 +40,7 @@ module.exports = function(app, express, db_connection) {
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(result);	//all results query results sent to response;
+                            res.send(result);	// Returns answers
                         }
                     });
                 }
@@ -60,7 +60,7 @@ module.exports = function(app, express, db_connection) {
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(result[0].answer_text); //single answer query sent to response
+                            res.send(result); // Returns answers with requested question_id
                         }
                     });
                 }
@@ -101,7 +101,7 @@ module.exports = function(app, express, db_connection) {
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(result[0].answer_text);
+                            res.send(result); // Returns answers with requested id
                         }
                     });
                 }

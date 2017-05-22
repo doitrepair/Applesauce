@@ -43,7 +43,7 @@ module.exports = function(app, express, db_connection) {
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(rows);	//all results query results sent to response
+                            res.send(rows);	// Returns all questions
                         }
                     });
                 }
@@ -64,7 +64,7 @@ module.exports = function(app, express, db_connection) {
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(result[0].question_text); //single question query sent to response
+                            res.send(result); // Returns questions with requested id
                         }
                     });
                 }

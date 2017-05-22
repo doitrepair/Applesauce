@@ -1,14 +1,16 @@
 <div id="repair-form" style="padding: 0px 50px" ng-controller="repairController">
-
-	<h2 class="uw-mini-bar">We have diagnosed your issue to be:</h2>
+	<h2 ng-if='diagnostic' class="uw-mini-bar">Diagnositic:</h2>
 	<p>{{ repair_text }}</p>
 
-	<h2 class="uw-mini-bar">{{ form_header }}</h2>
+	<h2 class="uw-mini-bar">Submit A Repair:</h2>
+	<p>Please fill in the following information about your computer to speed up the check-in process:</p>
+	<p ng-if='diagnostic == false'>If you are unsure what repair you need, please follow the <strong>START A REPAIR</strong> link above.</p>
 
 	<form action="./">
 	<fieldset>
 		<legend>Repair Information</legend>
-		<label for="first-name">Issue Description: <br> Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
+		<label ng-if='diagnostic' for="description">Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
+		<label ng-if='diagnostic == false' for="description">Please describe the repair that you would like below.</label>
 		<textarea rows="10" id="questions" ng-model="description"></textarea>
 	</fieldset>
 	<fieldset>

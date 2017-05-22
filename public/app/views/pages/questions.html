@@ -25,7 +25,7 @@
 		<div >
 			<div >
 				{{ question_text }}
-				<select ng-model="qa" style="margin-bottom: 25px" ng-options="x.a_text for x in answers">
+				<select ng-model="qa" style="margin-bottom: 25px" ng-options="x.answer_text for x in answers">
 
 				</select>
 				<button class="uw-button" style="margin-bottom: 25px" ng-click="handleAnswer()">Save Answer</button>
@@ -42,7 +42,7 @@
 		<div class="uw-side-nav">
 		  <ul>
 			  <li><h3 style="padding: 16px; border-left: 4px; margin: 0px">Question History:</h3></li>
-			  <li ng-repeat="y in questions"><a href="#">{{ y.sum }}</a></li>
+			  <li ng-repeat="y in question_data"><a href="#">{{ y.q_sum }}</a></li>
 		  </ul>
 		</div>
 
