@@ -41,17 +41,17 @@ var db_connection = mySQL.createPool({	//create Pooled connection with database
 app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
-// For routes beginning with /app/questions go to the qyestions router
+// For routes beginning with /app/questions go to the questions router
 var questionsRouter	= require('./app/routes/api/questions')(app, express, db_connection);
 app.use('/api/questions', questionsRouter);
 
-// For routes beginning with /app/answers go to the qyestions router
+// For routes beginning with /app/answers go to the answers router
 var answerRouter		= require('./app/routes/api/answers')(app, express, db_connection);
 app.use('/api/answers', answerRouter);
 
-// For routes beginning with /app/repairs go to the qyestions router
+// For routes beginning with /app/repairs go to the repairs router
 var repairRouter		= require('./app/routes/api/repairs')(app, express, db_connection);
-app.use('/api/repair', repairRouter);
+app.use('/api/repairs', repairRouter);
 
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html

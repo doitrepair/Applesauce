@@ -13,7 +13,6 @@ module.exports = function(app, express, db_connection) {
         .post(function(req, res) { 		//expected request syntax '"Question_text", "Question_summary"'
             db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
@@ -33,7 +32,6 @@ module.exports = function(app, express, db_connection) {
         .get(function(req, res) {
             db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
@@ -42,7 +40,7 @@ module.exports = function(app, express, db_connection) {
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(result);	//all results query results sent to response
+                            res.send(result);	// Returns all repairs
                         }
                     });
                 }
@@ -55,16 +53,15 @@ module.exports = function(app, express, db_connection) {
         .get(function(req, res) { //expects single integer id
             db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    db_connection.query('SELECT * FROM  WHERE repair_id = ?', req.params.id, function(err, result)  {
+                    db_connection.query('SELECT * FROM repair WHERE repair_id = ?', req.params.id, function(err, result)  {
                         db_connection.release();
                         if (err) {
                             console.log("Error with query");
                         } else {
-                            res.send(result[0].definition); //repair definition sent to response
+                            res.send(result); // Returns repairs with requested id
                         }
                     });
                 }
@@ -74,7 +71,6 @@ module.exports = function(app, express, db_connection) {
         .put(function(req, res) { //expected syntax ["Question text", "Question Summary", ID_Number]
             db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
@@ -89,13 +85,12 @@ module.exports = function(app, express, db_connection) {
                 }
             });
         })
-        //Remove a question
+        //Remove a repair
         .delete(function(req, res) {
             //Require (extra) validation??
             //expects repair_ID number for query
             db_connection.getConnection(function(err, db_connection) {
                 if (err) {
-                    db_connection.release(); //release connection if error occured
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');

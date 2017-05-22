@@ -1,6 +1,5 @@
 <div id="repair-form" style="padding: 0px 50px" ng-controller="repairController">
-
-	<h2 class="uw-mini-bar">We have diagnosed your issue to be:</h2>
+	<h2 ng-if='diagnostic' class="uw-mini-bar">We have diagnosed your issue to be:</h2>
 	<p>{{ repair_text }}</p>
 
 	<h2 class="uw-mini-bar">{{ form_header }}</h2>
@@ -8,7 +7,8 @@
 	<form action="./">
 	<fieldset>
 		<legend>Repair Information</legend>
-		<label for="first-name">Issue Description: <br> Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
+		<label ng-if='$parent.diagnostic' for="description">Issue Description: <br> Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
+		<label ng-if='$parent.diagnostic == false' for="description">Issue Description: <br> Please describe the repair that you would like below</label>
 		<textarea rows="10" id="questions" ng-model="description"></textarea>
 	</fieldset>
 	<fieldset>
