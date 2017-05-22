@@ -53,6 +53,9 @@ app.use('/api/answers', answerRouter);
 var repairRouter		= require('./app/routes/api/repairs')(app, express, db_connection);
 app.use('/api/repairs', repairRouter);
 
+var emailRouter		= require('./app/routes/api/email_handler')(app, express);
+app.use('/api/email', emailRouter);
+
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html
 app.get('*', function(req, res) {
