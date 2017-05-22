@@ -18,21 +18,22 @@ angular.module('questionCtrl', ['dbService'])
 		vm.chosen_answers = [];
 		vm.index 	= 0;
 		//obj 			= [];
-		// get the first question ==============================================
-		//val 			= qaFactory.getQuestion(firstQuestion);
-		//vm.qs 			= val.questions;
-		//vm.answers 			= val.answers;
+		// get the first question's data =======================================
+		// get the question from the db
 		var q_promise = qaFactory.getQuestionByID(firstQuestion);
 		q_promise.then(function(q_response){
 			vm.question_data[0] = q_response.data[0];
 		});
+
+		// get the answers from the db
 		var a_promise = qaFactory.getAnswerByQID(firstQuestion);
 		a_promise.then(function(a_response){
 			vm.answer_data[0] = a_response.data;
 		});
-		$q.all([q_promise, a_promise]).then(function(){
 
-			$scope.questions 		= vm.question_data[0];
+		// process promises
+		$q.all([q_promise, a_promise]).then(function(){
+			$scope.question_data 	= vm.question_data;
 			$scope.answers 			= vm.answer_data[0];
 			$scope.question_text 	= vm.question_data[0].question_text;
 		});
@@ -66,7 +67,7 @@ angular.module('questionCtrl', ['dbService'])
 				// Wait until both question and answers are returned
 				$q.all([q_promise, a_promise]).then(function(){
 					// Update scope variables
-					$scope.questions 		= vm.question_data[vm.index];
+					$scope.question_data 	= vm.question_data;
 					$scope.answers 			= vm.answer_data[vm.index];
 					$scope.question_text 	= vm.question_data[vm.index].question_text;
 				});
