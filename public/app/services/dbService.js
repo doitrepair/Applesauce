@@ -12,73 +12,56 @@ angular.module('dbService', [])
 		var qaFactory = {};
 		var repairData = {};
 		repairData.valid = false;
+
 		//**********************************************************************
 		// Title: Get Question
 		//**********************************************************************
 		//	Summary: this function creates a question object to be used by the
-		//		question controller
+		//		question/answer controller
 		//
 		//	Parameters:
 		//		id			the id of the question to be collected from database
 		//
 		//	Returns:
-		// 		q_object:	q_object is an object that contains the following
-		//					fields:
-		//						q_sum   	- short summary of the question
-		//						questin_id	- the id of the question
-		//						questin_text- the question's text
-		//						answers - The possible answers for the question
-		//							each with the sub-fields:
-		//
-		//							a_id	- id of the answer
-		//							q_id	- id of the question that it answers
-		//							a_text	- text for the answer
-		//							cont 	- boolean denoting if another
-		//									question should follow this answer
-		//							next_id	- id of the next question or the
-		//									repair (as denoted by cont)
+		// 		This function returns a promise containing the db response
 		//**********************************************************************
-		/*qaFactory.getQuestion = function(id) {
-			var q_object = {
-				question: {
-					q_sum: "",
-					question_id: -1,
-					question_text: ""
-				},
-				answers: {}
-			};
-			var question;
-			var answers;
-
-			var q_promise = $http.get('/api/questions/' + id);
-			q_promise.then(function(response){
-				question = response.data;
-
-			});
-
-			var a_promise = $http.get('/api/answers/questionid/' + id);
-			a_promise.then(function(response){
-				answers = response.data;
-			});
-			$q.all([q_promise, a_promise]).then(function(){
-				console.log(question);
-				console.log(answers);
-				//return {question: question, answers: answers};
-			});
-			return{question_promise: $http.get('/api/questions/' + id), answer_promise: $http.get('/api/answers/questionid/' + id)};
-		};*/
-
 		qaFactory.getQuestionByID = function(id) {
 			return $http.get('/api/questions/' + id);
 		};
 
+		//**********************************************************************
+		// Title: Get Answer by Question ID
+		//**********************************************************************
+		//	Summary: this function creates a answer object to be used by the
+		//		question/answer controller
+		//
+		//	Parameters:
+		//		id			the id of the corresponding question, for which all
+		//					answers should be collected from the database
+		//
+		//	Returns:
+		// 		This function returns a promise containing the db response
+		//**********************************************************************
 		qaFactory.getAnswerByQID = function(id) {
 			return $http.get('/api/answers/questionid/' + id);
 		};
 
+		//**********************************************************************
+		// Title: Get Answer by Repair ID
+		//**********************************************************************
+		//	Summary: this function creates a repair object to be used by the
+		//		repair controller
+		//
+		//	Parameters:
+		//		id			the id of the repair to be collected from database
+		//
+		//	Returns:
+		// 		This function returns a promise containing the db response
+		//**********************************************************************
 		qaFactory.getRepairByID = function(id) {
 			return $http.get('/api/repairs/' + id);
 		};
+
 		//**********************************************************************
 		// Title: Send Repair
 		//**********************************************************************
@@ -97,6 +80,7 @@ angular.module('dbService', [])
 		//						repair	- boolean denoting whether the issue
 		//								should be handled by a repair
 		//**********************************************************************
+		
 		qaFactory.saveRepairData = function(id, question_data, answer_data, index) {
 			//var r_object = {};
 			//r_object.repair = $http.get('/api/repair/' + id);
@@ -106,6 +90,7 @@ angular.module('dbService', [])
 			repairData.valid = true;
 			return true;
 		};
+
 		//**********************************************************************
 		// Title: Receive repair
 		//**********************************************************************

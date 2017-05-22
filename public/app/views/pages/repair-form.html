@@ -7,8 +7,8 @@
 	<form action="./">
 	<fieldset>
 		<legend>Repair Information</legend>
-		<label ng-if='$parent.diagnostic' for="description">Issue Description: <br> Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
-		<label ng-if='$parent.diagnostic == false' for="description">Issue Description: <br> Please describe the repair that you would like below</label>
+		<label ng-if='diagnostic' for="description">Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
+		<label ng-if='diagnostic == false' for="description">Please describe the repair that you would like below</label>
 		<textarea rows="10" id="questions" ng-model="description"></textarea>
 	</fieldset>
 	<fieldset>

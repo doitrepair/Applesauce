@@ -12,14 +12,8 @@
 //******************************************************************************
 angular.module('repairCtrl', ['dbService', 'submitRepair'])
 	.controller('repairController', function($scope, $location, qaFactory) {
+
 		vm = this;
-
-
-
-		
-
-
-
 		var description = "";
 		// scope variable for days until first contact from repair
 		$scope.contact_date = 4;
@@ -27,14 +21,6 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 		// get the repair information that the questions controller collected
 		vm.repairData = qaFactory.loadRepairData();
 
-		$scope.diagnostic = true;
-
-	//	function(){
-	//		console.log('diagnostic:');
-	//		console.log((vm.repairData && vm.repairData.valid === true));
-	//		return (vm.repairData && vm.repairData.valid === true);
-	//	};
-		// Header for if no Q&A was done
 		if(vm.repairData && vm.repairData.valid === true)
 		{
 			$scope.diagnostic = true;
@@ -60,7 +46,7 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 				}
 				console.log($scope.form_header);
 				// Scope variable for the custom text for this repair
-				$scope.repair_text = vm.repair.text;
+				$scope.repair_text = vm.repair.definition;
 
 				// Import info from the Q&A section into the repair description
 				var index = 0;
@@ -78,6 +64,6 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 		{
 			$scope.diagnostic = false;
 			$scope.form_header = "Please fill in the following information about your computer to speed up the check-in process:";
-			console.log('no repair	');
+			console.log('no repair');
 		}
 	});
