@@ -6,26 +6,24 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('submitRepair', [])
-	.factory('submit', function($http) {
-		var repair = repair;
+	.factory('submitFactory', function($http) {
+		var submitFactory = {};
+
 		//**********************************************************************
-		// Title: Save Repair
+		// Title: Submit Repair
 		//**********************************************************************
-		//	Summary: this function saves a repair object that was created by the
+		//	Summary: this function creates a repair object to be used by the
 		//		repair controller
 		//
 		//	Parameters:
-		// 		Repair:		Repair is the variable holding all of the
-		// 					information from the user, it has required and
-		//					optional fields, as listed below:
-		//					Required Fields:
-		//						.description  -- this should include all Q&As
-		//						.firstname, .lastname, .next_id, .email, .phone,
-		//						.pref_contact
-		//					Optional Fields:
-		//						.os, .make, .sn
+		//		id			the id of the repair to be collected from database
+		//
+		//	Returns:
+		// 		This function returns a promise containing the db response
 		//**********************************************************************
-		submit.saveRepair = function ( repair ){
+		submitFactory.submitRepair = function(repair){
+			return $http.post('/api/email/', { repair: repair });
 
 		};
+		return submitFactory;
 	});

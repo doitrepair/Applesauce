@@ -11,12 +11,36 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('repairCtrl', ['dbService', 'submitRepair'])
-	.controller('repairController', function($scope, $location, qaFactory) {
+	.controller('repairController', function($scope, $location, qaFactory, submitFactory) {
 
 		vm = this;
+
+		var description_suffix = "NEXT AGENT: please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage when the customer comes in to drop off their computer";
+
+		$scope.submit_repair = function() {
+			var full_description = $scope.description + description_suffix;
+			var repair_email = {
+				description: full_description,
+				short_description: "Online Repair - Needs Update",
+				net_id: $scope.netId,
+				os: $scope.os,
+				make: $scope.make,
+				model: 'Needs Update',
+				sn: 'Needs Update',
+				pa: $scope.pa,
+				price: '1',
+				device: $scope.device_type,
+				ship_to: 'Needs Update',
+				contact: $scope.contactPref
+			};
+
+			console.log('submitted');
+			console.log(repair_email);
+			submitFactory.submitRepair(repair_email);
+			$location.path('/success');
+		};
+
 		var description = "";
-		// scope variable for days until first contact from repair
-		$scope.contact_date = 4;
 
 		// get the repair information that the questions controller collected
 		vm.repairData = qaFactory.loadRepairData();
@@ -50,5 +74,11 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 		else
 		{
 			$scope.diagnostic = false;
+		}
+
+		if($scope.make === 'Dell' || $scope.make === 'Apple'){
+			$scope.pa = 'No';
+		} else {
+			$scope.pa = 'Yes';
 		}
 	});

@@ -8,7 +8,7 @@ module.exports = function(app, express) {
 
 	var emailRouter = express.Router();
 
-	var testCase = {
+	/*var testCase = {
 		description: "this is a description example <br> <br> here's a second line",
 		short_description: "test",
 		net_id: "essert",
@@ -21,16 +21,8 @@ module.exports = function(app, express) {
 		device: 'Notebook',
 		ship_to: 'dayton',
 		contact: 'Email'
-	};
-	var text = JSON.stringify(testCase);
-	var smtpTransport = nodemailer.createTransport({
-	    service: "gmail",
-	    host: "smtp.gmail.com",
-	    auth: {
-	        user: config.email,
-	        pass: config.email_pw
-	    }
-	});
+	};*/
+
 	/*------------------SMTP Over-----------------------------*/
 
 	/*------------------Routing Started ------------------------*/
@@ -38,9 +30,20 @@ module.exports = function(app, express) {
 	emailRouter.route('/')
 
 
-		.get(function(req, res) {
+		.post(function(req, res) {
+
+			var text = JSON.stringify(req.body.repair);
+			var smtpTransport = nodemailer.createTransport({
+				service: "gmail",
+				host: "smtp.gmail.com",
+				auth: {
+					user: config.email,
+					pass: config.email_pw
+				}
+			});
+
 			var mailOptions={
-				to : 'essert@wisc.edu',
+				to : 'wiscit@doit.wisc.edu',
 				subject : 'test',
 				text : text
 			};

@@ -5,8 +5,8 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			.when('/', {
 				templateUrl : 'app/views/pages/home.html'
 			})
-			.when('/template', {
-				templateUrl : 'app/views/pages/uwMadTemplate.html'
+			.when('/success', {
+				templateUrl : 'app/views/pages/landing-page.html'
 			})
 			.when('/diagnose', {
 				templateUrl : 'app/views/pages/questions.html'
