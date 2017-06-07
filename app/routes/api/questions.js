@@ -2,8 +2,6 @@
 var bodyParser 	= require('body-parser');
 var mySQL 		= require('mysql');
 var config 		= require('../../../config');
-//TODO: create connection with mysql database with error catching; may want to use connection pooling
-//may want to use connection pooling for efficiency
 
 // questionsRouter FUNCTION ==========================================================
 module.exports = function(app, express, db_connection) {
