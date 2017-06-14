@@ -40,9 +40,13 @@ angular.module('questionCtrl', ['dbService'])
 
 		// Handle the answer of each question ==================================
 		$scope.handleAnswer = function() {
-			//check if chosen answer is valid (not whitespace placeholder)
-			if ($scope.qa.trim().length == 0)
+			//check if chosen answer is valid
+			if ($scope.qa == undefined)
 				return;
+			else if (vm.index > 0) {
+				if ($scope.qa.question_id == vm.chosen_answers[vm.index-1].question_id)
+					return;
+			}
 			// Set chosen answer
 			vm.chosen_answers[vm.index] = $scope.qa;
 
