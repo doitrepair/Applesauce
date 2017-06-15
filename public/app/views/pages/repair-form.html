@@ -1,4 +1,4 @@
-<form id="repairForm" style="padding: 0px 50px" ng-controller="repairController" novalidate>
+<form id="repairForm" style="padding: 0px 50px" ng-controller="repairController">
 	<h2 ng-if='diagnostic' class="uw-mini-bar">Diagnositic:</h2>
 	<p>{{ repair_text }}</p>
 	<p>Please fill out the information below. This will create a repair for you and speed up your time at the DoIT Tech Store.</p>
@@ -60,7 +60,7 @@
 	</fieldset>
 
 <div ng-controller="repairController">
-	<button class="uw-button" ng-disabled="repairForm.$invalid" ng-click="submit_repair()">Submit Repair</button>
+	<button class="uw-button" ng-disabled="!repairForm.$valid" ng-click="submit_repair()">Submit Repair</button>
 </div>
 </form>
 <div style="padding: 20px 0px"></div>
