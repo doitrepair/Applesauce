@@ -39,7 +39,8 @@ angular.module('questionCtrl', ['dbService'])
 		});
 
 		// Handle the answer of each question ==================================
-		$scope.handleAnswer = function() {
+		$scope.handleAnswer = function()
+		{
 			//check if chosen answer is valid
 			if ($scope.qa == undefined)
 				return;
@@ -92,5 +93,14 @@ angular.module('questionCtrl', ['dbService'])
 					return false;
 			}
 
+		};
+		// TODO: implement this function
+		$scope.backTrack = function(question)
+		{,
+			var tail_index = question.question_id - 1; //set vm index to; in order connect to local host: node (or nodemon) server.js
+			//enter localhost:8080 into web browser
+			// for loop from tail index to vm index
+				//remove item from $scope
+			//set vm index to tail index
 		};
 	});
