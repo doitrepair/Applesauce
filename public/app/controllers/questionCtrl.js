@@ -95,6 +95,7 @@ angular.module('questionCtrl', ['dbService'])
 
 		};
 		// TODO: implement this function
+		/*
 		$scope.backTrack = function(question)
 		{,
 			var tail_index = question.question_id - 1; //set vm index to; in order connect to local host: node (or nodemon) server.js
@@ -103,4 +104,5 @@ angular.module('questionCtrl', ['dbService'])
 				//remove item from $scope
 			//set vm index to tail index
 		};
+		*/
 	});
