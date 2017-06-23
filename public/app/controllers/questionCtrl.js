@@ -95,14 +95,17 @@ angular.module('questionCtrl', ['dbService'])
 
 		};
 		// TODO: implement this function
-		/*
-		$scope.backTrack = function(question)
-		{,
-			var tail_index = question.question_id - 1; //set vm index to; in order connect to local host: node (or nodemon) server.js
+		$scope.backTrack = function(index) {
+			var flushStart = index; //set vm index to; in order connect to local host: node (or nodemon) server.js
+			var deleteCount = vm.question_data.length - flushStart;		//get number of questions to delete
+			vm.question_data.splice(flushStart, deleteCount); 				//flush questions after clicked question for VM
+			$scope.question_data.splice(flushStart, deleteCount);			//flush questions for scope
+			vm.answer_data.splice(flushStart, deleteCount);					//flush answers after clicked question
+			$scope.answer_data.splice(flushStart, deleteCount);				//flush answers for scope
+			vm.chosen_answers.splice(flushStart, deleteCount);				//flush chosen answers after clicked question
+			$scope.chosen_answers.splice(flushStart, deleteCount);			//flush chosen answers for scope
 			//enter localhost:8080 into web browser
-			// for loop from tail index to vm index
-				//remove item from $scope
 			//set vm index to tail index
+			vm.index = index;
 		};
-		*/
 	});
