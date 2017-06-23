@@ -95,6 +95,7 @@ angular.module('questionCtrl', ['dbService'])
 
 		};
 		// TODO: implement this function
+		/*
 		$scope.backTrack = function(index) {
 			var flushStart = index; //set vm index to; in order connect to local host: node (or nodemon) server.js
 			var deleteCount = vm.question_data.length - flushStart;		//get number of questions to delete
@@ -108,4 +109,5 @@ angular.module('questionCtrl', ['dbService'])
 			//set vm index to tail index
 			vm.index = index;
 		};
+		*/
 	});
