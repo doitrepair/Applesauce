@@ -2,7 +2,7 @@
   "name": "Applesauce",
   "version": "1.0.0",
   "description": "DoIT Tech Store's Website",
-  "repository": "https://github.com/JustinEssert/Applesauce",
+  "repository": "https://github.com/doitrepair/Applesauce",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
