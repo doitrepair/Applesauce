@@ -43,7 +43,7 @@ module.exports = function(app, express) {
 			});
 
 			var mailOptions={
-				to : 'essert@wisc.edu',//'wiscit@doit.wisc.edu',
+				to : 'wiscit@doit.wisc.edu',
 				subject : 'test',
 				text : text
 			};
