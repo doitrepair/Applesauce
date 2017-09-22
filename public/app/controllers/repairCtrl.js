@@ -65,7 +65,7 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 				vm.repairData.question_data.forEach(function(element) {
 					var answer_text = vm.repairData.answer_data[index].answer_text;
 					index++;
-					description = description + "Question: " + element.question_text + " \n" + "Answer: " + answer_text + " \n\n";
+					description = description + "Question - " + element.question_text + " \n" + "Answer - " + answer_text + " \n\n";
 				});
 				$scope.description = description;
 			});
