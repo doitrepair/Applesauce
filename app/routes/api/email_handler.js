@@ -43,17 +43,17 @@ module.exports = function(app, express) {
 			});
 
 			var mailOptions={
-				to : 'wiscit@doit.wisc.edu',
+				to : 'essert@wisc.edu',//'wiscit@doit.wisc.edu',
 				subject : 'test',
 				text : text
 			};
 			console.log(mailOptions);
 			smtpTransport.sendMail(mailOptions, function(error, response){
 				if(error){
-						console.log(error);
+					console.log(error);
 					res.end("error");
 				}else{
-						console.log("Message sent: " + response.message);
+					console.log("Message sent: " + response.message);
 					res.end("sent");
 				}
 			});

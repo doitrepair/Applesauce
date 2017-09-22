@@ -15,7 +15,7 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 
 		vm = this;
 
-		var description_suffix = "NEXT AGENT: please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage when the customer comes in to drop off their computer";
+		var description_suffix = "- NEXT AGENT - please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage when the customer comes in to drop off their computer";
 
 		$scope.submit_repair = function() {
 			if ($scope.netId == undefined || $scope.contactPref == undefined || $scope.os == undefined)
