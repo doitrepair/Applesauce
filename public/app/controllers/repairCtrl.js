@@ -23,23 +23,23 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 				return;
 			var full_description = $scope.description + description_suffix;
 			var repair_email =
-				`<br>description:`+ full_description +`<br>
-				short_description: Online Repair - Needs Update<br>
-				net_id:  `+ $scope.netId +`<br>
-				os:  `+ $scope.os +`<br>
-				make:  `+ $scope.make +`<br>
-				model: Needs Update<br>
-				sn: Needs Update<br>
-				pa: `+$scope.pa+`<br>
-				price: 1<br>
-				device:  `+ $scope.device_type +`<br>
-				ship_to: Needs Update<br>
-				contact:` + $scope.contactPref+`<br>`;
+				`<br>description_key:`+ full_description +`--eol<br>
+				short_description_key: Online Repair - Needs Update--eol<br>
+				net_id_key:  `+ $scope.netId +`--eol<br>
+				os_key:  `+ $scope.os +`--eol<br>
+				make_key:  `+ $scope.make +`--eol<br>
+				model_key: Needs Update--eol<br>
+				sn_key: Needs Update--eol<br>
+				pa_key: `+$scope.pa+`--eol<br>
+				price_key: 1--eol<br>
+				device_key:  `+ $scope.device_type +`--eol<br>
+				ship_to_key: Needs Update--eol<br>
+				contact_key:` + $scope.contactPref+`--eol<br>`;
 
 			console.log('submitted');
 			console.log(repair_email);
-			submitFactory.submitRepair(repair_email.replace(/\n/g, '').replace(/\t/g, '').replace(/['"]+/g, ''));
-			//$location.path('/success');
+			submitFactory.submitRepair(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
+			$location.path('/success');
 		};
 
 		var description = "";
