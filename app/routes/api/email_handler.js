@@ -45,7 +45,7 @@ module.exports = function(app, express) {
 			var mailOptions={
 				to : 'wiscit@doit.wisc.edu',
 				subject : 'test',
-				text : text
+				html : text
 			};
 			console.log(mailOptions);
 			smtpTransport.sendMail(mailOptions, function(error, response){
