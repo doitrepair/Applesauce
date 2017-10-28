@@ -44,7 +44,7 @@ module.exports = function(app, express) {
 
 			var mailOptions={
 				to : 'wiscit@doit.wisc.edu',
-				subject : 'test',
+				subject : 'Online Repair',
 				html : text
 			};
 			console.log(mailOptions);
