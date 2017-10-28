@@ -1,23 +1,21 @@
 <!-- main content -->
-<main id="main">
-  <!-- hero image -->
-  <div class="uw-row-full">
-	<div class="uw-hero">
-	  <img src="assets/img/bascom.jpg" alt="Placeholder image for deomnstration">
-	</div>
-  </div>
+<main id="main" style="padding-top:0px">
   <!-- body copy -->
   <div class="uw-row-full uw-pad-tb-l">
 	<div class="uw-row">
-	  <div class="uw-col uw-body">
-		<h2 class="uw-text-center uw-mini-bar uw-mini-bar-center">
+	  <div class="uw-col uw-body uw-text-center" style="padding:0px">
+		<h2 class="uw-text-center uw-mini-bar uw-mini-bar-center" style="margin-top:0px">
 		  Our Program
 		</h2>
-		<p class="uw-double-size-text">
+		<div class="uw-row-full">
+		<div class="uw-hero" >
+			<img src="assets/img/bascom.jpg" alt="Placeholder" style="max-width:1000px">
+		</div>
+		<h2 class="uw-text-center"  >
 			NEED HELP WITH YOUR COMPUTER?
-		</p>
+		</h2>
 		<p>
-			Just answer a series of questions so we can diagnose your computer.
+			Just answer a few questions to create a repair!
 	    </p>
 		<div ng-controller="mainController">
 			<button ng-click="startRepair()" class="uw-button">START A REPAIR</button>
