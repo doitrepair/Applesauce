@@ -8,23 +8,37 @@
 	<p ng-if='diagnostic == false'>If you are unsure what repair you need, please follow the <strong>START A REPAIR</strong> link above.</p>
 
 	<fieldset>
+		<legend>Question & Answer</legend>
+		<p id="questions"><span ng-bind-html="questions"></span></p>
+	</fieldset>
+	<fieldset>
 		<legend>Repair Information</legend>
 		<label ng-if='diagnostic' for="description">Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
 		<label ng-if='diagnostic == false' for="description">Please describe the repair that you would like below.</label>
-		<textarea rows="10" id="questions" ng-model="description"></textarea>
+		<textarea rows="5" id="questions" ng-model="description"></textarea>
 	</fieldset>
 	<fieldset>
 		<legend>Personal Information</legend>
 		<div class="uw-input-row">
-		<label for="net-id">NetID:</label>
-		<input type="text" id="net-id" ng-required="true" ng-model="netId" required="required">
+			<label for="net-id">NetID:</label>
+			<input type="text" id="net-id" ng-required="true" ng-model="netId" required="required">
 		</div>
-		<label for="select">Preferred Contact Method</label>
-		<select name="contactPref" id="contactPref" ng-required="true" ng-model="contactPref" required="required">
-		<option value="Email">Email</option>
-		<option value="Phone">Phone Call</option>
-		<option value="Text">Text</option>
-		</select>
+		<div class="uw-input-row">
+			<label for="email">Email</label>
+			<input type="email" id="email" ng-required="true" ng-model="email" required="required">
+		</div>
+		<div class="uw-input-row">
+			<label for="tel">Phone Number</label>
+			<input type="tel" id="tel" ng-required="true" ng-model="tel" required="required">
+		</div>
+		<div class="uw-input-row">
+			<label for="select">Preferred Contact Method</label>
+			<select name="contactPref" id="contactPref" ng-required="true" ng-model="contactPref" required="required">
+			<option value="Email">Email</option>
+			<option value="Phone">Phone Call</option>
+			<option value="Text">Text</option>
+			</select>
+		</div>
 	</fieldset>
 
 	<fieldset>

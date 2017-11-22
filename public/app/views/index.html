@@ -30,6 +30,7 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+		<script src="http://code.angularjs.org/1.0.4/angular-sanitize.min.js"></script>
 
 		<!-- Controllers -->
 		<script src="app/controllers/mainCtrl.js"></script>
@@ -54,7 +55,7 @@
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
     <div class="uw-global-bar">
-      <a class="uw-global-name-link" href="http://www.wisc.edu">U<span>niversity <span class="uw-of">of</span> </span>W<span>isconsin</span>–Madison</a>
+      <a target="_blank" class="uw-global-name-link" href="http://www.wisc.edu">U<span>niversity <span class="uw-of">of</span> </span>W<span>isconsin</span>–Madison</a>
     </div>
 
     <!-- branding header -->
@@ -62,7 +63,7 @@
       <div class="uw-header-container">
         <div class="uw-header-crest-title">
           <div class="uw-header-crest">
-            <a href="http://www.wisc.edu"><img class="uw-crest-svg" src="assets/libs/uwmadison_templates/images/uw-crest.svg" alt="Link to University of Wisconsin-Madison home page"></a>
+            <a target="_blank" href="http://www.wisc.edu"><img class="uw-crest-svg" src="assets/libs/uwmadison_templates/images/uw-crest.svg" alt="Link to University of Wisconsin-Madison home page"></a>
           </div>
           <div class="uw-title-tagline">
             <h1 id="site-title" class="uw-site-title">
@@ -100,7 +101,7 @@
               <a href="/">Home</a>
             </li>
 			<li>
-			  <a style="color: #c5050c;" href="https://applesauce.doit.wisc.edu/diagnose"><h3 style="margin: 0px;">Start A Repair</h3></a>
+			  <a style="color: #c5050c;" href="/diagnose"><h3 style="margin: 0px;">Start A Repair</h3></a>
 			</li>
              <!--<li>
               <a href="https://trial.linux2.dwht.doit.wisc.edu"> Schedule an Appointment</a>
@@ -112,13 +113,13 @@
               </a>
               <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
                 <li>
-                  <a href="https://kb.wisc.edu">KnowledgeBase</a>
+                  <a target="_blank" href="https://kb.wisc.edu">KnowledgeBase</a>
                 </li>
                 <li>
-                  <a href="https://support.apple.com">Apple Support</a>
+                  <a target="_blank" href="https://support.apple.com">Apple Support</a>
                 </li>
                 <li>
-                  <a href="https://support.dell.com">Dell Support</a>
+                  <a target="_blank" href="https://support.dell.com">Dell Support</a>
                 </li>
               </ul>
             </li>
@@ -129,7 +130,7 @@
         <nav class="uw-nav-menu uw-nav-menu-secondary" aria-label="Secondary Menu">
           <ul>
             <li>
-              <a href="https://kb.wisc.edu/1">Contact Us</a>
+              <a target="_blank" href="https://kb.wisc.edu/1">Contact Us</a>
             </li>
           </ul>
         </nav>
@@ -145,43 +146,43 @@
     <footer id="colophon" class="uw-footer">
       <div class="uw-footer-content">
         <div class="uw-logo">
-          <a href="http://www.wisc.edu" aria-label="Link to main university website">
+          <a target="_blank" href="http://www.wisc.edu" aria-label="Link to main university website">
             <svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-crest-footer"></use></svg>
           </a>
         </div>
         <div class="uw-footer-menu" role="complementary">
           <h3 class="uw-footer-header">DoIT Resources</h3>
           <ul>
-            <li><a href="http://techstore.doit.wisc.edu">Tech Store Catalog</a></li>
-            <li><a href="http://it.wisc.edu/">IT @ UW Madison</a></li>
-            <li><a href="https://software.wisc.edu/">Campus Software Library</a></li>
-            <li><a href="https://wiscsoftware.wisc.edu">Wisc Software Catalog</a></li>
-            <li><a href="https://it.wisc.edu/about/office-of-the-cio/cybersecurity/">Office of Cybersecurity</a></li>
-			<li><a href="https://it.wisc.edu/services/training/">Tech Training for Students</a></li>
+            <li><a target="_blank" href="http://techstore.doit.wisc.edu">Tech Store Catalog</a></li>
+            <li><a target="_blank" href="http://it.wisc.edu/">IT @ UW Madison</a></li>
+            <li><a target="_blank" href="https://software.wisc.edu/">Campus Software Library</a></li>
+            <li><a target="_blank" href="https://wiscsoftware.wisc.edu">Wisc Software Catalog</a></li>
+            <li><a target="_blank" href="https://it.wisc.edu/about/office-of-the-cio/cybersecurity/">Office of Cybersecurity</a></li>
+			<li><a target="_blank" href="https://it.wisc.edu/services/training/">Tech Training for Students</a></li>
           </ul>
         </div>
         <div class="uw-footer-menu" role="complementary">
           <h3 class="uw-footer-header">Quick Links</h3>
           <ul>
-			<li><a href="http://kb.wisc.edu/">KnowledgeBase</a></li>
-			<li><a href="http://www.wisc.edu/">Wisc Home</a></li>
-            <li><a href="https://my.wisc.edu/">My UW</a></li>
-            <li><a href="http://wiscmail.wisc.edu">UW Office 365</a></li>
-		    <li><a href="https://apps.google.wisc.edu/">UW Google Apps</a></li>
+			<li><a target="_blank" href="http://kb.wisc.edu/">KnowledgeBase</a></li>
+			<li><a target="_blank" href="http://www.wisc.edu/">Wisc Home</a></li>
+            <li><a target="_blank" href="https://my.wisc.edu/">My UW</a></li>
+            <li><a target="_blank" href="http://wiscmail.wisc.edu">UW Office 365</a></li>
+		    <li><a target="_blank" href="https://apps.google.wisc.edu/">UW Google Apps</a></li>
           </ul>
         </div>
 
         <div class="uw-footer-contact">
           <h3 class="uw-footer-header">Contact Us</h3>
           <ul class="uw-contact-list">
-            <li class="uw-contact-item">Email: <a href="mailto:help@doit.wisc.edu">help@doit.wisc.edu</a></li>
-            <li class="uw-contact-item">Phone: <a href="tel:608-555-5555">(608) 264-HELP (4357)</a></li>
+            <li class="uw-contact-item">Email: <a target="_blank" href="mailto:help@doit.wisc.edu">help@doit.wisc.edu</a></li>
+            <li class="uw-contact-item">Phone: <a target="_blank" href="tel:608-555-5555">(608) 264-HELP (4357)</a></li>
           </ul>
         </div>
       </div>
 
       <div class="uw-copyright">
-        <p>© 2017 Board of Regents of the <a href="http://www.wisconsin.edu">University of Wisconsin System</a></p>
+        <p>© 2017 Board of Regents of the <a target="_blank" href="http://www.wisconsin.edu">University of Wisconsin System</a></p>
       </div>
     </footer>
 
