@@ -9,7 +9,7 @@
 //			dbService		Required to interact with the app's database
 //******************************************************************************
 //******************************************************************************
-angular.module('questionCtrl', ['dbService'])
+angular.module('questionCtrl', ['dbService','ngSanitize'])
 	.controller('questionController', function($scope, $location, $q, qaFactory, firstQuestion) {
 		vm = this;
 
