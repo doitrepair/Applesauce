@@ -43,7 +43,7 @@ angular.module('submitRepair', [])
 			var full_description = note + $scope.description + description_suffix;
 			var repair_email =
 				`<br>description_key:`+ full_description +`--eol<br>
-				short_description_key: Online Repair - Needs Update--eol<br>
+				short_description_key: `+ $scope.short +`--eol<br>
 				net_id_key:  `+ $scope.netId +`--eol<br>
 				os_key:  `+ $scope.os +`--eol<br>
 				make_key:  `+ $scope.make +`--eol<br>
@@ -52,10 +52,12 @@ angular.module('submitRepair', [])
 				pa_key: `+$scope.pa+`--eol<br>
 				price_key: 1--eol<br>
 				device_key:  `+ $scope.device_type +`--eol<br>
-				ship_to_key: Needs Update--eol<br>
+				ship_to_key: `+ $scope.ship_to +`--eol<br>
 				contact_key:` + $scope.contactPref+`--eol<br>`;
 
-			return repair_email;
+			console.log('submitted');
+			console.log(repair_email);
+			submitFactory.submitRepair(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
 		}
 		return submitFactory;
 	});
