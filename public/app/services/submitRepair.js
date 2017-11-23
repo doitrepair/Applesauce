@@ -25,5 +25,37 @@ angular.module('submitRepair', [])
 			return $http.post('/api/email/', { repair: repair });
 
 		};
+
+		submitFactory.buildAndSubmitRepair = function($scope, note){
+			var description_suffix = " - NEXT AGENT - please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage";
+
+			if($scope.make === 'Dell' || $scope.make === 'Apple'){
+				$scope.pa = 'No';
+			} else {
+				$scope.pa = 'Yes';
+			}
+
+			var alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
+
+			if ($scope.netId == undefined || $scope.contactPref == undefined || $scope.os == undefined)
+				return;
+
+			var full_description = note + $scope.description + description_suffix;
+			var repair_email =
+				`<br>description_key:`+ full_description +`--eol<br>
+				short_description_key: Online Repair - Needs Update--eol<br>
+				net_id_key:  `+ $scope.netId +`--eol<br>
+				os_key:  `+ $scope.os +`--eol<br>
+				make_key:  `+ $scope.make +`--eol<br>
+				model_key: Needs Update--eol<br>
+				sn_key: `+$scope.sn+`--eol<br>
+				pa_key: `+$scope.pa+`--eol<br>
+				price_key: 1--eol<br>
+				device_key:  `+ $scope.device_type +`--eol<br>
+				ship_to_key: Needs Update--eol<br>
+				contact_key:` + $scope.contactPref+`--eol<br>`;
+
+			return repair_email;
+		}
 		return submitFactory;
 	});
