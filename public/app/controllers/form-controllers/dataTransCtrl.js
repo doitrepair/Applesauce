@@ -14,10 +14,15 @@
 angular.module('dataTransCtrl', ['submitRepair'])
 	.controller('dataTransController', function($scope, $location, submitFactory) {
 
-		var note = "Data Transfer Check-In, New SN:"+$scope.sn+". Old SN:"+$scope.sn2 +". - Customer Notes:";
 
 		$scope.submit_repair = function() {
+			if($scope.disclaimer != true){
+				console.log($scope.disclaimer)
+				return false;
+			}
 			$scope.short = 'Data Transfer - Online Repair'
+			$scope.ship_to = 'Needs Update'
+			var note = "Data Transfer Check-In, New SN:"+$scope.sn+". Old SN:"+$scope.sn2 +". - Customer Notes:";
 			submitFactory.buildAndSubmitRepair($scope, note);
 			$location.path('/forms/success');
 		};

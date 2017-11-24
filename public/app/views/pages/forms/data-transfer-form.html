@@ -94,25 +94,27 @@
 		<input type="text" id="sn2" ng-required="true" ng-model="sn2" required="required">
 	</fieldset>
 
-	<p>
-		<strong><u>Disclaimer:</u></strong><br>
-		DoIT is not responsible for bad memory, failure of hard drives, power supplies, motherboards, or any other hardware failures that may occur under normal use while machines are in our possession.
-		DoIT will do its best to identify the failed hardware and notify you of your options, but cannot be held responsible for repairing or replacing the failed items.
-		We are also not responsible for any data loss, although we will attempt to minimize the chance that data loss will occur.
-		<br><br>
-		DoIT Customer Contact Procedure: Using the contact information (Contact Information) provided by the customer, the Division of Information Technology will notify the repair-service customer (Customer) when questions arise during a repair or when the repair is completed.
-		This Customer is either the contact for personally- owned equipment or the departmental contact for University-owned equipment.
-		<br><br>
-		DoIT Customer Equipment Policy: If, during the course of a repair, and upon completion of the repair, the Customer cannot be reached using the Contact Information, DoIT will mark the equipment status as "Waiting for Customer Reply" for a period of four (4) weeks.
-		A DoIT employee will attempt to contact the Customer approximately twice during this period.
-		<br><br>
-		After four weeks, if Customer contact has not been successful, DoIT will mark the equipment status as "Abandoned" and the equipment will be physically moved to the shop's "Abandoned" shelf.
-		DoIT will claim ownership of the equipment if after four (4) months the Customer cannot be contacted.
-		DoIT, among other things, will have the right to use the equipment for spare parts or donate it to Surplus With a Purpose (SWAP).
-	</p>
-	
+	<fieldset>
+		<legend>Disclaimer</legend>
+		<p style="height: 7em; line-height: 1em; overflow: auto;">
+			DoIT is not responsible for bad memory, failure of hard drives, power supplies, motherboards, or any other hardware failures that may occur under normal use while machines are in our possession.
+			DoIT will do its best to identify the failed hardware and notify you of your options, but cannot be held responsible for repairing or replacing the failed items.
+			We are also not responsible for any data loss, although we will attempt to minimize the chance that data loss will occur.
+			<br><br>
+			DoIT Customer Contact Procedure: Using the contact information (Contact Information) provided by the customer, the Division of Information Technology will notify the repair-service customer (Customer) when questions arise during a repair or when the repair is completed.
+			This Customer is either the contact for personally- owned equipment or the departmental contact for University-owned equipment.
+			<br><br>
+			DoIT Customer Equipment Policy: If, during the course of a repair, and upon completion of the repair, the Customer cannot be reached using the Contact Information, DoIT will mark the equipment status as "Waiting for Customer Reply" for a period of four (4) weeks.
+			A DoIT employee will attempt to contact the Customer approximately twice during this period.
+			<br><br>
+			After four weeks, if Customer contact has not been successful, DoIT will mark the equipment status as "Abandoned" and the equipment will be physically moved to the shop's "Abandoned" shelf.
+			DoIT will claim ownership of the equipment if after four (4) months the Customer cannot be contacted.
+			DoIT, among other things, will have the right to use the equipment for spare parts or donate it to Surplus With a Purpose (SWAP).
+		</p>
+	</fieldset>
+
 	<div ng-controller="dataTransController">
-		<input type="checkbox" name="disclaimer" value="disclaimer" required="required" ng-required="true">
+		<input type="checkbox" name="disclaimer" ng-model="disclaimer" required="required" ng-required="true">
 		I have read and understand the disclaimer<br>
 		<button class="uw-button" ng-click="submit_repair()">Submit Repair</button>
 	</div>
