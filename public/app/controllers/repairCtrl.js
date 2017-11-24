@@ -20,27 +20,13 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 		$scope.questions = 'N/A';
 
 		$scope.submit_repair = function() {
-			var alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
-			if ($scope.netId == undefined || $scope.contactPref == undefined || $scope.os == undefined)
-				return;
-			var full_description = $scope.description + description_suffix;
-			var repair_email =
-				`<br>description_key:`+ full_description +`--eol<br>
-				short_description_key: Online Repair - Needs Update--eol<br>
-				net_id_key:  `+ $scope.netId +`--eol<br>
-				os_key:  `+ $scope.os +`--eol<br>
-				make_key:  `+ $scope.make +`--eol<br>
-				model_key: Needs Update--eol<br>
-				sn_key: Needs Update--eol<br>
-				pa_key: `+$scope.pa+`--eol<br>
-				price_key: 1--eol<br>
-				device_key:  `+ $scope.device_type +`--eol<br>
-				ship_to_key: Needs Update--eol<br>
-				contact_key:` + $scope.contactPref+`--eol<br>`;
+			$scope.sn = 'Needs Update';
+			$scope.ship_to = 'Needs Update';
+			$scope.short = 'Online Repair - Needs Update';
 
-			console.log('submitted');
-			console.log(repair_email);
-			submitFactory.submitRepair(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
+			var alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
+
+			repair_email = submitFactory.buildAndSubmitRepair($scope,"")
 			$location.path('/success');
 		};
 
@@ -74,16 +60,9 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 			});
 
 		}
-
 		// If Q&A was done
 		else
 		{
 			$scope.diagnostic = false;
-		}
-
-		if($scope.make === 'Dell' || $scope.make === 'Apple'){
-			$scope.pa = 'No';
-		} else {
-			$scope.pa = 'Yes';
 		}
 	});

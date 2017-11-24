@@ -13,6 +13,12 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			})
 			.when('/repair', {
 				templateUrl: 'app/views/pages/repair-form.html'
+			})
+			.when('/forms/success', {
+				templateUrl: 'app/views/pages/forms-landing-page.html'
+			})
+			.when('/forms/data', {
+				templateUrl: 'app/views/pages/forms/data-transfer-form.html'
 			});
 
 		// Get rid of has in the URL
