@@ -17,7 +17,6 @@ angular.module('dataTransCtrl', ['submitRepair'])
 
 		$scope.submit_repair = function() {
 			if($scope.disclaimer != true){
-				console.log($scope.disclaimer)
 				return false;
 			}
 			$scope.short = 'Data Transfer - Online Repair'
