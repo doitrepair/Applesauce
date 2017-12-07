@@ -1,0 +1,23 @@
+<!-- main content -->
+<main id="main" ng-controller="schedController" style="width:100%">
+  <!-- body copy -->
+  <div class="uw-row-full uw-pad-tb-l">
+	<div class="uw-row">
+	  <div class="uw-col uw-body">
+		  <table style="margin:auto;width: 66%;">
+				<thead>
+					<tr>
+	  				  <td class="cell title" ng-repeat="name in cols">{{name}}</td>
+	  			  	</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in cells track by $index">
+						<td class="cell title">{{row.time}}</td>
+						<td class="cell unavail" ng-repeat="item in row">{{ item.name }}</td>
+					</tr>
+				</tbody>
+		  </table>
+	  </div>
+	</div>
+  </div>
+</main>

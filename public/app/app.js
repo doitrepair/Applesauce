@@ -6,5 +6,6 @@ angular.module('userApp', [
 	'questionCtrl',
 	'repairCtrl',
 	'dataTransCtrl',
+	'schedCtrl',
 	'dbService'
 ]);

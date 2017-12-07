@@ -1,7 +1,3 @@
-// REQUIRED PACKAGES ===========================================================
-var mysql 		= require('mysql');
-var db 			= require('../../../../config/acme_db.js')
-
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express, connection) {
 	var schedRouter = express.Router();
