@@ -4,7 +4,7 @@
   <div class="uw-row-full uw-pad-tb-l">
 	<div class="uw-row">
 	  <div class="uw-col uw-body">
-		  <table style="margin:auto;width: 66%;">
+		  <table style="margin:auto;width: 85%;">
 				<thead>
 					<tr>
 	  				  <td class="cell title" ng-repeat="name in cols">{{name}}</td>
@@ -13,7 +13,7 @@
 				<tbody>
 					<tr ng-repeat="row in cells track by $index">
 						<td class="cell title">{{row.time}}</td>
-						<td class="cell unavail" ng-repeat="item in row">{{ item.name }}</td>
+						<td class="cell time" ng-repeat="item in row"><button class="linker open" ng-click="book_appt()">{{ item.name }}</button></td>
 					</tr>
 				</tbody>
 		  </table>

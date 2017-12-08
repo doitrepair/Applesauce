@@ -1,3 +1,4 @@
+var sql_txt = require('./sql_txt')
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express, connection) {
 	var schedRouter = express.Router();
@@ -232,7 +233,18 @@ module.exports = function(app, express, connection) {
 
 			});
 
-
+	schedRouter.route('/sched_test')
+    	//Create an Answer
+		.get(function(req, res){
+			query = sql_txt.sched('2017-12-04','2017-12-04')
+			console.log(query)
+			connection.query(query, function(err, data){
+				if(err)
+					console.log(err)
+				console.log(data)
+				res.send(data)
+			})
+		});
 	//REGISTERING ROUTES -------------------------------------------------------
 	return schedRouter;
 };
