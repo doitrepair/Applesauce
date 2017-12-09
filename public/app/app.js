@@ -7,5 +7,6 @@ angular.module('userApp', [
 	'repairCtrl',
 	'dataTransCtrl',
 	'schedCtrl',
-	'dbService'
+	'dbService',
+	'acmeService'
 ]);

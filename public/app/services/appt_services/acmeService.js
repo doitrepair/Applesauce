@@ -1,8 +1,8 @@
 //******************************************************************************
 //******************************************************************************
-// Module Description: dbService.js
+// Module Description: acmeService.js
 // This module creates the http calls necessary to retreive data from the
-// mySQL database
+// acme database
 //******************************************************************************
 //******************************************************************************
 angular.module('acmeService', [])
@@ -23,7 +23,7 @@ angular.module('acmeService', [])
 		// 		This function returns a promise containing the db response
 		//**********************************************************************
 		acmeFactory.getSched = function(begin, end) {
-			return $http.get('/api/schedule/sched_test', {
+			return $http.post('/api/schedule/sched_test', {
 					'begin': begin,
 					'end': end
 				});

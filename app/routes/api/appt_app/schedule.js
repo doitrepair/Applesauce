@@ -235,8 +235,9 @@ module.exports = function(app, express, connection) {
 
 	schedRouter.route('/sched_test')
     	//Create an Answer
-		.get(function(req, res){
-			query = sql_txt.get_sched('2017-12-04','2017-12-04')
+		.post(function(req, res){
+			console.log(req.body)
+			query = sql_txt.get_sched(req.body.begin,req.body.end)
 			console.log(query)
 			connection.query(query, function(err, data){
 				if(err)
