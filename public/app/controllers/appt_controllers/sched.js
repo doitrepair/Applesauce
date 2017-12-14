@@ -16,6 +16,7 @@ angular.module('schedCtrl', ['acmeService'])
 	 	var days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 		$scope.this_week = true;
+		$scope.open_popup = [];
 
 		function formatDate(d){
 			dd = d.getDate()
@@ -49,15 +50,10 @@ angular.module('schedCtrl', ['acmeService'])
 
 		// Don't let customer's schedule appts in the past or for right now
 		earliest_day = -1
-		earliest_hour = -1
 		if(today.getDay()==6){
 			earliest_day = days.length
-			earliest_hour = times.length
 		} else if(today.getDay()!=0){
 			earliest_day = today.getDay()-1
-			if(today.getHours()>=7){
-				earliest_hour = times.length
-			}
 		}
 
 		$scope.cols = [];
@@ -65,7 +61,6 @@ angular.module('schedCtrl', ['acmeService'])
 		for(i=0;i<days.length;i++){
 			$scope.cols[i+1] = [days[i],$scope.dates[i]];
 		}
-		console.log($scope.cols)
 
 		$scope.cells = [];
 		var promise = acmeFactory.getSched($scope.dates[0],$scope.dates[9]);
@@ -97,27 +92,36 @@ angular.module('schedCtrl', ['acmeService'])
 					$scope.cells[i][j].time = times[i];
 					$scope.cells[i][j].name = days[j]+" "+times[i];
 					$scope.cells[i][j].active = ($scope.cells[i][j].agents[0].length >= threshold)
-					if((i<earliest_hour)|(j<earliest_day)) $scope.cells[i][j].active = false;
+					if(j<=earliest_day) $scope.cells[i][j].active = false;
+					$scope.cells[i][j].book_appt=function(item){
+						if(item.active){
+							acmeFactory.book_appt(item);
+							$location.path('/appt/confirm');
+						}
+					}
 				}
 			}
+			console.log($scope.cells)
 		});
 
-
 		$scope.toggle_week = function(){
-    		$scope.this_week = !$scope.this_week;
+		$scope.this_week = !$scope.this_week;
 
-			var offset = 0;
-			if(!$scope.this_week) offset = 5;
+		var offset = 0;
+		if(!$scope.this_week) offset = 5;
 
-			for(i=0;i<days.length;i++){
-				$scope.cols[i+1][1] = $scope.dates[i+offset];
+		for(i=0;i<days.length;i++){
+			$scope.cols[i+1][1] = $scope.dates[i+offset];
+		}
+		var k = $scope.this_week ? 0 : 1;
+		for(i=0;i<times.length;i++){
+			for(j=0;j<days.length;j++){
+				$scope.cells[i][j].active = ($scope.cells[i][j].agents[k].length >= threshold)
+				if(($scope.this_week)&(j<=earliest_day)) $scope.cells[i][j].active = false;
 			}
-			var k = $scope.this_week ? 0 : 1;
-			for(i=0;i<times.length;i++){
-				for(j=0;j<days.length;j++){
-					$scope.cells[i][j].active = ($scope.cells[i][j].agents[k].length >= threshold)
-					if(($scope.this_week)&((i<earliest_hour)|(j<earliest_day))) $scope.cells[i][j].active = false;
-				}
-			}
-		};
+		}
+
+
+	};
+
 	});

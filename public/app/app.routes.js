@@ -22,6 +22,9 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			})
 			.when('/appt/schedule', {
 				templateUrl: 'app/views/appt_pages/sched.html'
+			})
+			.when('/appt/confirm', {
+				templateUrl: 'app/views/appt_pages/appt-form.html'
 			});
 
 		// Get rid of has in the URL
