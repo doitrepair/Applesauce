@@ -57,8 +57,13 @@ angular.module('acmeService', [])
 		};
 
 		acmeFactory.book_appt = function(item){
-			appt_data = item;
+			appt_data.data = item;
 		}
+
+		acmeFactory.get_appt = function(){
+			return appt_data.data;
+		}
+
 
 		return acmeFactory;
 	});

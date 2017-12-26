@@ -1,4 +1,4 @@
-<form id="repairForm" style="padding: 0px 50px" ng-controller="repairController">
+<form id="main" style="padding: 0px 50px" ng-controller="apptController">
 	<h2 ng-if='diagnostic' class="uw-mini-bar">Diagnositic:</h2>
 	<p>{{ repair_text }}</p>
 	<p>Please fill out the information below. This will create a repair for you and speed up your time at the DoIT Tech Store.</p>
@@ -8,8 +8,8 @@
 	<p ng-if='diagnostic == false'>If you are unsure what repair you need, please follow the <strong>START A REPAIR</strong> link above.</p>
 
 	<fieldset>
-		<legend>Question & Answer</legend>
-		<p id="questions"><span ng-bind-html="questions"></span></p>
+		<legend>Appoitment Time:</legend>
+		<p id="appt"><span ng-bind-html="appt"></span></p>
 	</fieldset>
 	<fieldset>
 		<legend>Repair Information</legend>

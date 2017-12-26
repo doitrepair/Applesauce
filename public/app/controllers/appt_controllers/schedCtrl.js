@@ -75,17 +75,31 @@ angular.module('schedCtrl', ['acmeService'])
 					$scope.cells[i][j].agents = [];
 					$scope.cells[i][j].agents[0] = [];
 					$scope.cells[i][j].agents[1] = [];
+					$scope.cells[i][j].dates = [];
+					$scope.cells[i][j].dates[0] = $scope.dates[j];
+					$scope.cells[i][j].dates[1] = $scope.dates[j+5];
 					for(k=0;k<vm.schedule.length;k++){
-						agent = vm.schedule[k]
+						agent = vm.schedule[k];
+						ag = {'first':agent.Nick_Name,'last':agent.Last_Name};
 
-						date = "2017-12-05";
+
 						if((agent.date == $scope.dates[j]+"T06:00:00.000Z")&(agent[times[i]]==70)){
-							ag = {'first':agent.Nick_Name,'last':agent.Last_Name};
-							$scope.cells[i][j].agents[0] = $scope.cells[i][j].agents[0].concat([ag])
+							var already_exists = false;
+							for(l=0;l<$scope.cells[i][j].agents[0].length;l++){
+								if(($scope.cells[i][j].agents[0][l].first==ag.first)&($scope.cells[i][j].agents[0][l].last==ag.last)) already_exists=true;
+							}
+							if(!already_exists){
+								$scope.cells[i][j].agents[0] = $scope.cells[i][j].agents[0].concat([ag])
+							}
 						}
 						if((agent.date == $scope.dates[j+5]+"T06:00:00.000Z")&(agent[times[i]]==70)){
-							ag = {'first':agent.Nick_Name,'last':agent.Last_Name};
-							$scope.cells[i][j].agents[1] = $scope.cells[i][j].agents[1].concat([ag])
+							var already_exists = false;
+							for(l=0;l<$scope.cells[i][j].agents[1].length;l++){
+								if(($scope.cells[i][j].agents[1][l].first==ag.first)&($scope.cells[i][j].agents[1][l].last==ag.last)) already_exists=true;
+							}
+							if(!already_exists){
+								$scope.cells[i][j].agents[1] = $scope.cells[i][j].agents[1].concat([ag])
+							}
 						}
 					}
 					$scope.cells[i][j].day = days[j];
@@ -95,6 +109,9 @@ angular.module('schedCtrl', ['acmeService'])
 					if(j<=earliest_day) $scope.cells[i][j].active = false;
 					$scope.cells[i][j].book_appt=function(item){
 						if(item.active){
+							var k = $scope.this_week ? 0 : 1;
+							item.agents = item.agents[k];
+							item.dates = item.dates[k]
 							acmeFactory.book_appt(item);
 							$location.path('/appt/confirm');
 						}
