@@ -25,8 +25,10 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			})
 			.when('/appt/confirm', {
 				templateUrl: 'app/views/appt_pages/appt-form.html'
+			})
+			.when('/appt/success', {
+				templateUrl: 'app/views/appt_pages/appt-landing-page.html'
 			});
-
 		// Get rid of has in the URL
 		$locationProvider.html5Mode(true);
 	});

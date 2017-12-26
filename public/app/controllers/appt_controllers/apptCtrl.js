@@ -14,15 +14,17 @@ angular.module('apptCtrl', ['acmeService'])
 		var appt = acmeFactory.get_appt();
 		$scope.appt = "Appointment for "+appt.day+", "+appt.dates+" at "+appt.time;
 
-		$scope.submit_repair = function() {
+		$scope.create_appt = function() {
 			$scope.sn = 'Needs Update';
 			$scope.ship_to = 'Needs Update';
 			$scope.short = 'Service Desk Appt';
 
-			var alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
+			$scope.alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
 
 			repair_email = submitFactory.buildAndSubmitRepair($scope,$scope.appt+"; ")
-			$location.path('/success');
+			console.log(appt.time+" "+ appt.time+" "+ appt.dates+" "+ appt.agents[0].first+" "+ appt.agents[0].last)
+			acmeFactory.updateSched(appt.time, appt.time, appt.dates, appt.agents[0].first, appt.agents[0].last)
+			$location.path('/appt/success');
 		};
 
 	});

@@ -24,7 +24,7 @@ angular.module('acmeService', [])
 		// 		This function returns a promise containing the db response
 		//**********************************************************************
 		acmeFactory.getSched = function(begin, end) {
-			return $http.post('/api/schedule/sched_test', {
+			return $http.post('/api/schedule/', {
 					'begin': begin,
 					'end': end
 				});
@@ -47,7 +47,7 @@ angular.module('acmeService', [])
 		// 		This function returns a promise containing the db response
 		//**********************************************************************
 		acmeFactory.updateSched = function(begin, end, date, first, last) {
-			return $http.put('/api/schedule/sched_test', {
+			return $http.put('/api/schedule/', {
 					'begin': begin,
 					'end': end,
 					'date': date,

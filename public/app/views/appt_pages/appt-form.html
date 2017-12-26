@@ -8,7 +8,7 @@
 	<p ng-if='diagnostic == false'>If you are unsure what repair you need, please follow the <strong>START A REPAIR</strong> link above.</p>
 
 	<fieldset>
-		<legend>Appoitment Time:</legend>
+		<legend>Appointment Time:</legend>
 		<p id="appt"><span ng-bind-html="appt"></span></p>
 	</fieldset>
 	<fieldset>
@@ -74,7 +74,7 @@
 	</fieldset>
 
 <div ng-controller="repairController">
-	<button class="uw-button" ng-click="submit_repair()">Submit Repair</button>
+	<button class="uw-button" ng-click="create_appt()">Submit Repair</button>
 </div>
 </form>
 <div style="padding: 20px 0px"></div>
