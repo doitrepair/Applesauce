@@ -45,6 +45,7 @@ angular.module('submitRepair', [])
 				`<br>description_key:`+ full_description +`--eol<br>
 				short_description_key: `+ $scope.short +`--eol<br>
 				net_id_key:  `+ $scope.netId +`--eol<br>
+				alt_cont_key: `+ $scope.alt_contact +`--eol<br>
 				os_key:  `+ $scope.os +`--eol<br>
 				make_key:  `+ $scope.make +`--eol<br>
 				model_key: Needs Update--eol<br>

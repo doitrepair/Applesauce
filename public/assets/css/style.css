@@ -1,3 +1,23 @@
+.cell {
+  /*background-color: #70DB70;*/
+  border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-bottom: 1px solid  #ddd;
+  border-right: 1px solid  #ddd;
+  text-align: center;
+}
+
+.cell.time {
+  padding: .5%;
+  text-align: center;
+}
+
+.cell.title{
+	font-weight: bold;
+	color: #c5050c;
+}
+
 main {
 	padding-top:30px;
 }

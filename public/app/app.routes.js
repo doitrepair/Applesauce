@@ -19,8 +19,16 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			})
 			.when('/forms/data', {
 				templateUrl: 'app/views/pages/forms/data-transfer-form.html'
+			})
+			.when('/appt/schedule', {
+				templateUrl: 'app/views/appt_pages/sched.html'
+			})
+			.when('/appt/confirm', {
+				templateUrl: 'app/views/appt_pages/appt-form.html'
+			})
+			.when('/appt/success', {
+				templateUrl: 'app/views/appt_pages/appt-landing-page.html'
 			});
-
 		// Get rid of has in the URL
 		$locationProvider.html5Mode(true);
 	});

@@ -24,7 +24,7 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 			$scope.ship_to = 'Needs Update';
 			$scope.short = 'Online Repair - Needs Update';
 
-			var alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
+			$scope.alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
 
 			repair_email = submitFactory.buildAndSubmitRepair($scope,"")
 			$location.path('/success');
