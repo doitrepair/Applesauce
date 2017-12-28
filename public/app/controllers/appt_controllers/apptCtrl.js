@@ -22,7 +22,12 @@ angular.module('apptCtrl', ['acmeService'])
 			$scope.alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
 
 			repair_email = submitFactory.buildAndSubmitRepair($scope,$scope.appt+"; ")
-			console.log(appt.time+" "+ appt.time+" "+ appt.dates+" "+ appt.agents[0].first+" "+ appt.agents[0].last)
+
+			// Agents are sorted in order of agent id (idealy equal to senority)
+			// Scheduling the second most senior agent with the appt per request
+			// from BVLA (so that the senior-most agent stays on the floor)
+			var agent = appt.agents[1];
+			console.log(appt.time+" "+ appt.time+" "+ appt.dates+" "+ agent.first+" "+ agent.last)
 			acmeFactory.updateSched(appt.time, appt.time, appt.dates, appt.agents[0].first, appt.agents[0].last)
 			$location.path('/appt/success');
 		};

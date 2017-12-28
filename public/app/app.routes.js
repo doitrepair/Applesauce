@@ -20,7 +20,7 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			.when('/forms/data', {
 				templateUrl: 'app/views/pages/forms/data-transfer-form.html'
 			})
-			.when('/appt/schedule', {
+			.when('/appt', {
 				templateUrl: 'app/views/appt_pages/sched.html'
 			})
 			.when('/appt/confirm', {

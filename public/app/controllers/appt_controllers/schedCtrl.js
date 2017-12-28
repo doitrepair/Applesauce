@@ -48,12 +48,25 @@ angular.module('schedCtrl', ['acmeService'])
 		today = new Date()
 		$scope.dates = getWeek(today);
 
-		// Don't let customer's schedule appts in the past or for right now
+		// Don't let customer's schedule appts in the next 24 hours
+		// Easily test this code by setting threshold to 1
 		earliest_day = -1
+		earliest_hour = -1;
 		if(today.getDay()==6){
 			earliest_day = days.length
 		} else if(today.getDay()!=0){
 			earliest_day = today.getDay()-1
+			if(today.getHours()>=18){
+				earliest_hour = times.length;
+			}else if(today.getHours()>8){
+				// Convert hour to index in times
+				// 8:00 is the earliet appt time
+				// multiply by two because appt times are ever 30 mins not hour
+				// add one to account for the half-hour increment too
+				earliest_hour = (today.getHours()-8)*2 + 1;
+
+
+			}
 		}
 
 		$scope.cols = [];
@@ -106,7 +119,7 @@ angular.module('schedCtrl', ['acmeService'])
 					$scope.cells[i][j].time = times[i];
 					$scope.cells[i][j].name = days[j]+" "+times[i];
 					$scope.cells[i][j].active = ($scope.cells[i][j].agents[0].length >= threshold)
-					if(j<=earliest_day) $scope.cells[i][j].active = false;
+					if((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour))) $scope.cells[i][j].active = false;
 					$scope.cells[i][j].book_appt=function(item){
 						if(item.active){
 							var k = $scope.this_week ? 0 : 1;
