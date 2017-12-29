@@ -4,8 +4,8 @@
 	<div class="uw-row-full uw-pad-tb-l">
 		<div class="uw-row">
 			<div class="uw-col uw-body">
-				<div style="width: 85%;">
-					<h2>Schedule an appointment that works for you by clicking on a green timeslot:</h2>
+				<div style="width: 90%;">
+					<h2>Schedule an 30-minute appointment that works for you by clicking on a green timeslot:</h2>
 					<button ng-if="this_week" ng-click="toggle_week()" class="uw-button" style="margin:10px; float:right;">Next Week ></button>
 					<button ng-if="!this_week" ng-click="toggle_week()" class="uw-button" style="margin:10px; float:right;">< This Week</button>
 					<table style="margin:auto;width: 100%;">
@@ -16,8 +16,8 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="row in cells track by $index">
-								<td class="cell title">{{row[0].time | date:"h:mma"}}</td>
-								<td class="cell time" ng-repeat="item in row"><button class="linker" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="item.book_appt(item)">{{ item.name }}</button></td>
+								<td class="cell title">{{row[0].time | time }}</td>
+								<td class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="item.book_appt(item)">{{ item.day }} {{ item.time | time }}</button></td>
 							</tr>
 						</tbody>
 					</table>

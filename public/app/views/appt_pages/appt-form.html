@@ -9,7 +9,7 @@
 
 	<fieldset>
 		<legend>Appointment Time:</legend>
-		<p id="appt"><span ng-bind-html="appt"></span></p>
+		<p id="appt">{{appt_date}}{{appt_time | time}}</p>
 	</fieldset>
 	<fieldset>
 		<legend>Repair Information</legend>

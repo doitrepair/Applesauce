@@ -10,5 +10,6 @@ angular.module('userApp', [
 	'schedCtrl',
 	'apptCtrl',
 	'dbService',
-	'acmeService'
+	'acmeService',
+	'filters'
 ]);
