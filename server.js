@@ -54,18 +54,18 @@ app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
 // For routes beginning with /app/questions go to the questions router
-var questionsRouter	= require('./app/routes/api/questions')(app, express, db_connection);
+var questionsRouter	= require('./app/routes/api/repair-app/questions')(app, express, db_connection);
 app.use('/api/questions', questionsRouter);
 
 // For routes beginning with /app/answers go to the answers router
-var answerRouter		= require('./app/routes/api/answers')(app, express, db_connection);
+var answerRouter		= require('./app/routes/api/repair-app/answers')(app, express, db_connection);
 app.use('/api/answers', answerRouter);
 
 // For routes beginning with /app/repairs go to the repairs router
-var repairRouter		= require('./app/routes/api/repairs')(app, express, db_connection);
+var repairRouter		= require('./app/routes/api/repair-app/repairs')(app, express, db_connection);
 app.use('/api/repairs', repairRouter);
 
-var schedRouter			= require('./app/routes/api/appt_app/schedule')(app, express, acme_connection);
+var schedRouter			= require('./app/routes/api/appt-app/schedule')(app, express, acme_connection);
 app.use('/api/schedule', schedRouter);
 
 var emailRouter			= require('./app/routes/api/email_handler')(app, express);
