@@ -1,13 +1,14 @@
 // BASE SETUP ==================================================================
 // REQUIRED PACKAGES -----------------------------------------------------------
-var express 	= require('express');
-var app			= express();
-var bodyParser 	= require('body-parser');
-var morgan		= require('morgan');
-var config		= require('./config');
-var acme_db		= require('./config/acme_db')
-var path		= require('path');
-var mySQL       = require('mysql');
+var express 		= require('express');
+var app				= express();
+var bodyParser 		= require('body-parser');
+var morgan			= require('morgan');
+var server_config	= require('./config/server-config');
+var repair_db		= require('./config/repair-db');
+var acme_db			= require('./config/acme-db')
+var path			= require('path');
+var mySQL       	= require('mysql');
 //APP CONFIGURATION ============================================================
 //Use body parser for POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,10 +30,10 @@ app.use(morgan('dev'));
 //Connect to our database
 var db_connection = mySQL.createPool({	//create Pooled connection with database
         connectionLimit : 100,
-        host: config.hostname,
+        host: repair_db.hostname,
         user: 'user',
-        password: config.password,
-        database : config.db
+        password: repair_db.password,
+        database : repair_db.db
     }
 );
 
@@ -78,5 +79,5 @@ app.get('*', function(req, res) {
 });
 
 // START SERVER ================================================================
-app.listen(config.port);
+app.listen(server_config.port);
 console.log('Started Server');

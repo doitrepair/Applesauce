@@ -1,7 +1,7 @@
 // REQUIRED PACKAGES ===========================================================
 var bodyParser 	= require('body-parser');
 var nodemailer = require("nodemailer");
-var config 		= require('../../../config');
+var config 		= require('../../../config/server-config');
 
 // questionsRouter FUNCTION ==========================================================
 module.exports = function(app, express) {
