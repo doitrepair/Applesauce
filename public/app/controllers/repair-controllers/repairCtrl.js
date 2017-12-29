@@ -11,7 +11,7 @@
 //******************************************************************************
 //******************************************************************************
 /*jshint esversion: 6 */
-angular.module('repairCtrl', ['dbService', 'submitRepair'])
+angular.module('repairCtrl', ['repairService', 'submitRepair'])
 	.controller('repairController', function($scope, $location, qaFactory, submitFactory) {
 
 		vm = this;
@@ -27,7 +27,7 @@ angular.module('repairCtrl', ['dbService', 'submitRepair'])
 			$scope.alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
 
 			repair_email = submitFactory.buildAndSubmitRepair($scope,"")
-			$location.path('/success');
+			$location.path('repair/success');
 		};
 
 		var questions = "";

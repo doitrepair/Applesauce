@@ -10,6 +10,6 @@ angular.module('mainCtrl', [])
 	.controller('mainController', function($scope, $location) {
 		var vm = this;
 		$scope.startRepair = function() {
-			$location.path('/diagnose');
+			$location.path('/repair');
 		}
 	});

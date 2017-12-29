@@ -9,7 +9,7 @@ angular.module('userApp', [
 	'dataTransCtrl',
 	'schedCtrl',
 	'apptCtrl',
-	'dbService',
+	'repairService',
 	'acmeService',
 	'filters'
 ]);

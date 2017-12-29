@@ -9,7 +9,7 @@
 //			dbService		Required to interact with the app's database
 //******************************************************************************
 //******************************************************************************
-angular.module('questionCtrl', ['dbService','ngSanitize'])
+angular.module('questionCtrl', ['repairService','ngSanitize'])
 	.controller('questionController', function($scope, $location, $q, qaFactory, firstQuestion) {
 		vm = this;
 
@@ -88,7 +88,7 @@ angular.module('questionCtrl', ['dbService','ngSanitize'])
 				// store question data for the repair controller and route
 				// to the repair page
 				if(qaFactory.saveRepairData($scope.qa.next_id, vm.question_data, vm.chosen_answers, vm.index))
-					$location.path('/repair');
+					$location.path('/repair/confirm');
 				else
 					return false;
 			}

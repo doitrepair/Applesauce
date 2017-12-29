@@ -3,31 +3,31 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 		$routeProvider
 		// Route to the homepage
 			.when('/', {
-				templateUrl : 'app/views/pages/home.html'
+				templateUrl : 'app/views/home.html'
 			})
-			.when('/success', {
-				templateUrl : 'app/views/pages/landing-page.html'
-			})
-			.when('/diagnose', {
-				templateUrl : 'app/views/pages/questions.html'
+			.when('/repair/success', {
+				templateUrl : 'app/views/repair-pages/landing-page.html'
 			})
 			.when('/repair', {
-				templateUrl: 'app/views/pages/repair-form.html'
+				templateUrl : 'app/views/repair-pages/questions.html'
+			})
+			.when('/repair/confirm', {
+				templateUrl: 'app/views/repair-pages/repair-form.html'
 			})
 			.when('/forms/success', {
-				templateUrl: 'app/views/pages/forms-landing-page.html'
+				templateUrl: 'app/views/forms-pages/forms-landing-page.html'
 			})
 			.when('/forms/data', {
-				templateUrl: 'app/views/pages/forms/data-transfer-form.html'
+				templateUrl: 'app/views/forms-pages/data-transfer-form.html'
 			})
 			.when('/appt', {
-				templateUrl: 'app/views/appt_pages/sched.html'
+				templateUrl: 'app/views/appt-pages/sched.html'
 			})
 			.when('/appt/confirm', {
-				templateUrl: 'app/views/appt_pages/appt-form.html'
+				templateUrl: 'app/views/appt-pages/appt-form.html'
 			})
 			.when('/appt/success', {
-				templateUrl: 'app/views/appt_pages/appt-landing-page.html'
+				templateUrl: 'app/views/appt-pages/appt-landing-page.html'
 			});
 		// Get rid of has in the URL
 		$locationProvider.html5Mode(true);

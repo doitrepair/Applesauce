@@ -5,7 +5,7 @@
 // mySQL database
 //******************************************************************************
 //******************************************************************************
-angular.module('dbService', [])
+angular.module('repairService', [])
 	.value('firstQuestion', 1)
 	.factory('qaFactory', function($http, $q) {
 
@@ -80,7 +80,7 @@ angular.module('dbService', [])
 		//						repair	- boolean denoting whether the issue
 		//								should be handled by a repair
 		//**********************************************************************
-		
+
 		qaFactory.saveRepairData = function(id, question_data, answer_data, index) {
 			//var r_object = {};
 			//r_object.repair = $http.get('/api/repair/' + id);
