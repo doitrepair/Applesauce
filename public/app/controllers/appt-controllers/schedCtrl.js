@@ -93,7 +93,8 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 			// Each column after that, give a title of the day of the week
 			$scope.cols[i+1] = [days[i],$scope.dates[i]];
 		}
-
+		// Time range displayed on top of schedule
+		$scope.time_range = $scope.dates[0] + ' - ' + $scope.dates[4]
 		// Now start to fill out each cell
 		$scope.cells = [];
 		// Get the schedule from the acme database
@@ -165,31 +166,35 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 					}
 				}
 			}
+
 			console.log($scope.cells)
 		});
 
 		// function for changing between weeks on the schedule
-		$scope.toggle_week = function(){
-			// toggle boolean value
-			$scope.this_week = !$scope.this_week;
+		$scope.toggle_week = function(forward){
+			if((forward && $scope.this_week) || (!forward && !$scope.this_week)){
+				// toggle boolean value
+				$scope.this_week = !$scope.this_week;
 
-			// Update the offset to reflect which week is being changed to
-			var offset = 0;
-			if(!$scope.this_week) offset = 5;
+				// Update the offset to reflect which week is being changed to
+				var offset = 0;
+				if(!$scope.this_week) offset = 5;
 
-			// Update the column headers
-			for(i=0;i<days.length;i++){
-				$scope.cols[i+1][1] = $scope.dates[i+offset];
-			}
-			// update the cell data
-			var k = $scope.this_week ? 0 : 1;
-			for(i=0;i<times.length;i++){
-				for(j=0;j<days.length;j++){
-					$scope.cells[i][j].active = ($scope.cells[i][j].agents[k].length >= threshold)
-					if(($scope.this_week)&(j<=earliest_day)) $scope.cells[i][j].active = false;
+				// Update time range displayed on top of schedule
+				$scope.time_range = $scope.dates[0+offset] + ' - ' + $scope.dates[4+offset]
+
+				// Update the column headers
+				for(i=0;i<days.length;i++){
+					$scope.cols[i+1][1] = $scope.dates[i+offset];
+				}
+				// update the cell data
+				var k = $scope.this_week ? 0 : 1;
+				for(i=0;i<times.length;i++){
+					for(j=0;j<days.length;j++){
+						$scope.cells[i][j].active = ($scope.cells[i][j].agents[k].length >= threshold)
+						if(($scope.this_week)&(j<=earliest_day)) $scope.cells[i][j].active = false;
+					}
 				}
 			}
-
-
 		};
 	});
