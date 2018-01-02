@@ -114,7 +114,7 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 					$scope.cells[i][j].dates = [$scope.dates[j],$scope.dates[j+5]];
 					for(k=0;k<vm.schedule.length;k++){
 						agent = vm.schedule[k];
-						ag = {'first':agent.Nick_Name,'last':agent.Last_Name};
+						ag = {'first':agent.Nick_Name,'last':agent.Last_Name, 'netid': agent.NetID};
 
 						// Check if the agent is working in the Dayton column
 						if((agent.date == $scope.dates[j]+"T06:00:00.000Z")&(agent[times[i]]==dayton)){

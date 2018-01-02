@@ -1,12 +1,14 @@
+// Require the sql_txt file that holds the sql queries
 var sql_txt = require('./sql_txt')
+
 // APIROUTER FUNCTION ==========================================================
 module.exports = function(app, express, connection) {
 	var schedRouter = express.Router();
 
 	schedRouter.route('/')
-    	//Create an Answer
+    	// Get schedule from acme database from 'begin' to 'end'
 		.post(function(req, res){
-			console.log(req.body)
+			// create and send query
 			query = sql_txt.get_sched(req.body.begin,req.body.end)
 			connection.query(query, function(err, data){
 				if(err)
@@ -14,6 +16,7 @@ module.exports = function(app, express, connection) {
 				res.send(data)
 			})
 		})
+		// Update an agents shift to being in a appointment shift
 		.put(function(req, res){
 
 			query = sql_txt.update_sched(req.body.begin,req.body.end,req.body.date,req.body.first,req.body.last)

@@ -56,6 +56,10 @@ angular.module('submitRepair', [])
 				ship_to_key: `+ $scope.ship_to +`--eol<br>
 				contact_key:` + $scope.contactPref+`--eol<br>`;
 
+			if($scope.owner_netid != undefined) {
+				repair_email += 'owner_net_id_key:  '+ $scope.owner_netid +'--eol<br>';
+			}
+
 			console.log('submitted');
 			console.log(repair_email);
 			submitFactory.submitRepair(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
