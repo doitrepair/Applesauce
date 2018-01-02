@@ -6,7 +6,7 @@ var config 		= require('../../../config/server-config');
 // questionsRouter FUNCTION ==========================================================
 module.exports = function(app, express) {
 
-	var emailRouter = express.Router();
+	var cherwellRouter = express.Router();
 
 	/*var testCase = {
 		description: "this is a description example <br> <br> here's a second line",
@@ -27,7 +27,7 @@ module.exports = function(app, express) {
 
 	/*------------------Routing Started ------------------------*/
 	// ROUTES FOR /api/email -----------------------------------------------
-	emailRouter.route('/')
+	cherwellRouter.route('/')
 
 
 		.post(function(req, res) {
@@ -58,5 +58,5 @@ module.exports = function(app, express) {
 				}
 			});
 		});
-	return emailRouter;
+	return cherwellRouter;
 };

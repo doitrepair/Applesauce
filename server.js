@@ -69,8 +69,8 @@ app.use('/api/repairs', repairRouter);
 var schedRouter			= require('./app/routes/api/appt-app/schedule')(app, express, acme_connection);
 app.use('/api/schedule', schedRouter);
 
-var emailRouter			= require('./app/routes/api/email_handler')(app, express);
-app.use('/api/email', emailRouter);
+var cherwellRouter			= require('./app/routes/api/cherwell')(app, express);
+app.use('/api/email', cherwellRouter);
 
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html

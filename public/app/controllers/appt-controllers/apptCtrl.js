@@ -6,8 +6,8 @@
 //						(appt-form.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('apptCtrl', ['acmeService', 'filters'])
-	.controller('apptController', function($scope, $location, acmeFactory, submitFactory, timeFilter) {
+angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService'])
+	.controller('apptController', function($scope, $location, acmeFactory, cherwellFactory, timeFilter) {
 
 		// Get the appointment that the user clicked on
 		var appt = acmeFactory.get_appt();
@@ -34,7 +34,7 @@ angular.module('apptCtrl', ['acmeService', 'filters'])
 			$scope.alt_contact = 'Email='+$scope.email+' Phone='+$scope.tel;
 
 			// Send out an email to cherwell to create a case
-			repair_email = submitFactory.buildAndSubmitRepair($scope,$scope.appt_date+$scope.appt_time+"; ")
+			repair_email = cherwellFactory.buildCherwellCase($scope,$scope.appt_date+$scope.appt_time+"; ")
 
 			// Update the schedule by moving an agent to the appt column
 			acmeFactory.updateSched(appt.time, appt.time, appt.dates, agent.first, agent.last)
