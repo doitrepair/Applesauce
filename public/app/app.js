@@ -10,6 +10,7 @@ angular.module('userApp', [
 	'schedCtrl',
 	'apptCtrl',
 	'repairService',
+	'cherwellService',
 	'acmeService',
 	'filters'
 ]);

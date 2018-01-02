@@ -5,9 +5,15 @@
 		<div class="uw-row">
 			<div class="uw-col uw-body">
 				<div style="width: 90%;">
-					<h2>Schedule an 30-minute appointment that works for you by clicking on a green timeslot:</h2>
-					<button ng-if="this_week" ng-click="toggle_week()" class="uw-button" style="margin:10px; float:right;">Next Week ></button>
-					<button ng-if="!this_week" ng-click="toggle_week()" class="uw-button" style="margin:10px; float:right;">< This Week</button>
+					<h2>Schedule an 30-minute appointment with the DoIT Tech Store at 1210 W Dayton St.</h2>
+					<h3>Choose that works for you by clicking on a green timeslot:</h3>
+					<p style="margin:10px; float:right;">
+						{{ time_range }}
+						<button ng-click="toggle_week(false)" ng-class="{'button-active': !this_week,'button-inactive': this_week}"> < </button>
+						<button ng-click="toggle_week(true)" ng-class="{'button-active': this_week,'button-inactive': !this_week}"> > </button>
+
+					</p>
+
 					<table style="margin:auto;width: 100%;">
 						<thead>
 							<tr>

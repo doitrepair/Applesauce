@@ -52,3 +52,52 @@ animation:spin 1s infinite;
 .highlight a {
 	color: white;
 }
+
+.button-active {
+	background-color: rgba(197, 5, 12, .75);
+	color: white;
+	display: inline-block;
+	line-height: 1;
+	cursor: pointer;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	border: 1px solid transparent;
+	-webkit-border-radius: 0;
+	      border-radius: 0;
+	position: relative;
+	padding: 4px 4px;
+	padding: .3rem .3rem;
+	font-family: "Verlag", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-size: .775rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	height: 80%;}
+.button-active:hover {
+	background-color: rgba(150, 5, 12, .75); }
+
+a.button-active:hover {
+  	text-decoration: none; }
+
+.button-inactive {
+	background-color: rgba(128, 128, 128, .75);
+	color: white;
+	display: inline-block;
+	line-height: 1;
+	cursor: pointer;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	border: 1px solid transparent;
+	-webkit-border-radius: 0;
+	        border-radius: 0;
+	position: relative;
+	padding: 4px 4px;
+	padding: .3rem .3rem;
+	font-family: "Verlag", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-size: .775rem;
+	font-weight: 700;
+	text-transform: uppercase; }
+
+a.button-inactive:hover {
+  text-decoration: none; }

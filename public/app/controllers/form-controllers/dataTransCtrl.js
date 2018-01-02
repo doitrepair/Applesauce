@@ -11,8 +11,8 @@
 //******************************************************************************
 //******************************************************************************
 /*jshint esversion: 6 */
-angular.module('dataTransCtrl', ['submitRepair'])
-	.controller('dataTransController', function($scope, $location, submitFactory) {
+angular.module('dataTransCtrl', ['cherwellService'])
+	.controller('dataTransController', function($scope, $location, cherwellFactory) {
 
 
 		$scope.submit_repair = function() {
@@ -22,7 +22,7 @@ angular.module('dataTransCtrl', ['submitRepair'])
 			$scope.short = 'Data Transfer - Online Repair'
 			$scope.ship_to = 'Needs Update'
 			var note = "Data Transfer Check-In, New SN:"+$scope.sn+". Old SN:"+$scope.sn2 +". - Customer Notes:";
-			submitFactory.buildAndSubmitRepair($scope, note);
+			cherwellFactory.buildCherwellCase($scope, note);
 			$location.path('/forms/success');
 		};
 	});
