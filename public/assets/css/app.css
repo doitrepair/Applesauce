@@ -394,13 +394,13 @@ table.weektable tr, td {
 
 .linker.closed {
   /*background:#2ECC71;*/
-  background:-moz-linear-gradient(top,#AAAAAA 0%,#ADADAD 100%);
-  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ADADAD),color-stop(100%,#ADADAD));
-  background:-webkit-linear-gradient(top,#AAAAAA 0%,#ADADAD 100%);
-  background:-o-linear-gradient(top,#AAAAAA 0%,#ADADAD 100%);
-  background:-ms-linear-gradient(top,#AAAAAA 0%,#ADADAD 100%);
-  background:linear-gradient(top,#AAAAAA 0%,#ADADAD 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#AAAAAA', endColorstr='#ADADAD',GradientType=0);
+  background:-moz-linear-gradient(top,#af4646 0%,#af4646 75%);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#af4646),color-stop(100%,#af4646));
+  background:-webkit-linear-gradient(top,#af4646 0%,#af4646 75%);
+  background:-o-linear-gradient(top,#af4646 0%,#af4646 75%);
+  background:-ms-linear-gradient(top,#af4646 0%,#af4646 75%);
+  background:linear-gradient(top,#af4646 0%,#af4646 75%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#af4646', endColorstr='#af4646',GradientType=0);
   /*padding:10px 15px;*/
   /*color:#fff;*/
 }

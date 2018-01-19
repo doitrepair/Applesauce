@@ -8,21 +8,6 @@ module.exports = function(app, express) {
 
 	var cherwellRouter = express.Router();
 
-	/*var testCase = {
-		description: "this is a description example <br> <br> here's a second line",
-		short_description: "test",
-		net_id: "essert",
-		os: 'None',
-		make: 'Apple',
-		model: 'Other',
-		sn: 'c02xxxxxxx',
-		pa: 'No',
-		price: '1',
-		device: 'Notebook',
-		ship_to: 'dayton',
-		contact: 'Email'
-	};*/
-
 	/*------------------SMTP Over-----------------------------*/
 
 	/*------------------Routing Started ------------------------*/
