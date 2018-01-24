@@ -26,7 +26,6 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="row in cells track by $index">
-								<td class="cell title">{{row[0].time | time }}</td>
 								<td class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="item.book_appt(item)">{{ item.day }} {{ item.time | time }}</button></td>
 							</tr>
 						</tbody>
