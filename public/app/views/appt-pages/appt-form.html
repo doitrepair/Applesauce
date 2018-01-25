@@ -1,80 +1,82 @@
-<form id="main" style="padding: 0px 50px" ng-controller="apptController">
-	<h2 ng-if='diagnostic' class="uw-mini-bar">Diagnositic:</h2>
-	<p>{{ repair_text }}</p>
-	<p>Please fill out the information below. This will create a repair for you and speed up your time at the DoIT Tech Store.</p>
+<div class="module">
+	<form id="main" style="padding: 0px 50px" ng-controller="apptController">
+		<h2 ng-if='diagnostic' class="uw-mini-bar">Diagnositic:</h2>
+		<p>{{ repair_text }}</p>
+		<p>Please fill out the information below. This will create a repair for you and speed up your time at the DoIT Tech Store.</p>
 
-	<h2 class="uw-mini-bar">Submit A Repair:</h2>
-	<p>Please fill in the following information about your computer to speed up the check-in process:</p>
-	<p ng-if='diagnostic == false'>If you are unsure what repair you need, please follow the <strong>START A REPAIR</strong> link above.</p>
+		<h2 class="uw-mini-bar">Submit A Repair:</h2>
+		<p>Please fill in the following information about your computer to speed up the check-in process:</p>
+		<p ng-if='diagnostic == false'>If you are unsure what repair you need, please follow the <strong>START A REPAIR</strong> link above.</p>
 
-	<fieldset>
-		<legend>Appointment Time:</legend>
-		<p id="appt">{{appt_date}}{{appt_time | time}}</p>
-	</fieldset>
-	<fieldset>
-		<legend>Repair Information</legend>
-		<label ng-if='diagnostic' for="description">Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
-		<label ng-if='diagnostic == false' for="description">Please describe the repair that you would like below.</label>
-		<textarea rows="5" id="questions" ng-model="description"></textarea>
-	</fieldset>
-	<fieldset>
-		<legend>Personal Information</legend>
-		<div class="uw-input-row">
-			<label for="net-id">NetID:</label>
-			<input type="text" id="net-id" ng-required="true" ng-model="netId" required="required">
-		</div>
-		<div class="uw-input-row">
-			<label for="email">Email</label>
-			<input type="email" id="email" ng-required="true" ng-model="email" required="required">
-		</div>
-		<div class="uw-input-row">
-			<label for="tel">Phone Number</label>
-			<input type="tel" id="tel" ng-required="true" ng-model="tel" required="required">
-		</div>
-		<div class="uw-input-row">
-			<label for="select">Preferred Contact Method</label>
-			<select name="contactPref" id="contactPref" ng-required="true" ng-model="contactPref" required="required">
-			<option value="Email">Email</option>
-			<option value="Phone">Phone Call</option>
-			<option value="Text">Text</option>
+		<fieldset>
+			<legend>Appointment Time:</legend>
+			<p id="appt">{{appt_date}}{{appt_time | time}}</p>
+		</fieldset>
+		<fieldset>
+			<legend>Repair Information</legend>
+			<label ng-if='diagnostic' for="description">Feel free to add any clarifications that you think would help our repair team by adding to the content below</label>
+			<label ng-if='diagnostic == false' for="description">Please describe the repair that you would like below.</label>
+			<textarea rows="5" id="questions" ng-model="description"></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>Personal Information</legend>
+			<div class="uw-input-row">
+				<label for="net-id">NetID:</label>
+				<input type="text" id="net-id" ng-required="true" ng-model="netId" required="required">
+			</div>
+			<div class="uw-input-row">
+				<label for="email">Email</label>
+				<input type="email" id="email" ng-required="true" ng-model="email" required="required">
+			</div>
+			<div class="uw-input-row">
+				<label for="tel">Phone Number</label>
+				<input type="tel" id="tel" ng-required="true" ng-model="tel" required="required">
+			</div>
+			<div class="uw-input-row">
+				<label for="select">Preferred Contact Method</label>
+				<select name="contactPref" id="contactPref" ng-required="true" ng-model="contactPref" required="required">
+				<option value="Email">Email</option>
+				<option value="Phone">Phone Call</option>
+				<option value="Text">Text</option>
+				</select>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend>Computer Information</legend>
+			<label for="select">Operating System:</label>
+			<select name="os" id="os" ng-require="true" ng-model="os" required="required">
+				<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
+				<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
+				<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
+				<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
+				<option value="Mac 0SX Other">Mac 0S X - Other</option>
+				<option value="Windows 10">Windows 10</option>
+				<option value="Windows 8.1">Windows 8.1</option>
+				<option value="Windows 8">Windows 8</option>
+				<option value="Windows 7">Windows 7</option>
+				<option value="Windows - Other">Windows - Other</option>
+				<option value="Other">Other</option>
+				<option value="Other">I don't know</option>
 			</select>
-		</div>
-	</fieldset>
+			<label for="select">Device Type:</label>
+			<select name="device_type" id="device_type" ng-model="device_type">
+				<option value="Notebook">Notebook / Laptop</option>
+				<option value="Desktop">Desktop</option>
+				<option value="Other">Other</option>
+			</select>
+			<label for="select">Make:</label>
+			<select name="make" id="make" ng-model="make">
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Needs Update">Other</option>
+				<option value="Needs Update">I don't know</option>
+			</select>
+		</fieldset>
 
-	<fieldset>
-		<legend>Computer Information</legend>
-		<label for="select">Operating System:</label>
-		<select name="os" id="os" ng-require="true" ng-model="os" required="required">
-			<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
-			<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
-			<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
-			<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
-			<option value="Mac 0SX Other">Mac 0S X - Other</option>
-			<option value="Windows 10">Windows 10</option>
-			<option value="Windows 8.1">Windows 8.1</option>
-			<option value="Windows 8">Windows 8</option>
-			<option value="Windows 7">Windows 7</option>
-			<option value="Windows - Other">Windows - Other</option>
-			<option value="Other">Other</option>
-			<option value="Other">I don't know</option>
-		</select>
-		<label for="select">Device Type:</label>
-		<select name="device_type" id="device_type" ng-model="device_type">
-			<option value="Notebook">Notebook / Laptop</option>
-			<option value="Desktop">Desktop</option>
-			<option value="Other">Other</option>
-		</select>
-		<label for="select">Make:</label>
-		<select name="make" id="make" ng-model="make">
-			<option value="Apple">Apple</option>
-			<option value="Dell">Dell</option>
-			<option value="Needs Update">Other</option>
-			<option value="Needs Update">I don't know</option>
-		</select>
-	</fieldset>
-
-<div ng-controller="repairController">
-	<button class="uw-button" ng-click="create_appt()">Submit Repair</button>
+	<div ng-controller="repairController">
+		<button class="uw-button" ng-click="create_appt()">Submit Repair</button>
+	</div>
+	</form>
 </div>
-</form>
 <div style="padding: 20px 0px"></div>

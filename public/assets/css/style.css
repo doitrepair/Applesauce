@@ -121,3 +121,6 @@ a.button-inactive:hover {
   margin: 10px 5px;
   border-radius: 5px;
 }
+main {
+	padding-top: 0px;
+}
