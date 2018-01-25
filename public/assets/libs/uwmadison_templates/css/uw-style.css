@@ -1135,7 +1135,7 @@ h1.uw-mini-bar:before {
         width: 25%; } }
 
 .uw-header-container {
-  padding: 16px 0;
+  padding: 0;
   padding: 1rem 0;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
