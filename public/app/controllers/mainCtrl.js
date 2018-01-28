@@ -12,4 +12,7 @@ angular.module('mainCtrl', [])
 		$scope.startRepair = function() {
 			$location.path('/repair');
 		}
+		$scope.startAppt = function() {
+			$location.path('/appt');
+		}
 	});
