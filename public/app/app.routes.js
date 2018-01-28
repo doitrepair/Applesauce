@@ -5,6 +5,7 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			.when('/', {
 				templateUrl : 'app/views/home.html'
 			})
+			/* Temporarily removing this section
 			.when('/repair/success', {
 				templateUrl : 'app/views/repair-pages/landing-page.html'
 			})
@@ -14,6 +15,7 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			.when('/repair/confirm', {
 				templateUrl: 'app/views/repair-pages/repair-form.html'
 			})
+			*/
 			.when('/forms/success', {
 				templateUrl: 'app/views/forms-pages/forms-landing-page.html'
 			})
