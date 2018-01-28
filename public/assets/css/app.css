@@ -377,32 +377,18 @@ table.weektable tr, td {
 	width: 100%;
 	text-align: center;
 	font-size: 1.5em;
+	font-weight: bold;
 	text-decoration: none;
 }
 
 .linker.open {
-  /*background:#2ECC71;*/
-  background:-moz-linear-gradient(top,#26C281 0%,#2ECC71 100%);
-  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#26C281),color-stop(100%,#2ECC71));
-  background:-webkit-linear-gradient(top,#26C281 0%,#2ECC71 100%);
-  background:-o-linear-gradient(top,#26C281 0%,#2ECC71 100%);
-  background:-ms-linear-gradient(top,#26C281 0%,#2ECC71 100%);
-  background:linear-gradient(top,#26C281 0%,#2ECC71 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#26C281', endColorstr='#2ECC71',GradientType=0);
-
+  border: 1px solid green;
+  color: green;
 }
 
 .linker.closed {
-  /*background:#2ECC71;*/
-  background:-moz-linear-gradient(top,#af4646 0%,#af4646 75%);
-  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#af4646),color-stop(100%,#af4646));
-  background:-webkit-linear-gradient(top,#af4646 0%,#af4646 75%);
-  background:-o-linear-gradient(top,#af4646 0%,#af4646 75%);
-  background:-ms-linear-gradient(top,#af4646 0%,#af4646 75%);
-  background:linear-gradient(top,#af4646 0%,#af4646 75%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#af4646', endColorstr='#af4646',GradientType=0);
-  /*padding:10px 15px;*/
-  /*color:#fff;*/
+  border: 1px solid lightgray;
+  color: lightgray;
 }
 
 /*.linker:hover {
@@ -411,14 +397,16 @@ table.weektable tr, td {
 
   table.weektable .avail:hover{
     /*background-color: #5CB85C;*/
-    color: white;
+    color: lightgreen;
+	border-color: lightgreen;
     border-radius:5px;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   }
 
   .linker.open:hover{
-    color: white;
+    color: lightgreen;
+	border-color: lightgreen;
   }
 
   #range {

@@ -1,122 +1,124 @@
-<form id="repairForm" style="padding: 0px 50px" ng-controller="dataTransController">
-	<h2 class="uw-mini-bar">Data Transfer Authorization</h2>
-	<p>
-		The DoIT Tech Store will perform a data transfer from an old computer to a newly purchased computer.
-		The old machine must be working without issue. Standard turnaround time for this process is 1 business day.
-		During the Customer Appreciation Sale, we will not be able to guarantee this speed due to the high expected volume.
-		<br><br>
-		This service will transfer all user data files from the old computer to the new computer.
-		In many cases, this process will not transfer software programs due to licensing, registration and incompatibility complications.
-		Please note that if your old computer has more data than your new computer’s hard drive can contain, we will need you to identify the file types that you most want to have transferred (e.g. pictures, documents, or PDFs), and this may add time to the process.
-		<br><br>
-		Once work is complete on your computer a technician will notify you that it is ready for pickup.
-		When you come to pick up the machine, please bring a photo ID so that we can verify your identity.
-		<br><br>
-		By signing this agreement, you agree to leave your computer in our possession for the duration of the data transfer.
-		Customer computers will be kept in a secure location and a WiscIT case will be created.
-		<br><br>
-		Passwords: A password or an administrator account with a reset password is needed for data transfers.
-	</p>
-
-
-	<fieldset>
-		<legend>Notes</legend>
-		<label for="description">Feel free to add any notes that you think would help our repair team by adding to the content below:</label>
-		<textarea rows="3" id="questions" ng-model="description"></textarea>
-	</fieldset>
-	<fieldset>
-		<legend>Personal Information</legend>
-		<div class="uw-input-row">
-			<label for="net-id">NetID:</label>
-			<input type="text" id="net-id" ng-required="true" ng-model="netId" required="required">
-		</div>
-		<div class="uw-input-row">
-			<label for="email">Email</label>
-			<input type="email" id="email" ng-required="true" ng-model="email" required="required">
-		</div>
-		<div class="uw-input-row">
-			<label for="tel">Phone Number</label>
-			<input type="tel" id="tel" ng-required="true" ng-model="tel" required="required">
-		</div>
-		<div class="uw-input-row">
-			<label for="select">Preferred Contact Method</label>
-			<select name="contactPref" id="contactPref" ng-required="true" ng-model="contactPref" required="required">
-			<option value="Email">Email</option>
-			<option value="Phone">Phone Call</option>
-			<option value="Text">Text</option>
-			</select>
-		</div>
-		<label for="select">Pickup Location</label>
-		<select name="device_type" id="device_type" ng-model="device_type">
-			<option value="Dayton">1210 W Dayton St</option>
-			<option value="ECM">333 East Campus Mall</option>
-			<option value="HSLC">750 Highland Ave (Health Sciences Leaning Center)</option>
-		</select>
-	</fieldset>
-
-	<fieldset>
-		<legend>NEW Computer Information</legend>
-		<label for="select">Operating System:</label>
-		<select name="os" id="os" ng-require="true" ng-model="os" required="required">
-			<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
-			<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
-			<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
-			<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
-			<option value="Mac 0SX Other">Mac 0S X - Other</option>
-			<option value="Windows 10">Windows 10</option>
-			<option value="Windows 8.1">Windows 8.1</option>
-			<option value="Windows 8">Windows 8</option>
-			<option value="Windows 7">Windows 7</option>
-			<option value="Windows - Other">Windows - Other</option>
-			<option value="Other">Other</option>
-			<option value="Other">I don't know</option>
-		</select>
-		<label for="select">Device Type:</label>
-		<select name="device_type" id="device_type" ng-model="device_type">
-			<option value="Notebook">Notebook / Laptop</option>
-			<option value="Desktop">Desktop</option>
-			<option value="Other">Other</option>
-		</select>
-		<label for="select">Make:</label>
-		<select name="make" id="make" ng-model="make">
-			<option value="Apple">Apple</option>
-			<option value="Dell">Dell</option>
-			<option value="Needs Update">Other</option>
-			<option value="Needs Update">I don't know</option>
-		</select>
-		<label for="sn">Serial Number</label>
-		<input type="text" id="sn" ng-required="true" ng-model="sn" required="required">
-	</fieldset>
-
-	<fieldset>
-		<legend>OLD Computer Information</legend>
-		<label for="sn2">Serial Number</label>
-		<input type="text" id="sn2" ng-required="true" ng-model="sn2" required="required">
-	</fieldset>
-
-	<fieldset>
-		<legend>Disclaimer</legend>
-		<p style="height: 7em; line-height: 1em; overflow: auto;">
-			DoIT is not responsible for bad memory, failure of hard drives, power supplies, motherboards, or any other hardware failures that may occur under normal use while machines are in our possession.
-			DoIT will do its best to identify the failed hardware and notify you of your options, but cannot be held responsible for repairing or replacing the failed items.
-			We are also not responsible for any data loss, although we will attempt to minimize the chance that data loss will occur.
+<div class="module">
+	<form id="repairForm" style="padding: 0px 50px" ng-controller="dataTransController">
+		<h2 class="uw-mini-bar">Data Transfer Authorization</h2>
+		<p>
+			The DoIT Tech Store will perform a data transfer from an old computer to a newly purchased computer.
+			The old machine must be working without issue. Standard turnaround time for this process is 1 business day.
+			During the Customer Appreciation Sale, we will not be able to guarantee this speed due to the high expected volume.
 			<br><br>
-			DoIT Customer Contact Procedure: Using the contact information (Contact Information) provided by the customer, the Division of Information Technology will notify the repair-service customer (Customer) when questions arise during a repair or when the repair is completed.
-			This Customer is either the contact for personally- owned equipment or the departmental contact for University-owned equipment.
+			This service will transfer all user data files from the old computer to the new computer.
+			In many cases, this process will not transfer software programs due to licensing, registration and incompatibility complications.
+			Please note that if your old computer has more data than your new computer’s hard drive can contain, we will need you to identify the file types that you most want to have transferred (e.g. pictures, documents, or PDFs), and this may add time to the process.
 			<br><br>
-			DoIT Customer Equipment Policy: If, during the course of a repair, and upon completion of the repair, the Customer cannot be reached using the Contact Information, DoIT will mark the equipment status as "Waiting for Customer Reply" for a period of four (4) weeks.
-			A DoIT employee will attempt to contact the Customer approximately twice during this period.
+			Once work is complete on your computer a technician will notify you that it is ready for pickup.
+			When you come to pick up the machine, please bring a photo ID so that we can verify your identity.
 			<br><br>
-			After four weeks, if Customer contact has not been successful, DoIT will mark the equipment status as "Abandoned" and the equipment will be physically moved to the shop's "Abandoned" shelf.
-			DoIT will claim ownership of the equipment if after four (4) months the Customer cannot be contacted.
-			DoIT, among other things, will have the right to use the equipment for spare parts or donate it to Surplus With a Purpose (SWAP).
+			By signing this agreement, you agree to leave your computer in our possession for the duration of the data transfer.
+			Customer computers will be kept in a secure location and a WiscIT case will be created.
+			<br><br>
+			Passwords: A password or an administrator account with a reset password is needed for data transfers.
 		</p>
-	</fieldset>
 
-	<div ng-controller="dataTransController">
-		<input type="checkbox" name="disclaimer" ng-model="disclaimer" required="required" ng-required="true">
-		I have read and understand the disclaimer<br>
-		<button class="uw-button" ng-click="submit_repair()">Submit Repair</button>
-	</div>
-</form>
+
+		<fieldset>
+			<legend>Notes</legend>
+			<label for="description">Feel free to add any notes that you think would help our repair team by adding to the content below:</label>
+			<textarea rows="3" id="questions" ng-model="description"></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>Personal Information</legend>
+			<div class="uw-input-row">
+				<label for="net-id">NetID:</label>
+				<input type="text" id="net-id" ng-required="true" ng-model="netId" required="required">
+			</div>
+			<div class="uw-input-row">
+				<label for="email">Email</label>
+				<input type="email" id="email" ng-required="true" ng-model="email" required="required">
+			</div>
+			<div class="uw-input-row">
+				<label for="tel">Phone Number</label>
+				<input type="tel" id="tel" ng-required="true" ng-model="tel" required="required">
+			</div>
+			<div class="uw-input-row">
+				<label for="select">Preferred Contact Method</label>
+				<select name="contactPref" id="contactPref" ng-required="true" ng-model="contactPref" required="required">
+				<option value="Email">Email</option>
+				<option value="Phone">Phone Call</option>
+				<option value="Text">Text</option>
+				</select>
+			</div>
+			<label for="select">Pickup Location</label>
+			<select name="device_type" id="device_type" ng-model="device_type">
+				<option value="Dayton">1210 W Dayton St</option>
+				<option value="ECM">333 East Campus Mall</option>
+				<option value="HSLC">750 Highland Ave (Health Sciences Leaning Center)</option>
+			</select>
+		</fieldset>
+
+		<fieldset>
+			<legend>NEW Computer Information</legend>
+			<label for="select">Operating System:</label>
+			<select name="os" id="os" ng-require="true" ng-model="os" required="required">
+				<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
+				<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
+				<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
+				<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
+				<option value="Mac 0SX Other">Mac 0S X - Other</option>
+				<option value="Windows 10">Windows 10</option>
+				<option value="Windows 8.1">Windows 8.1</option>
+				<option value="Windows 8">Windows 8</option>
+				<option value="Windows 7">Windows 7</option>
+				<option value="Windows - Other">Windows - Other</option>
+				<option value="Other">Other</option>
+				<option value="Other">I don't know</option>
+			</select>
+			<label for="select">Device Type:</label>
+			<select name="device_type" id="device_type" ng-model="device_type">
+				<option value="Notebook">Notebook / Laptop</option>
+				<option value="Desktop">Desktop</option>
+				<option value="Other">Other</option>
+			</select>
+			<label for="select">Make:</label>
+			<select name="make" id="make" ng-model="make">
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Needs Update">Other</option>
+				<option value="Needs Update">I don't know</option>
+			</select>
+			<label for="sn">Serial Number</label>
+			<input type="text" id="sn" ng-required="true" ng-model="sn" required="required">
+		</fieldset>
+
+		<fieldset>
+			<legend>OLD Computer Information</legend>
+			<label for="sn2">Serial Number</label>
+			<input type="text" id="sn2" ng-required="true" ng-model="sn2" required="required">
+		</fieldset>
+
+		<fieldset>
+			<legend>Disclaimer</legend>
+			<p style="height: 7em; line-height: 1em; overflow: auto;">
+				DoIT is not responsible for bad memory, failure of hard drives, power supplies, motherboards, or any other hardware failures that may occur under normal use while machines are in our possession.
+				DoIT will do its best to identify the failed hardware and notify you of your options, but cannot be held responsible for repairing or replacing the failed items.
+				We are also not responsible for any data loss, although we will attempt to minimize the chance that data loss will occur.
+				<br><br>
+				DoIT Customer Contact Procedure: Using the contact information (Contact Information) provided by the customer, the Division of Information Technology will notify the repair-service customer (Customer) when questions arise during a repair or when the repair is completed.
+				This Customer is either the contact for personally- owned equipment or the departmental contact for University-owned equipment.
+				<br><br>
+				DoIT Customer Equipment Policy: If, during the course of a repair, and upon completion of the repair, the Customer cannot be reached using the Contact Information, DoIT will mark the equipment status as "Waiting for Customer Reply" for a period of four (4) weeks.
+				A DoIT employee will attempt to contact the Customer approximately twice during this period.
+				<br><br>
+				After four weeks, if Customer contact has not been successful, DoIT will mark the equipment status as "Abandoned" and the equipment will be physically moved to the shop's "Abandoned" shelf.
+				DoIT will claim ownership of the equipment if after four (4) months the Customer cannot be contacted.
+				DoIT, among other things, will have the right to use the equipment for spare parts or donate it to Surplus With a Purpose (SWAP).
+			</p>
+		</fieldset>
+
+		<div ng-controller="dataTransController">
+			<input type="checkbox" name="disclaimer" ng-model="disclaimer" required="required" ng-required="true">
+			I have read and understand the disclaimer<br>
+			<button class="uw-button" ng-click="submit_repair()">Submit Repair</button>
+		</div>
+	</form>
+</div>
 <div style="padding: 20px 0px"></div>

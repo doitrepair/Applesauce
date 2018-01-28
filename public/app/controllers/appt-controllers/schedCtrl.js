@@ -25,7 +25,7 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 		$scope.this_week = true;
 
 		// Format the date to show to customers (yyyy-mm-dd)
-		function formatDate(d){
+		function formatDate(d, friendly){
 			dd = d.getDate()
 			if(dd<10){
 				// append 0 if less than 10
@@ -36,13 +36,15 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 				// append 0 if less than 10
 				mm='0'+mm;
 			}
-			return d.getFullYear()+"-"+mm+"-"+dd
+			if(friendly) return mm+"/"+dd;
+			else 		 return d.getFullYear()+"-"+mm+"-"+dd;
 		}
 
 		// Creates an array of length 10 that contains the weekday dates for the
 		// current week and next week
 		function getWeek(d) {
 			dates = [];
+			$scope.friendly_dates = [];
 
 			// find the current week's monday's date
 			mon = new Date();
@@ -56,7 +58,8 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 				}
 				s = new Date();
 				s.setDate(mon.getDate()+i+offset)
-				dates[i] = formatDate(s);
+				dates[i] = formatDate(s, false);
+				$scope.friendly_dates[i] = formatDate(s, true);
 			}
 			return dates;
 		}
@@ -87,14 +90,12 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 
 		// Create array of columns to display
 		$scope.cols = [];
-		// Make the first column title blank (because the first col is the times)
-		$scope.cols[0] = ['',''];
 		for(i=0;i<days.length;i++){
 			// Each column after that, give a title of the day of the week
-			$scope.cols[i+1] = [days[i],$scope.dates[i]];
+			$scope.cols[i] = [days[i],$scope.friendly_dates[i]];
 		}
 		// Time range displayed on top of schedule
-		$scope.time_range = $scope.dates[0] + ' - ' + $scope.dates[4]
+		$scope.time_range = $scope.friendly_dates[0] + ' - ' + $scope.friendly_dates[4]
 		// Now start to fill out each cell
 		$scope.cells = [];
 		// Get the schedule from the acme database
@@ -181,18 +182,18 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 				if(!$scope.this_week) offset = 5;
 
 				// Update time range displayed on top of schedule
-				$scope.time_range = $scope.dates[0+offset] + ' - ' + $scope.dates[4+offset]
+				$scope.time_range = $scope.friendly_dates[0+offset] + ' - ' + $scope.friendly_dates[4+offset]
 
 				// Update the column headers
 				for(i=0;i<days.length;i++){
-					$scope.cols[i+1][1] = $scope.dates[i+offset];
+					$scope.cols[i][1] = $scope.friendly_dates[i+offset];
 				}
 				// update the cell data
 				var k = $scope.this_week ? 0 : 1;
 				for(i=0;i<times.length;i++){
 					for(j=0;j<days.length;j++){
 						$scope.cells[i][j].active = ($scope.cells[i][j].agents[k].length >= threshold)
-						if(($scope.this_week)&(j<=earliest_day)) $scope.cells[i][j].active = false;
+						if(((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour)))&&($scope.this_week)) $scope.cells[i][j].active = false;
 					}
 				}
 			}
