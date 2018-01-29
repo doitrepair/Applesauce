@@ -9,7 +9,7 @@ module.exports = function(app, express, connection) {
     	// Get schedule from acme database from 'begin' to 'end'
 		.post(function(req, res){
 			// create and send query
-			query = sql_txt.get_sched(req.body.begin,req.body.end)
+			query = sql_txt.get_sched(req.body.begin,req.body.end, req.body.shift_id)
 			connection.query(query, function(err, data){
 				if(err)
 					console.log(err)

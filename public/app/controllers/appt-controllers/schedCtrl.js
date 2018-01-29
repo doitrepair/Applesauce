@@ -7,7 +7,8 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filters'])
-	.controller('schedController', function($scope, $location, acmeFactory, apptFactory, timeFilter, apptData) {
+	.controller('schedController', function($scope, acmeFactory,
+			apptFactory, timeFilter, apptData, days, times) {
 
 		vm = this;
 
@@ -15,11 +16,7 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 		// in order to let a customer schedule an appointment
 		var threshold = 3;
 		// Acme DB's id for a 'Dayton' shift
-		var shift_id = 70
-
-		// String values for time and day to display to customers
-		var times = ['8:00','8:30','9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'];
-	 	var days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+		var shift_id = 70 // 64 for appoitment
 
 		// Initially show this weeks calendar
 		$scope.this_week = true;
@@ -90,7 +87,7 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 		// Now start to fill out each cell
 		$scope.cells = [];
 		// Get the schedule from the acme database
-		var promise = acmeFactory.getSched($scope.dates[0],$scope.dates[9]);
+		var promise = acmeFactory.getSched($scope.dates[0],$scope.dates[9], shift_id);
 		// Wait for the response before continuing
 		promise.then(function(response){
 			// Store the response
@@ -149,7 +146,7 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 							// Check which week is displayed to user
 							var k = $scope.this_week ? 0 : 1;
 							// Update the agents and date
-							apptData.agent = item.agents[k][0];
+							apptData.agent 	= item.agents[k][0];
 							apptData.dates  = item.dates[k];
 							apptData.day 	= item.day;
 							apptData.time 	= item.time;

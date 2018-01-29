@@ -22,10 +22,11 @@ angular.module('acmeService', [])
 		//	Returns:
 		// 		This function returns a promise containing the db response
 		//**********************************************************************
-		acmeFactory.getSched = function(begin, end) {
+		acmeFactory.getSched = function(begin, end, shift_id) {
 			return $http.post('/api/schedule/', {
 					'begin': begin,
-					'end': end
+					'end': end,
+					'shift_id': shift_id
 				});
 		};
 
