@@ -9,7 +9,6 @@ angular.module('acmeService', [])
 	.factory('acmeFactory', function($http, $q) {
 
 		var acmeFactory = {};
-		var appt_data = {};
 
 		//**********************************************************************
 		// Title: Get Schedule
@@ -55,15 +54,6 @@ angular.module('acmeService', [])
 					'last': last
 				});
 		};
-
-		acmeFactory.book_appt = function(item){
-			appt_data.data = item;
-		}
-
-		acmeFactory.get_appt = function(){
-			return appt_data.data;
-		}
-
 
 		return acmeFactory;
 	});

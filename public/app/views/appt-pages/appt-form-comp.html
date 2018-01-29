@@ -1,0 +1,38 @@
+<div class="module" style="width:100%">
+	<form id="main" style="padding: 0px 50px; width:100%" ng-controller="apptController">
+		<fieldset>
+			<legend>Tell us about your computer:</legend>
+			<label for="os">Operating System</label>
+			<select name="os" id="os" ng-require="true" ng-model="os" required="required">
+				<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
+				<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
+				<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
+				<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
+				<option value="Mac 0SX Other">Mac 0S X - Other</option>
+				<option value="Windows 10">Windows 10</option>
+				<option value="Windows 8.1">Windows 8.1</option>
+				<option value="Windows 8">Windows 8</option>
+				<option value="Windows 7">Windows 7</option>
+				<option value="Windows - Other">Windows - Other</option>
+				<option value="Other">Other</option>
+				<option value="Other">I don't know</option>
+			</select>
+			<label for="device_type">Device Type</label>
+			<select name="device_type" id="device_type" ng-model="device_type">
+				<option value="Notebook">Notebook / Laptop</option>
+				<option value="Desktop">Desktop</option>
+				<option value="Other">Other</option>
+			</select>
+			<label for="make">Make</label>
+			<select name="make" id="make" ng-model="make">
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Needs Update">Other</option>
+				<option value="Needs Update">I don't know</option>
+			</select>
+		</fieldset>
+
+		<button class="uw-button" ng-click="save_comp()">Continue</button>
+	</form>
+</div>
+<div style="padding: 20px 0px"></div>

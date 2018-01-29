@@ -5,8 +5,8 @@
 //
 //******************************************************************************
 //******************************************************************************
-angular.module('cherwellService', [])
-	.factory('cherwellFactory', function($http) {
+angular.module('cherwellService', ['infoService'])
+	.factory('cherwellFactory', function($http, userData) {
 		var cherwellFactory = {};
 
 		//**********************************************************************
@@ -36,47 +36,44 @@ angular.module('cherwellService', [])
 		//		note 			a string that can be prepended to the cherwell
 		// 						description field
 		//**********************************************************************
-		cherwellFactory.buildCherwellCase = function(repair_object, note){
+		cherwellFactory.buildCherwellCase = function(){
 			// Default text in the repair
-			var description_suffix = " - NEXT AGENT - please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage";
+			var description_suffix = "; NEXT AGENT - please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage";
 
 			// Check if Apple or Dell to see if a power adapter should be checked in
-			if(repair_object.make === 'Dell' || repair_object.make === 'Apple'){
-				repair_object.pa = 'No';
+			if(userData.make === 'Dell' || userData.make === 'Apple'){
+				userData.pa = 'No';
 			} else {
-				repair_object.pa = 'Yes';
+				userData.pa = 'Yes';
 			}
 
-			// Create a string to put in the alt contact field
-			var alt_contact = 'Email='+repair_object.email+' Phone='+repair_object.tel;
-
 			// Check if any of these are undefined, which cherwell will need
-			if (repair_object.netId == undefined || repair_object.contactPref == undefined || repair_object.os == undefined)
+			if (userData.netId == undefined || userData.contactPref == undefined || userData.os == undefined)
 				return;
 
 			// construct the description field
-			var full_description = note + repair_object.description + description_suffix;
+			var full_description = userData.description + description_suffix;
 			// construct the repair email, it must be in this format for cherwell
 			// to correctly interpret it. To add a field, contact Chris Grosspietsch
 			var repair_email =
 				`<br>description_key:`+ full_description +`--eol<br>
-				short_description_key: `+ repair_object.short +`--eol<br>
-				net_id_key:  `+ repair_object.netId +`--eol<br>
-				alt_cont_key: `+ repair_object.alt_contact +`--eol<br>
-				os_key:  `+ repair_object.os +`--eol<br>
-				make_key:  `+ repair_object.make +`--eol<br>
+				short_description_key: `+ userData.short +`--eol<br>
+				net_id_key:  `+ userData.netId +`--eol<br>
+				alt_cont_key: `+ userData.alt_contact +`--eol<br>
+				os_key:  `+ userData.os +`--eol<br>
+				make_key:  `+ userData.make +`--eol<br>
 				model_key: Needs Update--eol<br>
-				sn_key: `+repair_object.sn+`--eol<br>
-				pa_key: `+repair_object.pa+`--eol<br>
+				sn_key: `+userData.sn+`--eol<br>
+				pa_key: `+userData.pa+`--eol<br>
 				price_key: 1--eol<br>
-				device_key:  `+ repair_object.device_type +`--eol<br>
-				ship_to_key: `+ repair_object.ship_to +`--eol<br>
-				contact_key:` + repair_object.contactPref+`--eol<br>`;
+				device_key:  `+ userData.device_type +`--eol<br>
+				ship_to_key: `+ userData.ship_to +`--eol<br>
+				contact_key:` + userData.contactPref+`--eol<br>`;
 
 			// Optionally specify an owner for the case, otherwise it just gets
 			// assigned to no one (but still is assigned to the ServiceDesk group)
-			if(repair_object.owner_netid != undefined) {
-				repair_email += 'owner_net_id_key:  '+ repair_object.owner_netid +'--eol<br>';
+			if(userData.owner_netid != undefined) {
+				repair_email += 'owner_net_id_key:  '+ userData.owner_netid +'--eol<br>';
 			}
 
 			console.log('submitted');

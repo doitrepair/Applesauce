@@ -23,10 +23,16 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 				templateUrl: 'app/views/forms-pages/data-transfer-form.html'
 			})
 			.when('/appt', {
-				templateUrl: 'app/views/appt-pages/sched.html'
+				templateUrl: 'app/views/appt-pages/appt-form-descrip.html'
 			})
-			.when('/appt/confirm', {
-				templateUrl: 'app/views/appt-pages/appt-form.html'
+			.when('/appt/user', {
+				templateUrl: 'app/views/appt-pages/appt-form-user.html'
+			})
+			.when('/appt/comp', {
+				templateUrl: 'app/views/appt-pages/appt-form-comp.html'
+			})
+			.when('/appt/sched', {
+				templateUrl: 'app/views/appt-pages/sched.html'
 			})
 			.when('/appt/success', {
 				templateUrl: 'app/views/appt-pages/appt-landing-page.html'

@@ -3,7 +3,7 @@
   <!-- body copy -->
   <div class="uw-row-full uw-pad-tb-l module">
 	<div class="uw-row">
-	  <div class="uw-col uw-body">
+	  <div class="uw-col uw-body" ng-controller="apptController">
 		<h2 class="uw-text-center uw-mini-bar uw-mini-bar-center">
 		  You have successfully created an appointment!
 	  	</h2>
@@ -11,7 +11,7 @@
 			NEXT STEPS:
 			<ul>
 				<li>
-					Stop by one of the DoIT Tech Store at 1210 W Dayton St. at the time of your appointment.
+					Stop by the DoIT Tech Store at 1210 W Dayton St. on {{appt}}.
 				</li>
 				<li>
 					Mention that you have an appointment.

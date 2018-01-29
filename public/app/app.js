@@ -12,5 +12,7 @@ angular.module('userApp', [
 	'repairService',
 	'cherwellService',
 	'acmeService',
+	'apptService',
+	'infoService',
 	'filters'
 ]);

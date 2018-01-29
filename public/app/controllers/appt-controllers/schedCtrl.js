@@ -6,8 +6,8 @@
 //						(sched.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('schedCtrl', ['acmeService', 'filters'])
-	.controller('schedController', function($scope, $location, acmeFactory, timeFilter) {
+angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filters'])
+	.controller('schedController', function($scope, $location, acmeFactory, apptFactory, timeFilter, apptData) {
 
 		vm = this;
 
@@ -15,7 +15,7 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 		// in order to let a customer schedule an appointment
 		var threshold = 3;
 		// Acme DB's id for a 'Dayton' shift
-		var dayton = 70
+		var shift_id = 70
 
 		// String values for time and day to display to customers
 		var times = ['8:00','8:30','9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'];
@@ -24,26 +24,10 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 		// Initially show this weeks calendar
 		$scope.this_week = true;
 
-		// Format the date to show to customers (yyyy-mm-dd)
-		function formatDate(d, friendly){
-			dd = d.getDate()
-			if(dd<10){
-				// append 0 if less than 10
-				dd='0'+dd;
-			}
-			mm = d.getMonth()+1
-			if(mm<10){
-				// append 0 if less than 10
-				mm='0'+mm;
-			}
-			if(friendly) return mm+"/"+dd;
-			else 		 return d.getFullYear()+"-"+mm+"-"+dd;
-		}
-
 		// Creates an array of length 10 that contains the weekday dates for the
 		// current week and next week
-		function getWeek(d) {
-			dates = [];
+		function getTwoWeeks(d) {
+			$scope.dates = [];
 			$scope.friendly_dates = [];
 
 			// find the current week's monday's date
@@ -53,30 +37,37 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 			// Use offset so as to not get weekend dates
 			offset = 0;
 			for(i=0;i<10;i++){
-				if(i==5){
-					offset = 2;
-				}
+				if(i==5) offset = 2;
+
 				s = new Date();
 				s.setDate(mon.getDate()+i+offset)
-				dates[i] = formatDate(s, false);
-				$scope.friendly_dates[i] = formatDate(s, true);
+
+				dd = s.getDate()
+				// append 0 if less than 10
+				if(dd<10) dd='0'+dd;
+
+				mm = s.getMonth()+1
+				// append 0 if less than 10
+				if(mm<10) mm='0'+mm;
+
+				$scope.friendly_dates[i] = mm+"/"+dd;
+				$scope.dates[i] = s.getFullYear()+"-"+mm+"-"+dd;
 			}
-			return dates;
 		}
 
 		// Get todays date
 		today = new Date()
 		// Store array of dates in scope
-		$scope.dates = getWeek(today);
+		getTwoWeeks(today);
 
-		// Don't let customer's schedule appts in the next 24 hours
+		// Don't let customer's schedule appts in the past
 		// Easily test this code by setting threshold to 1
 		earliest_day = -1
 		earliest_hour = -1;
 		if(today.getDay()==6){
 			earliest_day = days.length
 		} else if(today.getDay()!=0){
-			earliest_day = today.getDay()-1
+			earliest_day = today.getDay()-2
 			if(today.getHours()>=18){
 				earliest_hour = times.length;
 			}else if(today.getHours()>8){
@@ -114,12 +105,13 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 					// and next monday at 9:30)
 					$scope.cells[i][j].agents = [[],[]];
 					$scope.cells[i][j].dates = [$scope.dates[j],$scope.dates[j+5]];
+					$scope.cells[i][j].friendly_dates = [$scope.friendly_dates[j],$scope.friendly_dates[j+5]];
 					for(k=0;k<vm.schedule.length;k++){
 						agent = vm.schedule[k];
 						ag = {'first':agent.Nick_Name,'last':agent.Last_Name, 'netid': agent.NetID};
 
 						// Check if the agent is working in the Dayton column
-						if((agent.date == $scope.dates[j]+"T06:00:00.000Z")&(agent[times[i]]==dayton)){
+						if((agent.date == $scope.dates[j]+"T06:00:00.000Z")&(agent[times[i]]==shift_id)){
 							var already_exists = false;
 							// Check if the agent is listed already (sometimes acme returns duplicates)
 							for(l=0;l<$scope.cells[i][j].agents[0].length;l++){
@@ -130,7 +122,7 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 								$scope.cells[i][j].agents[0] = $scope.cells[i][j].agents[0].concat([ag])
 							}
 						}
-						if((agent.date == $scope.dates[j+5]+"T06:00:00.000Z")&(agent[times[i]]==dayton)){
+						if((agent.date == $scope.dates[j+5]+"T06:00:00.000Z")&(agent[times[i]]==shift_id)){
 							var already_exists = false;
 							// Check if the agent is listed already (sometimes acme returns duplicates)
 							for(l=0;l<$scope.cells[i][j].agents[1].length;l++){
@@ -157,18 +149,17 @@ angular.module('schedCtrl', ['acmeService', 'filters'])
 							// Check which week is displayed to user
 							var k = $scope.this_week ? 0 : 1;
 							// Update the agents and date
-							item.agents = item.agents[k];
-							item.dates = item.dates[k]
-							// Save the appt data for the next page
-							acmeFactory.book_appt(item);
-							// Go to the confirmation page
-							$location.path('/appt/confirm');
+							apptData.agent = item.agents[k][0];
+							apptData.dates  = item.dates[k];
+							apptData.day 	= item.day;
+							apptData.time 	= item.time;
+							apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
+
+							apptFactory.book_appt();
 						}
 					}
 				}
 			}
-
-			console.log($scope.cells)
 		});
 
 		// function for changing between weeks on the schedule
