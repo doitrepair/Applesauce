@@ -1,3 +1,16 @@
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
 .cell.title:last-child {
   border-right: 0px;
 }

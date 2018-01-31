@@ -8,18 +8,12 @@
 //******************************************************************************
 angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
 	.controller('apptController', function($scope, $location, userData, apptData) {
-
-		// Get the appointment that the user clicked on
-		//var appt = acmeFactory.get_appt();
-
-		// Agents are sorted in order of agent id (idealy equal to senority)
-		// Scheduling the second most senior agent with the appt per request
-		// from BVLA (so that the senior-most agent stays on the floor)
-		//var agent = appt.agents[1];
-
-		// Set up display vars
-		$scope.appt = apptData.title;
-
+		$scope.templateInfo = function(){
+			return 'app/views/appt-pages/appt-info.html';
+		}
+		$scope.templateSuccess = function(){
+			return 'app/views/appt-pages/appt-success.html';
+		}
 		// Function for the submit button
 		$scope.save_descrip = function(){
 			userData.description 	= $scope.description;

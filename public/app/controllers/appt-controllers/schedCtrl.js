@@ -6,12 +6,15 @@
 //						(sched.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filters'])
-	.controller('schedController', function($scope, acmeFactory,
-			apptFactory, timeFilter, apptData, days, times) {
+angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'infoService', 'filters'])
+	.controller('schedController', function($scope, $location, acmeFactory,
+			cherwellFactory, timeFilter, userData, apptData, days, times) {
 
 		vm = this;
 
+		$scope.template = function(){
+			return 'app/views/appt-pages/appt-info.html';
+		}
 		// Threshold specifies the number of staff required at a specified time
 		// in order to let a customer schedule an appointment
 		var threshold = 3;
@@ -152,7 +155,16 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 							apptData.time 	= item.time;
 							apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
 
-							apptFactory.book_appt();
+							// Send out an email to cherwell to create a case
+							userData.description = "Appt: "+apptData.title + "; " + userData.description;
+							userData.owner_netid = apptData.agent.netid;
+							repair_email = cherwellFactory.buildCherwellCase()
+
+							// Update the schedule by moving an agent to the appt column
+							acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
+
+							// Go to the success landing page
+							$location.path('/appt/success');
 						}
 					}
 				}

@@ -16,26 +16,44 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 				templateUrl: 'app/views/repair-pages/repair-form.html'
 			})
 			*/
-			.when('/forms/success', {
-				templateUrl: 'app/views/forms-pages/forms-landing-page.html'
-			})
-			.when('/forms/data', {
-				templateUrl: 'app/views/forms-pages/data-transfer-form.html'
-			})
 			.when('/appt', {
-				templateUrl: 'app/views/appt-pages/appt-form-descrip.html'
+				templateUrl: 'app/views/forms-pages/form-descrip.html',
+				controller: 'apptController'
 			})
 			.when('/appt/user', {
-				templateUrl: 'app/views/appt-pages/appt-form-user.html'
+				templateUrl: 'app/views/forms-pages/form-user.html',
+				controller: 'apptController'
 			})
 			.when('/appt/comp', {
-				templateUrl: 'app/views/appt-pages/appt-form-comp.html'
+				templateUrl: 'app/views/forms-pages/form-comp.html',
+				controller: 'apptController'
 			})
 			.when('/appt/sched', {
 				templateUrl: 'app/views/appt-pages/sched.html'
 			})
 			.when('/appt/success', {
-				templateUrl: 'app/views/appt-pages/appt-landing-page.html'
+				templateUrl: 'app/views/forms-pages/form-success.html',
+				controller: 'apptController'
+			})
+			.when('/data', {
+				templateUrl: 'app/views/data-pages/data-descrip.html',
+				controller: 'dataTransController'
+			})
+			.when('/data/user', {
+				templateUrl: 'app/views/forms-pages/form-user.html',
+				controller: 'dataTransController'
+			})
+			.when('/data/comp', {
+				templateUrl: 'app/views/forms-pages/form-comp.html',
+				controller: 'dataTransController'
+			})
+			.when('/data/disc', {
+				templateUrl: 'app/views/data-pages/data-disclaimer.html',
+				controller: 'dataTransController'
+			})
+			.when('/data/success', {
+				templateUrl: 'app/views/forms-pages/form-success.html',
+				controller: 'dataTransController'
 			});
 		// Get rid of has in the URL
 		$locationProvider.html5Mode(true);
