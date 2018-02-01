@@ -54,6 +54,9 @@ acme_connection.connect();
 app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
+var authRouter	= require('./app/routes/api/auth')(app, express, db_connection);
+app.use('/auth', authRouter);
+
 // For routes beginning with /app/questions go to the questions router
 var questionsRouter	= require('./app/routes/api/repair-app/questions')(app, express, db_connection);
 app.use('/api/questions', questionsRouter);

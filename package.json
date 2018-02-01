@@ -7,12 +7,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-	"monitor": "nodemon server.js"
+    "monitor": "nodemon server.js"
   },
   "author": "DoIT Tech Store",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "jsonwebtoken": "^8.1.1",
     "morgan": "^1.8.1",
     "mysql": "^2.13.0",
     "path": "^0.12.7"
