@@ -6,7 +6,7 @@ var bodyParser 		= require('body-parser');
 var morgan			= require('morgan');
 var server_config	= require('./config/server-config');
 var repair_db		= require('./config/repair-db');
-var acme_db			= require('./config/acme-db')
+var acme_db			= require('./config/acme-db');
 var path			= require('path');
 var mySQL       	= require('mysql');
 //APP CONFIGURATION ============================================================
@@ -54,7 +54,7 @@ acme_connection.connect();
 app.use(express.static(__dirname + '/public'));
 
 // API routes ------------------------------------------------------------------
-var authRouter	= require('./app/routes/api/auth')(app, express, db_connection);
+var authRouter	= require('./app/routes/api/auth')(app, express, db_connection, repair_db.secret);
 app.use('/auth', authRouter);
 
 // For routes beginning with /app/questions go to the questions router
