@@ -16,15 +16,15 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 				templateUrl: 'app/views/repair-pages/repair-form.html'
 			})
 			*/
-			.when('/appt', {
+			.when('/appt/', {
 				templateUrl: 'app/views/forms-pages/form-descrip.html',
 				controller: 'apptController'
 			})
-			.when('/appt/user', {
+			.when('/appt/user/', {
 				templateUrl: 'app/views/forms-pages/form-user.html',
 				controller: 'apptController'
 			})
-			.when('/appt/comp', {
+			.when('/appt/comp/', {
 				templateUrl: 'app/views/forms-pages/form-comp.html',
 				controller: 'apptController'
 			})

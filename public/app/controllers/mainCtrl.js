@@ -7,12 +7,12 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('mainCtrl', [])
-	.controller('mainController', function($scope, $location) {
+	.controller('mainController', function($scope, $location, $window) {
 		var vm = this;
 		$scope.startRepair = function() {
 			$location.path('/repair');
 		}
 		$scope.startAppt = function() {
-			$location.path('/appt');
+			$window.location.href = "https://applesauce.doit.wisc.edu/appt"
 		}
 	});
