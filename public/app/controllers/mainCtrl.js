@@ -9,7 +9,7 @@
 angular.module('mainCtrl', ['ngCookies'])
 	.controller('mainController', function($scope, $location, $window, $cookies) {
 		var vm = this;
-		console.log($cookies["Name"]);
+		console.log($cookies);
 		$scope.startRepair = function() {
 			$location.path('/repair');
 		}

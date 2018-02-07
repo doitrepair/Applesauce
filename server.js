@@ -76,7 +76,7 @@ var cherwellRouter			= require('./app/routes/api/cherwell')(app, express);
 app.use('/api/email', cherwellRouter);
 
 // Homepage
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
