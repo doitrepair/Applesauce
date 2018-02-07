@@ -1,6 +1,7 @@
 angular.module('userApp', [
 	'ngAnimate',
 	'ngSanitize',
+	'ngCookies',
 	'ui.bootstrap',
 	'app.routes',
 	'mainCtrl',

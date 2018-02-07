@@ -75,6 +75,36 @@ app.use('/api/schedule', schedRouter);
 var cherwellRouter			= require('./app/routes/api/cherwell')(app, express);
 app.use('/api/email', cherwellRouter);
 
+// Homepage
+app.get('/', function(req, res) {
+	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+});
+
+app.use(function(req, res, next) {
+	// make sure there is a token
+	var token = req.body.token || req.query.token || req.headers['x-access-token']; // decode token
+	if (token) {
+		// Verifies authentication
+		jwt.verify(token, superSecret, function(err, decoded) {
+			if (err) {
+				return res.status(403).send({ success: false,
+					message: 'Failed to authenticate token.'
+				});
+			} else {
+				// Authenticated correctly
+				next();
+			}
+		});
+	}
+	else {
+		// if there is no token is provided
+		return res.status(403).send({
+			success: false,
+			message: 'No token provided.'
+		});
+	}
+});
+
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html
 app.get('*', function(req, res) {

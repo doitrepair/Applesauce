@@ -7,7 +7,13 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
-	.controller('apptController', function($scope, $location, userData, apptData) {
+	.controller('apptController', function($scope, $location, $cookies, userData, apptData) {
+
+        
+		console.log('Testing');
+		$scope.test = 2;
+        console.log($cookies.get("username"));
+
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
 		}

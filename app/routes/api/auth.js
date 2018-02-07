@@ -23,7 +23,6 @@ module.exports = function(app, express, db_connection, secret) {
 						res.send('Error with query')
 					} else {
 						if(bcrypt.compareSync(req.body.password, result[0].password)){
-							console.log("success");
 							var token = jwt.sign({
 					          name: req.body.name
 						  	}, secret , {
@@ -36,7 +35,6 @@ module.exports = function(app, express, db_connection, secret) {
 								token: token
 							});
 						} else {
-							console.log("auth failed");
 							res.json({
 								success: false,
 								message: 'Authentication failed. Wrong Password.'
