@@ -6,13 +6,13 @@
 //						(appt-form.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
+angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService', 'ngCookies'])
 	.controller('apptController', function($scope, $location, $cookies, userData, apptData) {
 
-        
+
 		console.log('Testing');
 		$scope.test = 2;
-        console.log($cookies.get("username"));
+        console.log($cookies);
 
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
