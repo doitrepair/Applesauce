@@ -75,12 +75,7 @@ app.use('/api/schedule', schedRouter);
 var cherwellRouter			= require('./app/routes/api/cherwell')(app, express);
 app.use('/api/email', cherwellRouter);
 
-// Homepage
-app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
-});
-
-app.use(function(req, res, next) {
+app.use('/admin', function(req, res, next) {
 	// make sure there is a token
 	var token = req.body.token || req.query.token || req.headers['x-access-token']; // decode token
 	if (token) {

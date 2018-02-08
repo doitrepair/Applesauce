@@ -7,12 +7,12 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService', 'ngCookies'])
-	.controller('apptController', function($scope, $location, $cookies, userData, apptData) {
+	.controller('apptController', function($scope, $location, $cookies, $window, userData, apptData) {
 
-
-		console.log('Testing');
-		$scope.test = 2;
-        console.log($cookies);
+		$scope.submit_pressed = false;
+		$scope.checkInvalid = function(form, field){
+			return field.$invalid && ($scope.submit_pressed || !field.$pristine)
+		}
 
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
@@ -21,25 +21,37 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 			return 'app/views/appt-pages/appt-success.html';
 		}
 		// Function for the submit button
-		$scope.save_descrip = function(){
-			userData.description 	= $scope.description;
-			$location.path('/appt/user');
+		$scope.save_descrip = function(isValid){
+			if(isValid){
+				userData.description 	= $scope.description;
+				$location.path('/appt/user');
+			} else{
+				$scope.submit_pressed = true;
+			}
 		}
-		$scope.save_user = function(){
-			userData.netId 			= $scope.netId;
-			userData.email 			= $scope.email;
-			userData.tel 			= $scope.tel;
-			userData.contactPref	= $scope.contactPref;
-			userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
-			$location.path('/appt/comp');
+		$scope.save_user = function(isValid){
+			if(isValid){
+				userData.netId 			= $scope.netId;
+				userData.email 			= $scope.email;
+				userData.tel 			= $scope.tel;
+				userData.contactPref	= $scope.contactPref;
+				userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
+				$location.path('/appt/comp');
+			} else{
+				$scope.submit_pressed = true;
+			}
 		}
-		$scope.save_comp = function(){
-			userData.os 			= $scope.os;
-			userData.device_type	= $scope.device_type;
-			userData.make 			= $scope.make;
-			userData.short			= 'Service Desk Appt';
-			userData.ship_to		= 'Dayton';
-			userData.sn				= 'Needs Update';
-			$location.path('/appt/sched');
+		$scope.save_comp = function(isValid){
+			if(isValid){
+				userData.os 			= $scope.os;
+				userData.device_type	= $scope.device_type;
+				userData.make 			= $scope.make;
+				userData.short			= 'Service Desk Appt';
+				userData.ship_to		= 'Dayton';
+				userData.sn				= 'Needs Update';
+				console.log(userData);
+			} else{
+				$scope.submit_pressed = true;
+			}
 		}
 	});

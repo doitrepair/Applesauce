@@ -3,14 +3,20 @@
 		<ng-include src="templateInfo()"></ng-include>
 	</div>
 	<div class="module">
-		<form id="main" style="padding: 0px 50px; width:100%">
+		<form name="userForm" ng-submit="save_descrip(userForm.$valid)" novalidate style="padding: 0px 50px; width:100%">
 			<fieldset>
 				<legend>What's Happening?</legend>
-				<label for="description">Please describe the issues that you are experiencing.</label>
-				<textarea rows="5" id="description" ng-model="description"></textarea>
-			</fieldset>
+				<div class="form-group" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.descrip)}">
 
-			<button class="uw-button" ng-click="save_descrip()">Continue</button>
+					<label for="description">Please describe the issues that you are experiencing.</label>
+					<textarea class="form-control" rows="5" name="descrip" ng-model="description" required></textarea>
+
+					<label ng-show="checkInvalid(userForm, userForm.descrip)" class="help-block">
+						Please enter a description.
+					</label>
+				</div>
+			</fieldset>
+			<button type="submit" class="uw-button">Continue</button>
 		</form>
 	</div>
 	<div style="padding: 20px 0px"></div>
