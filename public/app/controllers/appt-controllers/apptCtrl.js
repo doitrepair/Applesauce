@@ -49,7 +49,6 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.short			= 'Service Desk Appt';
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
-				console.log(userData);
 			} else{
 				$scope.submit_pressed = true;
 			}

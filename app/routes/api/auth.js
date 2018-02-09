@@ -20,7 +20,16 @@ module.exports = function(app, express, db_connection, secret) {
 					db_connection.release();
 					if (err) {
 						console.log(err);
-						res.send('Error with query')
+						res.json({
+							success: false,
+							message: 'Authentication Failed. Error With Query.'
+						});
+					} else if (result.length == 0) {
+						console.log("Bad Username");
+						res.json({
+							success: false,
+							message: "Authentication Failed. Username Does Not Exist."
+						});
 					} else {
 						if(bcrypt.compareSync(req.body.password, result[0].password)){
 							var token = jwt.sign({

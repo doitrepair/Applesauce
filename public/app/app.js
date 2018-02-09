@@ -10,6 +10,7 @@ angular.module('userApp', [
 	'dataTransCtrl',
 	'schedCtrl',
 	'apptCtrl',
+	'loginCtrl',
 	'repairService',
 	'cherwellService',
 	'acmeService',
