@@ -4,6 +4,6 @@ config.js
 app.yaml
 .idea/
 .DS_Store
-.htaccessi
+.htaccess
 .ipynb_checkpoints
 tst/
