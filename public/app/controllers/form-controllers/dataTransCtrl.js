@@ -52,6 +52,7 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 				userData.short			= 'Data Transfer - Online Repair';
 				userData.ship_to		= 'Needs Update';
 				userData.sn				= $scope.sn;
+				userData.sn2			= $scope.sn2;
 				userData.description	+= "; New SN:"+$scope.sn+"; Old SN:"+$scope.sn2 +";";
 				$location.path('/data/disc');
 			} else{

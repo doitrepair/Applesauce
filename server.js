@@ -69,6 +69,9 @@ app.use('/api/answers', answerRouter);
 var repairRouter		= require('./app/routes/api/repair-app/repairs')(app, express, db_connection);
 app.use('/api/repairs', repairRouter);
 
+var incidentRouter		= require('./app/routes/api/incidents')(app, express, db_connection);
+app.use('/api/incident', incidentRouter);
+
 var schedRouter			= require('./app/routes/api/appt-app/schedule')(app, express, acme_connection);
 app.use('/api/schedule', schedRouter);
 

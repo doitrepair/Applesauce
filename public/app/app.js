@@ -13,6 +13,7 @@ angular.module('userApp', [
 	'loginCtrl',
 	'repairService',
 	'cherwellService',
+	'incidentService',
 	'acmeService',
 	'apptService',
 	'infoService',
