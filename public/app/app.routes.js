@@ -35,23 +35,23 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 				templateUrl: 'app/views/forms-pages/form-success.html',
 				controller: 'apptController'
 			})
-			.when('/data', {
+			.when('/net/data', {
 				templateUrl: 'app/views/data-pages/data-descrip.html',
 				controller: 'dataTransController'
 			})
-			.when('/data/user', {
+			.when('/net/data/user', {
 				templateUrl: 'app/views/forms-pages/form-user.html',
 				controller: 'dataTransController'
 			})
-			.when('/data/comp', {
+			.when('/net/data/comp', {
 				templateUrl: 'app/views/forms-pages/form-comp.html',
 				controller: 'dataTransController'
 			})
-			.when('/data/disc', {
+			.when('/net/data/disc', {
 				templateUrl: 'app/views/data-pages/data-disclaimer.html',
 				controller: 'dataTransController'
 			})
-			.when('/data/success', {
+			.when('/net/data/success', {
 				templateUrl: 'app/views/forms-pages/form-success.html',
 				controller: 'dataTransController'
 			})

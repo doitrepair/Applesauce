@@ -2,7 +2,3 @@
 #ShibRequireSession On
 #ShibUseHeaders On
 #ShibRequestSetting applicationId "applesauce.doit.wisc.edu"
-
-AuthType shibboleth
-ShibRequestSetting requireSession 1
-Require valid-user
