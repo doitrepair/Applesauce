@@ -1,5 +1,14 @@
-<div style="width: 100%;">
+<div style="width: 100%;" ng-controller="adminController">
 	<div class="module">
 		<h2 class="uw-mini-bar" style="margin-top: 20px" >Welcome!</h2>
 	</div>
+	<div class="module" ng-if="appts.length" style="">
+		<h2 class="uw-mini-bar" style="margin-top: 20px" >Appointments Today:</h2>
+		<div ng-repeat="appt in appts">
+			<h3 style="margin: 0px;">Net ID: {{ appt.net_id }}</h3>
+			<h4 style="margin: 0px;">Appointment: {{ appt.time }} on {{ appt.date }} with {{ appt.appt_agent }}</h4>
+			<p style="color: gray; max-height: 6em; line-height: 1.2em; overflow: auto;">{{ appt.description }}</p>
+		</div>
+	</div>
+
 </div>

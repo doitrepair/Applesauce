@@ -58,7 +58,7 @@ module.exports = function(app, express, db_connection) {
                     console.log('Error connecting');
                 } else {
                     console.log('Connection established!');
-                    db_connection.query('SELECT * FROM incidents WHERE appt_date = ?', req.body.date, function(err, result){
+                    db_connection.query('SELECT * FROM incidents WHERE appt_date BETWEEN ? AND ?', [req.body.begin, req.body.end], function(err, result){
                         db_connection.release();
                         if (err) {
                             console.log("Error with query");

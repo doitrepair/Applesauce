@@ -11,6 +11,7 @@ angular.module('userApp', [
 	'schedCtrl',
 	'apptCtrl',
 	'loginCtrl',
+	'adminCtrl',
 	'repairService',
 	'cherwellService',
 	'incidentService',

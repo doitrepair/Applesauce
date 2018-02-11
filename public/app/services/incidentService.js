@@ -8,6 +8,8 @@
 angular.module('incidentService', ['infoService'])
 	.factory('incidentFactory', function($http, userData, apptData) {
 
+		var incidentFactory = {};
+
 		incidentFactory.createIncident = function(case_type, created_by) {
 			if(userData.netId == null) userData.netId = 'null';
 			if(userData.first_name == null){
@@ -52,9 +54,10 @@ angular.module('incidentService', ['infoService'])
 				});
 		};
 
-		incidentFactory.getApptByDate = function(date) {
-			return $http.post('/api/incident/', {
-				'date': date
+		incidentFactory.getApptByDateRange = function(begin, end) {
+			return $http.put('/api/incident/', {
+				'begin': begin,
+				'end': end
 			});
 		};
 
