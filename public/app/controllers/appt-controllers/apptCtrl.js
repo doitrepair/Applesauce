@@ -20,6 +20,9 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		$scope.templateSuccess = function(){
 			return 'app/views/appt-pages/appt-success.html';
 		}
+
+		userData.case_type = "Appointment";
+
 		// Function for the submit button
 		$scope.save_descrip = function(isValid){
 			if(isValid){
@@ -42,6 +45,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 			}
 		}
 		$scope.save_comp = function(isValid){
+			console.log('testing')
 			if(isValid){
 				userData.os 			= $scope.os;
 				userData.device_type	= $scope.device_type;
@@ -49,6 +53,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.short			= 'Service Desk Appt';
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
+				$location.path('/appt/sched');
 			} else{
 				$scope.submit_pressed = true;
 			}

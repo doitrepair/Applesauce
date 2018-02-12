@@ -27,10 +27,12 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 		$scope.templateSuccess = function(){
 			return 'app/views/data-pages/data-success.html';
 		}
+
+		userData.case_type = 'Data Transfer';
 		// Function for the submit button
 		$scope.save_descrip = function(){
 			userData.description 	= "New Computer Data Transfer Check-In";
-			$location.path('/data/user');
+			$location.path('/net/data/user');
 		}
 		$scope.save_user = function(isValid){
 			if(isValid){
@@ -39,7 +41,7 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 				userData.tel 			= $scope.tel;
 				userData.contactPref	= $scope.contactPref;
 				userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
-				$location.path('/data/comp');
+				$location.path('/net/data/comp');
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -54,7 +56,7 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 				userData.sn				= $scope.sn;
 				userData.sn2			= $scope.sn2;
 				userData.description	+= "; New SN:"+$scope.sn+"; Old SN:"+$scope.sn2 +";";
-				$location.path('/data/disc');
+				$location.path('/net/data/disc');
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -66,6 +68,6 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 			}
 			repair_email = cherwellFactory.buildCherwellCase();
 			// Go to the success landing page
-			$location.path('/data/success');
+			$location.path('/net/data/success');
 		};
 	});

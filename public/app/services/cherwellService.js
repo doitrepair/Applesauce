@@ -5,8 +5,8 @@
 //
 //******************************************************************************
 //******************************************************************************
-angular.module('cherwellService', ['infoService'])
-	.factory('cherwellFactory', function($http, userData) {
+angular.module('cherwellService', ['infoService', 'incidentService'])
+	.factory('cherwellFactory', function($http, userData, incidentFactory) {
 		var cherwellFactory = {};
 
 		//**********************************************************************
@@ -52,11 +52,11 @@ angular.module('cherwellService', ['infoService'])
 				return;
 
 			// construct the description field
-			var full_description = userData.description + description_suffix;
+			userData.description += description_suffix;
 			// construct the repair email, it must be in this format for cherwell
 			// to correctly interpret it. To add a field, contact Chris Grosspietsch
 			var repair_email =
-				`<br>description_key:`+ full_description +`--eol<br>
+				`<br>description_key:`+ userData.description +`--eol<br>
 				short_description_key: `+ userData.short +`--eol<br>
 				net_id_key:  `+ userData.netId +`--eol<br>
 				alt_cont_key: `+ userData.alt_contact +`--eol<br>
@@ -79,6 +79,8 @@ angular.module('cherwellService', ['infoService'])
 			console.log('submitted');
 			console.log(repair_email);
 			cherwellFactory.createCherwellCase(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
+			console.log('logged case');
+			incidentFactory.createIncident();
 		}
 		return cherwellFactory;
 	});
