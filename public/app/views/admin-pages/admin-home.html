@@ -14,8 +14,8 @@
 				<h4 style=" margin-left: 10px;">End Date:</h4>
 				<md-datepicker ng-model="end" md-placeholder="Enter End Date"></md-datepicker>
 			</div>
-			<button class='button-active' style="margin-top: 30px;" ng-click="submit_times()"> Search </button>
 		</div>
+		<button class='button-active' style="margin-top: 10px;" ng-click="submit_times()"> Search </button>
 		<div style="margin-top: 30px;">
 			<div ng-repeat="appt in appts">
 				<h3 style="margin: 0px;">Net ID: {{ appt.net_id }}</h3>
