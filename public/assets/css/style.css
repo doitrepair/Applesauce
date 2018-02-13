@@ -130,6 +130,14 @@ a.button-inactive:hover {
   -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
   box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
+.contact-card {
+	display:inline-block;
+	border: 2px solid gray;
+	background-color: lightgray;
+	padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
 .module-small {
   background-color: white;
   padding: 5px;
