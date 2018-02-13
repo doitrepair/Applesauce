@@ -13,7 +13,7 @@ del, dfn, em, font, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, button,
-table, caption, tbody, tfoot, thead, tr, th, td {
+caption{
   border: 0;
   font-family: inherit;
   font-size: 100%;
@@ -2166,17 +2166,11 @@ input[type="reset"]:focus {
   color: #fff; }
 
 table {
-  width: 100%;
-  margin-bottom: 32px;
-  margin-bottom: 2rem;
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid #dbdbdb; }
 
-tfoot, thead {
-  background: #f7f7f7;
-  color: #494949;
-  border: 1px solid #e4e4e4; }
+
 
 caption {
   font-weight: 700;

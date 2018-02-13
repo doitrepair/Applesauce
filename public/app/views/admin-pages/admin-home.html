@@ -2,13 +2,26 @@
 	<div class="module">
 		<h2 class="uw-mini-bar" style="margin-top: 20px" >Welcome!</h2>
 	</div>
-	<div class="module" ng-if="appts.length" style="">
-		<h2 class="uw-mini-bar" style="margin-top: 20px" >Appointments Today:</h2>
-		<div ng-repeat="appt in appts">
-			<h3 style="margin: 0px;">Net ID: {{ appt.net_id }}</h3>
-			<h4 style="margin: 0px;">Appointment: {{ appt.time }} on {{ appt.date }} with {{ appt.appt_agent }}</h4>
-			<p style="color: gray; max-height: 6em; line-height: 1.2em; overflow: auto;">{{ appt.description }}</p>
+	<div class="module">
+		<h2 class="uw-mini-bar" style="margin-top: 20px" >Appointments:</h2>
+		<div layout-gt-xs="row">
+			<div flex-gt-xs>
+				<h4 style="margin-left: 10px;">Begin Date</h4>
+				<md-datepicker ng-model="begin" md-placeholder="Enter Start Date"></md-datepicker>
+			</div>
+
+			<div flex-gt-xs>
+				<h4 style=" margin-left: 10px;">End Date:</h4>
+				<md-datepicker ng-model="end" md-placeholder="Enter End Date"></md-datepicker>
+			</div>
+			<button class='button-active' style="margin-top: 30px;" ng-click="submit_times()"> Search </button>
+		</div>
+		<div style="margin-top: 30px;">
+			<div ng-repeat="appt in appts">
+				<h3 style="margin: 0px;">Net ID: {{ appt.net_id }}</h3>
+				<h4 style="margin: 0px;">Appointment: {{ appt.time }} on {{ appt.date }} with {{ appt.appt_agent }}</h4>
+				<p style="color: gray; max-height: 6em; line-height: 1.2em; overflow: auto;">{{ appt.description }}</p>
+			</div>
 		</div>
 	</div>
-
 </div>

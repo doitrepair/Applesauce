@@ -5,8 +5,23 @@
 //	Module Description: This module controls the dispay of the admin pages
 //******************************************************************************
 //******************************************************************************
-angular.module('adminCtrl', ['incidentService'])
+angular.module('adminCtrl', ['incidentService', 'ngMaterial', 'ngMessages'])
 	.controller('adminController', function($scope, incidentFactory) {
+
+		var get_incidents = function(begin, end){
+			var promise = incidentFactory.getApptByDateRange(begin, end);
+			promise.then(function(response){
+				$scope.appts = response.data;
+				console.log($scope.appts)
+
+				for(i=0; i<$scope.appts.length; i++){
+					$scope.appts[i].date = $scope.appts[i].appt_date.split('T')[0];
+					time = $scope.appts[i].appt_time.split(':');
+					$scope.appts[i].time = time[0]+':'+time[1];
+				}
+			});
+		}
+
 		var dateToString = function(date) {
 			dd = date.getDate()
 			if(dd<10) dd='0'+dd; // append 0 if less than 10
@@ -15,20 +30,18 @@ angular.module('adminCtrl', ['incidentService'])
 			if(mm<10) mm='0'+mm; // append 0 if less than 10
 			return date.getFullYear()+"-"+mm+"-"+dd;
 		};
+		today_date = new Date()
+		today = dateToString(today_date);
 
-		today = dateToString(new Date());
-		console.log(today)
+		get_incidents(today, today);
 
-		var promise = incidentFactory.getApptByDateRange('2018-01-01', '2018-03-01');
-		promise.then(function(response){
-			$scope.appts = response.data;
-			console.log($scope.appts)
+		$scope.begin = today_date;
+		$scope.end = today_date;
 
-			for(i=0; i<$scope.appts.length; i++){
-				$scope.appts[i].date = $scope.appts[i].appt_date.split('T')[0];
-				time = $scope.appts[i].appt_time.split(':');
-				$scope.appts[i].time = time[0]+':'+time[1];
-			}
-		});
+		$scope.submit_times = function(){
+			begin = dateToString($scope.begin);
+			end = dateToString($scope.end);
+			get_incidents(begin, end);
+		}
 
 	});
