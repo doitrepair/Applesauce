@@ -19,8 +19,14 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 		//	Parameters:
 		//		repair		A correctly formatted string to send to cherwell
 		//**********************************************************************
-		cherwellFactory.createCherwellCase = function(repair){
-			return $http.post('/api/email/', { repair: repair });
+		cherwellFactory.createCherwellCase = function(repair, user){
+			return $http.post('/api/email/',
+				{
+					wiscit_message: repair,
+					user_message: 	userData.email_message,
+					subject:		userData.email_subject,
+					user_email:		userData.email
+				});
 
 		};
 

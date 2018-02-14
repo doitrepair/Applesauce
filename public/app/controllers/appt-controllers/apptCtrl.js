@@ -22,6 +22,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		}
 
 		userData.case_type = "Appointment";
+		userData.email_subject = "Appointment Confirmation";
 
 		// Function for the submit button
 		$scope.save_descrip = function(isValid){

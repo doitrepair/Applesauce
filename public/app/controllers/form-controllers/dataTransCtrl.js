@@ -29,6 +29,9 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 		}
 
 		userData.case_type = 'Data Transfer';
+		userData.email_subject = "Data Transfer";
+		userData.email_message = "You have successfully created a data transfer case with DoIT Repair!"
+
 		// Function for the submit button
 		$scope.save_descrip = function(){
 			userData.description 	= "New Computer Data Transfer Check-In";

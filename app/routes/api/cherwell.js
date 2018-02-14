@@ -1,7 +1,7 @@
 // REQUIRED PACKAGES ===========================================================
 var bodyParser 	= require('body-parser');
 var nodemailer = require("nodemailer");
-var config 		= require('../../../config/server-config');
+var email 		= require('../../../config/email-config');
 
 // questionsRouter FUNCTION ==========================================================
 module.exports = function(app, express) {
@@ -13,27 +13,47 @@ module.exports = function(app, express) {
 	/*------------------Routing Started ------------------------*/
 	// ROUTES FOR /api/email -----------------------------------------------
 	cherwellRouter.route('/')
-
-
 		.post(function(req, res) {
 
-			var text = JSON.stringify(req.body.repair);
+			var wiscit_message = JSON.stringify(req.body.wiscit_message);
+
 			var smtpTransport = nodemailer.createTransport({
-				service: "gmail",
-				host: "smtp.gmail.com",
+				service: email.service,
+				host: email.host,
+				port: email.port,
+				secure: email.secure, //use TLS
 				auth: {
-					user: config.email,
-					pass: config.email_pw
+					user: email.user,
+					pass: email.pass
 				}
 			});
 
-			var mailOptions={
+			var wiscitOptions={
 				to : 'wiscit@doit.wisc.edu',
+				from: email.email,
 				subject : 'Online Repair',
-				html : text
+				html : wiscit_message
 			};
-			console.log(mailOptions);
-			smtpTransport.sendMail(mailOptions, function(error, response){
+			console.log(wiscitOptions);
+			smtpTransport.sendMail(wiscitOptions, function(error, response){
+				if(error){
+					console.log(error);
+					res.end("error");
+				}else{
+					console.log("Message sent: " + response.message);
+					res.end("sent");
+				}
+			});
+
+
+			var userOptions={
+				to : req.body.user_email,
+				from: email.email,
+				subject : req.body.subject,
+				html : req.body.user_message
+			};
+			console.log(userOptions);
+			smtpTransport.sendMail(userOptions, function(error, response){
 				if(error){
 					console.log(error);
 					res.end("error");

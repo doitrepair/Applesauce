@@ -157,6 +157,7 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 
 							// Send out an email to cherwell to create a case
 							userData.description = "Appt: "+apptData.title + "; " + userData.description;
+							userData.email_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
 							userData.owner_netid = apptData.agent.netid;
 							repair_email = cherwellFactory.buildCherwellCase()
 
