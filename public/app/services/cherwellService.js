@@ -56,7 +56,7 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 			// Check if any of these are undefined, which cherwell will need
 			if ((userData.netId == undefined && userData.first == undefined) || userData.contactPref == undefined || userData.os == undefined)
 				return;
-
+			if (userData.netId == undefined) userData.description = "Created By: "+ userData.first + " " + userData.last + "; " + userData.description;
 			// construct the description field
 			userData.description += description_suffix;
 			// construct the repair email, it must be in this format for cherwell

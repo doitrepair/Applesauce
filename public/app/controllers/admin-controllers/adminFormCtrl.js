@@ -1,29 +1,23 @@
-//******************************************************************************
-//******************************************************************************
-//	File Name: apptCtrl.js
-//******************************************************************************
-//	Module Description: This module controls the dispay of the appoitment page
-//						(appt-form.html)
-//******************************************************************************
-//******************************************************************************
 angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService', 'ngCookies'])
 	.controller('apptController', function($scope, $location, $cookies, $window, userData, apptData) {
 
 		$scope.submit_pressed = false;
-
-		var form = 'app/views/forms-pages/form-descrip.html';
-		$scope.templateForm = function(){
-			return form;
-		}
-		$scope.templateInfo = function(){
-			return 'app/views/appt-pages/appt-info.html';
-		}
-		$scope.templateSuccess = function(){
-			return 'app/views/appt-pages/appt-success.html';
-		}
+		$scope.no_netid_field = true;
 
 		$scope.checkInvalid = function(form, field){
 			return field.$invalid && ($scope.submit_pressed || !field.$pristine)
+		}
+
+		$scope.templateInfo = function(){
+			return 'app/views/appt-pages/appt-info.html';
+		}
+
+		$scope.templateForm = function(){
+			return 'app/views/appt-pages/appt-info.html';
+		}
+
+		$scope.templateSuccess = function(){
+			return 'app/views/appt-pages/appt-success.html';
 		}
 
 		userData.case_type = "Appointment";
@@ -33,25 +27,26 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		$scope.save_descrip = function(isValid){
 			if(isValid){
 				userData.description 	= $scope.description;
-				form = 'app/views/forms-pages/form-user.html';
+				$location.path('/appt/user');
 			} else{
 				$scope.submit_pressed = true;
 			}
 		}
 		$scope.save_user = function(isValid){
 			if(isValid){
-				userData.netId 			= $scope.netId;
+				userData.first 			= $scope.first;
+				userData.last 			= $scope.last;
 				userData.email 			= $scope.email;
 				userData.tel 			= $scope.tel;
 				userData.contactPref	= $scope.contactPref;
 				userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
-
-				form = 'app/views/forms-pages/form-comp.html';
+				$location.path('/appt/comp');
 			} else{
 				$scope.submit_pressed = true;
 			}
 		}
 		$scope.save_comp = function(isValid){
+			console.log('testing')
 			if(isValid){
 				userData.os 			= $scope.os;
 				userData.device_type	= $scope.device_type;
@@ -60,7 +55,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
 				$location.path('/appt/sched');
-			} else {
+			} else{
 				$scope.submit_pressed = true;
 			}
 		}

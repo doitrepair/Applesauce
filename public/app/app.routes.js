@@ -17,7 +17,7 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 			})
 			*/
 			.when('/appt', {
-				templateUrl: 'app/views/forms-pages/form-descrip.html',
+				templateUrl: 'app/views/forms-pages/form-base.html',
 				controller: 'apptController'
 			})
 			.when('/appt/user', {

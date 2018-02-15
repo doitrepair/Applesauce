@@ -9,16 +9,19 @@
 angular.module('loginCtrl', ['authService', 'filters'])
 	.controller('loginController', function($scope, $location, Auth) {
 
-		$scope.submit_pressed = false;
-		$scope.login_failed = false;
-
 		$scope.checkInvalid = function(form, field){
 			return field.$invalid && ($scope.submit_pressed || !field.$pristine)
 		}
 
-		$scope.templateInfo = function(){
+		$scope.templateInfo = function() {
 			return 'app/views/admin-pages/admin-info.html';
 		}
+		$scope.templateForm = function() {
+			return 'app/views/admin-pages/admin-login.html'
+		}
+
+		$scope.submit_pressed = false;
+		$scope.login_failed = false;
 		$scope.login = function(isValid){
 			if(isValid){
 				var res = Auth.login($scope.name, $scope.pass)

@@ -1,48 +1,52 @@
-<div style="width: 100%;">
-	<div class="module">
-		<ng-include src="templateInfo()"></ng-include>
-	</div>
-	<div class="module" style="width:100%">
-		<form name="userForm" ng-submit="save_user(userForm.$valid)" novalidate style="padding: 0px 50px; width:100%">
-			<fieldset>
-				<legend>Tell us about you:</legend>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.netId)}">
-					<label for="net-id">NetID</label>
-					<input class="form-control" type="text" name="netId" ng-model="netId" required>
-					<label ng-show="checkInvalid(userForm, userForm.netId)" class="help-block">
-						Please enter your netId.
-					</label>
-				</div>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.email)}">
-					<label for="email">Email</label>
-					<input class="form-control" type="email" name="email" ng-model="email" required>
-					<label ng-show="checkInvalid(userForm, userForm.email)" class="help-block">
-						Please enter a valid email.
-					</label>
-				</div>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.tel)}">
-					<label for="email">Phone Number</label>
-					<input class="form-control" type="tel" name="tel" ng-model="tel" required>
-					<label ng-show="checkInvalid(userForm, userForm.tel)" class="help-block">
-						Please enter a valid phone number.
-					</label>
-				</div>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.contactPref)}">
-					<label for="email">Preferred Contact Method</label>
-					<select class="form-control" name="contactPref" ng-model="contactPref" required>
-						<option value="Email">Email</option>
-						<option value="Phone">Phone Call</option>
-						<option value="Text">Text</option>
-					</select>
-					<label ng-show="checkInvalid(userForm, userForm.contactPref)" class="help-block">
-						Please select your prefered contact method.
-					</label>
-				</div>
-				<button type="submit" class="uw-button">Continue</button>
-			</fieldset>
-
-
-		</form>
-	</div>
-	<div style="padding: 20px 0px"></div>
-</div>
+<form name="userForm" ng-submit="save_user(userForm.$valid)" novalidate style="padding: 0px 50px; width:100%">
+	<fieldset>
+		<legend>Tell us about you:</legend>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.netId)}" ng-if="!no_netid_field">
+			<label for="net-id">NetID</label>
+			<input class="form-control" type="text" name="netId" ng-model="netId" required>
+			<label ng-show="checkInvalid(userForm, userForm.netId)" class="help-block">
+				Please enter your netId.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.first)}" ng-if="no_netid_field">
+			<label for="first">First Name</label>
+			<input class="form-control" type="text" name="first" ng-model="first" required>
+			<label ng-show="checkInvalid(userForm, userForm.first)" class="help-block">
+				Please enter your first name.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.last)}" ng-if="no_netid_field">
+			<label for="net-id">Last Name</label>
+			<input class="form-control" type="text" name="last" ng-model="last" required>
+			<label ng-show="checkInvalid(userForm, userForm.last)" class="help-block">
+				Please enter your last name.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.email)}">
+			<label for="email">Email</label>
+			<input class="form-control" type="email" name="email" ng-model="email" required>
+			<label ng-show="checkInvalid(userForm, userForm.email)" class="help-block">
+				Please enter a valid email.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.tel)}">
+			<label for="email">Phone Number</label>
+			<input class="form-control" type="tel" name="tel" ng-model="tel" required>
+			<label ng-show="checkInvalid(userForm, userForm.tel)" class="help-block">
+				Please enter a valid phone number.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.contactPref)}">
+			<label for="email">Preferred Contact Method</label>
+			<select class="form-control" name="contactPref" ng-model="contactPref" required>
+				<option value="Email">Email</option>
+				<option value="Phone">Phone Call</option>
+				<option value="Text">Text</option>
+			</select>
+			<label ng-show="checkInvalid(userForm, userForm.contactPref)" class="help-block">
+				Please select your prefered contact method.
+			</label>
+		</div>
+		<button type="submit" class="uw-button">Continue</button>
+	</fieldset>
+</form>
