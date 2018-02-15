@@ -54,7 +54,7 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 			}
 
 			// Check if any of these are undefined, which cherwell will need
-			if (userData.netId == undefined || userData.contactPref == undefined || userData.os == undefined)
+			if ((userData.netId == undefined && userData.first == undefined) || userData.contactPref == undefined || userData.os == undefined)
 				return;
 
 			// construct the description field

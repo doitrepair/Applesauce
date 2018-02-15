@@ -5,8 +5,9 @@
 //	Module Description: This module controls the dispay of the admin pages
 //******************************************************************************
 //******************************************************************************
-angular.module('adminCtrl', ['incidentService', 'ngMaterial', 'ngMessages'])
-	.controller('adminController', function($scope, incidentFactory) {
+angular.module('adminCtrl', ['incidentService', 'ngMaterial', 'ngMessages', 'authService'])
+	.controller('adminController', function($scope, $location, incidentFactory, Auth) {
+		if ( !Auth.isLoggedIn() ) $location.path('/login');
 
 		var get_incidents = function(begin, end){
 			var promise = incidentFactory.getApptByDateRange(begin, end);
