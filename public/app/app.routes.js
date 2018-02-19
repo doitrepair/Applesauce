@@ -20,14 +20,6 @@ angular.module('app.routes', ['ngRoute','questionCtrl'])
 				templateUrl: 'app/views/forms-pages/form-base.html',
 				controller: 'apptController'
 			})
-			.when('/appt/user', {
-				templateUrl: 'app/views/forms-pages/form-user.html',
-				controller: 'apptController'
-			})
-			.when('/appt/comp', {
-				templateUrl: 'app/views/forms-pages/form-comp.html',
-				controller: 'apptController'
-			})
 			.when('/appt/sched', {
 				templateUrl: 'app/views/appt-pages/sched.html'
 			})

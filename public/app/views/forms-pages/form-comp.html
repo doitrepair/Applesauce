@@ -3,7 +3,7 @@
 		<legend>Tell us about your computer:</legend>
 		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.sn)}" ng-if="sn_field">
 			<label for="sn" >Computer Serial Number</label>
-			<input class="form-control" type="text" name="sn" ng-model="$parent.sn" required>
+			<input class="form-control" type="text" name="sn" ng-model="$parent.$parent.$parent.sn" required>
 			<label ng-show="checkInvalid(userForm, userForm.sn)" class="help-block">
 				Please enter your new computer's serial number.
 			</label>
@@ -11,14 +11,14 @@
 
 		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.sn2)}" ng-if="sn_two_field">
 			<label for="sn2">Old Computer Serial Number</label>
-			<input class="form-control" type="text" name="sn2" ng-model="$parent.sn2" required>
+			<input class="form-control" type="text" name="sn2" ng-model="$parent.$parent.$parent.sn2" required>
 			<label ng-show="checkInvalid(userForm, userForm.sn2)" class="help-block">
 				Please enter your old computer's serial number.
 			</label>
 		</div>
 		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.os)}">
 			<label for="os">Operating System</label>
-			<select class="form-control" name="os" ng-model="os" required>
+			<select class="form-control" name="os" ng-model="$parent.$parent.os" required>
 				<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
 				<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
 				<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
@@ -38,7 +38,7 @@
 		</div>
 		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.device_type)}">
 			<label for="device_type">Device Type</label>
-			<select class="form-control" name="device_type" ng-model="device_type" required>
+			<select class="form-control" name="device_type" ng-model="$parent.$parent.device_type" required>
 				<option value="Notebook">Notebook / Laptop</option>
 				<option value="Desktop">Desktop</option>
 				<option value="Other">Other</option>
@@ -49,7 +49,7 @@
 		</div>
 		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.make)}">
 			<label for="make">Make</label>
-			<select class="form-control" name="make" ng-model="make" required>
+			<select class="form-control" name="make" ng-model="$parent.$parent.make" required>
 				<option value="Apple">Apple</option>
 				<option value="Dell">Dell</option>
 				<option value="Needs Update">Other</option>

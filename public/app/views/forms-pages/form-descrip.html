@@ -4,7 +4,7 @@
 		<div class="form-group" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.descrip)}">
 
 			<label for="description">Please describe the issues that you are experiencing.</label>
-			<textarea class="form-control" rows="5" name="descrip" ng-model="description" required></textarea>
+			<textarea class="form-control" rows="5" name="descrip" ng-model="$parent.$parent.description" required></textarea>
 
 			<label ng-show="checkInvalid(userForm, userForm.descrip)" class="help-block">
 				Please enter a description.
