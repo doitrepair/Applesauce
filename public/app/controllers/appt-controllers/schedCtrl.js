@@ -162,16 +162,8 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 							userData.description = "Appt: "+apptData.title + "; " + userData.description;
 							userData.owner_netid = apptData.agent.netid;
 							var cherwell_promise = cherwellFactory.buildCherwellCase();
-
-							// Wait for the response before continuing
-							cherwell_promise.then( function(response) {
-								console.log(response.data);
-								// Update the schedule by moving an agent to the appt column
-								acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
-
-								// Go to the success landing page
-								$location.path('/appt/success');
-							});
+							acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
+							$location.path('/appt/success');
 						}
 					}
 				}

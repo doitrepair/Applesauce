@@ -59,7 +59,6 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
 				form = 'app/views/appt-pages/sched.html';
-				//$location.path('/appt/sched');
 			} else {
 				$scope.submit_pressed = true;
 			}
