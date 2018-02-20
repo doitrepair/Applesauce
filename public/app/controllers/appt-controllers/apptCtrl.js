@@ -15,6 +15,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		$scope.templateForm = function(){
 			return form;
 		}
+		
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
 		}
