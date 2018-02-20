@@ -57,18 +57,6 @@ app.use(express.static(__dirname + '/public'));
 var authRouter	= require('./app/routes/api/auth')(app, express, db_connection, repair_db.secret);
 app.use('/auth', authRouter);
 
-// For routes beginning with /app/questions go to the questions router
-var questionsRouter	= require('./app/routes/api/repair-app/questions')(app, express, db_connection);
-app.use('/api/questions', questionsRouter);
-
-// For routes beginning with /app/answers go to the answers router
-var answerRouter		= require('./app/routes/api/repair-app/answers')(app, express, db_connection);
-app.use('/api/answers', answerRouter);
-
-// For routes beginning with /app/repairs go to the repairs router
-var repairRouter		= require('./app/routes/api/repair-app/repairs')(app, express, db_connection);
-app.use('/api/repairs', repairRouter);
-
 var incidentRouter		= require('./app/routes/api/incidents')(app, express, db_connection);
 app.use('/api/incident', incidentRouter);
 
