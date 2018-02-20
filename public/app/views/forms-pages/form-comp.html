@@ -1,72 +1,64 @@
-<div style="width: 100%;">
-	<div class="module">
-		<ng-include src="templateInfo()"></ng-include>
-	</div>
-	<div class="module" style="width:100%">
-		<form name="userForm" ng-submit="save_comp(userForm.$valid)" novalidate style="padding: 0px 50px; width:100%">
-			<fieldset>
-				<legend>Tell us about your computer:</legend>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.sn)}" ng-if="sn_field">
-					<label for="sn" >Computer Serial Number</label>
-					<input class="form-control" type="text" name="sn" ng-model="$parent.sn" required>
-					<label ng-show="checkInvalid(userForm, userForm.sn)" class="help-block">
-						Please enter your new computer's serial number.
-					</label>
-				</div>
+<form name="userForm" ng-submit="save_comp(userForm.$valid)" novalidate style="padding: 0px 50px; width:100%">
+	<fieldset>
+		<legend>Tell us about your computer:</legend>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.sn)}" ng-if="sn_field">
+			<label for="sn" >Computer Serial Number</label>
+			<input class="form-control" type="text" name="sn" ng-model="$parent.$parent.$parent.sn" required>
+			<label ng-show="checkInvalid(userForm, userForm.sn)" class="help-block">
+				Please enter your new computer's serial number.
+			</label>
+		</div>
 
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.sn2)}" ng-if="sn_two_field">
-					<label for="sn2">Old Computer Serial Number</label>
-					<input class="form-control" type="text" name="sn2" ng-model="$parent.sn2" required>
-					<label ng-show="checkInvalid(userForm, userForm.sn2)" class="help-block">
-						Please enter your old computer's serial number.
-					</label>
-				</div>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.os)}">
-					<label for="os">Operating System</label>
-					<select class="form-control" name="os" ng-model="os" required>
-						<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
-						<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
-						<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
-						<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
-						<option value="Mac 0SX Other">Mac 0S X - Other</option>
-						<option value="Windows 10">Windows 10</option>
-						<option value="Windows 8.1">Windows 8.1</option>
-						<option value="Windows 8">Windows 8</option>
-						<option value="Windows 7">Windows 7</option>
-						<option value="Windows - Other">Windows - Other</option>
-						<option value="Other">Other</option>
-						<option value="Other">I don't know</option>
-					</select>
-					<label ng-show="checkInvalid(userForm, userForm.os)" class="help-block">
-						Please enter your device's operating system.
-					</label>
-				</div>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.device_type)}">
-					<label for="device_type">Device Type</label>
-					<select class="form-control" name="device_type" ng-model="device_type" required>
-						<option value="Notebook">Notebook / Laptop</option>
-						<option value="Desktop">Desktop</option>
-						<option value="Other">Other</option>
-					</select>
-					<label ng-show="checkInvalid(userForm, userForm.device_type)" class="help-block">
-						Please enter your device's type.
-					</label>
-				</div>
-				<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.make)}">
-					<label for="make">Make</label>
-					<select class="form-control" name="make" ng-model="make" required>
-						<option value="Apple">Apple</option>
-						<option value="Dell">Dell</option>
-						<option value="Needs Update">Other</option>
-						<option value="Needs Update">I don't know</option>
-					</select>
-					<label ng-show="checkInvalid(userForm, userForm.make)" class="help-block">
-						Please enter your device's make.
-					</label>
-				</div>
-				<button type="submit" class="uw-button">Continue</button>
-			</fieldset>
-		</form>
-	</div>
-	<div style="padding: 20px 0px"></div>
-</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.sn2)}" ng-if="sn_two_field">
+			<label for="sn2">Old Computer Serial Number</label>
+			<input class="form-control" type="text" name="sn2" ng-model="$parent.$parent.$parent.sn2" required>
+			<label ng-show="checkInvalid(userForm, userForm.sn2)" class="help-block">
+				Please enter your old computer's serial number.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.os)}">
+			<label for="os">Operating System</label>
+			<select class="form-control" name="os" ng-model="$parent.$parent.os" required>
+				<option value="Mac 0S 10.12">Mac 0S X 10.12</option>
+				<option value="Mac 0SX 10.11">Mac OS X 10.11</option>
+				<option value="Mac 0SX 10.10">Mac 0S X 10.10</option>
+				<option value="Mac 0SX 10.9">Mac OS X 10.9</option>
+				<option value="Mac 0SX Other">Mac 0S X - Other</option>
+				<option value="Windows 10">Windows 10</option>
+				<option value="Windows 8.1">Windows 8.1</option>
+				<option value="Windows 8">Windows 8</option>
+				<option value="Windows 7">Windows 7</option>
+				<option value="Windows - Other">Windows - Other</option>
+				<option value="Other">Other</option>
+				<option value="Other">I don't know</option>
+			</select>
+			<label ng-show="checkInvalid(userForm, userForm.os)" class="help-block">
+				Please enter your device's operating system.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.device_type)}">
+			<label for="device_type">Device Type</label>
+			<select class="form-control" name="device_type" ng-model="$parent.$parent.device_type" required>
+				<option value="Notebook">Notebook / Laptop</option>
+				<option value="Desktop">Desktop</option>
+				<option value="Other">Other</option>
+			</select>
+			<label ng-show="checkInvalid(userForm, userForm.device_type)" class="help-block">
+				Please enter your device's type.
+			</label>
+		</div>
+		<div class="form-group uw-input-row" ng-class="{ 'has-error' :  checkInvalid(userForm, userForm.make)}">
+			<label for="make">Make</label>
+			<select class="form-control" name="make" ng-model="$parent.$parent.make" required>
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Needs Update">Other</option>
+				<option value="Needs Update">I don't know</option>
+			</select>
+			<label ng-show="checkInvalid(userForm, userForm.make)" class="help-block">
+				Please enter your device's make.
+			</label>
+		</div>
+		<button type="submit" class="uw-button">Continue</button>
+	</fieldset>
+</form>

@@ -1,37 +1,21 @@
-<!-- main content -->
-<main id="main" ng-controller="schedController" style="width:100%;">
-	<!-- body copy -->
-	<div class="uw-row-full uw-pad-tb-l">
-		<div class="uw-row" style="padding-top:0px">
-			<div class="uw-col uw-body">
-				<div style="width: 90%;">
-					<div class="module" >
-						<ng-include src="template()"></ng-include>
-					</div>
-
-					<div class="module" style="padding-top:5px;">
-						<h2 class="uw-mini-bar">Choose that works for you by clicking on a <strong style="color: green;">green</strong> timeslot:</h2>
-						<div style="float:right;">
-							<button ng-click="toggle_week(false)" ng-disabled="this_week" ng-class="{'button-active': !this_week,'button-inactive': this_week}"> < </button>
-							{{ time_range }}
-							<button ng-click="toggle_week(true)" ng-disabled="!this_week" ng-class="{'button-active': this_week,'button-inactive': !this_week}"> > </button>
-						</div>
-						<table style="margin:auto;width: 100%;">
-
-							<thead>
-								<tr>
-									<td class="cell title" ng-repeat="col in cols">{{col[0]}} <br> {{col[1]}}</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="row in cells track by $index">
-									<td class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="item.book_appt(item)">{{ item.day }} {{ item.time | time }}</button></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+<div ng-controller="schedController">
+	<h2 class="uw-mini-bar">Choose that works for you by clicking on a <strong style="color: green;">green</strong> timeslot:</h2>
+	<div style="float:right;">
+		<button ng-click="toggle_week(false)" ng-disabled="this_week" ng-class="{'button-active': !this_week,'button-inactive': this_week}"> < </button>
+		{{ time_range }}
+		<button ng-click="toggle_week(true)" ng-disabled="!this_week" ng-class="{'button-active': this_week,'button-inactive': !this_week}"> > </button>
 	</div>
-</main>
+	<table style="margin:auto;width: 100%;">
+
+		<thead>
+			<tr>
+				<td class="cell title" ng-repeat="col in cols">{{col[0]}} <br> {{col[1]}}</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in cells track by $index">
+				<td class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="item.book_appt(item)">{{ item.day }} {{ item.time | time }}</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

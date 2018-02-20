@@ -19,7 +19,8 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 		//	Parameters:
 		//		repair		A correctly formatted string to send to cherwell
 		//**********************************************************************
-		cherwellFactory.createCherwellCase = function(repair, user){
+		cherwellFactory.createCherwellCase = function(repair){
+			console.log('Create Cherwell Case');
 			return $http.post('/api/email/',
 				{
 					wiscit_message: repair,
@@ -43,6 +44,7 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 		// 						description field
 		//**********************************************************************
 		cherwellFactory.buildCherwellCase = function(){
+			console.log('building case')
 			// Default text in the repair
 			var description_suffix = "; NEXT AGENT - please update any 'Needs Update' fields as well as the Approved Price Ceiling and Repair Coverage";
 
@@ -55,8 +57,10 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 
 			// Check if any of these are undefined, which cherwell will need
 			if ((userData.netId == undefined && userData.first == undefined) || userData.contactPref == undefined || userData.os == undefined)
+				console.log('returning null');
+				console.log(userData);
 				return;
-
+			if (userData.netId == undefined) userData.description = "Created By: "+ userData.first + " " + userData.last + "; " + userData.description;
 			// construct the description field
 			userData.description += description_suffix;
 			// construct the repair email, it must be in this format for cherwell
@@ -84,9 +88,8 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 
 			console.log('submitted');
 			console.log(repair_email);
-			cherwellFactory.createCherwellCase(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
-			console.log('logged case');
 			incidentFactory.createIncident();
+			return cherwellFactory.createCherwellCase(repair_email.replace(/\n/g, '').replace(/\t/g, ''));
 		}
 		return cherwellFactory;
 	});

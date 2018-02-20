@@ -1,0 +1,9 @@
+<div style="width: 100%;">
+	<div class="module">
+		<ng-include src="templateInfo()"></ng-include>
+	</div>
+	<div class="module" style="width:100%" ng-if="!no_form">
+		<ng-include src="templateForm()"></ng-include>
+	</div>
+	<div style="padding: 20px 0px"></div>
+</div>

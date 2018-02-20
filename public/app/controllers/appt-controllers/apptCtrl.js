@@ -10,10 +10,11 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 	.controller('apptController', function($scope, $location, $cookies, $window, userData, apptData) {
 
 		$scope.submit_pressed = false;
-		$scope.checkInvalid = function(form, field){
-			return field.$invalid && ($scope.submit_pressed || !field.$pristine)
-		}
 
+		var form = 'app/views/forms-pages/form-descrip.html';
+		$scope.templateForm = function(){
+			return form;
+		}
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
 		}
@@ -21,6 +22,10 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 			return 'app/views/appt-pages/appt-success.html';
 		}
 
+		$scope.checkInvalid = function(form, field){
+			return field.$invalid && ($scope.submit_pressed || !field.$pristine)
+		}
+		// NEED TO USE PARENT TO GET THESE SCOPE PARAMS
 		userData.case_type = "Appointment";
 		userData.email_subject = "Appointment Confirmation";
 
@@ -28,7 +33,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		$scope.save_descrip = function(isValid){
 			if(isValid){
 				userData.description 	= $scope.description;
-				$location.path('/appt/user');
+				form = 'app/views/forms-pages/form-user.html';
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -40,13 +45,12 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.tel 			= $scope.tel;
 				userData.contactPref	= $scope.contactPref;
 				userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
-				$location.path('/appt/comp');
+				form = 'app/views/forms-pages/form-comp.html';
 			} else{
 				$scope.submit_pressed = true;
 			}
 		}
 		$scope.save_comp = function(isValid){
-			console.log('testing')
 			if(isValid){
 				userData.os 			= $scope.os;
 				userData.device_type	= $scope.device_type;
@@ -54,8 +58,8 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.short			= 'Service Desk Appt';
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
-				$location.path('/appt/sched');
-			} else{
+				form = 'app/views/appt-pages/sched.html';
+			} else {
 				$scope.submit_pressed = true;
 			}
 		}

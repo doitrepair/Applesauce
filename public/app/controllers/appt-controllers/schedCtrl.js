@@ -145,7 +145,9 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 					if((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour))) $scope.cells[i][j].active = false;
 					// Create function to book the appt
 					$scope.cells[i][j].book_appt=function(item){
+						console.log("book appt");
 						if(item.active){
+							console.log("active");
 							// Check which week is displayed to user
 							var k = $scope.this_week ? 0 : 1;
 							// Update the agents and date
@@ -156,15 +158,11 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 							apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
 
 							// Send out an email to cherwell to create a case
-							userData.description = "Appt: "+apptData.title + "; " + userData.description;
 							userData.email_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
+							userData.description = "Appt: "+apptData.title + "; " + userData.description;
 							userData.owner_netid = apptData.agent.netid;
-							repair_email = cherwellFactory.buildCherwellCase()
-
-							// Update the schedule by moving an agent to the appt column
+							var cherwell_promise = cherwellFactory.buildCherwellCase();
 							acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
-
-							// Go to the success landing page
 							$location.path('/appt/success');
 						}
 					}
