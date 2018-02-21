@@ -56,10 +56,11 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 			}
 
 			// Check if any of these are undefined, which cherwell will need
-			if ((userData.netId == undefined && userData.first == undefined) || userData.contactPref == undefined || userData.os == undefined)
+			if ((userData.netId == undefined && userData.first == undefined) || userData.contactPref == undefined || userData.os == undefined) {
 				console.log('returning null');
 				console.log(userData);
 				return;
+			}
 			if (userData.netId == undefined) userData.description = "Created By: "+ userData.first + " " + userData.last + "; " + userData.description;
 			// construct the description field
 			userData.description += description_suffix;
@@ -68,7 +69,6 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 			var repair_email =
 				`<br>description_key:`+ userData.description +`--eol<br>
 				short_description_key: `+ userData.short +`--eol<br>
-				net_id_key:  `+ userData.netId +`--eol<br>
 				alt_cont_key: `+ userData.alt_contact +`--eol<br>
 				os_key:  `+ userData.os +`--eol<br>
 				make_key:  `+ userData.make +`--eol<br>
@@ -79,6 +79,11 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 				device_key:  `+ userData.device_type +`--eol<br>
 				ship_to_key: `+ userData.ship_to +`--eol<br>
 				contact_key:` + userData.contactPref+`--eol<br>`;
+
+			if(userData.netId != undefined) {
+				repair_email += 'net_id_key:  '+ userData.netId +'--eol<br>';
+			}
+
 
 			// Optionally specify an owner for the case, otherwise it just gets
 			// assigned to no one (but still is assigned to the ServiceDesk group)

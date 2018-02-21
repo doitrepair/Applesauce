@@ -73,7 +73,7 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 			if(disclaimer != true){
 				return false;
 			}
-			repair_email = cherwellFactory.buildCherwellCase();
+			cherwellFactory.buildCherwellCase();
 			// Go to the success landing page
 			form = 'app/views/data-pages/data-success.html';
 		};

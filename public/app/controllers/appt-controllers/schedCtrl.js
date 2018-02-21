@@ -161,7 +161,7 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 							userData.email_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
 							userData.description = "Appt: "+apptData.title + "; " + userData.description;
 							userData.owner_netid = apptData.agent.netid;
-							var cherwell_promise = cherwellFactory.buildCherwellCase();
+							cherwellFactory.buildCherwellCase();
 							acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
 							$location.path('/appt/success');
 						}
