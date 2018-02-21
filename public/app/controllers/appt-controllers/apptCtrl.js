@@ -6,8 +6,8 @@
 //						(appt-form.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService', 'ngCookies'])
-	.controller('apptController', function($scope, $location, $cookies, $window, userData, apptData) {
+angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
+	.controller('apptController', function($scope, $location, userData, apptData) {
 
 		$scope.submit_pressed = false;
 

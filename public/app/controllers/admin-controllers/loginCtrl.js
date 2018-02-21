@@ -24,6 +24,7 @@ angular.module('loginCtrl', ['authService', 'filters'])
 		$scope.login_failed = false;
 		$scope.login = function(isValid){
 			if(isValid){
+				console.log("Name: "+$scope.name+" Password: "+$scope.pass);
 				var res = Auth.login($scope.name, $scope.pass)
 					.then(function(data) {
 						if(data.success){

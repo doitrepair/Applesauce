@@ -18,12 +18,16 @@ angular.module('app.routes', ['ngRoute'])
 				controller: 'dataTransController'
 			})
 			.when('/login', {
-				templateUrl: 'app/views/forms-pages/form-login.html',
+				templateUrl: 'app/views/forms-pages/form-base.html',
 				controller: 'loginController'
 			})
 			.when('/admin', {
 				templateUrl: 'app/views/admin-pages/admin-home.html',
 				controller: 'loginController'
+			})
+			.when('/admin/appt', {
+				templateUrl: 'app/views/forms-pages/form-base.html',
+				controller: 'adminFormController'
 			});
 		// Get rid of has in the URL
 		$locationProvider.html5Mode(true);

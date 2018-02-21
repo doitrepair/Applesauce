@@ -82,6 +82,8 @@ angular.module('cherwellService', ['infoService', 'incidentService'])
 
 			if(userData.netId != undefined) {
 				repair_email += 'net_id_key:  '+ userData.netId +'--eol<br>';
+			} else {
+				repair_email += 'net_id_key:  --eol<br>';
 			}
 
 
