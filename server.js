@@ -68,7 +68,8 @@ app.use('/api/email', cherwellRouter);
 
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html
-app.get('/net/*', function(req, res) {
+
+app.get('/net*', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/index-net.html'));
 });
 

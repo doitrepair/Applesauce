@@ -8,7 +8,6 @@
 //******************************************************************************
 angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
 	.controller('apptController', function($scope, $location, userData, apptData) {
-
 		$scope.submit_pressed = false;
 
 		var form = 'app/views/forms-pages/form-descrip.html';

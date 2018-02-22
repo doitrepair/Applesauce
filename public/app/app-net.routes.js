@@ -3,7 +3,8 @@ angular.module('app-net.routes', ['ngRoute'])
 		$routeProvider
 		// Route to the homepage
 			.when('/net', {
-				templateUrl : 'app/views/home.html'
+				templateUrl : 'app/views/home.html',
+				controller: 'apptController'
 			})
 			.when('/net/appt', {
 				templateUrl: 'app/views/forms-pages/form-base.html',
