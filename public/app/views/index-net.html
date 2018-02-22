@@ -46,9 +46,6 @@
 		<script src="app/controllers/form-controllers/dataTransCtrl.js"></script>
 		<script src="app/controllers/appt-controllers/schedCtrl.js"></script>
 		<script src="app/controllers/appt-controllers/apptCtrl.js"></script>
-		<script src="app/controllers/admin-controllers/loginCtrl.js"></script>
-		<script src="app/controllers/admin-controllers/adminCtrl.js"></script>
-		<script src="app/controllers/admin-controllers/adminFormCtrl.js"></script>
 
 		<!--Services-->
 		<script src="app/services/infoService.js"></script>
@@ -56,18 +53,17 @@
 		<script src="app/services/cherwellService.js"></script>
 		<script src="app/services/incidentService.js"></script>
 		<script src="app/services/appt-services/apptService.js"></script>
-		<script src="app/services/authService.js"></script>
 
 
 		<!--Filter-->
 		<script src="app/filters/timeFilter.js"></script>
 
 		<!-- main Angular app files -->
-		<script src="app/app.routes.js"></script>
-		<script src="app/app.js"></script>
+		<script src="app/app-net.routes.js"></script>
+		<script src="app/app-net.js"></script>
 
 	</head>
-  <body  ng-app="userApp">
+  <body  ng-app="netApp">
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
     <div class="uw-global-bar">
@@ -103,8 +99,7 @@
               <a href="/">Home</a>
             </li>
 			<li>
-			  <!-- Note: This has to reference a full link (not relative) in order to trigger UW authentication -->
-			  <a style="color: #c5050c;" href="https://applesauce.doit.wisc.edu/net/appt"><h3 style="margin: 0px;">Schedule Appt</h3></a>
+			  <a style="color: #c5050c;" href="/net/appt"><h3 style="margin: 0px;">Schedule Appt</h3></a>
 			</li>
 			<li id="menu-about" class="uw-dropdown">
               <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
@@ -112,7 +107,7 @@
               </a>
               <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
                 <li>
-                  <a target="_blank" href="https://applesauce.doit.wisc.edu/net/data">Data Transfer</a>
+                  <a href="/net/data">Data Transfer</a>
                 </li>
               </ul>
             </li>

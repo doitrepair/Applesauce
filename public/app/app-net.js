@@ -1,16 +1,13 @@
-angular.module('userApp', [
+angular.module('netApp', [
 	'ngAnimate',
 	'ngSanitize',
 	'ngMessages',
 	'ngMaterial',
 	'ui.bootstrap',
-	'app.routes',
+	'app-net.routes',
 	'dataTransCtrl',
 	'schedCtrl',
 	'apptCtrl',
-	'loginCtrl',
-	'adminCtrl',
-	'adminFormCtrl',
 	'cherwellService',
 	'incidentService',
 	'acmeService',
