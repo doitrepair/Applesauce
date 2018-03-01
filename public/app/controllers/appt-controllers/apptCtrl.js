@@ -10,9 +10,11 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 	.controller('apptController', function($scope, $location, userData, apptData) {
 		$scope.submit_pressed = false;
 
-		var form = 'app/views/forms-pages/form-descrip.html';
+		var vm = this;
+
+		vm.form = 'app/views/forms-pages/form-descrip.html';
 		$scope.templateForm = function(){
-			return form;
+			return vm.form;
 		}
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
@@ -32,7 +34,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		$scope.save_descrip = function(isValid){
 			if(isValid){
 				userData.description 	= $scope.description;
-				form = 'app/views/forms-pages/form-user.html';
+				vm.form = 'app/views/forms-pages/form-user.html';
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -44,7 +46,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.tel 			= $scope.tel;
 				userData.contactPref	= $scope.contactPref;
 				userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
-				form = 'app/views/forms-pages/form-comp.html';
+				vm.form = 'app/views/forms-pages/form-comp.html';
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -57,18 +59,16 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.short			= 'Service Desk Appt';
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
-				form = 'app/views/appt-pages/sched.html';
+				vm.form = 'app/views/appt-pages/sched.html';
 			} else {
 				$scope.submit_pressed = true;
 			}
 		}
 		$scope.test = "testing;"
 		$scope.book_appt=function(item, this_week){
-			console.log(this_week);
 			console.log("book appt");
 			if(item.active){
 				console.log("active");
-				console.log(item);
 				// Check which week is displayed to user
 				var k = this_week ? 0 : 1;
 				// Update the agents and date
@@ -84,7 +84,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.owner_netid = apptData.agent.netid;
 				//cherwellFactory.buildCherwellCase();
 				//acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
-				$location.path('/appt/success');
+				vm.form = 'app/views/appt-pages/appt-success.html';
 			}
 		}
 	});

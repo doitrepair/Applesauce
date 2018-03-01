@@ -10,10 +10,6 @@ angular.module('app-net.routes', ['ngRoute'])
 				templateUrl: 'app/views/forms-pages/form-base.html',
 				controller: 'apptController'
 			})
-			.when('/net/appt/success', {
-				templateUrl: 'app/views/forms-pages/form-success.html',
-				controller: 'apptController'
-			})
 			.when('/net/data', {
 				templateUrl: 'app/views/forms-pages/form-base.html',
 				controller: 'dataTransController'
