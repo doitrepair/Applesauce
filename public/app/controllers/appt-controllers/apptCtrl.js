@@ -62,4 +62,29 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				$scope.submit_pressed = true;
 			}
 		}
+		$scope.test = "testing;"
+		$scope.book_appt=function(item, this_week){
+			console.log(this_week);
+			console.log("book appt");
+			if(item.active){
+				console.log("active");
+				console.log(item);
+				// Check which week is displayed to user
+				var k = this_week ? 0 : 1;
+				// Update the agents and date
+				apptData.agent 	= item.agents[k][0];
+				apptData.dates  = item.dates[k];
+				apptData.day 	= item.day;
+				apptData.time 	= item.time;
+				apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
+
+				// Send out an email to cherwell to create a case
+				userData.email_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
+				userData.description = "Appt: "+apptData.title + "; " + userData.description;
+				userData.owner_netid = apptData.agent.netid;
+				//cherwellFactory.buildCherwellCase();
+				//acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
+				$location.path('/appt/success');
+			}
+		}
 	});
