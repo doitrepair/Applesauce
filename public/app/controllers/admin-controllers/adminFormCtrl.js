@@ -1,6 +1,6 @@
 
-angular.module('adminFormCtrl', ['acmeService', 'filters', 'infoService', 'authService'])
-	.controller('adminFormController', function($scope, $location, userData, apptData, Auth) {
+angular.module('adminFormCtrl', ['filters', 'infoService', 'authService', 'submitService'])
+	.controller('adminFormController', function($scope, $location, userData, apptData, Auth, submitFactory) {
 		if ( !Auth.isLoggedIn() ) $location.path('/login');
 		else {
 			$scope.submit_pressed = false;
@@ -58,6 +58,31 @@ angular.module('adminFormCtrl', ['acmeService', 'filters', 'infoService', 'authS
 					form = 'app/views/appt-pages/sched.html';
 				} else {
 					$scope.submit_pressed = true;
+				}
+			}
+
+			$scope.book_appt=function(item, this_week){
+				console.log("book appt");
+				if(item.active){
+					console.log("active");
+					// Check which week is displayed to user
+					var k = this_week ? 0 : 1;
+					// Update the agents and date
+					apptData.appt	= true;
+					apptData.agent 	= item.agents[k][0];
+					apptData.dates  = item.dates[k];
+					apptData.day 	= item.day;
+					apptData.time 	= item.time;
+					apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
+
+					userData.header_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
+					$scope.header_message = userData.header_message;
+					userData.description = "Appointment on "+apptData.title + "; " + userData.description;
+					userData.owner_netid = apptData.agent.netid;
+
+					submitFactory.submitCase();
+
+					form = 'app/views/appt-pages/appt-success.html';
 				}
 			}
 		}

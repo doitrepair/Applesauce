@@ -6,15 +6,13 @@
 //						(appt-form.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
-	.controller('apptController', function($scope, $location, userData, apptData) {
+angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoService'])
+	.controller('apptController', function($scope, $location, userData, apptData, submitFactory) {
 		$scope.submit_pressed = false;
 
-		var vm = this;
-
-		vm.form = 'app/views/forms-pages/form-descrip.html';
+		form = 'app/views/forms-pages/form-descrip.html';
 		$scope.templateForm = function(){
-			return vm.form;
+			return form;
 		}
 		$scope.templateInfo = function(){
 			return 'app/views/appt-pages/appt-info.html';
@@ -34,7 +32,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 		$scope.save_descrip = function(isValid){
 			if(isValid){
 				userData.description 	= $scope.description;
-				vm.form = 'app/views/forms-pages/form-user.html';
+				form = 'app/views/forms-pages/form-user.html';
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -46,7 +44,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.tel 			= $scope.tel;
 				userData.contactPref	= $scope.contactPref;
 				userData.alt_contact 	= 'Email='+$scope.email+' Phone='+$scope.tel;
-				vm.form = 'app/views/forms-pages/form-comp.html';
+				form = 'app/views/forms-pages/form-comp.html';
 			} else{
 				$scope.submit_pressed = true;
 			}
@@ -59,12 +57,12 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				userData.short			= 'Service Desk Appt';
 				userData.ship_to		= 'Dayton';
 				userData.sn				= 'Needs Update';
-				vm.form = 'app/views/appt-pages/sched.html';
+				form = 'app/views/appt-pages/sched.html';
 			} else {
 				$scope.submit_pressed = true;
 			}
 		}
-		$scope.test = "testing;"
+
 		$scope.book_appt=function(item, this_week){
 			console.log("book appt");
 			if(item.active){
@@ -72,19 +70,21 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				// Check which week is displayed to user
 				var k = this_week ? 0 : 1;
 				// Update the agents and date
+				apptData.appt	= true;
 				apptData.agent 	= item.agents[k][0];
 				apptData.dates  = item.dates[k];
 				apptData.day 	= item.day;
 				apptData.time 	= item.time;
 				apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
 
-				// Send out an email to cherwell to create a case
-				userData.email_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
-				userData.description = "Appt: "+apptData.title + "; " + userData.description;
+				userData.header_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
+				$scope.header_message = userData.header_message;
+				userData.description = "Appointment on "+apptData.title + "; " + userData.description;
 				userData.owner_netid = apptData.agent.netid;
-				//cherwellFactory.buildCherwellCase();
-				//acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
-				vm.form = 'app/views/appt-pages/appt-success.html';
+
+				submitFactory.submitCase();
+
+				form = 'app/views/appt-pages/appt-success.html';
 			}
 		}
-	});
+	})

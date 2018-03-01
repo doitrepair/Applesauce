@@ -11,7 +11,7 @@ angular.module('userApp', [
 	'loginCtrl',
 	'adminCtrl',
 	'adminFormCtrl',
-	'cherwellService',
+	'submitService',
 	'incidentService',
 	'acmeService',
 	'apptService',

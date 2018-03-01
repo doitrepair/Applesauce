@@ -11,8 +11,8 @@
 //******************************************************************************
 //******************************************************************************
 /*jshint esversion: 6 */
-angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
-	.controller('dataTransController', function($scope, $location, cherwellFactory, userData) {
+angular.module('dataTransCtrl', ['submitService', 'infoService'])
+	.controller('dataTransController', function($scope, $location, submitFactory, userData) {
 		$scope.sn_field = true;
 		$scope.sn_two_field = true;
 
@@ -73,7 +73,9 @@ angular.module('dataTransCtrl', ['cherwellService', 'infoService'])
 			if(disclaimer != true){
 				return false;
 			}
-			cherwellFactory.buildCherwellCase();
+			userData.header_message = "You have successfully created a repair!";
+			$scope.header_message = userData.header_message;
+			submitFactory.submitCase();
 			// Go to the success landing page
 			form = 'app/views/data-pages/data-success.html';
 		};

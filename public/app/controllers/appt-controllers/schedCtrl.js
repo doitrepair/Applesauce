@@ -6,9 +6,8 @@
 //						(sched.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'infoService', 'filters'])
-	.controller('schedController', function($scope, $location, acmeFactory,
-			cherwellFactory, timeFilter, userData, apptData, days, times) {
+angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filters'])
+	.controller('schedController', function($scope, $location, acmeFactory, timeFilter, userData, apptData, days, times) {
 
 		vm = this;
 
