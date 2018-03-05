@@ -144,6 +144,8 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 							}
 						}
 					}
+
+					
 					// Give the cell its day of the week, time, and a name to print in the cell
 					$scope.cells[i][j].day = days[j];
 					$scope.cells[i][j].time = times[i];
