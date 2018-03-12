@@ -11,9 +11,6 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 
 		vm = this;
 
-		$scope.template = function(){
-			return 'app/views/appt-pages/appt-info.html';
-		}
 		// Threshold specifies the number of staff required at a specified time
 		// in order to let a customer schedule an appointment
 		var threshold = 3;
@@ -96,15 +93,15 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 		}
 		// Time range displayed on top of schedule
 		$scope.time_range = $scope.friendly_dates[0] + ' - ' + $scope.friendly_dates[4]
-		// Now start to fill out each cell
-		$scope.cells = [];
 		// Get the schedule from the acme database
 		var promise = acmeFactory.getSched($scope.dates[0],$scope.dates[9], shift_id);
 		// Wait for the response before continuing
+
+		// Now start to fill out each cell
+		$scope.cells = [];
 		promise.then(function(response){
 			// Store the response
 			vm.schedule = response.data;
-			console.log(vm.schedule);
 			// Create cell matrix to display as a schedule
 			for(i=0;i<times.length;i++){
 				$scope.cells[i] = {}
@@ -118,10 +115,11 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 					$scope.cells[i][j].friendly_dates = [$scope.friendly_dates[j],$scope.friendly_dates[j+5]];
 					for(k=0;k<vm.schedule.length;k++){
 						agent = vm.schedule[k];
+						agent.date = agent.date.split("T")[0];
 						ag = {'first':agent.Nick_Name,'last':agent.Last_Name, 'netid': agent.NetID};
 
 						// Check if the agent is working in the Dayton column
-						if((agent.date == $scope.dates[j]+"T06:00:00.000Z")&(agent[times[i]]==shift_id)){
+						if((agent.date == $scope.dates[j])&(agent[times[i]]==shift_id)){
 							var already_exists = false;
 							// Check if the agent is listed already (sometimes acme returns duplicates)
 							for(l=0;l<$scope.cells[i][j].agents[0].length;l++){
@@ -132,7 +130,7 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 								$scope.cells[i][j].agents[0] = $scope.cells[i][j].agents[0].concat([ag])
 							}
 						}
-						if((agent.date == $scope.dates[j+5]+"T06:00:00.000Z")&(agent[times[i]]==shift_id)){
+						if((agent.date == $scope.dates[j+5])&(agent[times[i]]==shift_id)){
 							var already_exists = false;
 							// Check if the agent is listed already (sometimes acme returns duplicates)
 							for(l=0;l<$scope.cells[i][j].agents[1].length;l++){
@@ -145,11 +143,10 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 						}
 					}
 
-					
-					// Give the cell its day of the week, time, and a name to print in the cell
+
+					// Give the cell its day of the week, time
 					$scope.cells[i][j].day = days[j];
 					$scope.cells[i][j].time = times[i];
-					$scope.cells[i][j].name = days[j]+" "+times[i];
 					// Mark the cell as active if there are enough agents working
 					$scope.cells[i][j].active = ($scope.cells[i][j].agents[0].length >= threshold)
 					// Mark the cell as inactive if the time is within the next
@@ -157,6 +154,7 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 					if((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour))) $scope.cells[i][j].active = false;
 				}
 			}
+			console.log($scope.cells);
 		});
 
 		// function for changing between weeks on the schedule
