@@ -383,11 +383,13 @@ table.weektable tr, td {
 
 .linker.open {
   border: 1px solid green;
+  background-color: white;
   color: green;
 }
 
 .linker.closed {
   border: 1px solid lightgray;
+  background-color: white;
   color: lightgray;
 }
 
