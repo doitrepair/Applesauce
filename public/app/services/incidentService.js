@@ -20,7 +20,7 @@ angular.module('incidentService', ['infoService'])
 				apptData.agent = {};
 				apptData.agent.netid = 'null';
 				apptData.appt_active = 0;
-				apptData.dates = '0000-00-00';
+				apptData.date = '0000-00-00';
 				apptData.time = '00:00:00';
 			} else {
 				apptData.appt_active = 1;
@@ -41,7 +41,7 @@ angular.module('incidentService', ['infoService'])
 					'description': userData.description,
 					'short_description': userData.short,
 					'appt_active': apptData.appt_active,
-					'appt_date': apptData.dates,
+					'appt_date': apptData.date,
 					'appt_time': apptData.time,
 					'appt_agent': apptData.agent.netid,
 					'sn': userData.sn,

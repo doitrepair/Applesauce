@@ -70,7 +70,7 @@ angular.module('adminFormCtrl', ['filters', 'infoService', 'authService', 'submi
 					// Update the agents and date
 					apptData.appt	= true;
 					apptData.agent 	= item.agents[k][0];
-					apptData.dates  = item.dates[k];
+					apptData.date  = item.date;
 					apptData.day 	= item.day;
 					apptData.time 	= item.time;
 					apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;

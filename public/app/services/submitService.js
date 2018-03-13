@@ -115,7 +115,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 				submitFactory.sendEmails(cherwell_text.replace(/\n/g, '').replace(/\t/g, ''), user_text);
 				if(apptData.appt) {
 					console.log('Scheduling Appointment');
-					acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
+					acmeFactory.updateSched(apptData.time, apptData.time, apptData.date, apptData.agent.first, apptData.agent.last)
 				}
 			} else {
 				console.log('Submission Deactivated')
