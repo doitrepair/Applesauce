@@ -10,7 +10,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 	.controller('apptController', function($scope, $location, userData, apptData, submitFactory) {
 		$scope.submit_pressed = false;
 
-		form = 'app/views/appt-pages/sched.html';//'app/views/forms-pages/form-descrip.html';
+		form = 'app/views/forms-pages/form-descrip.html';
 		$scope.templateForm = function(){
 			return form;
 		}
