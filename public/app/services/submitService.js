@@ -5,10 +5,9 @@
 //
 //******************************************************************************
 //******************************************************************************
-angular.module('submitService', ['infoService', 'incidentService', 'acmeService'])
-	.factory('submitFactory', function($http, userData, apptData, incidentFactory, acmeFactory) {
+angular.module('submitService', ['infoService', 'incidentService', 'acmeService','configService'])
+	.factory('submitFactory', function($http, userData, apptData, incidentFactory, acmeFactory, prod_env, post) {
 		var submitFactory = {};
-		var deactivate = false;
 
 		//**********************************************************************
 		// Title: Send Emails
@@ -107,7 +106,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 		}
 
 		submitFactory.submitCase = function(){
-			if(!deactivate) {
+			if(prod_env | post) {
 				console.log('Submitting Repair');
 				incidentFactory.createIncident();
 				cherwell_text = submitFactory.buildCherwellEmail();

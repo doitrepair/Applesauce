@@ -46,6 +46,7 @@
 		<script src="app/controllers/form-controllers/dataTransCtrl.js"></script>
 		<script src="app/controllers/appt-controllers/schedCtrl.js"></script>
 		<script src="app/controllers/appt-controllers/apptCtrl.js"></script>
+		<script src="app/controllers/mainCtrl.js"></script>
 
 		<!--Services-->
 		<script src="app/services/infoService.js"></script>
@@ -53,6 +54,7 @@
 		<script src="app/services/submitService.js"></script>
 		<script src="app/services/incidentService.js"></script>
 		<script src="app/services/appt-services/apptService.js"></script>
+		<script src="app/services/configService.js"></script>
 
 
 		<!--Filter-->
@@ -66,8 +68,9 @@
   <body  ng-app="netApp">
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
-    <div class="uw-global-bar">
+    <div class="uw-global-bar" ng-controller="mainController">
       <a target="_blank" class="uw-global-name-link" href="http://www.wisc.edu">U<span>niversity <span class="uw-of">of</span> </span>W<span>isconsin</span>–Madison</a>
+	  <button ng-if="!prod_env" class="linker" style="float:right; max-width:150px;" ng-class="{'open': post!=false,'closed': post==false}" ng-click="toggle_post()">{{post_message}}</button>
     </div>
 
     <!-- branding header -->
