@@ -2,6 +2,7 @@ config/
 config.*
 config.js
 */config.js
+configService.js
 */configService.js
 app.yaml
 .idea/
