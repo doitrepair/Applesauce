@@ -6,9 +6,10 @@ angular.module('mainCtrl', ['configService'])
 		if($scope.post) $scope.post_message = "Cite Active";
 
 		$scope.toggle_post = function(){
-			post = ~post;
+			post = !post;
 			$scope.post = post;
 			if($scope.post) $scope.post_message = "Cite Active";
 			else $scope.post_message = "Cite Inactive";
+			console.log(post);
 		}
 	});
