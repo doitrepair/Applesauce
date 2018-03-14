@@ -6,7 +6,7 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('submitService', ['infoService', 'incidentService', 'acmeService','configService'])
-	.factory('submitFactory', function($http, userData, apptData, incidentFactory, acmeFactory, prod_env, post) {
+	.factory('submitFactory', function($http, userData, apptData, incidentFactory, acmeFactory, env) {
 		var submitFactory = {};
 
 		//**********************************************************************
@@ -106,7 +106,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 		}
 
 		submitFactory.submitCase = function(){
-			if(prod_env | post) {
+			if(env.prod|| env.post) {
 				console.log('Submitting Repair');
 				incidentFactory.createIncident();
 				cherwell_text = submitFactory.buildCherwellEmail();
@@ -117,7 +117,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 					acmeFactory.updateSched(apptData.time, apptData.time, apptData.date, apptData.agent.first, apptData.agent.last)
 				}
 			} else {
-				console.log('Submission Deactivated')
+				console.log('Submission Deactivated');
 			}
 		}
 		return submitFactory;
