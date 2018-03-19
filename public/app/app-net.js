@@ -8,7 +8,7 @@ angular.module('netApp', [
 	'dataTransCtrl',
 	'schedCtrl',
 	'apptCtrl',
-	'cherwellService',
+	'submitService',
 	'incidentService',
 	'acmeService',
 	'apptService',

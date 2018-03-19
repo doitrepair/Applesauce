@@ -6,12 +6,11 @@
 //						(appt-form.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoService'])
-	.controller('apptController', function($scope, $location, userData, apptData) {
-
+angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoService'])
+	.controller('apptController', function($scope, $location, userData, apptData, submitFactory) {
 		$scope.submit_pressed = false;
 
-		var form = 'app/views/forms-pages/form-descrip.html';
+		form = 'app/views/forms-pages/form-descrip.html';
 		$scope.templateForm = function(){
 			return form;
 		}
@@ -63,4 +62,29 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'cherwellService', 'infoSe
 				$scope.submit_pressed = true;
 			}
 		}
-	});
+
+		$scope.book_appt=function(item, this_week){
+			console.log("book appt");
+			if(item.active){
+				console.log("active");
+				// Check which week is displayed to user
+				var k = this_week ? 0 : 1;
+				// Update the agents and date
+				apptData.appt	= true;
+				apptData.agent 	= item.agents[k][0];
+				apptData.dates  = item.dates[k];
+				apptData.day 	= item.day;
+				apptData.time 	= item.time;
+				apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
+
+				userData.header_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
+				$scope.header_message = userData.header_message;
+				userData.description = "Appointment on "+apptData.title + "; " + userData.description;
+				userData.owner_netid = apptData.agent.netid;
+
+				submitFactory.submitCase();
+
+				form = 'app/views/appt-pages/appt-success.html';
+			}
+		}
+	})

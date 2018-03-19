@@ -8,7 +8,7 @@
 //******************************************************************************
 angular.module('loginCtrl', ['authService', 'filters'])
 	.controller('loginController', function($scope, $location, Auth) {
-
+		
 		$scope.checkInvalid = function(form, field){
 			return field.$invalid && ($scope.submit_pressed || !field.$pristine)
 		}

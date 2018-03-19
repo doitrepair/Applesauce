@@ -5,4 +5,4 @@
 //******************************************************************************
 angular.module('infoService', [])
 	.value('userData', {})
-	.value('apptData', {});
+	.value('apptData', {'appt': false});

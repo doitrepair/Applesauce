@@ -6,16 +6,16 @@ var email 		= require('../../../config/email-config');
 // questionsRouter FUNCTION ==========================================================
 module.exports = function(app, express) {
 
-	var cherwellRouter = express.Router();
+	var emailRouter = express.Router();
 
 	/*------------------SMTP Over-----------------------------*/
 
 	/*------------------Routing Started ------------------------*/
 	// ROUTES FOR /api/email -----------------------------------------------
-	cherwellRouter.route('/')
+	emailRouter.route('/')
 		.post(function(req, res) {
 
-			var wiscit_message = JSON.stringify(req.body.wiscit_message);
+			var cherwell_message = JSON.stringify(req.body.cherwell_message);
 
 			var smtpTransport = nodemailer.createTransport({
 				service: email.service,
@@ -32,7 +32,7 @@ module.exports = function(app, express) {
 				to : 'wiscit@doit.wisc.edu',
 				from: email.email,
 				subject : 'Online Repair',
-				html : wiscit_message
+				html : cherwell_message
 			};
 			console.log(wiscitOptions);
 			smtpTransport.sendMail(wiscitOptions, function(error, response){
@@ -63,5 +63,5 @@ module.exports = function(app, express) {
 				}
 			});
 		});
-	return cherwellRouter;
+	return emailRouter;
 };

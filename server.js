@@ -63,12 +63,13 @@ app.use('/api/incident', incidentRouter);
 var schedRouter			= require('./app/routes/api/appt-app/schedule')(app, express, acme_connection);
 app.use('/api/schedule', schedRouter);
 
-var cherwellRouter			= require('./app/routes/api/cherwell')(app, express);
-app.use('/api/email', cherwellRouter);
+var emailRouter			= require('./app/routes/api/email')(app, express);
+app.use('/api/email', emailRouter);
 
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html
-app.get('/net/*', function(req, res) {
+
+app.get('/net*', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/index-net.html'));
 });
 

@@ -6,9 +6,8 @@
 //						(sched.html)
 //******************************************************************************
 //******************************************************************************
-angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'infoService', 'filters'])
-	.controller('schedController', function($scope, $location, acmeFactory,
-			cherwellFactory, timeFilter, userData, apptData, days, times) {
+angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filters'])
+	.controller('schedController', function($scope, $location, acmeFactory, timeFilter, userData, apptData, days, times) {
 
 		vm = this;
 
@@ -24,23 +23,31 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 		// Initially show this weeks calendar
 		$scope.this_week = true;
 
+		// Get's the closest monday prior to a given date (returns the same date
+		// if it's already a monday)
+		getPreviousMonday = function(d){
+			if( d.getDate()-d.getDay() > 0) {
+				return new Date(d.getFullYear(), d.getMonth(), d.getDate()-d.getDay()+1);
+			} else {
+				prevmonth = new Date(d.getFullYear(), d.getMonth(), 0); // 0 causes wrap around to the last day of the previous month (and potentially year)
+				return new Date(prevmonth.getFullYear(), prevmonth.getMonth(), prevmonth.getDate()-prevmonth.getDay()+1);
+			}
+		}
+
 		// Creates an array of length 10 that contains the weekday dates for the
-		// current week and next week
+		// week of a given date along with the following week
 		function getTwoWeeks(d) {
 			$scope.dates = [];
 			$scope.friendly_dates = [];
 
-			// find the current week's monday's date
-			mon = new Date();
-			mon.setDate(d.getDate()-d.getDay()+1);
+			mon = getPreviousMonday(d);
 
 			// Use offset so as to not get weekend dates
 			offset = 0;
 			for(i=0;i<10;i++){
 				if(i==5) offset = 2;
 
-				s = new Date();
-				s.setDate(mon.getDate()+i+offset)
+				s = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate()+i+offset);
 
 				dd = s.getDate()
 				// append 0 if less than 10
@@ -57,8 +64,10 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 
 		// Get todays date
 		today = new Date()
+		console.log(today);
 		// Store array of dates in scope
 		getTwoWeeks(today);
+		console.log($scope.friendly_dates);
 
 		// Don't let customer's schedule appts in the past
 		// Easily test this code by setting threshold to 1
@@ -95,6 +104,7 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 		promise.then(function(response){
 			// Store the response
 			vm.schedule = response.data;
+			console.log(vm.schedule);
 			// Create cell matrix to display as a schedule
 			for(i=0;i<times.length;i++){
 				$scope.cells[i] = {}
@@ -143,29 +153,6 @@ angular.module('schedCtrl', ['acmeService', 'cherwellService', 'apptService', 'i
 					// Mark the cell as inactive if the time is within the next
 					// 24 hours or is earlier
 					if((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour))) $scope.cells[i][j].active = false;
-					// Create function to book the appt
-					$scope.cells[i][j].book_appt=function(item){
-						console.log("book appt");
-						if(item.active){
-							console.log("active");
-							// Check which week is displayed to user
-							var k = $scope.this_week ? 0 : 1;
-							// Update the agents and date
-							apptData.agent 	= item.agents[k][0];
-							apptData.dates  = item.dates[k];
-							apptData.day 	= item.day;
-							apptData.time 	= item.time;
-							apptData.title 	= item.day + ", " + item.friendly_dates[k] + " at " + item.time;
-
-							// Send out an email to cherwell to create a case
-							userData.email_message = "You have successfully created an Appoinment with the DoIT Tech Store on "+apptData.title;
-							userData.description = "Appt: "+apptData.title + "; " + userData.description;
-							userData.owner_netid = apptData.agent.netid;
-							cherwellFactory.buildCherwellCase();
-							acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
-							$location.path('/appt/success');
-						}
-					}
 				}
 			}
 		});
