@@ -28,6 +28,28 @@
 	color: #c5050c;
 }
 
+.ts-logo-jpg {
+  width: 200px;
+}
+.doit-site-title{
+  -webkit-font-smoothing: antialiased;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-size: 1.0rem;
+  line-height: 0.9;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 1px;
+  margin-bottom: .1rem;
+  color: #c5050c;}
+  doit-site-title.style {
+    margin-left: 10px;
+  }
+    .doit-site-title a:hover {
+      text-decoration: none; }
+
+
 main {
 	padding-top:30px;
 }
