@@ -8,10 +8,12 @@ angular.module('netApp', [
 	'dataTransCtrl',
 	'schedCtrl',
 	'apptCtrl',
+	'mainCtrl',
 	'submitService',
 	'incidentService',
 	'acmeService',
 	'apptService',
 	'infoService',
+	'configService',
 	'filters'
 ]);

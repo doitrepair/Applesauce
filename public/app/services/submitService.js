@@ -5,10 +5,9 @@
 //
 //******************************************************************************
 //******************************************************************************
-angular.module('submitService', ['infoService', 'incidentService', 'acmeService'])
-	.factory('submitFactory', function($http, userData, apptData, incidentFactory, acmeFactory) {
+angular.module('submitService', ['infoService', 'incidentService', 'acmeService','configService'])
+	.factory('submitFactory', function($http, userData, apptData, incidentFactory, acmeFactory, env) {
 		var submitFactory = {};
-		var deactivate = false;
 
 		//**********************************************************************
 		// Title: Send Emails
@@ -107,7 +106,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 		}
 
 		submitFactory.submitCase = function(){
-			if(!deactivate) {
+			if(env.prod|| env.post) {
 				console.log('Submitting Repair');
 				incidentFactory.createIncident();
 				cherwell_text = submitFactory.buildCherwellEmail();
@@ -115,10 +114,10 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 				submitFactory.sendEmails(cherwell_text.replace(/\n/g, '').replace(/\t/g, ''), user_text);
 				if(apptData.appt) {
 					console.log('Scheduling Appointment');
-					acmeFactory.updateSched(apptData.time, apptData.time, apptData.dates, apptData.agent.first, apptData.agent.last)
+					acmeFactory.updateSched(apptData.time, apptData.time, apptData.date, apptData.agent.first, apptData.agent.last)
 				}
 			} else {
-				console.log('Submission Deactivated')
+				console.log('Submission Deactivated');
 			}
 		}
 		return submitFactory;

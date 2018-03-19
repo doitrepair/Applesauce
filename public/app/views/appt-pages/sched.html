@@ -1,9 +1,9 @@
 <div ng-controller="schedController" style="overflow-x:scroll;">
 	<h2 class="uw-mini-bar">Choose that works for you by clicking on a <strong style="color: green;">green</strong> timeslot:</h2>
 	<div style="float:right;">
-		<button ng-click="toggle_week(false)" ng-disabled="this_week" ng-class="{'button-active': !this_week,'button-inactive': this_week}"> < </button>
+		<button ng-click="toggle_week(false)" ng-disabled="week_num==0" ng-class="{'button-active': week_num==1,'button-inactive': week_num==0}"> < </button>
 		{{ time_range }}
-		<button ng-click="toggle_week(true)" ng-disabled="!this_week" ng-class="{'button-active': this_week,'button-inactive': !this_week}"> > </button>
+		<button ng-click="toggle_week(true)" ng-disabled="week_num==1" ng-class="{'button-active': week_num==0,'button-inactive': week_num==1}"> > </button>
 	</div>
 	<table style="margin:auto;width: 100%;">
 
@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="row in cells track by $index">
+			<tr ng-repeat="row in sched_cells">
 				<td class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="book_appt(item, this_week)">{{ item.day }} {{ item.time | time }}</button></td>
 			</tr>
 		</tbody>

@@ -11,9 +11,6 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 
 		vm = this;
 
-		$scope.template = function(){
-			return 'app/views/appt-pages/appt-info.html';
-		}
 		// Threshold specifies the number of staff required at a specified time
 		// in order to let a customer schedule an appointment
 		var threshold = 3;
@@ -21,7 +18,9 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 		var shift_id = 70 // 64 for appoitment
 
 		// Initially show this weeks calendar
-		$scope.this_week = true;
+		$scope.week_num = 0;
+
+		////// PART 1: Get Dates Corresponding To This Week And Next Week //////
 
 		// Get's the closest monday prior to a given date (returns the same date
 		// if it's already a monday)
@@ -63,14 +62,13 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 		}
 
 		// Get todays date
-		today = new Date()
-		console.log(today);
-		// Store array of dates in scope
+		today = new Date();
 		getTwoWeeks(today);
-		console.log($scope.friendly_dates);
+
+		//////// PART 2: Set Up Rows, Cols, And Cells For The Schedule /////////
 
 		// Don't let customer's schedule appts in the past
-		// Easily test this code by setting threshold to 1
+		// Easily test this code by setting the var threshold to 1
 		earliest_day = -1
 		earliest_hour = -1;
 		if(today.getDay()==6){
@@ -94,94 +92,75 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 			// Each column after that, give a title of the day of the week
 			$scope.cols[i] = [days[i],$scope.friendly_dates[i]];
 		}
+
 		// Time range displayed on top of schedule
 		$scope.time_range = $scope.friendly_dates[0] + ' - ' + $scope.friendly_dates[4]
-		// Now start to fill out each cell
-		$scope.cells = [];
+
+		// Create function for formatting cells
+		format_cell = function(week_idx, time_idx, day_idx){
+			cell = {};
+			date_idx = day_idx + week_idx*5;
+
+			cell.date = $scope.dates[date_idx];
+			cell.friendly_date = $scope.friendly_dates[date_idx];
+			cell.day = days[day_idx];
+			cell.time = times[time_idx];
+
+			cell.agents = [];
+			for(k=0;k<vm.schedule.length;k++){
+				agent = vm.schedule[k];
+				// Check if the agent is working in the Dayton column
+				if((agent.date == $scope.dates[date_idx])&(agent[times[time_idx]]==shift_id)){
+					ag = {'first':agent.Nick_Name,'last':agent.Last_Name, 'netid': agent.NetID};
+					cell.agents = cell.agents.concat([ag]);
+				}
+			}
+
+			// Mark the cell as active if we have enough staff
+			cell.active = (cell.agents.length >= threshold)
+			// Mark the cell as inactive if the time has already passed
+			if((date_idx<=earliest_day)||((date_idx==earliest_day+1)&&(time_idx<=earliest_hour))) cell.active = false;
+			return cell;
+		}
+
+		//// PART 3: Get The Actual Schedule From ACME & Instantiate Cells /////
+
+		all_cells = [];
 		// Get the schedule from the acme database
 		var promise = acmeFactory.getSched($scope.dates[0],$scope.dates[9], shift_id);
 		// Wait for the response before continuing
 		promise.then(function(response){
 			// Store the response
 			vm.schedule = response.data;
-			console.log(vm.schedule);
+
+			// Reformat date from "0000-00-00T000000" to "0000-00-00" (removes time)
+			for(i=0;i<vm.schedule.length;i++){
+				vm.schedule[i].date = vm.schedule[i].date.split("T")[0];
+			}
+
 			// Create cell matrix to display as a schedule
-			for(i=0;i<times.length;i++){
-				$scope.cells[i] = {}
-				for(j=0;j<days.length;j++){
-					$scope.cells[i][j] = {};
-
-					// Each cell has two possible dates (ex: this monday at 9:30
-					// and next monday at 9:30)
-					$scope.cells[i][j].agents = [[],[]];
-					$scope.cells[i][j].dates = [$scope.dates[j],$scope.dates[j+5]];
-					$scope.cells[i][j].friendly_dates = [$scope.friendly_dates[j],$scope.friendly_dates[j+5]];
-					for(k=0;k<vm.schedule.length;k++){
-						agent = vm.schedule[k];
-						ag = {'first':agent.Nick_Name,'last':agent.Last_Name, 'netid': agent.NetID};
-
-						// Check if the agent is working in the Dayton column
-						if((agent.date == $scope.dates[j]+"T06:00:00.000Z")&(agent[times[i]]==shift_id)){
-							var already_exists = false;
-							// Check if the agent is listed already (sometimes acme returns duplicates)
-							for(l=0;l<$scope.cells[i][j].agents[0].length;l++){
-								if(($scope.cells[i][j].agents[0][l].first==ag.first)&($scope.cells[i][j].agents[0][l].last==ag.last)) already_exists=true;
-							}
-							// If not, add the agent to the list
-							if(!already_exists){
-								$scope.cells[i][j].agents[0] = $scope.cells[i][j].agents[0].concat([ag])
-							}
-						}
-						if((agent.date == $scope.dates[j+5]+"T06:00:00.000Z")&(agent[times[i]]==shift_id)){
-							var already_exists = false;
-							// Check if the agent is listed already (sometimes acme returns duplicates)
-							for(l=0;l<$scope.cells[i][j].agents[1].length;l++){
-								if(($scope.cells[i][j].agents[1][l].first==ag.first)&($scope.cells[i][j].agents[1][l].last==ag.last)) already_exists=true;
-							}
-							// If not, add the agent to the list
-							if(!already_exists){
-								$scope.cells[i][j].agents[1] = $scope.cells[i][j].agents[1].concat([ag])
-							}
-						}
+			for(week_idx=0; week_idx<2; week_idx++){
+				all_cells[week_idx] = [];
+				for(time_idx=0;time_idx<times.length;time_idx++){
+					all_cells[week_idx][time_idx] = [];
+					for(day_idx=0;day_idx<days.length;day_idx++){
+						all_cells[week_idx][time_idx][day_idx] = format_cell(week_idx, time_idx, day_idx);
 					}
-					// Give the cell its day of the week, time, and a name to print in the cell
-					$scope.cells[i][j].day = days[j];
-					$scope.cells[i][j].time = times[i];
-					$scope.cells[i][j].name = days[j]+" "+times[i];
-					// Mark the cell as active if there are enough agents working
-					$scope.cells[i][j].active = ($scope.cells[i][j].agents[0].length >= threshold)
-					// Mark the cell as inactive if the time is within the next
-					// 24 hours or is earlier
-					if((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour))) $scope.cells[i][j].active = false;
 				}
 			}
+			// Set the current schedule to this week
+			$scope.sched_cells = all_cells[$scope.week_num];
 		});
+
+		////////// PART 4: Create Support For Toggling Between Weeks ///////////
 
 		// function for changing between weeks on the schedule
 		$scope.toggle_week = function(forward){
-			if((forward && $scope.this_week) || (!forward && !$scope.this_week)){
+			if((forward && $scope.week_num==0) || (!forward && $scope.week_num==1)){
 				// toggle boolean value
-				$scope.this_week = !$scope.this_week;
-
-				// Update the offset to reflect which week is being changed to
-				var offset = 0;
-				if(!$scope.this_week) offset = 5;
-
-				// Update time range displayed on top of schedule
-				$scope.time_range = $scope.friendly_dates[0+offset] + ' - ' + $scope.friendly_dates[4+offset]
-
-				// Update the column headers
-				for(i=0;i<days.length;i++){
-					$scope.cols[i][1] = $scope.friendly_dates[i+offset];
-				}
-				// update the cell data
-				var k = $scope.this_week ? 0 : 1;
-				for(i=0;i<times.length;i++){
-					for(j=0;j<days.length;j++){
-						$scope.cells[i][j].active = ($scope.cells[i][j].agents[k].length >= threshold)
-						if(((j<=earliest_day)||((j==earliest_day+1)&&(i<=earliest_hour)))&&($scope.this_week)) $scope.cells[i][j].active = false;
-					}
-				}
+				$scope.week_num = ($scope.week_num+1)%2;
+				$scope.time_range = $scope.friendly_dates[0+$scope.week_num*5] + ' - ' + $scope.friendly_dates[4+$scope.week_num*5]
+				$scope.sched_cells = all_cells[$scope.week_num];
 			}
-		};
+		}
 	});

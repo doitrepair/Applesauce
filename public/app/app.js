@@ -11,10 +11,12 @@ angular.module('userApp', [
 	'loginCtrl',
 	'adminCtrl',
 	'adminFormCtrl',
+	'mainCtrl',
 	'submitService',
 	'incidentService',
 	'acmeService',
 	'apptService',
 	'infoService',
+	'configService',
 	'filters'
 ]);
