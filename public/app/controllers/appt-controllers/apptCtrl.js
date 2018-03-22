@@ -37,6 +37,9 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 				$scope.submit_pressed = true;
 			}
 		}
+		$scope.back_to_description = function(){
+			form = 'app/views/forms-pages/form-descrip.html';
+		}
 		$scope.save_user = function(isValid){
 			if(isValid){
 				userData.netId 			= $scope.netId;
@@ -48,6 +51,9 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 			} else{
 				$scope.submit_pressed = true;
 			}
+		}
+		$scope.back_to_user_form = function(){
+			form = 'app/views/forms-pages/form-user.html';
 		}
 		$scope.save_comp = function(isValid){
 			if(isValid){
@@ -62,7 +68,9 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 				$scope.submit_pressed = true;
 			}
 		}
-
+		$scope.back_to_comp_form = function(){
+			form = 'app/views/forms-pages/form-comp.html';
+		}
 		$scope.book_appt=function(item, this_week){
 			console.log("book appt");
 			if(item.active){

@@ -42,6 +42,9 @@ angular.module('dataTransCtrl', ['submitService', 'infoService'])
 			userData.description 	= "New Computer Data Transfer Check-In";
 			form = 'app/views/forms-pages/form-user.html';
 		}
+		$scope.back_to_description = function(){
+			form = 'app/views/data-pages/data-descrip.html';
+		}
 		$scope.save_user = function(isValid){
 			if(isValid){
 				userData.netId 			= $scope.netId;
@@ -53,6 +56,9 @@ angular.module('dataTransCtrl', ['submitService', 'infoService'])
 			} else{
 				$scope.submit_pressed = true;
 			}
+		}
+		$scope.back_to_user_form = function(){
+			form = 'app/views/forms-pages/form-user.html';
 		}
 		$scope.save_comp = function(isValid){
 			if(isValid){
@@ -68,6 +74,9 @@ angular.module('dataTransCtrl', ['submitService', 'infoService'])
 			} else{
 				$scope.submit_pressed = true;
 			}
+		}
+		$scope.back_to_comp_form = function(){
+			form = 'app/views/forms-pages/form-comp.html';
 		}
 		$scope.submit_repair = function(disclaimer) {
 			if(disclaimer != true){

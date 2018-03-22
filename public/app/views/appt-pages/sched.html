@@ -17,5 +17,6 @@
 				<td class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="book_appt(item, this_week)">{{ item.day }} {{ item.time | time }}</button></td>
 			</tr>
 		</tbody>
+		<button ng-click = "back_to_comp_form()" class="uw-button">Back</button>
 	</table>
 </div>
