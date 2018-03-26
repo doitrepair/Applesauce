@@ -163,4 +163,7 @@ angular.module('schedCtrl', ['acmeService', 'apptService', 'infoService', 'filte
 				$scope.sched_cells = all_cells[$scope.week_num];
 			}
 		}
+		$scope.back_to_comp_form = function(){
+			form = 'app/views/forms-pages/form-comp.html';
+		}
 	});
