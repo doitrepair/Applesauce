@@ -25,7 +25,8 @@ app.use(function(req, res, next) {
 
 //Log all requests to the console
 app.use(morgan('dev'));
-
+var acme_connection;
+var db_connection;
 
 //Connect to our database
 var db_connection = mySQL.createPool({	//create Pooled connection with database
