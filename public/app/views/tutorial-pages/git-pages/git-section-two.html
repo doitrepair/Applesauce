@@ -9,14 +9,20 @@
     it, to use the terminal).
   </li>
   <li>
-    Create a new folder called <em>git-tutorial/</em>.
+    Create a new folder called <em>git-tutorial/</em> and navigate into it.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>mkdir git-tutorial</li>
+        <li>cd git-tutorial</li>
+      </ul>
+    </div>
   </li>
   <li>
     Within the <em>git-tutorial/</em> folder, create a file called
     <em>example.html</em>.
   </li>
   <li>
-    Open up example.html and copy in the following code.<br>
+    Open up example.html and copy in the following code:<br>
     <div class="tab">example.html</div>
     <div class="content-box pad-box-mini border border-trbl code">
       <ol>
@@ -28,11 +34,10 @@
     </div>
   </li>
   <li>
-    Save the file navigate to <em>git-tutorial/</em> in the terminal.
+    Save the file and navigate back to the <em>git-tutorial/</em> folder in the terminal.
   </li>
   <li>
-    Within the <em>git-tutorial/</em> folder, do the following command to create
-    a git repository.
+    Within the <em>git-tutorial/</em> folder, do the following command to create a git repository.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git init</li>
@@ -42,26 +47,8 @@
     repository in the git-tutorial folder.
   </li>
   <li>
-    Log in to GitHub and click on the button to <strong>Create a New Repository
-    </strong>. On the next page, give your repository a name and mark it as
-    private, then hit <strong>Create Repository</strong>.<br>
-    <strong>Note:</strong>Creating a public repository allows anyone be able to
-    find your code. This is ok many cases, but for now we will just make a
-    private one (you can delete it after this tutorial if you want).
-  </li>
-  <li>
-    GitHub will now bring you to your repository's webpage, copy down the URL
-    for the page, you will need this in a few steps.
-  </li>
-  <li>
-    Navigate to back to the terminal window (you should still be inside the
-    git-tutorial/ folder). Insert the following commands into the terminal,
-    replacing "first last" with your first and last name, and "email" with the
-    email that you used to create your GitHub account.<br>
-    <strong>Note:</strong>This will only have to be done once on your computer,
-    this step involves telling git who you are and saving your user name and
-    password to the computer. If you do not want to save your username/password,
-    only do the first two commands.<br>
+    Execute the following commands in the terminal, replacing "first last" with your first and last name, and "email" with the email that you used to create your GitHub account.<br>
+    <strong>Note:</strong>The last command saves the username and password for your github account onto your machine, if you do not want to do this, skip the last command.<br>
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git config --global user.name <em>first last</em></li>
@@ -71,32 +58,80 @@
     </div>
   </li>
   <li>
+    Log in to GitHub and click on the button to <strong>Create a New Repository
+    </strong>. On the next page, give your repository a name and mark it as
+    private, then hit <strong>Create Repository</strong>.<br>
+    <img src="assets/img/tutorials/git/github-repo.png" alt="GitHub Repo"><br>
+    <strong>Note:</strong>Creating a public repository allows anyone be able to
+    find your code. This is ok many cases, but for now we will just make a
+    private one (you can delete it after this tutorial if you want).
+  </li>
+  <li>
+    GitHub will now bring you to your repository's webpage, copy down the URL
+    for the page, you will need this in the next step.<br>
+    <img src="assets/img/tutorials/git/github-url.png" alt="GitHub URL"><br>
+  </li>
+  <li>
     One more configuration step that we need to do is tell git that we have
     created a online repository for our code. This is something that you only
-    have to do once per repository. Replace <em>https://github-repository-url
-    </em> with the URL that you copied down in a previous step.
+    have to do once per repository. Replace <em>https://github.com/buckybadger/git-tutorial</em> with the URL that you copied down in the previous step.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
-        <li>git remote add origin</li>
+        <li>
+          git remote add origin https://github.com/buckybadger/git-tutorial
+        </li>
       </ul>
     </div>
   </li>
   <li>Let's take a break here, everything above this step was configuring git,
     GitHub, and your repository. These are not things that you will have to do
     very often, so just remember that they exist, but feel free to forget how to
-    do it (you can always, and will have to sometimes, look up how to do these
-    steps when you need to).
+    do it (you can always look up how to do these steps again later).
   </li>
   <li>
-    Next, we are going to do something called a <em>git commit</em>, this is the
-    process of saving your code to a git repository. You can ommit your code
-    with the following code:<br>
+    Next, we will add the <em>example.html</em> file to our git repository.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git add example.html</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    Once we add the example.html file, we can create a commit. This is the
+    process of saving your code to a git repository.
     <strong>Note:</strong> The <em>-m</em> flag allows you to create a message
     describing what you did since the last commit in quotations, you should do
     this on every commit!<br>
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git commit -m "created a example.html file"</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    Now we can double check that this worked by running the  <em>git log</em> command.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git log</li>
+      </ul>
+    </div>
+    You should see a few lines which say the commit id (a long string of characters), the author of the commit (you), the date of the commit (today), and the message that you added to the commit.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>
+          commit eeba2040c5af96e20bfaa3a4448e8810fe6a249b (HEAD -> master)
+        </li>
+        <li>
+          Author: bbadger@wisc.edu
+        </li>
+        <li>
+          Date: Mon Jan 1 11:00:00 2018 -0500
+        </li>
+        <li>
+          <br>
+          <span class="indent">created a example.html file</span>
+          <br>
+        </li>
       </ul>
     </div>
   </li>
@@ -114,10 +149,10 @@
   </li>
 </ol>
 <div style="overflow: hidden;">
-  <button ng-click="to_section_two()" style = "float: left" class="uw-button">
+  <button ng-click="back()" style = "float: left" class="uw-button">
     Back
   </button>
-  <button ng-click="to_section_three()" style = "float: right" class="uw-button">
+  <button ng-click="continue()" style = "float: right" class="uw-button">
     Continue
   </button>
 </div>

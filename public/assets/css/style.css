@@ -236,6 +236,39 @@ main {
   content: "$";
   padding-right: 5px;
 }
+
+.terminal-out {
+  color: white;
+  background-color: black;
+  width: 100%;
+}
+
+.terminal-out ul {
+  list-style: none;
+  padding: 5px;
+  margin: 5px;
+}
+.terminal-out li {
+  list-style: none;
+  margin: 0px;
+  padding: 0;
+}
+
 span.indent {
   padding-left: 20px;
+}
+
+.tutorial-menu{
+  list-style: none;
+  padding: 5px;
+  margin: 5px;
+}
+.tutorial-menu li{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: inline;
+}
+.tutorial-menu button:hover{
+  border-bottom: 3px solid black;
 }

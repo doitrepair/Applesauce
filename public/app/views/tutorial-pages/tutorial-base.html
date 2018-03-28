@@ -1,6 +1,13 @@
 <div style="width: 100%;">
 	<div class="module">
 		<h2 class="uw-mini-bar">{{tutorial_name}} Tutorial <span ng-if="!noSections"> - {{section_name}}</span></h2>
+		<h3 style="margin: 0px">Jump to different section:</h3>
+		<ul class = "tutorial-menu">
+			<li ng-repeat="page in pages">
+				<button ng-click="jump_to_page($index)">{{page.name}}</button>
+				<span ng-if=!$last> | </span>
+			</li>
+		</ul>
 	</div>
 	<div class="module" style="width:100%">
 		<ng-include src="template_form()"></ng-include>
