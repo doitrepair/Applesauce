@@ -1,5 +1,5 @@
 <p>
-  Great! You've worked through configuring git and started a new git project. Now we'll explore some of the nice uses of git!
+  Great! You've worked through configuring git and started a new git project. Now we'll explore more into commits and start learning about branches.
 </p>
 <ol>
   <li>
@@ -9,7 +9,14 @@
         <li>git status</li>
       </ul>
     </div>
-    You should see a message that says <em>"On branch master nothing to commit, working tree clean"</em>. This means that git is up to date. We'll figure out what some of the other terminology here means in a short while.
+    You should see the message below, this means that git is up to date. We'll figure out what some of the other terminology here means in a short while.
+    <div class="content-box pad-box-mini border border-trbl terminal-out">
+      <ul>
+        <li>
+          On branch master nothing to commit, working tree clean
+        </li>
+      </ul>
+    </div>
   </li>
   <li>
     Let's open up our example.html file and modify the third line to say <em>"Git is a great tool!"</em>.
@@ -113,7 +120,7 @@
   </li>
 
   <li>
-    Now if we look at the text in example.html, it should show the text as it was before we updated it.
+    Now if we look at the text in example.html, line 3 has the old message so we rolled back correctly.
     <div class="tab">example.html</div>
     <div class="content-box pad-box-mini border border-trbl code">
       <ol>
@@ -123,11 +130,14 @@
         <li>&lt;/p&gt;</li>
       </ol>
     </div>
-    Congrats, you just learned how to roll-back code to a previous version! Take a minute to review what we've done so far before moving to the next step.
   </li>
 
   <li>
-    Now what we are going to do is create a new <em>'branch'</em> for this rolled back version, we'll get more into what this means in a few steps.<br>
+    Congrats, you just learned how to roll-back code to a previous version! Take a minute to review what we've done so far before moving to the next step where we introduce branches.
+  </li>
+
+  <li>
+    Now we are going to create a new <em>'branch'</em> for this rolled back version, we'll get more into what this means in a few steps.<br>
     <strong>Note:</strong> The <em>-b</em> tag on git checkout tells git that you want to create a new branch, in this case called <em>'new-branch'</em> (clever, I know).
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
@@ -161,7 +171,7 @@
 
   <li>
     Now, if we want to push our code, we must also tell git that it needs to push to the new branch rather than the original one.<br>
-    Before, we executed the command <em>"git push origin master"</em> where <em>"origin"</em> refers to the github url that we saved and <em>"master"</em> refers to the branch (so our original branch is called master). To push our code to our new branch, we must exectute the command <em>"git push origin new-branch"</em>.
+    Before, we executed the command <em>"git push origin master"</em> where <em>"origin"</em> refers to the github url that we saved and <em>"master"</em> refers to the branch (so our original branch is called <em>"master"</em>). To push our code to our new branch, we must exectute the command <em>"git push origin new-branch"</em>.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git push origin new-branch</li>
