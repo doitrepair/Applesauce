@@ -96,7 +96,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 		//**********************************************************************
 		submitFactory.buildUserEmail = function(){
 			next_steps_dayton = '<p>NEXT STEPS:<ul><li>Stop by the DoIT Tech Store at 1210 W Dayton St.</li><li>If possible, we strongly recommend that you back up your data.</li><li><strong>Please bring your power adapter for any computers that are not Apple or Dell.</strong></li></ul></p>';
-			next_steps_any = '<p>NEXT STEPS:<ul><li>Stop by one of our <a href="https://techstore.wisc.edu/locations/">DoIT Tech Store locations</a></li><li>If possible, we strongly recommend that you back up your data.</li><li><strong>Please bring your power adapter for any computers that are not Apple or Dell.</strong></li></ul></p>';
+			next_steps_any = '<p>NEXT STEPS:<ul><li>Stop by one of our <a href="https://techstore.wisc.edu/locations/">DoIT Tech Store locations</a></li><li>If possible, we strongly recommend that you back up your data. For more information on backing up your data, checkout <a href="https://kb.wisc.edu/20504">the UW KnowledgeBase</a>.</li><li><strong>Please bring your power adapter for any computers that are not Apple or Dell.</strong></li></ul></p>';
 			if(apptData.appt) {
 				return "<h4>"+userData.header_message+"</h4>"+next_steps_dayton;
 			} else {
