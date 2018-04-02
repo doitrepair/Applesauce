@@ -6,36 +6,142 @@
     Merge conflicts occur when the two branches have both applied updates to a specific line of code (so git does not know which one to keep).
   </li>
   <li>
-    Let's recall back to when we were still learning about commits and branches.
-
-  </li>
-  <li>
+    Let's begin by running <em>git status</em> to double check that we are on new-branch.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
-        <li></li>
-      </ul>
-    </div>
-    <div class="content-box pad-box-mini border border-trbl terminal-out">
-      <ul>
-        <li>
-        </li>
+        <li>git status</li>
       </ul>
     </div>
   </li>
-
   <li>
-
+    Now that we've confirmed that we are on new-branch, let's create another new branch called <em>"conflict-1"</em>.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git checkout -b conflict-1</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    In conflict-1, let's update the message of example.html to say <em>"1st conflict branch"</em>.
     <div class="tab">example.html</div>
     <div class="content-box pad-box-mini border border-trbl code">
       <ol>
         <li>&lt;h2&gt;Hello Galaxy!&lt;/h2&gt;</li>
         <li>&lt;p&gt;</li>
-        <li><span class="indent">New Message</span></li>
+        <li><span class="indent">1st conflict branch</span></li>
+        <li>&lt;/p&gt;</li>
+      </ol>
+    </div>
+  </li>
+  <li>
+    Like always, we need to commit and push our new code.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git add .</li>
+        <li>git commit -m "creating 1st conflict branch"</li>
+        <li>git push origin conflict-1</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    Now let's switch back to new-branch so that we can create another branch that will conflict with conflict-1.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git checkout new-branch</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    Now we, again, create a new branch, this time called <em>"conflict-2"</em>.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git checkout -b conflict-2</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    In conflict-2, let's update the message of example.html to say <em>"2nd conflict branch"</em>.
+    <div class="tab">example.html</div>
+    <div class="content-box pad-box-mini border border-trbl code">
+      <ol>
+        <li>&lt;h2&gt;Hello Galaxy!&lt;/h2&gt;</li>
+        <li>&lt;p&gt;</li>
+        <li><span class="indent">2nd conflict branch</span></li>
+        <li>&lt;/p&gt;</li>
+      </ol>
+    </div>
+  </li>
+  <li>
+    And again, we need to commit and push our new code.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git add .</li>
+        <li>git commit -m "creating 2nd conflict branch"</li>
+        <li>git push origin conflict-2</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    Now let's take a step back and look at what we just did. We created two branches based off of new-branch and we updated the 3rd line in both branches.<br>
+    If we were to merge conflict-1 and conflict-2, we would get a merge conflict because git does not know which line 3 is the one that we want to keep. Let's see what that looks like now.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git merge conflict-1</li>
+      </ul>
+    </div>
+    You should receive an error that looks something like this:
+    <div class="content-box pad-box-mini border border-trbl terminal-out">
+      <ul>
+        <li>Auto-merging example.html</li>
+        <li>CONFLICT (content): Merge conflict in example.html</li>
+        <li>Automatic merge failed; fix conflicts and then commit the result.</li>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    If we open up example.html, we'll see that git has inserted markers to show where the conflict occured.
+    <div class="tab">example.html</div>
+    <div class="content-box pad-box-mini border border-trbl code">
+      <ol>
+        <li>&lt;h2&gt;Hello Galaxy!&lt;/h2&gt;</li>
+        <li>&lt;p&gt;</li>
+        <li><<<<<<< HEAD</li>
+        <li><span class="indent">2nd conflict branch</span></li>
+        <li>=======</li>
+        <li><span class="indent">1st conflict branch</span></li>
+        <li>>>>>>>> conflict-1</li>
+        <li>&lt;/p&gt;</li>
+      </ol>
+    </div>
+    Here git is telling us that there is a conflict between "2nd conflict branch" and "1st conflict branch" and it wants us to choose the one that we want to keep.
+  </li>
+
+  <li>
+    To resolve the conflict, we want to delete the conflicting line that we don't want (we also need to delete the reference lines "<<<<<<< HEAD", "=======", and ">>>>>>> conflict-1"). Let's say the line that we want to keep is "1st conflict branch", which means that we need to delete "2nd conflict branch". <br>
+    The resulting example.html file should look like this:
+    <div class="tab">example.html</div>
+    <div class="content-box pad-box-mini border border-trbl code">
+      <ol>
+        <li>&lt;h2&gt;Hello Galaxy!&lt;/h2&gt;</li>
+        <li>&lt;p&gt;</li>
+        <li><span class="indent">1st conflict branch</span></li>
         <li>&lt;/p&gt;</li>
       </ol>
     </div>
   </li>
 
+  <li>
+    The last step to resolving a merge conflict is committing and pushing your code.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git add .</li>
+        <li>git commit -m "resolved merge conflict"</li>
+        <li>git push origin conflict-2</li>
+      </ul>
+    </div>
+    Congrats, you've successsfully fixed a merge conflict! If you want to try another one, try merging new-branch and master together.
+  </li>
 </ol>
 <div style="overflow: hidden;">
   <button ng-click="back()" style = "float: left" class="uw-button">

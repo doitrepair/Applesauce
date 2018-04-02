@@ -23,6 +23,10 @@ angular.module('gitCtrl', [])
 			{
 				form: 'app/views/tutorial-pages/git-pages/git-section-4.html',
 				name: 'Intro to Merges'
+			},
+			{
+				form: 'app/views/tutorial-pages/git-pages/git-section-5.html',
+				name: 'Merge Conflicts'
 			}
 		];
 
