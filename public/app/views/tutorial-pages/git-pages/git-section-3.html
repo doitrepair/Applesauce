@@ -1,6 +1,12 @@
 <p>
   Great! You've worked through configuring git and started a new git project. Now we'll explore more into commits and start learning about branches.
 </p>
+<h2>
+  Part 1: Creating More Commits & Rolling-Back Code
+</h2>
+<p>
+  In this part we want to learn how to roll back our code to a previous version, in order to do that though, we first must have multiple commits. We will start by creating a new commit, and then we will see how to roll-back to our first commit.
+</p>
 <ol>
   <li>
     Before we do anything else, we should run <em>git status</em> to double check that everything that we've done has been recorded by git.
@@ -19,7 +25,7 @@
     </div>
   </li>
   <li>
-    Let's open up our example.html file and modify the third line to say <em>"Git is a great tool!"</em>.
+    Great! Now, let's open up our example.html file and modify the third line to say <em>"Git is a great tool!"</em>.
     <div class="tab">example.html</div>
     <div class="content-box pad-box-mini border border-trbl code">
       <ol>
@@ -32,18 +38,10 @@
   </li>
   <li>
     Now again, we need to tell git that we've modified this file, so first we run a <em>"git add"</em> command. <br>
-    Last time we ran <em>"git add example.html"</em>, but in general, you will not want to add each file individually, it's just too slow. Instead let's get in the habit of using <em>"git add ."</em>, which adds all the files in our current directory (as well as any sub-directories).
+    Last time we ran <em>"git add example.html"</em>, but in general, you will have multiple files and will not want to add each file individually, it's just too slow. Instead let's get in the habit of using <em>"git add ."</em>, which adds all the files in our current directory (as well as any sub-directories).
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git add .</li>
-      </ul>
-    </div>
-  </li>
-  <li>
-    Now if we run <em>"git status"</em> again, we'll see that git recognizes that example.html has been modified and is waiting for a commit.
-    <div class="content-box pad-box-mini border border-trbl terminal">
-      <ul>
-        <li>git status</li>
       </ul>
     </div>
   </li>
@@ -56,7 +54,7 @@
     </div>
   </li>
   <li>
-    Unless you have a reason for not doing so, it is often best to just get in the habit of pushing your code at the same time as you commit (remember that a push is like uploading to a shared Google Drive folder).
+    Unless you have a reason for not doing so, it is often best to just get in the habit of pushing your code at the same time as you commit (recall that pushing code is just uploading to a GitHub repo).
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git push origin master</li>
@@ -104,23 +102,25 @@
       </ul>
     </div>
   </li>
-
   <li>
-    Now let's say that, for whatever reason, we need to roll-back our code to the way we had it in our first commit. To do this, let's grab the commit id that from our first commit (this is displayed in the output of git log).<br>
-    <strong>Note:</strong> In the case above, the commit id is 'eeba2040c5af96e20bfaa3a4448e8810fe6a249b' but your commit's id will almost certainly be different, so make sure you get the commit id directly from the git log output.
+    Now that we have another commit, we can see how to roll-back to our first commit.
   </li>
-
   <li>
-    Once you have your first commit's id, let's go to that code by using the command <em>'git checkout'</em> followed by the commit id.
+    The first step in rolling-back to a previous commit is finding the <em>commit id</em> of that previous commit. The commit id can be found in the output of a <em>git log</em> command.<br>
+    If we look to the example above, the first commit's id is "eeba2040c5af96e20bfaa3a4448e8810fe6a249b" and the second commit's id is "91aa1d3e655a5bbc5a53aff8cc9c80bb5f48802e". <br>
+     <strong>Note:</strong> These are the commit ids in the example output shown above, your's will almost certainly be different so make sure that you get the correct id.
+  </li>
+  <li>
+    To roll-back to the first commit we will use the <em>git checkout</em> command, followed by the first commit's id.<br>
+    <strong>Note:</strong> Again, make sure that you get your commit ids, don't copy straight from the example because yours will almost certainly be different.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git checkout eeba2040c5af96e20bfaa3a4448e8810fe6a249b</li>
       </ul>
     </div>
   </li>
-
   <li>
-    Now if we look at the text in example.html, line 3 has the old message so we rolled back correctly.
+    To check to see if this worked, we can now open up our example.html file and take a look at the third line.
     <div class="tab">example.html</div>
     <div class="content-box pad-box-mini border border-trbl code">
       <ol>
@@ -130,20 +130,29 @@
         <li>&lt;/p&gt;</li>
       </ol>
     </div>
+    If the third line says "I'm doing a git tutorial!" and not our updated "Git is a great tool!", then we know that we rolled-back successfully.
   </li>
-
   <li>
-    Congrats, you just learned how to roll-back code to a previous version! Take a minute to review what we've done so far before moving to the next step where we introduce branches.
+    This was a lot of work for a rather trivial result but imagine rolling back to a previous commit where hundreds or thousands of lines have been changed. Git makes it much easier to roll-back, as opposed to rewriting past code or using cmd-z a lot.
   </li>
-
+</ol>
+<h2>
+  Part 2: Introduction to Branches
+</h2>
+<p>
+  Now imagine that we want to continue to use our rolled-back code, but we did not want to delete all of the work that we did prior to the roll-back. We can do this by creating a <em>branch</em>. <br>
+  Like it's name implies, by starting a new branch we will create a new series of commits that branches off from our original work.
+</p>
+<ol>
   <li>
-    Now we are going to create a new <em>'branch'</em> for this rolled back version, we'll get more into what this means in a few steps.<br>
-    <strong>Note:</strong> The <em>-b</em> tag on git checkout tells git that you want to create a new branch, in this case called <em>'new-branch'</em> (clever, I know).
+    Let's begin by creating and navigating to a new branch<br>
+    <strong>Note:</strong> The <em>git checkout</em> command is used for changing between branches or commits but the <em>-b</em> in this case tells git that we also want to create a new branch.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git checkout -b new-branch</li>
       </ul>
     </div>
+    This command creates a new branch called <em>'new-branch'</em> (clever name, I know).
   </li>
 
   <li>
@@ -175,6 +184,48 @@
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git push origin new-branch</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    Now if we run <em>"git log"</em> again, we will see the same first commit and a different second commit.<br>
+    <strong>Note:</strong> The first commit is not a copy of our original first commit, rather new-branch and master share the first commit, and then 'branch' off into their own commits after the first commit.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git log</li>
+      </ul>
+    </div>
+    You're output should look something like this:
+    <div class="content-box pad-box-mini border border-trbl terminal-out">
+      <ul>
+        <li>
+          commit c57d9db921c468b12aee793b390c0933b0877e34 (HEAD -> master, origin/master)
+        </li>
+        <li>
+          Author: bbadger@wisc.edu
+        </li>
+        <li>
+          Date: Mon Jan 1 12:30:00 2018 -0500
+        </li>
+        <li>
+          <br>
+          <span class="indent">changed title in example.html</span>
+          <br>
+        </li>
+        <li>
+          commit eeba2040c5af96e20bfaa3a4448e8810fe6a249b
+        </li>
+        <li>
+          Author: bbadger@wisc.edu
+        </li>
+        <li>
+          Date: Mon Jan 1 11:00:00 2018 -0500
+        </li>
+        <li>
+          <br>
+          <span class="indent">created a example.html file</span>
+          <br>
+        </li>
       </ul>
     </div>
   </li>

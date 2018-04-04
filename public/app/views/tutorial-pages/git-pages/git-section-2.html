@@ -1,12 +1,44 @@
 <p>
-  Now that you know a little about what Git & GitHub are, let's see how they look in action!
+  Now that you know a little about what Git & GitHub are, let's see how they look in action!<br>
+</p>
+<h2>
+  Part 1: Configuring Git
+</h2>
+<p>
+  The first thing that we'll do is setup git on your computer, this only has to be done once when you first install git.
 </p>
 <ol>
   <li>
-    First off, open a terminal window (there are ways to use Git outside of using the terminal, but it is much easier and faster, once you get used to it, to use the terminal).
+    We need to start off by telling git who you are. To do so execute the following commands in the terminal, replacing "bucky badger" with your first and last name, and "bbadger@wisc.edu" with the email that you used to create your GitHub account.<br>
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git config --global user.name <em>bucky badger</em></li>
+        <li>git config --global user.email <em>bbadger@wisc.edu</em></li>
+      </ul>
+    </div>
   </li>
   <li>
-    Create a new folder called <em>git-tutorial/</em> and navigate into it.
+    <strong>This step is optional:</strong><br>
+    Next, you may want to save your GitHub email and password to your computer, to do so execute <em>"git config --global credential.helper store"</em>.
+    <strong>Note:</strong>This tells git that you would like to save your GitHub credentials the next time you use them, but it will not prompt you for the credentials. You will still have to enter in your GitHub credentials once.<br>
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git config --global credential.helper store</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    And that's it! You've successfully configured git on your computer.
+</ol>
+<h2>
+  Part 2: Creating a Git Repository
+</h2>
+<p>
+  Next, we want to create a git repository (or repo). A git repo is just a folder that we will use for a git project.
+</p>
+<ol>
+  <li>
+    In the terminal, create a new folder called <em>git-tutorial/</em> and navigate into it.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>mkdir git-tutorial</li>
@@ -14,6 +46,60 @@
       </ul>
     </div>
   </li>
+  <li>
+    Within the <em>git-tutorial/</em> folder, use <em>git init</em> to create a git repository.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>git init</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    You should receive a message that says you have initialized an empty repository in the git-tutorial folder.
+  </li>
+</ol>
+<h2>
+  Part 3: Creating a GitHub Repository & Linking it to our Git Repository
+</h2>
+<p>
+  After creating a git repo, we will want to create a GitHub repo. A GitHub repo is just a online version of our git repo that we can use to backup and share our code.
+</p>
+<ol>
+  <li>
+    Log in to <a href="https://github.com">GitHub</a>
+  </li>
+  <li>
+    Click on the button to <strong>Create a New Repository</strong>.
+  </li>
+  <li>
+    On the next page, give your repository a name, mark it as private, then hit <strong>Create Repository</strong>.<br>
+    <img src="assets/img/tutorials/git/github-repo.png" alt="GitHub Repo"><br>
+    <strong>Note:</strong> Creating a public repository allows anyone be able to find your code. This is ok many cases, but for now we will just make a private repo (you can delete it after this tutorial if you want).
+  </li>
+  <li>
+    GitHub will now bring you to your repository's webpage, copy down the URL for the page, you will need this in the next step.<br>
+    <img src="assets/img/tutorials/git/github-url.png" alt="GitHub URL"><br>
+  </li>
+  <li>
+    Now we need to tell our git repo that the GitHub repo exists, to do that we will go back to the terminal and use the <em>git remote add</em> command as seen below. Replace the url in the example with the url that you copied down in the last step.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      <ul>
+        <li>
+          git remote add origin https://github.com/buckybadger/git-tutorial
+        </li>
+      </ul>
+    </div>
+    <strong>Note:</strong>This command gives your github url the shortened name of origin (you can name it whatever you want by replacing "origin" in the above code) for ease of use.
+  </li>
+</ol>
+<h2>
+  Part 4: Making your First Commit.
+</h2>
+<p>
+  Now that your repo is all set up we will want to make an initial <em>commit</em>. A <em>commit</em> is the process of saving your code to a git repository. <br>
+  <strong>Note:</strong> Just like you should save a file often while working on it, you should commit your code often as well.
+</p>
+<ol>
   <li>
     Within the <em>git-tutorial/</em> folder, create a file called <em>example.html</em>.
   </li>
@@ -33,50 +119,7 @@
     Save the file and navigate back to the <em>git-tutorial/</em> folder in the terminal.
   </li>
   <li>
-    Within the <em>git-tutorial/</em> folder, use <em>git init</em> to create a git repository.
-    <div class="content-box pad-box-mini border border-trbl terminal">
-      <ul>
-        <li>git init</li>
-      </ul>
-    </div>
-    You should receive a message that says you have initialized an empty repository in the git-tutorial folder.
-  </li>
-  <li>
-    Execute the following commands in the terminal, replacing "bucky badger" with your first and last name, and "bbadger@wisc.edu" with the email that you used to create your GitHub account.<br>
-    <strong>Note:</strong>The last command saves the username and password for your github account onto your machine, if you do not want to do this, skip the last command.<br>
-    <div class="content-box pad-box-mini border border-trbl terminal">
-      <ul>
-        <li>git config --global user.name <em>bucky badger</em></li>
-        <li>git config --global user.email <em>bbadger@wisc.edu</em></li>
-        <li>git config --global credential.helper store</li>
-      </ul>
-    </div>
-  </li>
-  <li>
-    Log in to <a href="https://github.com">GitHub</a> and click on the button to <strong>Create a New Repository</strong>. On the next page, give your repository a name, mark it as private, then hit <strong>Create Repository</strong>.<br>
-    <img src="assets/img/tutorials/git/github-repo.png" alt="GitHub Repo"><br>
-    <strong>Note:</strong> Creating a public repository allows anyone be able to find your code. This is ok many cases, but for now we will just make a private one (you can delete it after this tutorial if you want).
-  </li>
-  <li>
-    GitHub will now bring you to your repository's webpage, copy down the URL for the page, you will need this in the next step.<br>
-    <img src="assets/img/tutorials/git/github-url.png" alt="GitHub URL"><br>
-  </li>
-  <li>
-    One more configuration step that we need to do is tell git that we have created a online repository for our code. This is something that you only have to do once per repository. To do so, we will use <em>git remote add</em>, replacing <em>"https://github.com/buckybadger/git-tutorial"</em> with the URL that you copied down in the previous step.
-    <div class="content-box pad-box-mini border border-trbl terminal">
-      <ul>
-        <li>
-          git remote add origin https://github.com/buckybadger/git-tutorial
-        </li>
-      </ul>
-    </div>
-    <strong>Note:</strong>This command gives your github url the shortened name of origin (you can name it whatever you want by replacing "origin" in the above code) for ease of use.
-  </li>
-  <li>
-    Let's take a break here, everything above this step was configuring git, GitHub, and your repository. These are not things that you will have to do very often, so just remember that they exist, but feel free to forget how to do it (you can always look up how to do these steps again later).
-  </li>
-  <li>
-    Next, we will add the <em>example.html</em> file to our git repository.
+    Next, we will add the <em>example.html</em> file to our git repository. This tells git that it should track this file.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git add example.html</li>
@@ -84,7 +127,7 @@
     </div>
   </li>
   <li>
-    Once we add the example.html file, we can create a commit. This is the process of saving your code to a git repository.<br>
+    Now we can use the <em>git commit</em> command to create a commit.
     <strong>Note:</strong> The <em>-m</em> flag allows you to create a message describing what you did since the last commit in quotations, you should do this on every commit!<br>
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
@@ -93,7 +136,7 @@
     </div>
   </li>
   <li>
-    Now we can double check that this worked by running the  <em>git log</em> command.
+    We can verify that the commit was successful by using the <em>git log</em> command, which shows us a log of all the previous commits.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git log</li>
@@ -118,10 +161,10 @@
         </li>
       </ul>
     </div>
-    <strong>Note:</strong> You will need to type "Q" to exit the git log window
+    <strong>Note:</strong> If the output text is too large to fit in your terminal window you will need to type "Q" to exit.
   </li>
   <li>
-    Finally, we need to upload our code to GitHub. This can be done through a command called <em>git push</em>, as seen below.
+    After we commit our code to our git repo, we should upload it to our GitHub repo. This can be done through a command called <em>git push</em>, as seen below.
     <div class="content-box pad-box-mini border border-trbl terminal">
       <ul>
         <li>git push origin master</li>
