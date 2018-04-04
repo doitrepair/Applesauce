@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 var acme_connection;
 var db_connection;
-/*
+
 //Connect to our database
 var db_connection = mySQL.createPool({	//create Pooled connection with database
         connectionLimit : 100,
