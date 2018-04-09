@@ -1,6 +1,6 @@
 <div ng-controller="schedController" style="overflow-x:scroll;">
 	<h2 class="uw-mini-bar">Choose that works for you by clicking on a <strong style="color: green;">green</strong> timeslot:</h2>
-	<div style="float:right;">
+	<div style="float:center; text-align:center;">
 		<button ng-click="toggle_week(false)" ng-disabled="week_num==0" ng-class="{'button-active': week_num==1,'button-inactive': week_num==0}"> < </button>
 		{{ time_range }}
 		<button ng-click="toggle_week(true)" ng-disabled="week_num==1" ng-class="{'button-active': week_num==0,'button-inactive': week_num==1}"> > </button>

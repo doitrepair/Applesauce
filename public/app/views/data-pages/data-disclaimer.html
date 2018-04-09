@@ -1,7 +1,7 @@
 <form id="repairForm" style="padding: 0px 50px">
 	<fieldset>
 		<legend>Disclaimer</legend>
-		<p style="height: 7em; line-height: 1em; overflow: auto;">
+		<h3 style="height: 7em; line-height: 1em; overflow: auto;">
 			DoIT is not responsible for bad memory, failure of hard drives, power supplies, motherboards, or any other hardware failures that may occur under normal use while machines are in our possession.
 			DoIT will do its best to identify the failed hardware and notify you of your options, but cannot be held responsible for repairing or replacing the failed items.
 			We are also not responsible for any data loss, although we will attempt to minimize the chance that data loss will occur.
@@ -15,10 +15,10 @@
 			After four weeks, if Customer contact has not been successful, DoIT will mark the equipment status as "Abandoned" and the equipment will be physically moved to the shop's "Abandoned" shelf.
 			DoIT will claim ownership of the equipment if after four (4) months the Customer cannot be contacted.
 			DoIT, among other things, will have the right to use the equipment for spare parts or donate it to Surplus With a Purpose (SWAP).
-		</p>
+		</h3>
 	</fieldset>
 	<input type="checkbox" name="disclaimer" ng-model="disclaimer">
-	I have read and understand the disclaimer<br>
+	 I have read and understand the disclaimer<br>
 	<button ng-click = "back_to_comp_form()" class="uw-button">Back</button>
 	<button class="uw-button" style = "float: right" ng-click="submit_repair(disclaimer)">Submit Repair</button>
 </form>
