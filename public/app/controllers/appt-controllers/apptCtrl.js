@@ -15,10 +15,10 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 		var promise = netIdFactory.getNetId();
 		// Wait for the response before continuing
 		promise.then(function(response){
-			if(response.attributes != undefined){
-				for(i=0; i<response.attributes.length; i++){
-					if(response.attributes[i].name == "uid"){
-						$scope.netId = response.attributes[i].values[0];
+			if(response.data.attributes != undefined){
+				for(i=0; i<response.data.attributes.length; i++){
+					if(response.data.attributes[i].name == "uid"){
+						$scope.netId = response.data.attributes[i].values[0];
 						console.log("Net Id: " + $scope.netId);
 						$scope.email = $scope.netId+"@wisc.edu";
 						console.log("Email: " + $scope.email);
