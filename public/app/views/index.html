@@ -50,6 +50,7 @@
 		<script src="app/controllers/admin-controllers/adminCtrl.js"></script>
 		<script src="app/controllers/admin-controllers/adminFormCtrl.js"></script>
 		<script src="app/controllers/tutorial-controllers/gitCtrl.js"></script>
+		<script src="app/controllers/netReloadCtrl.js"></script>
 		<script src="app/controllers/mainCtrl.js"></script>
 
 		<!--Services-->
@@ -110,7 +111,7 @@
             </li>
 			<li>
 			  <!-- Note: This has to reference a full link (not relative) in order to trigger UW authentication -->
-			  <a style="color: #c5050c;" onclick="window.location.href = 'https://applesauce.doit.wisc.edu/net/appt'"><h3 style="margin: 0px;">Schedule Appt</h3></a>
+			  <a style="color: #c5050c;" onclick="window.location.href = '/net/appt'"><h3 style="margin: 0px;">Schedule Appt</h3></a>
 			</li>
 			<li id="menu-about" class="uw-dropdown">
               <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
@@ -118,7 +119,7 @@
               </a>
               <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
                 <li>
-                  <a target="_blank" onclick="window.location.href = 'https://applesauce.doit.wisc.edu/net/data'">Data Transfer</a>
+                  <a target="_blank" onclick="window.location.href = '/net/data'">Data Transfer</a>
                 </li>
               </ul>
             </li>

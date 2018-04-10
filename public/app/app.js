@@ -11,6 +11,7 @@ angular.module('userApp', [
 	'loginCtrl',
 	'adminCtrl',
 	'adminFormCtrl',
+	'netReloadCtrl',
 	'mainCtrl',
 	'gitCtrl',
 	'submitService',

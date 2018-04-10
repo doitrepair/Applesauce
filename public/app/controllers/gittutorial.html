@@ -1,0 +1,116 @@
+<h2>Git & Github Tutorial</h2>
+<p>
+  Now that you know a little about what Git & GitHub are, let's see how they
+  look in action!
+</p>
+<h5>Part 1: Setting up a Git Repository</h5>
+<ol>
+  <li>
+    First off, open a terminal window (there are ways to use Git outside of
+    using the terminal, but it is much easier and faster, once you get used to
+    it, to use the terminal).
+  </li>
+  <li>
+    Create a new folder called <em>git-tutorial/</em>.
+  </li>
+  <li>
+    Within the <em>git-tutorial/</em> folder, create a file called
+    <em>example.html</em>.
+  </li>
+  <li>
+    Open up example.html and copy in the following code.<br>
+    <div class="content-box pad-box-mini border border-trbl code">
+      <p>
+        &lt;h2&gt;Hello World!&lt;/h2&gt;<br>
+        &lt;p&gt;<br>
+          I'm doing a git tutorial!<br>
+        &lt;/p&gt;
+      </p>
+    </div>
+  </li>
+  <li>
+    Save the file navigate to <em>git-tutorial/</em> in the terminal.
+  </li>
+  <li>
+    Within the <em>git-tutorial/</em> folder, do the following command to create
+    a git repository.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      computer:git-tutorial user$ git init
+    </div>
+    You should receive a message that says you have initialized an empty
+    repository in the git-tutorial folder.
+  </li>
+  <li>
+    Log in to GitHub and click on the button to <strong>Create a New Repository
+    </strong>. On the next page, give your repository a name and mark it as
+    private, then hit <strong>Create Repository</strong>.<br>
+    <strong>Note:</strong>Creating a public repository allows anyone be able to
+    find your code. This is ok many cases, but for now we will just make a
+    private one (you can delete it after this tutorial if you want).
+  </li>
+  <li>
+    GitHub will now bring you to your repository's webpage, copy down the URL
+    for the page, you will need this in a few steps.
+  </li>
+  <li>
+    Navigate to back to the terminal window (you should still be inside the
+    git-tutorial/ folder). Insert the following commands into the terminal,
+    replacing "first last" with your first and last name, and "email" with the
+    email that you used to create your GitHub account.<br>
+    <strong>Note:</strong>This will only have to be done once on your computer,
+    this step involves telling git who you are and saving your user name and
+    password to the computer. If you do not want to save your username/password,
+    only do the first two commands.<br>
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      computer:git-tutorial user$ git config --global user.name <em>first last</em><br>
+      computer:git-tutorial user$ git config --global user.email <em>email</em><br>
+      computer:git-tutorial user$ git config --global credential.helper store
+    </div>
+  </li>
+  <li>
+    One more configuration step that we need to do is tell git that we have
+    created a online repository for our code. This is something that you only
+    have to do once per repository. Replace <em>https://github-repository-url
+    </em> with the URL that you copied down in a previous step.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      computer:git-tutorial user$ git remote add origin
+      https://github-repository-url.<br>
+    </div>
+  </li>
+  <li>Let's take a break here, everything above this step was configuring git,
+    GitHub, and your repository. These are not things that you will have to do
+    very often, so just remember that they exist, but feel free to forget how to
+    do it (you can always, and will have to sometimes, look up how to do these
+    steps when you need to).
+  </li>
+  <li>
+    Next, we are going to do something called a <em>git commit</em>, this is the
+    process of saving your code to a git repository. You can ommit your code
+    with the following code:<br>
+    <strong>Note:</strong> The <em>-m</em> flag allows you to create a message
+    describing what you did since the last commit in quotations, you should do
+    this on every commit!<br>
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      computer:git-tutorial user$ git commit -m "created a example.html file"
+    </div>
+  </li>
+  <li>
+    Finally, we need to upload our code to GitHub. This can be done through a
+    command called <em>git push</em>, as seen below.
+    <div class="content-box pad-box-mini border border-trbl terminal">
+      computer:git-tutorial user$ git push origin master
+    </div>
+  </li>
+  <li>
+    Refresh your GitHub repository page and you should see your uploaded code!
+  </li>
+</ol>
+
+.code {
+  color: $ic-color-light,
+  background-color: $ic-color-medium-lighter
+}
+.terminal {
+  color: $ic-color-light,
+  background-color: $ic-color-dark
+}

@@ -20,7 +20,11 @@ angular.module('app.routes', ['ngRoute'])
 			.when('/tutorial/git', {
 				templateUrl: 'app/views/tutorial-pages/tutorial-base.html',
 				controller: 'gitController'
-			});
+			})
+			.when('/net*', {
+				templateUrl: 'app/views/home.html',
+				controller: 'netReloadController'
+			}) ;
 		// Get rid of has in the URL
 		$locationProvider.html5Mode(true);
 	});
