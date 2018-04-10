@@ -7,8 +7,25 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoService'])
-	.controller('apptController', function($scope, $location, userData, apptData, submitFactory) {
+	.controller('apptController', function($scope, $location, userData, apptData, netIdFactory, submitFactory) {
+
 		$scope.submit_pressed = false;
+
+		// Getting the NetId
+		var promise = netIdFactory.getNetId();
+		// Wait for the response before continuing
+		promise.then(function(response){
+			if(response.attributes != undefined){
+				for(i=0; i<response.attributes.length; i++){
+					if(response.attributes[i].name == "uid"){
+						$scope.netId = response.attributes[i].values[0];
+						console.log("Net Id: " + $scope.netId);
+						$scope.email = $scope.netId+"@wisc.edu";
+						console.log("Email: " + $scope.email);
+					}
+				}
+			}
+		});
 
 		form = 'app/views/forms-pages/form-descrip.html';
 		$scope.templateForm = function(){
