@@ -24,6 +24,8 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 						console.log("Email: " + $scope.email);
 					}
 				}
+			} else {
+				console.log("Not Logged In");
 			}
 		});
 
