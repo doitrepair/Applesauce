@@ -26,6 +26,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 				}
 			} else {
 				console.log("Not Logged In");
+				console.log(response);
 			}
 		});
 
