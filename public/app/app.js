@@ -20,5 +20,6 @@ angular.module('userApp', [
 	'apptService',
 	'infoService',
 	'configService',
+	'popupModalCtrl',
 	'filters'
 ]);
