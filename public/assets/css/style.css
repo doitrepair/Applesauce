@@ -1,3 +1,28 @@
+sched_button_size{
+  font-size: 14px;
+  font-size: 1.5rem;
+}
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: .775rem;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -93,6 +118,9 @@ animation:spin 1s infinite;
 	color: white;
 }
 
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+    color: rgba(197, 5, 12, .75);
+}
 .button-active {
 	background-color: rgba(197, 5, 12, .75);
 	color: white;
@@ -101,7 +129,7 @@ animation:spin 1s infinite;
 	cursor: pointer;
 	-webkit-transition: all .2s ease-out;
 	transition: all .2s ease-out;
-	border: 1px solid transparent;
+	border: 5px solid transparent;
 	-webkit-border-radius: 0;
 	      border-radius: 0;
 	position: relative;
@@ -109,7 +137,7 @@ animation:spin 1s infinite;
 	padding: .3rem .3rem;
 	font-family: "Verlag", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
-	font-size: .775rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	text-transform: uppercase;
 	height: 80%;}
@@ -127,7 +155,7 @@ a.button-active:hover {
 	cursor: pointer;
 	-webkit-transition: all .2s ease-out;
 	transition: all .2s ease-out;
-	border: 1px solid transparent;
+	border: 5px solid transparent;
 	-webkit-border-radius: 0;
 	        border-radius: 0;
 	position: relative;
@@ -135,7 +163,7 @@ a.button-active:hover {
 	padding: .3rem .3rem;
 	font-family: "Verlag", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
-	font-size: .775rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	text-transform: uppercase; }
 

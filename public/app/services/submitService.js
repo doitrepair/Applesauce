@@ -48,7 +48,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 			} else {
 				userData.pa = 'Yes';
 			}
-
+			
 			// Check if any of these are undefined, which cherwell will need
 			if ((userData.netId == undefined && userData.first == undefined) || userData.contactPref == undefined || userData.os == undefined) {
 				console.log('returning null');
@@ -106,7 +106,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 		}
 
 		submitFactory.submitCase = function(){
-			if(env.prod || env.post) {
+			if(env.prod|| env.post) {
 				console.log('Submitting Repair');
 				incidentFactory.createIncident();
 				cherwell_text = submitFactory.buildCherwellEmail();

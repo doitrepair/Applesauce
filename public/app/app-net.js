@@ -15,5 +15,6 @@ angular.module('netApp', [
 	'apptService',
 	'infoService',
 	'configService',
+	'popupModalCtrl',
 	'filters'
 ]);
