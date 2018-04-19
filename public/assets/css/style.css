@@ -118,6 +118,9 @@ animation:spin 1s infinite;
 	color: white;
 }
 
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+    color: rgba(197, 5, 12, .75);
+}
 .button-active {
 	background-color: rgba(197, 5, 12, .75);
 	color: white;

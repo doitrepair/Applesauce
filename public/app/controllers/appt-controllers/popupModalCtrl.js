@@ -1,5 +1,10 @@
 angular.module('popupModalCtrl', ['acmeService', 'apptService', 'infoService', 'filters'])
+.config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('red')
+      .primaryPalette('red');
+    })
 .controller('popupModalCtrl', function($scope, $mdDialog, userData, apptData, submitFactory) {
+  $scope.theme = 'red';
   $scope.status = '  ';
   $scope.customFullscreen = false;
 
