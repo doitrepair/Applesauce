@@ -16,7 +16,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="row in sched_cells">
-				<td ng-controller="popupModalCtrl" class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="showConfirm($event, item, this_week)">{{ item.day }} {{ item.time | time }}</button></td>
+				<td  class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="showConfirm($event, item, this_week)">{{ item.day }} {{ item.time | time }}</button></td>
 			</tr>
 		</tbody>
 	</table>
