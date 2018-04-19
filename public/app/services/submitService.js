@@ -106,7 +106,7 @@ angular.module('submitService', ['infoService', 'incidentService', 'acmeService'
 		}
 
 		submitFactory.submitCase = function(){
-			if(env.prod|| env.post) {
+			if(env.prod || env.post) {
 				console.log('Submitting Repair');
 				incidentFactory.createIncident();
 				cherwell_text = submitFactory.buildCherwellEmail();
