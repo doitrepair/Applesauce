@@ -30,7 +30,7 @@ angular.module('apptCtrl', ['acmeService', 'filters', 'submitService', 'infoServ
 			}
 		});
 
-		form = 'app/views/forms-pages/form-descrip.html';
+		form = 'app/views/appt-pages/sched.html';//'app/views/forms-pages/form-descrip.html';
 		$scope.templateForm = function(){
 			return form;
 		}

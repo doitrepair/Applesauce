@@ -1,6 +1,6 @@
 sched_button_size{
-  font-size: 14px;
-  font-size: 1.5rem;
+  font-size: 18px;
+  font-size: 1.125rem;
 }
 .dialogdemoBasicUsage #popupContainer {
   position: relative; }
@@ -133,8 +133,8 @@ animation:spin 1s infinite;
 	-webkit-border-radius: 0;
 	      border-radius: 0;
 	position: relative;
-	padding: 4px 4px;
-	padding: .3rem .3rem;
+	padding: 3px 4px;
+	padding: .2rem .3rem;
 	font-family: "Verlag", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
 	font-size: 1.5rem;
@@ -159,8 +159,8 @@ a.button-active:hover {
 	-webkit-border-radius: 0;
 	        border-radius: 0;
 	position: relative;
-	padding: 4px 4px;
-	padding: .3rem .3rem;
+	padding: 3px 4px;
+	padding: .2rem .3rem;
 	font-family: "Verlag", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
 	font-size: 1.5rem;
