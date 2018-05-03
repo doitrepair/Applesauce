@@ -4,7 +4,7 @@
 //******************************************************************************
 //******************************************************************************
 angular.module('gitCtrl', [])
-	.controller('gitController', function($scope) {
+	.controller('gitController', function($scope, $window) {
 		$scope.tutorial_name = "Git & GitHub Tutorial"
 
 		$scope.pages = [
@@ -43,11 +43,13 @@ angular.module('gitCtrl', [])
 
 		$scope.jump_to_page = function(i){
 			currPage = i;
+			$window.scrollTo(0, 200);
 			$scope.section_name = $scope.pages[currPage].name;
 		}
 
 		$scope.continue = function(){
 			currPage = currPage + 1;
+			$window.scrollTo(0, 200);
 			if(currPage<$scope.pages.length){
 				$scope.section_name = $scope.pages[currPage].name;
 			} else {
@@ -57,11 +59,7 @@ angular.module('gitCtrl', [])
 
 		$scope.back = function(){
 			currPage = currPage - 1;
-			$scope.section_name = $scope.pages[currPage].name;
-		}
-
-		$scope.back = function(){
-			currPage = currPage - 1;
+			$window.scrollTo(0, 200);
 			$scope.section_name = $scope.pages[currPage].name;
 		}
 	})

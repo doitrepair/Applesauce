@@ -2,9 +2,11 @@
 	<h2 class="uw-mini-bar">Choose that works for you by clicking on a <strong style="color: green;">green</strong> timeslot:</h2>
 	<button ng-click = "back_to_comp_form()" class="uw-button">Back</button>
 	<div style="float:center; text-align:center;">
-		<button ng-click="toggle_week(false)" ng-disabled="week_num==0" ng-class="{'button-active': week_num==1,'button-inactive': week_num==0}"> < </button>
-		 		<sched_button_size> Time Range </sched_button_size>
-		<button ng-click="toggle_week(true)" ng-disabled="week_num==1" ng-class="{'button-active': week_num==0,'button-inactive': week_num==1}"> > </button>
+		<p><button ng-click="toggle_week(false)" ng-disabled="week_num==0" ng-class="{'button-active': week_num==1,'button-inactive': week_num==0}"> < </button>
+		 		<sched_button_size>
+					{{ time_range }}
+				</sched_button_size>
+		<button ng-click="toggle_week(true)" ng-disabled="week_num==1" ng-class="{'button-active': week_num==0,'button-inactive': week_num==1}"> > </button></p>
 	</div>
 	<table style="margin:auto;width: 100%; margin-top: 20px;">
 		<thead>
@@ -14,7 +16,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="row in sched_cells">
-				<td ng-controller="popupModalCtrl" class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="showConfirm($event, item, this_week)">{{ item.day }} {{ item.time | time }}</button></td>
+				<td  class="cell time" ng-repeat="item in row"><button class="linker" style="font-size:110%" ng-disabled="!item.active" ng-class="{'open': item.active==true,'closed': item.active==false}" ng-click="showConfirm($event, item, this_week)">{{ item.day }} {{ item.time | time }}</button></td>
 			</tr>
 		</tbody>
 	</table>
