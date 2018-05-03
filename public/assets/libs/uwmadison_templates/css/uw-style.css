@@ -1413,7 +1413,7 @@ li.uw-search-list-item .uw-search-input[type="text"] {
     transition: transformY .2s ease-in-out, opacity .2s ease-in-out;
     padding-bottom: 8px;
     padding-bottom: .5rem; }
-  #uw-top-menus .uw-nav-menu ul li.uw-dropdown.uw-is-active > ul {
+  #uw-top-menus .uw-nav-menu ul li.uw-dropdown.uw-is-active:hover > ul {
     display: block;
     opacity: 1.0;
     -webkit-transform: scaleY(1);

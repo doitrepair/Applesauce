@@ -2,6 +2,25 @@ sched_button_size{
   font-size: 14px;
   font-size: 1.5rem;
 }
+/* #uw-top-menus .uw-nav-menu ul li.uw-dropdown-hover > ul {
+  display: block;
+  opacity: 1.0;
+  -webkit-transform: scaleY(1);
+      -ms-transform: scaleY(1);
+          transform: scaleY(1);
+  -webkit-animation: reveal .2s ease-in-out;
+          animation: reveal .2s ease-in-out; }
+  #uw-top-menus .uw-nav-menu svg.uw-caret-hover {
+      display: inline; }
+  #uw-top-menus .uw-nav-menu svg.uw-caret-hover:last-child {
+      display: inline; }
+  #uw-top-menus.uw-horizontal .uw-nav-menu > ul > li.uw-dropdown-hover > ul {
+      display: inline; }
+.uw-overlay.uw-hover {
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3); } */
+
 .dialogdemoBasicUsage #popupContainer {
   position: relative; }
 
@@ -26,6 +45,7 @@ sched_button_size{
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -118,9 +138,6 @@ animation:spin 1s infinite;
 	color: white;
 }
 
-.md-button.md-default-theme.md-primary, .md-button.md-primary {
-    color: rgba(197, 5, 12, .75);
-}
 .button-active {
 	background-color: rgba(197, 5, 12, .75);
 	color: white;
