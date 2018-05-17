@@ -55,16 +55,16 @@ acme_connection.connect();
 app.use(express.static(__dirname + '/dist/applesauce'));
 
 // API routes ------------------------------------------------------------------
-var authRouter	= require('./app/routes/api/auth')(app, express, db_connection, repair_db.secret);
+var authRouter	= require('./api/auth')(app, express, db_connection, repair_db.secret);
 app.use('/auth', authRouter);
 
-var incidentRouter		= require('./app/routes/api/incidents')(app, express, db_connection);
+var incidentRouter		= require('./api/incidents')(app, express, db_connection);
 app.use('/api/incident', incidentRouter);
 
-var schedRouter			= require('./app/routes/api/appt-app/schedule')(app, express, acme_connection);
+var schedRouter			= require('./api/appt-app/schedule')(app, express, acme_connection);
 app.use('/api/schedule', schedRouter);
 
-var emailRouter			= require('./app/routes/api/email')(app, express);
+var emailRouter			= require('./api/email')(app, express);
 app.use('/api/email', emailRouter);
 
 // Main route ------------------------------------------------------------------
