@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "applesauce": {
-      "root": "",
-      "sourceRoot": "src",
+    "netIdApp": {
+      "root": "projects/netIdApp/",
+      "sourceRoot": "projects/netIdApp/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -13,17 +13,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/applesauce",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/netIdApp",
+            "index": "projects/netIdApp/src/index.html",
+            "main": "projects/netIdApp/src/main.ts",
+            "polyfills": "projects/netIdApp/src/polyfills.ts",
+            "tsConfig": "projects/netIdApp/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/netIdApp/src/favicon.ico",
+              "projects/netIdApp/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "projects/netIdApp/src/styles.css"
             ],
             "scripts": []
           },
@@ -31,8 +31,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/netIdApp/src/environments/environment.ts",
+                  "with": "projects/netIdApp/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -50,34 +50,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "applesauce:build"
+            "browserTarget": "netIdApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "applesauce:build:production"
+              "browserTarget": "netIdApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "applesauce:build"
+            "browserTarget": "netIdApp:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "projects/netIdApp/src/test.ts",
+            "polyfills": "projects/netIdApp/src/polyfills.ts",
+            "tsConfig": "projects/netIdApp/tsconfig.spec.json",
+            "karmaConfig": "projects/netIdApp/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "projects/netIdApp/src/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/netIdApp/src/favicon.ico",
+              "projects/netIdApp/src/assets"
             ]
           }
         },
@@ -85,8 +85,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/netIdApp/tsconfig.app.json",
+              "projects/netIdApp/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -95,21 +95,249 @@
         }
       }
     },
-    "applesauce-e2e": {
-      "root": "e2e/",
+    "netIdApp-e2e": {
+      "root": "projects/netIdApp-e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "applesauce:serve"
+            "protractorConfig": "projects/netIdApp-e2e/protractor.conf.js",
+            "devServerTarget": "netIdApp:serve"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": "projects/netIdApp-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "homeApp": {
+      "root": "projects/homeApp/",
+      "sourceRoot": "projects/homeApp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/homeApp",
+            "index": "projects/homeApp/src/index.html",
+            "main": "projects/homeApp/src/main.ts",
+            "polyfills": "projects/homeApp/src/polyfills.ts",
+            "tsConfig": "projects/homeApp/tsconfig.app.json",
+            "assets": [
+              "projects/homeApp/src/favicon.ico",
+              "projects/homeApp/src/assets"
+            ],
+            "styles": [
+              "projects/homeApp/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/homeApp/src/environments/environment.ts",
+                  "with": "projects/homeApp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "homeApp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "homeApp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "homeApp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/homeApp/src/test.ts",
+            "polyfills": "projects/homeApp/src/polyfills.ts",
+            "tsConfig": "projects/homeApp/tsconfig.spec.json",
+            "karmaConfig": "projects/homeApp/karma.conf.js",
+            "styles": [
+              "projects/homeApp/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/homeApp/src/favicon.ico",
+              "projects/homeApp/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/homeApp/tsconfig.app.json",
+              "projects/homeApp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "homeApp-e2e": {
+      "root": "projects/homeApp-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/homeApp-e2e/protractor.conf.js",
+            "devServerTarget": "homeApp:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/homeApp-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "toolsApp": {
+      "root": "projects/toolsApp/",
+      "sourceRoot": "projects/toolsApp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/toolsApp",
+            "index": "projects/toolsApp/src/index.html",
+            "main": "projects/toolsApp/src/main.ts",
+            "polyfills": "projects/toolsApp/src/polyfills.ts",
+            "tsConfig": "projects/toolsApp/tsconfig.app.json",
+            "assets": [
+              "projects/toolsApp/src/favicon.ico",
+              "projects/toolsApp/src/assets"
+            ],
+            "styles": [
+              "projects/toolsApp/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/toolsApp/src/environments/environment.ts",
+                  "with": "projects/toolsApp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "toolsApp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "toolsApp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "toolsApp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/toolsApp/src/test.ts",
+            "polyfills": "projects/toolsApp/src/polyfills.ts",
+            "tsConfig": "projects/toolsApp/tsconfig.spec.json",
+            "karmaConfig": "projects/toolsApp/karma.conf.js",
+            "styles": [
+              "projects/toolsApp/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/toolsApp/src/favicon.ico",
+              "projects/toolsApp/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/toolsApp/tsconfig.app.json",
+              "projects/toolsApp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "toolsApp-e2e": {
+      "root": "projects/toolsApp-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/toolsApp-e2e/protractor.conf.js",
+            "devServerTarget": "toolsApp:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/toolsApp-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -118,5 +346,5 @@
       }
     }
   },
-  "defaultProject": "applesauce"
+  "defaultProject": "homeApp"
 }

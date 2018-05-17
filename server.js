@@ -51,9 +51,6 @@ acme_connection.connect();
 
 
 // ROUTE DEFINITIONS ===========================================================
-//For frontend references
-app.use(express.static(__dirname + '/dist/applesauce'));
-
 // API routes ------------------------------------------------------------------
 var authRouter	= require('./api/auth')(app, express, db_connection, repair_db.secret);
 app.use('/auth', authRouter);
@@ -70,12 +67,23 @@ app.use('/api/email', emailRouter);
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html
 
-app.get('/net*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/public/app/views/index-net.html'));
+// Tools Routes
+app.get('/tools*', function(req, res) {
+  app.use(express.static(__dirname + '/dist/toolsApp/'));
+	res.sendFile(path.join(__dirname + '/dist/toolsApp/index.html'));
 });
 
+// Net-Id Authenticated Routes
+app.get('/net*', function(req, res) {
+  app.use(express.static(__dirname + '/dist/netIdApp/'));
+	res.sendFile(path.join(__dirname + '/dist/netIdApp/index.html'));
+});
+
+
+// Default Route
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/dist/applesauce/index.html'));
+  app.use(express.static(__dirname + '/dist/homeApp/'));
+	res.sendFile(path.join(__dirname + '/dist/homeApp/index.html'));
 });
 
 // START SERVER ================================================================
