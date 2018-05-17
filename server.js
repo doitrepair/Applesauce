@@ -52,7 +52,7 @@ acme_connection.connect();
 
 // ROUTE DEFINITIONS ===========================================================
 //For frontend references
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist/applesauce'));
 
 // API routes ------------------------------------------------------------------
 var authRouter	= require('./app/routes/api/auth')(app, express, db_connection, repair_db.secret);
@@ -75,7 +75,7 @@ app.get('/net*', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+	res.sendFile(path.join(__dirname + '/dist/applesauce/index.html'));
 });
 
 // START SERVER ================================================================
