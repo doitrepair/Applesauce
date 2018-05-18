@@ -70,21 +70,18 @@ app.use('/api/email', emailRouter);
 // Tools Routes
 app.use('/tools/', express.static(__dirname + '/dist/toolsApp/'));
 app.get('/tools*', function(req, res) {
-  app.use(express.static(__dirname + '/dist/toolsApp/'));
 	res.sendFile(path.join(__dirname + '/dist/toolsApp/index.html'));
 });
 
 // Net-Id Authenticated Routes
 app.use('/net/', express.static(__dirname + '/dist/netIdApp/'));
 app.get('/net*', function(req, res) {
-  app.use(express.static(__dirname + '/dist/netIdApp/'));
 	res.sendFile(path.join(__dirname + '/dist/netIdApp/index.html'));
 });
 
 // Default Route
 app.use(express.static(__dirname + '/dist/homeApp'));
 app.get('*', function(req, res) {
-  //app.use(express.static(__dirname + '/dist/homeApp'));
 	res.sendFile(path.join(__dirname + '/dist/homeApp/index.html'));
 });
 
