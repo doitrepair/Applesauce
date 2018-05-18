@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build toolsApp netIdApp homeApp",
+    "build": "ng build toolsApp | ng build netIdApp | ng build homeApp",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

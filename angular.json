@@ -14,18 +14,25 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/netIdApp",
-            "index": "projects/netIdApp/src/index.html",
+            "index": "projects/index.html",
             "main": "projects/netIdApp/src/main.ts",
             "polyfills": "projects/netIdApp/src/polyfills.ts",
             "tsConfig": "projects/netIdApp/tsconfig.app.json",
+            "baseHref": "/net/",
             "assets": [
               "projects/netIdApp/src/favicon.ico",
               "projects/netIdApp/src/assets"
             ],
             "styles": [
-              "projects/netIdApp/src/styles.css"
+              "projects/netIdApp/src/styles.css",
+              "projects/assets/css/app.css",
+              "projects/assets/css/style.css",
+              "projects/assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css",
+              "projects/assets/libs/uwmadison_templates/css/uw-style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "projects/assets/libs/uwmadison_templates/js/_uw-style.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -248,18 +255,25 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/toolsApp",
-            "index": "projects/toolsApp/src/index.html",
+            "index": "projects/index.html",
             "main": "projects/toolsApp/src/main.ts",
             "polyfills": "projects/toolsApp/src/polyfills.ts",
             "tsConfig": "projects/toolsApp/tsconfig.app.json",
+            "baseHref": "/tools/",
             "assets": [
               "projects/toolsApp/src/favicon.ico",
               "projects/toolsApp/src/assets"
             ],
             "styles": [
-              "projects/toolsApp/src/styles.css"
+              "projects/toolsApp/src/styles.css",
+              "projects/assets/css/app.css",
+              "projects/assets/css/style.css",
+              "projects/assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css",
+              "projects/assets/libs/uwmadison_templates/css/uw-style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "projects/assets/libs/uwmadison_templates/js/_uw-style.min.js"
+            ]
           },
           "configurations": {
             "production": {
