@@ -13,7 +13,6 @@ angular.module('userApp', [
 	'adminFormCtrl',
 	'netReloadCtrl',
 	'mainCtrl',
-	'gitCtrl',
 	'submitService',
 	'incidentService',
 	'acmeService',

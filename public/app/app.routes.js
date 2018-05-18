@@ -17,10 +17,6 @@ angular.module('app.routes', ['ngRoute'])
 				templateUrl: 'app/views/forms-pages/form-base.html',
 				controller: 'adminFormController'
 			})
-			.when('/tutorial/git', {
-				templateUrl: 'app/views/tutorial-pages/tutorial-base.html',
-				controller: 'gitController'
-			})
 			.when('/net*', {
 				templateUrl: 'app/views/home.html',
 				controller: 'netReloadController'
