@@ -6,7 +6,9 @@ import { Subject }    from 'rxjs';
   providedIn: 'root'
 })
 export class IncidentService {
-  public incident: IIncident;
+  public incident = <IIncident>{};
 
-  constructor() { }
+  constructor() {
+    this.incident.description = '';
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { IncidentService } from '../services/incident.service';
 
 @Component({
   selector: 'app-description-step',
@@ -8,14 +9,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class DescriptionStepComponent {
   @Output() goToNext = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private _incidentService: IncidentService) { }
 
-  public description: string;
+  public description = "";
 
   continue(): void {
     console.log("Continue Pressed In Child");
-    console.log("Description set to " + this.description);
-    //IncidentService.incident.description = description;
+    console.log("Description set to " + this._incidentService.incident.description);
+    //this._incidentService.incident.description = this.description;
     this.goToNext.emit(true);
   }
 }

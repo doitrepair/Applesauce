@@ -27,6 +27,7 @@ import { ApptTimeStepComponent } from './appt-time-step/appt-time-step.component
   imports: [
     BrowserModule,
     SharedModule,
+    FormsModule,
     RouterModule.forRoot([
         { path: '', component: ApptHomeComponent, pathMatch: 'full' },
         { path: 'appt', component: ApptPickerFormComponent },

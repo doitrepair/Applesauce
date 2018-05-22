@@ -8,7 +8,7 @@ import { IncidentService } from '../services/incident.service';
 })
 export class ApptPickerFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _incidentService: IncidentService) { }
 
   ngOnInit() {
     console.log("Itz being loaded")
@@ -16,7 +16,7 @@ export class ApptPickerFormComponent implements OnInit {
 
   onNext(): void {
     console.log("Continue Pressed In Parent")
-    console.log("Description: " + IncidentService.incident);
+    console.log("Description: "+this._incidentService.incident.description);
   }
 
 }
