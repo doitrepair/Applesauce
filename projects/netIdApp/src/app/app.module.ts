@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { RoutingModule } from './routing/routing.module'
 
 import { AppComponent } from './app.component';
 import { SharedModule } from '../../../assets/shared-module/shared-module.module';
@@ -12,6 +13,7 @@ import { UserStepComponent } from './user-step/user-step.component';
 import { DeviceStepComponent } from './device-step/device-step.component';
 import { SuccessStepComponent } from './success-step/success-step.component';
 import { ApptTimeStepComponent } from './appt-time-step/appt-time-step.component';
+
 
 @NgModule({
   declarations: [
@@ -28,14 +30,7 @@ import { ApptTimeStepComponent } from './appt-time-step/appt-time-step.component
     BrowserModule,
     SharedModule,
     FormsModule,
-    RouterModule.forRoot([
-        { path: '', component: ApptHomeComponent, pathMatch: 'full' },
-        { path: 'appt', component: ApptPickerFormComponent },
-        { path: 'description', component: DescriptionStepComponent },
-        { path: 'user', component: UserStepComponent },
-        { path: 'device', component: DeviceStepComponent },
-        { path: '**', redirectTo: '', pathMatch: 'full'}
-    ])
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
