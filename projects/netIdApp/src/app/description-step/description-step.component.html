@@ -1,0 +1,9 @@
+
+<fieldset>
+	<legend>What's Happening?</legend>
+	<div class="form-group">
+		<label for="description">Please describe the issues that you are experiencing.</label>
+		<textarea [(ngModel)]="description" class="form-control" rows="5" name="IncidentService.incident.description" required></textarea>
+	</div>
+</fieldset>
+<button class="uw-button" (click)='continue()'>Continue</button>
