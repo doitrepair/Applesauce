@@ -364,7 +364,133 @@
           }
         }
       }
+    },
+    "angularApp": {
+      "root": "projects/angularApp/",
+      "sourceRoot": "projects/angularApp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angularApp",
+            "index": "projects/angularApp/src/index.html",
+            "main": "projects/angularApp/src/main.ts",
+            "polyfills": "projects/angularApp/src/polyfills.ts",
+            "tsConfig": "projects/angularApp/tsconfig.app.json",
+            "assets": [
+              "projects/angularApp/src/favicon.ico",
+              "projects/angularApp/src/assets"
+            ],
+            "styles": [
+              "projects/angularApp/src/styles.css",
+              "projects/angularApp/src/assets/css/app.css",
+              "projects/angularApp/src/assets/css/style.css",
+              "projects/angularApp/src/assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css",
+              "projects/angularApp/src/assets/libs/uwmadison_templates/css/uw-style.css"
+            ],
+            "scripts": [
+              "projects/angularApp/src/assets/libs/uwmadison_templates/js/_uw-style.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/angularApp/src/environments/environment.ts",
+                  "with": "projects/angularApp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angularApp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angularApp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angularApp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angularApp/src/test.ts",
+            "polyfills": "projects/angularApp/src/polyfills.ts",
+            "tsConfig": "projects/angularApp/tsconfig.spec.json",
+            "karmaConfig": "projects/angularApp/karma.conf.js",
+            "assets": [
+              "projects/angularApp/src/favicon.ico",
+              "projects/angularApp/src/assets"
+            ],
+            "styles": [
+              "projects/angularApp/src/styles.css",
+              "projects/assets/css/app.css",
+              "projects/assets/css/style.css",
+              "projects/assets/libs/uwmadison_templates/fonts/uw160/fonts.0.0.1.css",
+              "projects/assets/libs/uwmadison_templates/css/uw-style.css"
+            ],
+            "scripts": [
+              "projects/assets/libs/uwmadison_templates/js/_uw-style.min.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angularApp/tsconfig.app.json",
+              "projects/angularApp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "angularApp-e2e": {
+      "root": "projects/angularApp-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/angularApp-e2e/protractor.conf.js",
+            "devServerTarget": "angularApp:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/angularApp-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "homeApp"
+  "defaultProject": "angularApp"
 }

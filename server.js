@@ -80,9 +80,9 @@ app.get('/net*', function(req, res) {
 });
 
 // Default Route
-app.use(express.static(__dirname + '/dist/homeApp'));
+app.use(express.static(__dirname + '/dist/angularApp'));
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/dist/homeApp/index.html'));
+	res.sendFile(path.join(__dirname + '/dist/angularApp/index.html'));
 });
 
 // START SERVER ================================================================
