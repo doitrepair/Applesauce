@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { IncidentService } from '../shared/services/incident.service';
 @NgModule({
@@ -11,7 +11,9 @@ import { IncidentService } from '../shared/services/incident.service';
   declarations: [],
   providers: [IncidentService],
   exports: [
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
   ]
 })
 export class CoreModule {
