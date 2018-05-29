@@ -19,7 +19,7 @@ module.exports = function(app, express, connection) {
 		// Update an agents shift to being in a appointment shift
 		.put(function(req, res){
 
-			query = sql_txt.update_sched(req.body.begin,req.body.end,req.body.date,req.body.first,req.body.last)
+			query = sql_txt.update_sched(req.body.timeslot,req.body.date,req.body.netid);
 			connection.query(query, function(err, data){
 				if(err)
 					console.log(err)

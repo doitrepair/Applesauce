@@ -26,20 +26,15 @@ module.exports = {
 				+id+" OR `17:30`="+id+")";
 		return query;
 	},
-	update_sched: function(begin, end, date, first, last){
+	update_sched: function(timeslot, date, netid){
 			// Update SS_Schedule table
 		var query = "UPDATE SS_Schedule as sch\n" +
-			// Join with SS_Employee to get first and last name columns
+			// Join with SS_Employee to get net-id column
 			"INNER JOIN SS_Employee as emp on emp.Employee_ID = sch.agent\n" +
-			// Set the employees as being in a appt shift (note, 1-this only
-			// updates an agent to be in an appt, nothing else and 2-this only
-			// updates the schedule for at most 2 timeslots because this updates
-			// 'begin' AND 'end' not 'begin' through 'end')
-			"SET sch.`"+begin+"`=64, sch.`"+end+"`=64\n" +
-			// Only update if the first name, last name, and date all match our
-			// parameters
-			"WHERE emp.Last_Name='"+last+"'\n" +
-			"AND emp.First_Name='"+first+"'\n" +
+			// Set the employees as being in a appt shift
+			"SET sch.`"+timeslot+"`=64\n" +
+			// Only update if the net-id and date match our parameters
+			"WHERE emp.NetID='"+netid+"'\n" +
 			"AND sch.`date`='"+date+"'\n"
 		return query;
 	}
