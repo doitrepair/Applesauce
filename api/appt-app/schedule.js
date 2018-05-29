@@ -10,6 +10,7 @@ module.exports = function(app, express, connection) {
 		.post(function(req, res){
 			// create and send query
 			query = sql_txt.get_sched(req.body.begin,req.body.end, req.body.shift_id)
+      console.log(query);
 			connection.query(query, function(err, data){
 				if(err)
 					console.log(err)

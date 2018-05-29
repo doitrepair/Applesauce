@@ -67,12 +67,6 @@ app.use('/api/email', emailRouter);
 // Main route ------------------------------------------------------------------
 // Catch all route: if any other path, send index.html
 
-// Net-Id Authenticated Routes
-app.use('/net/', express.static(__dirname + '/dist/netIdApp/'));
-app.get('/net*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/dist/netIdApp/index.html'));
-});
-
 // Default Route
 app.use(express.static(__dirname + '/dist/angularApp'));
 app.get('*', function(req, res) {

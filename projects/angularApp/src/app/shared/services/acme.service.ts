@@ -13,7 +13,7 @@ import { IShift } from './shift';
 export class AcmeService {
   private shifts: IShift[];
 
-  private acmeUrl: '/api/schedule';
+  private acmeUrl: 'http://localhost:8080/api/schedule';
   private headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
   constructor(private http: HttpClient) { }
@@ -31,8 +31,9 @@ export class AcmeService {
       'end': endDate.toISOString().split('T')[0],
       'shift_id': shift_id
     }
+    console.log(JSON.stringify(params))
     return this.http.post<IShift[]>(this.acmeUrl, params, {headers: this.headers}).pipe(
-      tap(data => console.log(JSON.stringify(data))),
+      tap(data => console.log(data)),
       catchError(this.handleError)
     );
   }
@@ -62,7 +63,7 @@ export class AcmeService {
           errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
       }
       // Log error and return instance of error observable
-      console.error(err);
+      //console.error(err);
       return throwError(errorMessage);
   }
 }

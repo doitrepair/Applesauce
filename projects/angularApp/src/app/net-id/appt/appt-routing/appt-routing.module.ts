@@ -8,6 +8,7 @@ import { DescriptionStepComponent } from '../../../shared/step/description-step/
 import { UserStepComponent } from '../../../shared/step/user-step/user-step.component';
 import { DeviceStepComponent } from '../../../shared/step/device-step/device-step.component';
 import { SuccessStepComponent } from '../../../shared/step/success-step/success-step.component';
+import { CalendarStepComponent } from '../../../shared/step/calendar-step/calendar-step.component';
 
 const apptRoutes: Routes = [
   {
@@ -18,6 +19,7 @@ const apptRoutes: Routes = [
       { path: 'user', component: UserStepComponent },
       { path: 'device', component: DeviceStepComponent },
       { path: 'success', component: DeviceStepComponent },
+      { path: '', component: CalendarStepComponent, pathMatch: 'full'},
       { path: '**', redirectTo: 'description', pathMatch: 'full'}
     ]
   }
