@@ -5,14 +5,11 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { SharedModule } from '../shared.module';
-import { IShift } from './shift';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AcmeService {
-  private shifts: IShift[];
-
   private acmeUrl= 'api/schedule';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -31,10 +28,7 @@ export class AcmeService {
       'end': endDate.toISOString().split('T')[0],
       'shift_id': shift_id
     }
-    console.log(JSON.stringify(params))
-    console.log(this.acmeUrl);
-    return this.http.post<IShift[]>(this.acmeUrl, params, {headers: this.headers}).pipe(
-      tap(data => console.log(data)),
+    return this.http.post<any[]>(this.acmeUrl, params, {headers: this.headers}).pipe(
       catchError(this.handleError)
     );
   }
@@ -49,7 +43,7 @@ export class AcmeService {
       'netid': netid
     }
     return this.http.put<any>(this.acmeUrl, params, { headers: this.headers}).pipe(
-      tap(data => console.log(JSON.stringify(data))),  catchError(this.handleError)
+      catchError(this.handleError)
     );
   }
 

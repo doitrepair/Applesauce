@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AcmeService } from '../../services/acme.service';
-import { IShift } from '../../services/shift';
+
+import { IncidentService } from '../../services/incident.service';
 
 @Component({
   selector: 'app-calendar-step',
@@ -9,14 +9,13 @@ import { IShift } from '../../services/shift';
 })
 export class CalendarStepComponent implements OnInit {
   errorMessage: string;
+  shifts: any;
 
-  constructor(private acmeService: AcmeService) { }
+  constructor(private IncidentService: IncidentService) { }
 
   ngOnInit() {
-    const d: Date = new Date();
-    console.log(d);
-    this.acmeService.getShiftsByDateRange(d, d, 70).subscribe(
-            (shifts: IShift[]) => { console.log(shifts); },
+    this.IncidentService.getTwoWeekSchedule().subscribe(
+            (shifts: any[]) => { console.log(shifts); },
             (error: any) => console.log(error)
         );
   }
