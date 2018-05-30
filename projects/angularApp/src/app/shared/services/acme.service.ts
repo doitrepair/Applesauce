@@ -13,8 +13,8 @@ import { IShift } from './shift';
 export class AcmeService {
   private shifts: IShift[];
 
-  private acmeUrl: 'http://localhost:8080/api/schedule';
-  private headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+  private acmeUrl= 'api/schedule';
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
 
@@ -32,6 +32,7 @@ export class AcmeService {
       'shift_id': shift_id
     }
     console.log(JSON.stringify(params))
+    console.log(this.acmeUrl);
     return this.http.post<IShift[]>(this.acmeUrl, params, {headers: this.headers}).pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
@@ -39,7 +40,7 @@ export class AcmeService {
   }
 
   // Changes a shift to be an appt shift given a specified timeslot (ex '9:00' or '14:30'), the date and the first and last name of the agent).
-  updateProduct(timeslot: string, date: Date, netid:string): Observable<any> {
+  changeAgentToAppt(timeslot: string, date: Date, netid: string): Observable<any> {
     const params = {
       // Must be HH:MM format (military time)
       'timeslot': timeslot,
@@ -60,7 +61,7 @@ export class AcmeService {
           errorMessage = `An error occurred: ${err.error.message}`;
       } else {
           // The backend returned an unsuccessful response code
-          errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
+          errorMessage = `Backend returned code ${err.status}, body was: ${err.error}. \nError is ${err}`;
       }
       // Log error and return instance of error observable
       //console.error(err);
