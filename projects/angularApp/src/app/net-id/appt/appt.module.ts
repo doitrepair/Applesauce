@@ -8,6 +8,7 @@ import { DescriptionStepComponent } from '../../shared/step/description-step/des
 import { UserStepComponent } from '../../shared/step/user-step/user-step.component';
 import { DeviceStepComponent } from '../../shared/step/device-step/device-step.component';
 import { SuccessStepComponent } from '../../shared/step/success-step/success-step.component';
+import { StepperComponent } from '../stepper/stepper.component';
 
 @NgModule({
   imports: [

@@ -8,18 +8,12 @@ import { DescriptionStepComponent } from '../../../shared/step/description-step/
 import { UserStepComponent } from '../../../shared/step/user-step/user-step.component';
 import { DeviceStepComponent } from '../../../shared/step/device-step/device-step.component';
 import { SuccessStepComponent } from '../../../shared/step/success-step/success-step.component';
+import { StepperComponent } from '../../stepper/stepper.component';
 
 const apptRoutes: Routes = [
   {
     path: 'net/appt',
-    component: ApptRoutingComponent,
-    children: [
-      { path: 'description', component: DescriptionStepComponent },
-      { path: 'user', component: UserStepComponent },
-      { path: 'device', component: DeviceStepComponent },
-      { path: 'success', component: DeviceStepComponent },
-      { path: '**', redirectTo: 'description', pathMatch: 'full'}
-    ]
+    component: StepperComponent
   }
 ];
 
