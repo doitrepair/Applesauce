@@ -10,7 +10,7 @@ import { SharedModule } from '../shared.module';
   providedIn: 'root'
 })
 export class AcmeService {
-  private acmeUrl= 'api/schedule';
+  private acmeUrl= 'http://localhost:8080/api/schedule';
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }

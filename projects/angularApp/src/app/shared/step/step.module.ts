@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { MatButtonModule, MatTableModule } from '@angular/material';
+
 import { CoreModule } from '../../core/core.module';
 
 import { DescriptionStepComponent } from './description-step/description-step.component';
@@ -11,15 +13,17 @@ import { CalendarItemComponent } from './calendar-step/calendar-item.component';
 
 @NgModule({
   imports: [
-    CoreModule
+    CoreModule,
+    MatButtonModule,
+    MatTableModule
   ],
   declarations: [
     DescriptionStepComponent,
     DeviceStepComponent,
     UserStepComponent,
     SuccessStepComponent,
-    CalendarStepComponent,
-    CalendarItemComponent
+    CalendarItemComponent,
+    CalendarStepComponent
   ]
 })
 export class StepModule { }

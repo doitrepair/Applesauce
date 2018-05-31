@@ -1,5 +1,5 @@
 export interface ICalendarItem {
-  agent: string;
-  date: Date;
+  agents: string[];
+  date: string;
   time: string;
 }

@@ -9,6 +9,7 @@ import { UserStepComponent } from '../../../shared/step/user-step/user-step.comp
 import { DeviceStepComponent } from '../../../shared/step/device-step/device-step.component';
 import { SuccessStepComponent } from '../../../shared/step/success-step/success-step.component';
 import { CalendarStepComponent } from '../../../shared/step/calendar-step/calendar-step.component';
+import { CalendarItemComponent } from '../../../shared/step/calendar-step/calendar-item.component';
 
 const apptRoutes: Routes = [
   {
@@ -19,7 +20,7 @@ const apptRoutes: Routes = [
       { path: 'user', component: UserStepComponent },
       { path: 'device', component: DeviceStepComponent },
       { path: 'success', component: DeviceStepComponent },
-      { path: '', component: CalendarStepComponent, pathMatch: 'full'},
+      { path: 'schedule', component: CalendarStepComponent },
       { path: '**', redirectTo: 'description', pathMatch: 'full'}
     ]
   }

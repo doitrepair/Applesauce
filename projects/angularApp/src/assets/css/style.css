@@ -1,3 +1,5 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 sched_button_size{
   font-size: 18px;
   font-size: 1.125rem;

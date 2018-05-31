@@ -73,6 +73,7 @@ app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname + '/dist/angularApp/index.html'));
 });
 
+
 // START SERVER ================================================================
 app.listen(server_config.port);
 console.log('Started Server');
