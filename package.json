@@ -2,7 +2,10 @@
   "name": "Applesauce",
   "version": "2.0.0",
   "description": "DoIT Tech Store's Website",
-  "repository": "https://github.com/doitrepair/Applesauce",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doitrepair/Applesauce.git"
+  },
   "main": "server.js",
   "scripts": {
     "ng": "ng",
@@ -60,5 +63,11 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/doitrepair/Applesauce/issues"
+  },
+  "homepage": "https://github.com/doitrepair/Applesauce#readme",
+  "keywords": [],
+  "license": "ISC"
 }
