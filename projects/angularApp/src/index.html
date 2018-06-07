@@ -8,9 +8,10 @@
 	<head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 		<base href="/">
-		<title>
-			DoIT Repair
-		</title>
+
+    <title>
+      DoIT Repair
+    </title>
 
 		<!--<link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/css/app.css">-->
@@ -20,81 +21,6 @@
   <body >
     <a class="uw-show-on-focus" href="#main" id="uw-skip-link">Skip to main content</a>
     <!-- UW navbar -->
-    <div class="uw-global-bar" ng-controller="mainController">
-      <a target="_blank" class="uw-global-name-link" href="http://www.wisc.edu">U<span>niversity <span class="uw-of">of</span> </span>W<span>isconsin</span>–Madison</a>
-	  <!--<button ng-cloak ng-if="dev_env" class="linker" style="float:right; max-width:150px;" ng-class="{'open': post!=false,'closed': post==false}" ng-click="toggle_post()">{{post_message}}</button>-->
-    </div>
-
-    <!-- branding header -->
-    <header id="branding" class="uw-header uw-has-search">
-      <div class="uw-header-container">
-        <div class="uw-header-crest-title">
-          <div>
-            <a target="_blank" href="http://www.wisc.edu"><img class = "ts-logo-jpg" src="assets/img/TS-logo.jpg" alt="Link to University of Wisconsin-Madison home page"></a>
-          </div>
-          <div class="uw-title-tagline">
-						<h1 id="site-title" class="doit-site-title">
-              <a href="" rel="home">Help Diagnose Your Computer</a>
-            </h1>
-					</div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Mobile menu button -->
-    <button class="uw-mobile-menu-button-bar uw-mobile-menu-button-bar-reversed uw-is-closed " data-menu="uw-top-menus" aria-label="Open menu" aria-expanded="false" aria-controls="uw-top-menus">Menu<svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-menu"></use></svg><svg aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-close"></use></svg></button>
-
-	<!-- Main and secondary nav menus -->
-    <div id="uw-top-menus" class="uw-is-visible uw-horizontal uw-hidden shadow" aria-hidden="false">
-      <div class="uw-main-nav">
-        <nav class="uw-nav-menu uw-nav-menu-reverse" aria-label="Main Menu">
-          <ul id="uw-main-nav">
-            <li>
-              <a href="/">Home</a>
-            </li>
-			<li>
-			  <!-- Note: This has to reference a full link (not relative) in order to trigger UW authentication -->
-			  <a style="color: #c5050c;" onclick="window.location.href = '/net/appt'"><h3 style="margin: 0px;">SCHEDULE APPT</h3></a>
-			</li>
-			<li id="menu-about" class="uw-dropdown">
-              <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
-                Repair Forms<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
-              </a>
-              <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
-                <li>
-                  <a target="_blank" onclick="window.location.href = '/net/data'">Data Transfer</a>
-                </li>
-              </ul>
-            </li>
-            <li id="menu-about" class="uw-dropdown">
-              <a href="1" role="button" aria-haspopup="true" aria-expanded="false">
-                Resources<svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-down"></use></svg><svg aria-hidden="true" class="uw-caret"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#uw-symbol-caret-up"></use></svg>
-              </a>
-              <ul aria-hidden="true" aria-label="About submenu" class="uw-child-menu">
-                <li>
-                  <a target="_blank" href="https://kb.wisc.edu">KnowledgeBase</a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://support.apple.com">Apple Support</a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://support.dell.com">Dell Support</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="uw-secondary-nav">
-        <nav class="uw-nav-menu uw-nav-menu-secondary" aria-label="Secondary Menu">
-          <ul>
-            <li>
-              <a target="_blank" href="https://kb.wisc.edu/1">Contact Us</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
 
 
 	<!--Angular Section-->

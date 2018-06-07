@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+//import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
   ],
-  declarations: [],
+  declarations: [
+//    NavbarComponent,
+  ],
   exports: [
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule
+    CommonModule,
   ]
 })
 export class CoreModule {
