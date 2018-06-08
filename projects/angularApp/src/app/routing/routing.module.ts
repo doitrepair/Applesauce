@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HomeComponent } from '../home/home.component';
 
 const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
 //  { path: 'net', component: NetIdHomeComponent, pathMatch: 'full' },
-//  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
@@ -16,6 +18,9 @@ const appRoutes: Routes = [
      appRoutes
      //{ enableTracing: !environment.production }
    )
+ ],
+ declarations: [
+   HomeComponent,
  ],
  exports: [
    RouterModule
