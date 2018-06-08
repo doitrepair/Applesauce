@@ -2,16 +2,35 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes: Routes = [
-//  { path: 'net', component: , pathMatch: 'full' },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+import { ApptComponent } from '../appt/appt.component';
+import { RepairComponent } from '../repair/repair.component';
+
+const apptRoutes: Routes = [
+  {
+    path: 'net',
+  //  canActivate: [ AuthGuard ],
+  //  component: NetRoutingComponent,
+    children: [
+      { path: 'appt', component: ApptComponent },
+      { path: 'repair', component: RepairComponent },
+  //    { path: 'user', component: UserStepComponent },
+  //    { path: 'device', component: DeviceStepComponent },
+  //    { path: 'success', component: DeviceStepComponent },
+  //    { path: 'schedule', component: CalendarStepComponent },
+      { path: '**', redirectTo: 'appt', pathMatch: 'full'}
+    ]
+ }
 ];
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(apptRoutes),
   ],
-  declarations: []
+  declarations: [],
+  exports: [
+    RouterModule
+  ]
 })
 export class NetRoutingModule { }
