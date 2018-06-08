@@ -5,7 +5,7 @@ import { HomeComponent } from '../home/home.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
-//  { path: 'net', component: NetIdHomeComponent, pathMatch: 'full' },
+  { path: 'net', redirectTo: 'home', pathMatch: 'full' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];

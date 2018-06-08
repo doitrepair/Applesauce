@@ -4,19 +4,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
 import { RoutingModule } from './routing/routing.module';
+import { NetModule } from './net/net.module';
 
 import { AppComponent } from './app.component';
-//import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-  //  HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CoreModule,
+    NetModule,
     RoutingModule,
   ],
   providers: [
