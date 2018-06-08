@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ApptComponent } from '../appt/appt.component';
 import { RepairComponent } from '../repair/repair.component';
+import { NetRoutingComponent } from './net-routing.component';
+
 
 const apptRoutes: Routes = [
   {
     path: 'net',
   //  canActivate: [ AuthGuard ],
-  //  component: NetRoutingComponent,
+    component: NetRoutingComponent,
     children: [
       { path: 'appt', component: ApptComponent },
       { path: 'repair', component: RepairComponent },
@@ -28,7 +30,9 @@ const apptRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(apptRoutes),
   ],
-  declarations: [],
+  declarations: [
+    NetRoutingComponent
+  ],
   exports: [
     RouterModule
   ]
