@@ -13,12 +13,9 @@ const apptRoutes: Routes = [
   //  canActivate: [ AuthGuard ],
     component: NetRoutingComponent,
     children: [
-      { path: 'appt', component: ApptComponent },
+      { path: 'appt', component: ApptComponent, },
+      { path: '', redirectTo: 'appt', pathMatch: 'full' },
       { path: 'repair', component: RepairComponent },
-  //    { path: 'user', component: UserStepComponent },
-  //    { path: 'device', component: DeviceStepComponent },
-  //    { path: 'success', component: DeviceStepComponent },
-  //    { path: 'schedule', component: CalendarStepComponent },
       { path: '**', redirectTo: 'appt', pathMatch: 'full'}
     ]
  }
@@ -28,10 +25,11 @@ const apptRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(apptRoutes),
+    RouterModule.forChild(
+      apptRoutes
+    ),
   ],
   declarations: [
-    NetRoutingComponent
   ],
   exports: [
     RouterModule
